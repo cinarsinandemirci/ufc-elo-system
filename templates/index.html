@@ -1240,6 +1240,29 @@
                 if (d1) d1.textContent = `+${data.fighter1.win_by_decision_delta} Elo`;
                 if (fn1) fn1.textContent = `+${data.fighter1.win_by_finish_delta} Elo`;
 
+                // Fighter 2
+                const n2 = document.getElementById('simName2');
+                const p2 = document.getElementById('simProb2');
+                const m2 = document.getElementById('simMeta2');
+                const ko2 = document.getElementById('simKo2');
+                const sub2 = document.getElementById('simSub2');
+                const decMethod2 = document.getElementById('simDec2');
+                const d2 = document.getElementById('simDecDelta2');
+                const fn2 = document.getElementById('simFinDelta2');
+
+                if (n2) n2.textContent = data.fighter2.name;
+                if (p2) p2.textContent = `${data.fighter2.win_probability}%`;
+                if (m2) {
+                    const sizeAdj2 = data.fighter2.size_adjustment;
+                    const sizeTxt2 = sizeAdj2 < 0 ? ` (Size Disadv: ${sizeAdj2} Elo)` : '';
+                    m2.textContent = `Base: ${data.fighter2.elo} | Eff: ${data.fighter2.effective_elo}${sizeTxt2}`;
+                }
+                if (ko2) ko2.textContent = `${data.fighter2.methods.ko_tko_pct}%`;
+                if (sub2) sub2.textContent = `${data.fighter2.methods.submission_pct}%`;
+                if (decMethod2) decMethod2.textContent = `${data.fighter2.methods.decision_pct}%`;
+                if (d2) d2.textContent = `+${data.fighter2.win_by_decision_delta} Elo`;
+                if (fn2) fn2.textContent = `+${data.fighter2.win_by_finish_delta} Elo`;
+
                 // Populate UFC Broadcast Odds Strip
                 const oddsName1 = document.getElementById('simOddsName1');
                 const oddsName2 = document.getElementById('simOddsName2');
