@@ -228,6 +228,7 @@ def simulate_matchup():
     f1_name = request.args.get('f1', '').strip().lower()
     f2_name = request.args.get('f2', '').strip().lower()
     is_title = request.args.get('is_title', 'false').lower() == 'true'
+    target_weight_class = request.args.get('weight_class', 'auto').strip()
 
     f1 = _CACHE['fighters_by_name'].get(f1_name)
     f2 = _CACHE['fighters_by_name'].get(f2_name)
@@ -235,28 +236,152 @@ def simulate_matchup():
     if not f1 or not f2:
         return jsonify({'error': 'One or both fighters not found'}), 400
 
-    r1 = f1['elo']
-    r2 = f2['elo']
+    div_hierarchy = {
+        "Women's Strawweight": 0,
+        "Women's Flyweight": 1,
+        "Women's Bantamweight": 2,
+        "Women's Featherweight": 3,
+        'Flyweight': 1,
+        'Bantamweight': 2,
+        'Featherweight': 3,
+        'Lightweight': 4,
+        'Welterweight': 5,
+        'Middleweight': 6,
+        'Light Heavyweight': 7,
+        'Heavyweight': 8,
+    }
 
-    prob1 = 1.0 / (1.0 + 10.0 ** ((r2 - r1) / 400.0))
+    t1 = div_hierarchy.get(f1.get('primary_weight_class', 'Lightweight'), 4)
+    t2 = div_hierarchy.get(f2.get('primary_weight_class', 'Lightweight'), 4)
+
+    if not target_weight_class or target_weight_class == 'auto':
+        target_tier = max(t1, t2)
+        # Find division name for this tier
+        target_div_name = next((k for k, v in div_hierarchy.items() if v == target_tier and not k.startswith("Women")), f1.get('primary_weight_class'))
+    else:
+        target_tier = div_hierarchy.get(target_weight_class, max(t1, t2))
+        target_div_name = target_weight_class
+
+    # 1. Weight Class Jump, Size & Reach Frame Adjustment
+    size_adj_1 = 0.0
+    size_adj_2 = 0.0
+
+    f1_all_wc = f1.get('all_weight_classes', [])
+    f2_all_wc = f2.get('all_weight_classes', [])
+    f1_exp_at_target = 1 if target_div_name in f1_all_wc else 0
+    f2_exp_at_target = 1 if target_div_name in f2_all_wc else 0
+
+    if target_tier > t1:
+        tier_gap = target_tier - t1
+        base_pen = tier_gap * 35.0
+        if f1_exp_at_target: base_pen *= 0.5 # Acclimated multi-division fighter
+        size_adj_1 = -base_pen
+
+    if target_tier > t2:
+        tier_gap = target_tier - t2
+        base_pen = tier_gap * 35.0
+        if f2_exp_at_target: base_pen *= 0.5
+        size_adj_2 = -base_pen
+
+    eff_elo_1 = f1['elo'] + size_adj_1
+    eff_elo_2 = f2['elo'] + size_adj_2
+
+    # 2. Stylistic Grappling vs Striking Clash
+    f1_fights = max(1, f1.get('total_fights', 1))
+    f2_fights = max(1, f2.get('total_fights', 1))
+    f1_wins = max(1, f1.get('wins', 1))
+    f2_wins = max(1, f2.get('wins', 1))
+
+    g1 = (f1.get('total_td', 0) / f1_fights) * 1.5 + (f1['methods'].get('SUB_win', 0) / f1_wins) * 10.0
+    g2 = (f2.get('total_td', 0) / f2_fights) * 1.5 + (f2['methods'].get('SUB_win', 0) / f2_wins) * 10.0
+
+    s1 = (f1.get('total_sig_str', 0) / f1_fights) * 0.08 + (f1.get('total_kd', 0) / f1_fights) * 6.0 + (f1['methods'].get('KO/TKO_win', 0) / f1_wins) * 8.0
+    s2 = (f2.get('total_sig_str', 0) / f2_fights) * 0.08 + (f2.get('total_kd', 0) / f2_fights) * 6.0 + (f2['methods'].get('KO/TKO_win', 0) / f2_wins) * 8.0
+
+    style_shift = 0.0
+    if g1 > g2 + 4.0:
+        style_shift += min(25.0, (g1 - g2) * 2.5)
+    elif g2 > g1 + 4.0:
+        style_shift -= min(25.0, (g2 - g1) * 2.5)
+
+    eff_elo_1 += style_shift
+
+    # 3. Bradley-Terry Win Probabilities
+    prob1 = 1.0 / (1.0 + 10.0 ** ((eff_elo_2 - eff_elo_1) / 400.0))
     prob2 = 1.0 - prob1
 
+    # 4. Finish Method Probability Distribution
+    f1_ko_ratio = f1['methods'].get('KO/TKO_win', 0) / f1_wins
+    f1_sub_ratio = f1['methods'].get('SUB_win', 0) / f1_wins
+    f1_dec_ratio = (f1['methods'].get('DEC_win', 0) + f1['methods'].get('OTHER_win', 0)) / f1_wins
+
+    f2_losses = max(1, f2.get('losses', 1))
+    f2_ko_vuln = (f2['methods'].get('KO/TKO_loss', 0) + 0.5) / (f2_losses + 1.5)
+    f2_sub_vuln = (f2['methods'].get('SUB_loss', 0) + 0.5) / (f2_losses + 1.5)
+
+    f1_ko_w = f1_ko_ratio * (0.8 + 0.4 * f2_ko_vuln)
+    f1_sub_w = f1_sub_ratio * (0.8 + 0.4 * f2_sub_vuln)
+    f1_dec_w = f1_dec_ratio * 1.0
+    f1_tot_w = (f1_ko_w + f1_sub_w + f1_dec_w) or 1.0
+
+    f1_ko_pct = round(prob1 * (f1_ko_w / f1_tot_w) * 100, 1)
+    f1_sub_pct = round(prob1 * (f1_sub_w / f1_tot_w) * 100, 1)
+    f1_dec_pct = round(prob1 * (f1_dec_w / f1_tot_w) * 100, 1)
+
+    f2_ko_ratio = f2['methods'].get('KO/TKO_win', 0) / f2_wins
+    f2_sub_ratio = f2['methods'].get('SUB_win', 0) / f2_wins
+    f2_dec_ratio = (f2['methods'].get('DEC_win', 0) + f2['methods'].get('OTHER_win', 0)) / f2_wins
+
+    f1_losses = max(1, f1.get('losses', 1))
+    f1_ko_vuln = (f1['methods'].get('KO/TKO_loss', 0) + 0.5) / (f1_losses + 1.5)
+    f1_sub_vuln = (f1['methods'].get('SUB_loss', 0) + 0.5) / (f1_losses + 1.5)
+
+    f2_ko_w = f2_ko_ratio * (0.8 + 0.4 * f1_ko_vuln)
+    f2_sub_w = f2_sub_ratio * (0.8 + 0.4 * f1_sub_vuln)
+    f2_dec_w = f2_dec_ratio * 1.0
+    f2_tot_w = (f2_ko_w + f2_sub_w + f2_dec_w) or 1.0
+
+    f2_ko_pct = round(prob2 * (f2_ko_w / f2_tot_w) * 100, 1)
+    f2_sub_pct = round(prob2 * (f2_sub_w / f2_tot_w) * 100, 1)
+    f2_dec_pct = round(prob2 * (f2_dec_w / f2_tot_w) * 100, 1)
+
+    # Over / Under 2.5 Rounds
+    tot_finish = (f1_ko_pct + f1_sub_pct + f2_ko_pct + f2_sub_pct) / 100.0
+    under_2_5 = round(min(85.0, max(15.0, tot_finish * 75.0)), 1)
+    over_2_5 = round(100.0 - under_2_5, 1)
+
+    # Elo Delta Stakes
     k_base = 32.0 * (1.2 if is_title else 1.0)
     u1 = f1.get('uncertainty_mult', 1.0)
     u2 = f2.get('uncertainty_mult', 1.0)
 
     f1_dec_delta = round((k_base * 1.0 * u1) * (1.0 - prob1), 1)
     f1_dom_fin_delta = round((k_base * 1.5 * 1.2 * u1) * (1.0 - prob1), 1)
-    
     f2_dec_delta = round((k_base * 1.0 * u2) * (1.0 - prob2), 1)
     f2_dom_fin_delta = round((k_base * 1.5 * 1.2 * u2) * (1.0 - prob2), 1)
 
     return jsonify({
+        'bout_context': {
+            'simulated_weight_class': target_div_name,
+            'is_title': is_title,
+            'style_shift': round(style_shift, 1),
+            'over_2_5_rounds': over_2_5,
+            'under_2_5_rounds': under_2_5
+        },
         'fighter1': {
             'name': f1['name'],
             'elo': f1['elo'],
+            'effective_elo': round(eff_elo_1, 1),
             'peak_elo': f1['peak_elo'],
             'win_probability': round(prob1 * 100, 1),
+            'size_adjustment': round(size_adj_1, 1),
+            'grappling_index': round(g1, 1),
+            'striking_index': round(s1, 1),
+            'methods': {
+                'ko_tko_pct': f1_ko_pct,
+                'submission_pct': f1_sub_pct,
+                'decision_pct': f1_dec_pct
+            },
             'win_by_decision_delta': f1_dec_delta,
             'win_by_finish_delta': f1_dom_fin_delta,
             'weight_class': f1['primary_weight_class'],
@@ -267,16 +392,24 @@ def simulate_matchup():
         'fighter2': {
             'name': f2['name'],
             'elo': f2['elo'],
+            'effective_elo': round(eff_elo_2, 1),
             'peak_elo': f2['peak_elo'],
             'win_probability': round(prob2 * 100, 1),
+            'size_adjustment': round(size_adj_2, 1),
+            'grappling_index': round(g2, 1),
+            'striking_index': round(s2, 1),
+            'methods': {
+                'ko_tko_pct': f2_ko_pct,
+                'submission_pct': f2_sub_pct,
+                'decision_pct': f2_dec_pct
+            },
             'win_by_decision_delta': f2_dec_delta,
             'win_by_finish_delta': f2_dom_fin_delta,
             'weight_class': f2['primary_weight_class'],
             'is_active': f2.get('is_active', True),
             'months_inactive': f2.get('months_inactive', 0.0),
             'uncertainty_mult': u2
-        },
-        'is_title': is_title
+        }
     })
 
 if __name__ == '__main__':
