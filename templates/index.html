@@ -639,7 +639,6 @@
 
                 </div>
             </div>
-            </div>
         </div>
     </div>
 
@@ -1211,8 +1210,8 @@
                 const oddsName2 = document.getElementById('simOddsName2');
                 const ml1 = document.getElementById('simMoneyline1');
                 const ml2 = document.getElementById('simMoneyline2');
-                const dec1 = document.getElementById('simDecOdds1');
-                const dec2 = document.getElementById('simDecOdds2');
+                const decOddsEl1 = document.getElementById('simDecOdds1');
+                const decOddsEl2 = document.getElementById('simDecOdds2');
                 const oddsOver = document.getElementById('simOddsOver');
                 const decOddsOver = document.getElementById('simDecOddsOver');
                 const oddsUnder = document.getElementById('simOddsUnder');
@@ -1223,8 +1222,8 @@
 
                 if (ml1) ml1.textContent = data.fighter1.odds ? data.fighter1.odds.vegas_line : `${data.fighter1.win_probability}%`;
                 if (ml2) ml2.textContent = data.fighter2.odds ? data.fighter2.odds.vegas_line : `${data.fighter2.win_probability}%`;
-                if (dec1 && data.fighter1.odds) dec1.textContent = `(${data.fighter1.odds.fair.decimal})`;
-                if (dec2 && data.fighter2.odds) dec2.textContent = `(${data.fighter2.odds.fair.decimal})`;
+                if (decOddsEl1 && data.fighter1.odds) decOddsEl1.textContent = `(${data.fighter1.odds.fair.decimal})`;
+                if (decOddsEl2 && data.fighter2.odds) decOddsEl2.textContent = `(${data.fighter2.odds.fair.decimal})`;
 
                 if (data.bout_context.props) {
                     const pr = data.bout_context.props;
