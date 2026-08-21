@@ -15,6 +15,10 @@ DETAILS_FILE = os.path.join(DATA_DIR, "fighter_details.json")
 COMPONENTS_FILE = os.path.join(DATA_DIR, "fighter_component_elos.json")
 UPCOMING_FILE = os.path.join(DATA_DIR, "upcoming_events_with_signals.json")
 
+ARCHETYPES_FILE = os.path.join(DATA_DIR, "fighter_archetypes.json")
+ROLLING_FILE = os.path.join(DATA_DIR, "fighter_rolling_features.json")
+ADVANCED_RESULTS_FILE = os.path.join(DATA_DIR, "advanced_model_results.json")
+
 # In-Memory Cache Store
 _CACHE = {
     'rankings': [],
@@ -22,6 +26,9 @@ _CACHE = {
     'biometrics': {},
     'details': {},
     'components': {},
+    'archetypes': {},
+    'rolling': {},
+    'advanced_results': {},
     'upcoming': {},
     'stats': {},
     'weight_classes': [],
@@ -37,7 +44,7 @@ def reload_cache_if_needed():
         return
 
     try:
-        print("[CACHE] Loading rankings and precomputing statistics into memory...", flush=True)
+        print("[CACHE] Loading rankings, archetypes, and rolling features into memory...", flush=True)
         with open(RANKINGS_FILE, 'r', encoding='utf-8') as f:
             rankings = json.load(f)
             
@@ -70,6 +77,30 @@ def reload_cache_if_needed():
             except Exception:
                 pass
 
+        archetypes = {}
+        if os.path.exists(ARCHETYPES_FILE):
+            try:
+                with open(ARCHETYPES_FILE, 'r', encoding='utf-8') as f:
+                    archetypes = json.load(f)
+            except Exception:
+                pass
+
+        rolling = {}
+        if os.path.exists(ROLLING_FILE):
+            try:
+                with open(ROLLING_FILE, 'r', encoding='utf-8') as f:
+                    rolling = json.load(f)
+            except Exception:
+                pass
+
+        advanced_results = {}
+        if os.path.exists(ADVANCED_RESULTS_FILE):
+            try:
+                with open(ADVANCED_RESULTS_FILE, 'r', encoding='utf-8') as f:
+                    advanced_results = json.load(f)
+            except Exception:
+                pass
+
         upcoming = {}
         if os.path.exists(UPCOMING_FILE):
             try:
@@ -78,18 +109,24 @@ def reload_cache_if_needed():
             except Exception:
                 pass
 
-        # Enrich rankings with components
+        # Enrich rankings with components, archetypes, and rolling features
         for f in rankings:
-            c = components.get(f['name'].lower(), {})
+            k = f['name'].lower()
+            c = components.get(k, {})
             f['striking_elo'] = c.get('striking_elo', 1500.0)
             f['grappling_elo'] = c.get('grappling_elo', 1500.0)
             f['cardio_elo'] = c.get('cardio_elo', 1500.0)
+            f['archetype'] = archetypes.get(k, {}).get('archetype', 'Distance Out-Fighter')
+            f['rolling'] = rolling.get(k, {})
 
         _CACHE['rankings'] = rankings
         _CACHE['fighters_by_name'] = {f['name'].lower(): f for f in rankings}
         _CACHE['biometrics'] = biometrics
         _CACHE['details'] = details
         _CACHE['components'] = components
+        _CACHE['archetypes'] = archetypes
+        _CACHE['rolling'] = rolling
+        _CACHE['advanced_results'] = advanced_results
         _CACHE['upcoming'] = upcoming
         _CACHE['mtime'] = mtime
 
@@ -548,22 +585,54 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
     c1 = _CACHE.get('components', {}).get(f1['name'].lower(), {})
     c2 = _CACHE.get('components', {}).get(f2['name'].lower(), {})
 
+    # Phase 3: Method of Victory & Round Prop Engine
+    try:
+        from method_of_victory_engine import MethodOfVictoryPredictor
+        mov_engine = MethodOfVictoryPredictor()
+        mov_props = mov_engine.predict_detailed_props(f1['name'], f2['name'], prob1, target_div_name)
+    except Exception as e:
+        mov_props = {
+            'f1_methods': {'ko_tko': f1_ko_pct, 'submission': f1_sub_pct, 'decision': f1_dec_pct},
+            'f2_methods': {'ko_tko': f2_ko_pct, 'submission': f2_sub_pct, 'decision': f2_dec_pct},
+            'round_props': {
+                'over_1_5_prob': 70.0, 'under_1_5_prob': 30.0,
+                'over_2_5_prob': float(over_2_5), 'under_2_5_prob': float(under_2_5),
+                'goes_distance_prob': 45.0, 'finish_inside_distance_prob': 55.0
+            },
+            'f1_archetype': f1.get('archetype', 'Distance Out-Fighter'),
+            'f2_archetype': f2.get('archetype', 'Distance Out-Fighter')
+        }
+
+    arch1 = mov_props.get('f1_archetype', f1.get('archetype', 'Distance Out-Fighter'))
+    arch2 = mov_props.get('f2_archetype', f2.get('archetype', 'Distance Out-Fighter'))
+    roll1 = _CACHE.get('rolling', {}).get(f1['name'].lower(), {})
+    roll2 = _CACHE.get('rolling', {}).get(f2['name'].lower(), {})
+
     return {
         'bout_context': {
             'simulated_weight_class': target_div_name,
             'is_title': is_title,
             'style_shift': round(style_shift, 1),
+            'f1_archetype': arch1,
+            'f2_archetype': arch2,
+            'method_distribution': {
+                'fighter1': mov_props.get('f1_methods'),
+                'fighter2': mov_props.get('f2_methods')
+            },
+            'round_props': mov_props.get('round_props'),
             'over_2_5_rounds': over_2_5,
             'under_2_5_rounds': under_2_5,
             'props': {
+                'over_1_5_rounds': to_odds(mov_props.get('round_props', {}).get('over_1_5_prob', 70.0) / 100.0),
+                'under_1_5_rounds': to_odds(mov_props.get('round_props', {}).get('under_1_5_prob', 30.0) / 100.0),
                 'over_2_5_rounds': to_odds(over_2_5 / 100.0),
                 'under_2_5_rounds': to_odds(under_2_5 / 100.0),
-                'f1_ko_tko': to_odds(f1_ko_pct / 100.0),
-                'f1_submission': to_odds(f1_sub_pct / 100.0),
-                'f1_decision': to_odds(f1_dec_pct / 100.0),
-                'f2_ko_tko': to_odds(f2_ko_pct / 100.0),
-                'f2_submission': to_odds(f2_sub_pct / 100.0),
-                'f2_decision': to_odds(f2_dec_pct / 100.0)
+                'f1_ko_tko': to_odds(mov_props.get('f1_methods', {}).get('ko_tko', f1_ko_pct) / 100.0),
+                'f1_submission': to_odds(mov_props.get('f1_methods', {}).get('submission', f1_sub_pct) / 100.0),
+                'f1_decision': to_odds(mov_props.get('f1_methods', {}).get('decision', f1_dec_pct) / 100.0),
+                'f2_ko_tko': to_odds(mov_props.get('f2_methods', {}).get('ko_tko', f2_ko_pct) / 100.0),
+                'f2_submission': to_odds(mov_props.get('f2_methods', {}).get('submission', f2_sub_pct) / 100.0),
+                'f2_decision': to_odds(mov_props.get('f2_methods', {}).get('decision', f2_dec_pct) / 100.0)
             }
         },
         'fighter1': {
@@ -575,6 +644,8 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
             'size_adjustment': round(size_adj_1, 1),
             'grappling_index': round(g1, 1),
             'striking_index': round(s1, 1),
+            'archetype': arch1,
+            'rolling_stats': roll1,
             'odds': {
                 'fair': to_odds(prob1),
                 'vegas_line': v1_line,
@@ -588,9 +659,9 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
                 'edge_drivers': drivers_1
             },
             'methods': {
-                'ko_tko_pct': f1_ko_pct,
-                'submission_pct': f1_sub_pct,
-                'decision_pct': f1_dec_pct
+                'ko_tko_pct': mov_props.get('f1_methods', {}).get('ko_tko', f1_ko_pct),
+                'submission_pct': mov_props.get('f1_methods', {}).get('submission', f1_sub_pct),
+                'decision_pct': mov_props.get('f1_methods', {}).get('decision', f1_dec_pct)
             },
             'win_by_decision_delta': f1_dec_delta,
             'win_by_finish_delta': f1_dom_fin_delta,
@@ -613,6 +684,8 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
             'size_adjustment': round(size_adj_2, 1),
             'grappling_index': round(g2, 1),
             'striking_index': round(s2, 1),
+            'archetype': arch2,
+            'rolling_stats': roll2,
             'odds': {
                 'fair': to_odds(prob2),
                 'vegas_line': v2_line,
@@ -626,9 +699,9 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
                 'edge_drivers': drivers_2
             },
             'methods': {
-                'ko_tko_pct': f2_ko_pct,
-                'submission_pct': f2_sub_pct,
-                'decision_pct': f2_dec_pct
+                'ko_tko_pct': mov_props.get('f2_methods', {}).get('ko_tko', f2_ko_pct),
+                'submission_pct': mov_props.get('f2_methods', {}).get('submission', f2_sub_pct),
+                'decision_pct': mov_props.get('f2_methods', {}).get('decision', f2_dec_pct)
             },
             'win_by_decision_delta': f2_dec_delta,
             'win_by_finish_delta': f2_dom_fin_delta,
@@ -767,7 +840,6 @@ def get_value_bets():
                         'ev_pct': vb2['ev_pct'],
                         'kelly_stake': vb2['kelly_stake_pct'],
                         'tier': vb2['tier'],
-                        'edge_drivers': vb2['edge_drivers'],
                         'sportsbooks': {
                             'Consensus Market': {'american': match_data['fighter2']['odds']['vegas_line'], 'decimal': match_data['fighter2']['odds']['market_decimal']}
                         }
@@ -780,6 +852,12 @@ def get_value_bets():
         'min_ev_filter': min_ev,
         'signals': value_signals[:limit]
     })
+
+@app.route('/api/ml-benchmarks')
+def get_ml_benchmarks():
+    reload_cache_if_needed()
+    results = _CACHE.get('advanced_results', {})
+    return jsonify(results)
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

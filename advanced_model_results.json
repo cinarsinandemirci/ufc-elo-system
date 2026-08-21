@@ -1,0 +1,116 @@
+{
+  "total_evaluated_bouts": 5867,
+  "benchmark_models": [
+    {
+      "name": "Standard Base Elo",
+      "accuracy": 76.99,
+      "brier_score": 0.1951,
+      "log_loss": 0.5784
+    },
+    {
+      "name": "Calibrated Logistic ML",
+      "accuracy": 77.3,
+      "brier_score": 0.1606,
+      "log_loss": 0.4933
+    },
+    {
+      "name": "LightGBM Boosted Trees",
+      "accuracy": 77.67,
+      "brier_score": 0.1614,
+      "log_loss": 0.4979
+    },
+    {
+      "name": "Phase 2 Non-Linear Ensemble",
+      "accuracy": 77.47,
+      "brier_score": 0.1592,
+      "log_loss": 0.4901
+    }
+  ],
+  "top_feature_importances": [
+    {
+      "feature": "elo_diff",
+      "importance": 40116.67
+    },
+    {
+      "feature": "card_elo_diff",
+      "importance": 12674.87
+    },
+    {
+      "feature": "str_elo_diff",
+      "importance": 2568.85
+    },
+    {
+      "feature": "grp_elo_diff",
+      "importance": 763.99
+    },
+    {
+      "feature": "age_cliff_diff",
+      "importance": 526.01
+    },
+    {
+      "feature": "str_acc_diff",
+      "importance": 431.02
+    },
+    {
+      "feature": "tdd_diff",
+      "importance": 373.03
+    },
+    {
+      "feature": "finish_diff",
+      "importance": 323.53
+    },
+    {
+      "feature": "kd_rate_diff",
+      "importance": 318.44
+    },
+    {
+      "feature": "damage_diff",
+      "importance": 314.01
+    },
+    {
+      "feature": "td_avg_diff",
+      "importance": 199.23
+    },
+    {
+      "feature": "reach_diff",
+      "importance": 134.78
+    },
+    {
+      "feature": "sapm_diff",
+      "importance": 113.19
+    },
+    {
+      "feature": "slpm_diff",
+      "importance": 90.12
+    },
+    {
+      "feature": "streak_diff",
+      "importance": 68.55
+    },
+    {
+      "feature": "str_def_diff",
+      "importance": 57.44
+    },
+    {
+      "feature": "style_adv",
+      "importance": 56.32
+    },
+    {
+      "feature": "stance_adv",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_apex",
+      "importance": 0.0
+    },
+    {
+      "feature": "is_high_alt",
+      "importance": 0.0
+    }
+  ],
+  "performance_delta": {
+    "accuracy_gain": 0.48,
+    "brier_improvement": 0.0359,
+    "log_loss_reduction": 0.0883
+  }
+}

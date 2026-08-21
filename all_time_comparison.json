@@ -1,0 +1,502 @@
+[
+  {
+    "name": "Jon Jones",
+    "consensus_rank": 1,
+    "algo_rank": 2,
+    "diff": -1,
+    "peak_elo": 1857.6,
+    "curr_elo": 1793.8,
+    "record": "22W-1L",
+    "division": "Light Heavyweight"
+  },
+  {
+    "name": "Georges St-Pierre",
+    "consensus_rank": 2,
+    "algo_rank": 5,
+    "diff": -3,
+    "peak_elo": 1813.9,
+    "curr_elo": 1500.0,
+    "record": "20W-2L",
+    "division": "Welterweight"
+  },
+  {
+    "name": "Anderson Silva",
+    "consensus_rank": 3,
+    "algo_rank": 3,
+    "diff": 0,
+    "peak_elo": 1825.1,
+    "curr_elo": 1500.0,
+    "record": "17W-7L",
+    "division": "Middleweight"
+  },
+  {
+    "name": "Demetrious Johnson",
+    "consensus_rank": 4,
+    "algo_rank": 9,
+    "diff": -5,
+    "peak_elo": 1775.0,
+    "curr_elo": 1500.0,
+    "record": "15W-2L",
+    "division": "Flyweight"
+  },
+  {
+    "name": "Khabib Nurmagomedov",
+    "consensus_rank": 5,
+    "algo_rank": 15,
+    "diff": -10,
+    "peak_elo": 1762.6,
+    "curr_elo": 1503.2,
+    "record": "13W-0L",
+    "division": "Lightweight"
+  },
+  {
+    "name": "Jose Aldo",
+    "consensus_rank": 6,
+    "algo_rank": 98,
+    "diff": -92,
+    "peak_elo": 1669.2,
+    "curr_elo": 1603.1,
+    "record": "14W-9L",
+    "division": "Featherweight"
+  },
+  {
+    "name": "Daniel Cormier",
+    "consensus_rank": 7,
+    "algo_rank": 10,
+    "diff": -3,
+    "peak_elo": 1772.3,
+    "curr_elo": 1500.0,
+    "record": "11W-3L",
+    "division": "Light Heavyweight"
+  },
+  {
+    "name": "Alexander Volkanovski",
+    "consensus_rank": 8,
+    "algo_rank": 12,
+    "diff": -4,
+    "peak_elo": 1770.0,
+    "curr_elo": 1751.7,
+    "record": "15W-3L",
+    "division": "Featherweight"
+  },
+  {
+    "name": "Islam Makhachev",
+    "consensus_rank": 9,
+    "algo_rank": 1,
+    "diff": 8,
+    "peak_elo": 1864.0,
+    "curr_elo": 1864.0,
+    "record": "18W-1L",
+    "division": "Lightweight"
+  },
+  {
+    "name": "Kamaru Usman",
+    "consensus_rank": 10,
+    "algo_rank": 4,
+    "diff": 6,
+    "peak_elo": 1815.3,
+    "curr_elo": 1740.3,
+    "record": "16W-4L",
+    "division": "Welterweight"
+  },
+  {
+    "name": "Amanda Nunes",
+    "consensus_rank": 11,
+    "algo_rank": 11,
+    "diff": 0,
+    "peak_elo": 1771.7,
+    "curr_elo": 1647.9,
+    "record": "16W-2L",
+    "division": "Women's Bantamweight"
+  },
+  {
+    "name": "Stipe Miocic",
+    "consensus_rank": 12,
+    "algo_rank": 14,
+    "diff": -2,
+    "peak_elo": 1764.0,
+    "curr_elo": 1556.4,
+    "record": "14W-5L",
+    "division": "Heavyweight"
+  },
+  {
+    "name": "Max Holloway",
+    "consensus_rank": 13,
+    "algo_rank": 7,
+    "diff": 6,
+    "peak_elo": 1786.6,
+    "curr_elo": 1762.4,
+    "record": "24W-9L",
+    "division": "Featherweight"
+  },
+  {
+    "name": "Israel Adesanya",
+    "consensus_rank": 14,
+    "algo_rank": 18,
+    "diff": -4,
+    "peak_elo": 1756.2,
+    "curr_elo": 1624.4,
+    "record": "13W-6L",
+    "division": "Middleweight"
+  },
+  {
+    "name": "Matt Hughes",
+    "consensus_rank": 15,
+    "algo_rank": 44,
+    "diff": -29,
+    "peak_elo": 1712.4,
+    "curr_elo": 1500.0,
+    "record": "16W-6L",
+    "division": "Welterweight"
+  },
+  {
+    "name": "Henry Cejudo",
+    "consensus_rank": 16,
+    "algo_rank": 50,
+    "diff": -34,
+    "peak_elo": 1701.7,
+    "curr_elo": 1551.2,
+    "record": "10W-6L",
+    "division": "Flyweight"
+  },
+  {
+    "name": "Dominick Cruz",
+    "consensus_rank": 17,
+    "algo_rank": 347,
+    "diff": -330,
+    "peak_elo": 1598.4,
+    "curr_elo": 1500.0,
+    "record": "7W-3L",
+    "division": "Bantamweight"
+  },
+  {
+    "name": "Chuck Liddell",
+    "consensus_rank": 18,
+    "algo_rank": 52,
+    "diff": -34,
+    "peak_elo": 1700.6,
+    "curr_elo": 1500.0,
+    "record": "12W-6L",
+    "division": "Light Heavyweight"
+  },
+  {
+    "name": "BJ Penn",
+    "consensus_rank": 19,
+    "algo_rank": 91,
+    "diff": -72,
+    "peak_elo": 1673.2,
+    "curr_elo": 1434.1,
+    "record": "10W-13L",
+    "division": "Lightweight"
+  },
+  {
+    "name": "Alex Pereira",
+    "consensus_rank": 20,
+    "algo_rank": 20,
+    "diff": 0,
+    "peak_elo": 1747.5,
+    "curr_elo": 1721.1,
+    "record": "10W-3L",
+    "division": "Light Heavyweight"
+  },
+  {
+    "name": "Francis Ngannou",
+    "consensus_rank": 21,
+    "algo_rank": 13,
+    "diff": 8,
+    "peak_elo": 1765.0,
+    "curr_elo": 1580.3,
+    "record": "12W-2L",
+    "division": "Heavyweight"
+  },
+  {
+    "name": "Charles Oliveira",
+    "consensus_rank": 22,
+    "algo_rank": 6,
+    "diff": 16,
+    "peak_elo": 1792.2,
+    "curr_elo": 1762.2,
+    "record": "25W-11L",
+    "division": "Lightweight"
+  },
+  {
+    "name": "Dustin Poirier",
+    "consensus_rank": 23,
+    "algo_rank": 17,
+    "diff": 6,
+    "peak_elo": 1758.3,
+    "curr_elo": 1682.7,
+    "record": "22W-9L",
+    "division": "Lightweight"
+  },
+  {
+    "name": "Conor McGregor",
+    "consensus_rank": 24,
+    "algo_rank": 36,
+    "diff": -12,
+    "peak_elo": 1720.8,
+    "curr_elo": 1488.3,
+    "record": "10W-5L",
+    "division": "Featherweight"
+  },
+  {
+    "name": "Valentina Shevchenko",
+    "consensus_rank": 25,
+    "algo_rank": 26,
+    "diff": -1,
+    "peak_elo": 1737.3,
+    "curr_elo": 1737.3,
+    "record": "15W-3L",
+    "division": "Women's Flyweight"
+  },
+  {
+    "name": "Cain Velasquez",
+    "consensus_rank": 26,
+    "algo_rank": 27,
+    "diff": -1,
+    "peak_elo": 1735.4,
+    "curr_elo": 1500.0,
+    "record": "12W-3L",
+    "division": "Heavyweight"
+  },
+  {
+    "name": "Frankie Edgar",
+    "consensus_rank": 27,
+    "algo_rank": 37,
+    "diff": -10,
+    "peak_elo": 1719.1,
+    "curr_elo": 1500.0,
+    "record": "18W-11L",
+    "division": "Lightweight"
+  },
+  {
+    "name": "TJ Dillashaw",
+    "consensus_rank": 28,
+    "algo_rank": 33,
+    "diff": -5,
+    "peak_elo": 1727.3,
+    "curr_elo": 1500.0,
+    "record": "13W-5L",
+    "division": "Bantamweight"
+  },
+  {
+    "name": "Randy Couture",
+    "consensus_rank": 29,
+    "algo_rank": 290,
+    "diff": -261,
+    "peak_elo": 1608.8,
+    "curr_elo": 1500.0,
+    "record": "10W-8L",
+    "division": "Light Heavyweight"
+  },
+  {
+    "name": "Dan Henderson",
+    "consensus_rank": 30,
+    "algo_rank": 806,
+    "diff": -776,
+    "peak_elo": 1546.5,
+    "curr_elo": 1500.0,
+    "record": "7W-9L",
+    "division": "Light Heavyweight"
+  },
+  {
+    "name": "Robert Whittaker",
+    "consensus_rank": 31,
+    "algo_rank": 39,
+    "diff": -8,
+    "peak_elo": 1717.3,
+    "curr_elo": 1683.2,
+    "record": "18W-7L",
+    "division": "Middleweight"
+  },
+  {
+    "name": "Junior Dos Santos",
+    "consensus_rank": 32,
+    "algo_rank": 43,
+    "diff": -11,
+    "peak_elo": 1714.9,
+    "curr_elo": 1500.0,
+    "record": "15W-8L",
+    "division": "Heavyweight"
+  },
+  {
+    "name": "Tony Ferguson",
+    "consensus_rank": 33,
+    "algo_rank": 8,
+    "diff": 25,
+    "peak_elo": 1776.3,
+    "curr_elo": 1533.6,
+    "record": "15W-9L",
+    "division": "Lightweight"
+  },
+  {
+    "name": "Tyron Woodley",
+    "consensus_rank": 34,
+    "algo_rank": 42,
+    "diff": -8,
+    "peak_elo": 1715.6,
+    "curr_elo": 1500.0,
+    "record": "9W-6L",
+    "division": "Welterweight"
+  },
+  {
+    "name": "Michael Bisping",
+    "consensus_rank": 35,
+    "algo_rank": 47,
+    "diff": -12,
+    "peak_elo": 1706.0,
+    "curr_elo": 1500.0,
+    "record": "20W-9L",
+    "division": "Middleweight"
+  },
+  {
+    "name": "Aljamain Sterling",
+    "consensus_rank": 36,
+    "algo_rank": 24,
+    "diff": 12,
+    "peak_elo": 1741.0,
+    "curr_elo": 1728.6,
+    "record": "18W-5L",
+    "division": "Bantamweight"
+  },
+  {
+    "name": "Tito Ortiz",
+    "consensus_rank": 37,
+    "algo_rank": 391,
+    "diff": -354,
+    "peak_elo": 1591.7,
+    "curr_elo": 1465.1,
+    "record": "8W-9L",
+    "division": "Light Heavyweight"
+  },
+  {
+    "name": "Robbie Lawler",
+    "consensus_rank": 38,
+    "algo_rank": 58,
+    "diff": -20,
+    "peak_elo": 1691.8,
+    "curr_elo": 1504.2,
+    "record": "15W-10L",
+    "division": "Welterweight"
+  },
+  {
+    "name": "Deiveson Figueiredo",
+    "consensus_rank": 39,
+    "algo_rank": 57,
+    "diff": -18,
+    "peak_elo": 1695.2,
+    "curr_elo": 1612.9,
+    "record": "14W-7L",
+    "division": "Flyweight"
+  },
+  {
+    "name": "Leon Edwards",
+    "consensus_rank": 40,
+    "algo_rank": 23,
+    "diff": 17,
+    "peak_elo": 1745.6,
+    "curr_elo": 1657.5,
+    "record": "14W-5L",
+    "division": "Welterweight"
+  },
+  {
+    "name": "Justin Gaethje",
+    "consensus_rank": 41,
+    "algo_rank": 46,
+    "diff": -5,
+    "peak_elo": 1708.2,
+    "curr_elo": 1708.2,
+    "record": "11W-5L",
+    "division": "Lightweight"
+  },
+  {
+    "name": "Merab Dvalishvili",
+    "consensus_rank": 42,
+    "algo_rank": 21,
+    "diff": 21,
+    "peak_elo": 1746.6,
+    "curr_elo": 1722.0,
+    "record": "14W-3L",
+    "division": "Bantamweight"
+  },
+  {
+    "name": "Ilia Topuria",
+    "consensus_rank": 43,
+    "algo_rank": 19,
+    "diff": 24,
+    "peak_elo": 1750.8,
+    "curr_elo": 1729.1,
+    "record": "9W-1L",
+    "division": "Featherweight"
+  },
+  {
+    "name": "Shogun Rua",
+    "consensus_rank": 44,
+    "algo_rank": 999,
+    "diff": -999,
+    "peak_elo": 0.0,
+    "curr_elo": 0.0,
+    "record": "N/A",
+    "division": "N/A"
+  },
+  {
+    "name": "Fabricio Werdum",
+    "consensus_rank": 45,
+    "algo_rank": 89,
+    "diff": -44,
+    "peak_elo": 1673.5,
+    "curr_elo": 1500.0,
+    "record": "12W-6L",
+    "division": "Heavyweight"
+  },
+  {
+    "name": "Vitor Belfort",
+    "consensus_rank": 46,
+    "algo_rank": 185,
+    "diff": -139,
+    "peak_elo": 1636.3,
+    "curr_elo": 1500.0,
+    "record": "10W-9L",
+    "division": "Middleweight"
+  },
+  {
+    "name": "Chris Weidman",
+    "consensus_rank": 47,
+    "algo_rank": 22,
+    "diff": 25,
+    "peak_elo": 1745.9,
+    "curr_elo": 1518.8,
+    "record": "12W-8L",
+    "division": "Middleweight"
+  },
+  {
+    "name": "Dricus Du Plessis",
+    "consensus_rank": 48,
+    "algo_rank": 32,
+    "diff": 16,
+    "peak_elo": 1732.3,
+    "curr_elo": 1730.2,
+    "record": "10W-1L",
+    "division": "Middleweight"
+  },
+  {
+    "name": "Glover Teixeira",
+    "consensus_rank": 49,
+    "algo_rank": 31,
+    "diff": 18,
+    "peak_elo": 1732.9,
+    "curr_elo": 1538.2,
+    "record": "16W-7L",
+    "division": "Light Heavyweight"
+  },
+  {
+    "name": "Joanna Jedrzejczyk",
+    "consensus_rank": 50,
+    "algo_rank": 114,
+    "diff": -64,
+    "peak_elo": 1660.4,
+    "curr_elo": 1500.0,
+    "record": "10W-5L",
+    "division": "Women's Strawweight"
+  }
+]

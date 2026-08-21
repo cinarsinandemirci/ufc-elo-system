@@ -669,25 +669,31 @@
                         <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-left space-y-3">
                             <div class="flex justify-between items-start">
                                 <div>
-                                    <h4 id="simName1" class="font-bold text-white text-base truncate">Fighter 1</h4>
-                                    <div class="text-[10px] text-slate-400" id="simMeta1">Base Elo: -- | Effective: --</div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 id="simName1" class="font-bold text-white text-base truncate">Fighter 1</h4>
+                                        <span id="simArch1" class="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 uppercase">Archetype</span>
+                                    </div>
+                                    <div class="text-[10px] text-slate-400 mt-0.5" id="simMeta1">Base Elo: -- | Effective: --</div>
                                 </div>
                                 <div id="simProb1" class="font-display font-black text-2xl text-rose-500">--%</div>
                             </div>
                             
-                            <!-- Method Breakdown -->
-                            <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] pt-2 border-t border-slate-800">
-                                <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/50">
-                                    <span class="text-slate-400 block">🥊 KO/TKO</span>
-                                    <span id="simKo1" class="font-bold text-white">--%</span>
-                                </div>
-                                <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/50">
-                                    <span class="text-slate-400 block">🥋 Submission</span>
-                                    <span id="simSub1" class="font-bold text-white">--%</span>
-                                </div>
-                                <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/50">
-                                    <span class="text-slate-400 block">📋 Decision</span>
-                                    <span id="simDec1" class="font-bold text-white">--%</span>
+                            <!-- Phase 3 Method of Victory Breakdown -->
+                            <div>
+                                <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1">🎯 Kazanma Şekli İhtimali (Method of Victory):</span>
+                                <div class="grid grid-cols-3 gap-1.5 text-center text-[10px]">
+                                    <div class="p-1.5 rounded bg-slate-800/80 border border-rose-500/30 bg-rose-500/5">
+                                        <span class="text-slate-400 block text-[9px]">🥊 KO/TKO</span>
+                                        <span id="simKo1" class="font-black text-rose-400 text-xs">--%</span>
+                                    </div>
+                                    <div class="p-1.5 rounded bg-slate-800/80 border border-sky-500/30 bg-sky-500/5">
+                                        <span class="text-slate-400 block text-[9px]">🥋 Submission</span>
+                                        <span id="simSub1" class="font-black text-sky-400 text-xs">--%</span>
+                                    </div>
+                                    <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/50">
+                                        <span class="text-slate-400 block text-[9px]">📋 Decision</span>
+                                        <span id="simDec1" class="font-bold text-slate-200 text-xs">--%</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -708,25 +714,31 @@
                         <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-left space-y-3">
                             <div class="flex justify-between items-start">
                                 <div>
-                                    <h4 id="simName2" class="font-bold text-white text-base truncate">Fighter 2</h4>
-                                    <div class="text-[10px] text-slate-400" id="simMeta2">Base Elo: -- | Effective: --</div>
+                                    <div class="flex items-center gap-2">
+                                        <h4 id="simName2" class="font-bold text-white text-base truncate">Fighter 2</h4>
+                                        <span id="simArch2" class="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase">Archetype</span>
+                                    </div>
+                                    <div class="text-[10px] text-slate-400 mt-0.5" id="simMeta2">Base Elo: -- | Effective: --</div>
                                 </div>
                                 <div id="simProb2" class="font-display font-black text-2xl text-amber-500">--%</div>
                             </div>
 
-                            <!-- Method Breakdown -->
-                            <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] pt-2 border-t border-slate-800">
-                                <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/50">
-                                    <span class="text-slate-400 block">🥊 KO/TKO</span>
-                                    <span id="simKo2" class="font-bold text-white">--%</span>
-                                </div>
-                                <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/50">
-                                    <span class="text-slate-400 block">🥋 Submission</span>
-                                    <span id="simSub2" class="font-bold text-white">--%</span>
-                                </div>
-                                <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/50">
-                                    <span class="text-slate-400 block">📋 Decision</span>
-                                    <span id="simDec2" class="font-bold text-white">--%</span>
+                            <!-- Phase 3 Method of Victory Breakdown -->
+                            <div>
+                                <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1">🎯 Kazanma Şekli İhtimali (Method of Victory):</span>
+                                <div class="grid grid-cols-3 gap-1.5 text-center text-[10px]">
+                                    <div class="p-1.5 rounded bg-slate-800/80 border border-rose-500/30 bg-rose-500/5">
+                                        <span class="text-slate-400 block text-[9px]">🥊 KO/TKO</span>
+                                        <span id="simKo2" class="font-black text-rose-400 text-xs">--%</span>
+                                    </div>
+                                    <div class="p-1.5 rounded bg-slate-800/80 border border-sky-500/30 bg-sky-500/5">
+                                        <span class="text-slate-400 block text-[9px]">🥋 Submission</span>
+                                        <span id="simSub2" class="font-black text-sky-400 text-xs">--%</span>
+                                    </div>
+                                    <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/50">
+                                        <span class="text-slate-400 block text-[9px]">📋 Decision</span>
+                                        <span id="simDec2" class="font-bold text-slate-200 text-xs">--%</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1452,6 +1464,7 @@
 
                 // Fighter 1
                 const n1 = document.getElementById('simName1');
+                const archEl1 = document.getElementById('simArch1');
                 const p1 = document.getElementById('simProb1');
                 const m1 = document.getElementById('simMeta1');
                 const ko1 = document.getElementById('simKo1');
@@ -1461,6 +1474,7 @@
                 const fn1 = document.getElementById('simFinDelta1');
 
                 if (n1) n1.textContent = data.fighter1.name;
+                if (archEl1) archEl1.textContent = data.fighter1.archetype || data.bout_context.f1_archetype || 'Distance Out-Fighter';
                 if (p1) p1.textContent = `${data.fighter1.win_probability}%`;
                 if (m1) {
                     const sizeAdj = data.fighter1.size_adjustment;
@@ -1560,6 +1574,7 @@
 
                 // Fighter 2 Card Metrics
                 const n2 = document.getElementById('simName2');
+                const archEl2 = document.getElementById('simArch2');
                 const p2 = document.getElementById('simProb2');
                 const m2 = document.getElementById('simMeta2');
                 const ko2 = document.getElementById('simKo2');
@@ -1569,6 +1584,7 @@
                 const fn2 = document.getElementById('simFinDelta2');
 
                 if (n2) n2.textContent = data.fighter2.name;
+                if (archEl2) archEl2.textContent = data.fighter2.archetype || data.bout_context.f2_archetype || 'Distance Out-Fighter';
                 if (p2) p2.textContent = `${data.fighter2.win_probability}%`;
                 if (m2) {
                     const sizeAdj2 = data.fighter2.size_adjustment;

@@ -1,7 +1,7 @@
 # 🥊 UFC Elo Rating & Value Betting Engine (2001–2026)
-### 💎 15-Factor Biometric 3D Component Elo & Real-Time +EV Line Shopping Alpha
+### 💎 Non-Linear LightGBM Ensemble, 6-Archetype Tactical Engine & Multi-Target Method of Victory Props
 
-An advanced, production-ready quantitative algorithmic fight prediction and value betting analytics platform for mixed martial arts (UFC). Spanning the **entire modern era (2001–2026, 749 events, 8,515 bouts, 2,540 fighters)** with walk-forward machine learning calibration, live Vegas & multi-sportsbook line shopping, and Quarter-Kelly risk management.
+An advanced, production-ready quantitative algorithmic fight prediction and value betting analytics platform for mixed martial arts (UFC). Spanning the **entire modern era (2001–2026, 749 events, 8,515 bouts, 2,540 fighters)** with non-linear walk-forward machine learning, 6-way Method of Victory joint probability distributions, live Vegas & multi-sportsbook line shopping, and Quarter-Kelly risk management.
 
 ---
 
@@ -9,54 +9,92 @@ An advanced, production-ready quantitative algorithmic fight prediction and valu
 
 ```mermaid
 graph TD
-    A[Raw 25-Year UFC Dataset 8,515 Bouts] --> B[In-Fight Dominance Engine]
+    A[Raw 25-Year UFC Dataset 8,515 Bouts] --> B[Phase 1: Feature Engineering & Archetypes]
     B --> C[3D Component Elo: Striking, Grappling, Cardio]
-    C --> D[15-Factor Biometrics: Age Cliff, Reach, Stance, Chin, TDD]
-    D --> E[Hybrid Machine Learning Calibration]
-    E --> F[Vegas & Live Multi-Sportsbook Odds Comparison]
-    F --> G[Quantitative +EV Value Radar & Quarter-Kelly Allocation]
-    G --> H[Live Interactive Dashboard & Octagon Matchup Simulator]
+    B --> D[Rolling 3-5 Fight EWMA Form & Damage Index]
+    B --> E[6 Tactical Archetypes & Stylistic Matchup Matrix]
+    B --> F[Environmental Modifiers: 25ft Apex Cage vs Arena]
+    C & D & E & F --> G[Phase 2: Non-Linear Ensemble Engine LightGBM + Ridge]
+    G --> H[Phase 3: Multi-Target Method of Victory Engine KO/SUB/DEC & Props]
+    H --> I[Live Multi-Sportsbook Line Shopping DraftKings, FanDuel, BetMGM, Caesars]
+    I --> J[Quantitative +EV Value Radar & Quarter-Kelly Allocation]
+    J --> K[Interactive Dashboard & Octagon Matchup Simulator]
 ```
-
-### 1. 🧬 15-Factor Biometric & Physiological Modeling
-* **Physiological Age Cliff**:
-  * Lightweight & below ($\le 170\text{ lbs}$): Steep degradation starting at age **35** ($-12.0\text{ Elo/yr}$, capped at $-35.0$).
-  * Middleweight to Heavyweight ($> 170\text{ lbs}$): Degradation starting at age **37** ($-8.0\text{ Elo/yr}$, capped at $-30.0$).
-  * Prime Speed Differential ($+2.5\text{ Elo/yr}$ for $\ge 6$ yr gap vs older opponents).
-* **Reach & Stature Advantage**:
-  * $+2.5\text{ Elo}$ per inch of reach advantage for $\ge 3.0$ inch gaps (capped at $+15.0\text{ Elo}$).
-* **Stance Geometry**:
-  * $+8.0\text{ Elo}$ Southpaw vs Orthodox open-stance cross-angle advantage.
-* **Chin Degradation & Cumulative Damage**:
-  * $-12.0\text{ Elo}$ penalty for fighters with $\ge 2$ career KO losses facing elite strikers.
-* **Takedown Defense (TDD) Grappling Neutralization**:
-  * Fighters with $\ge 80\%$ TDD reduce the opponent's grappling advantage by $55\%$.
-
-### 2. 🥊 3D Component Skill Elo (Striking, Grappling, Cardio)
-* **Striking Elo**: Calibrated via significant strikes landed, strike differential ratio, and knockdown rates.
-* **Grappling Elo**: Calibrated via takedown accuracy, control time, and submission threat density.
-* **Cardio Elo**: Calibrated via 3rd-5th round output retention and late-fight win percentage.
-
-### 3. 🎯 Quantitative +EV Value Radar & Multi-Sportsbook Line Shopping
-* Scans real upcoming UFC cards across major global sportsbooks:
-  * **DraftKings**, **FanDuel**, **BetMGM**, **Caesars**, **BetRivers**, **Kalshi**, **Polymarket**.
-* Identifies market pricing errors where Model Win Probability exceeds bookmaker implied probability:
-  $$\text{Expected Value (EV)} = (P_{\text{model}} \times \text{Odds}_{\text{mkt}}) - 1.0 > 0$$
-* **Quarter-Kelly Bankroll Staking**:
-  $$f^* = \max\left(0, \min\left(0.06, 0.25 \times \frac{b \cdot p - q}{b}\right)\right)$$
-* **Historical Backtest Profitability**:
-  * $\text{EV} \ge +5\%$: **+7.68% ROI** across 2,181 bets ($16,758 profit).
-  * $\text{EV} \ge +8\%$: **+18.10% ROI** across 984 bets ($17,811 profit).
-  * $\text{EV} \ge +10\%$: **+18.58% ROI** across 456 bets ($8,474 profit).
 
 ---
 
-## 📊 Walk-Forward Machine Learning Validation
+## 🔬 1. Phase 1: Feature Engineering & Domain Physics
 
-Evaluated across **5,103 out-of-sample bouts (2001–2026)**:
-* **Prediction Accuracy**: **57.08%** (Outperforming standard baseline models).
-* **Brier Score Calibration**: **0.2411** (Superior probabilistic sharpness).
-* **Log-Loss**: **0.6748** (Reduced entropy vs pure public lines).
+### A. Rolling Exponentially Weighted Moving Average (EWMA) Form
+Rather than relying solely on static career aggregates, the model continuously computes time-decayed rolling performance over each fighter's last 3–5 bouts:
+* **`rolling_slpm` & `rolling_sapm`**: Significant strikes landed and absorbed per minute.
+* **`rolling_str_acc` & `rolling_str_def`**: Dynamic striking accuracy and defensive evasion rate.
+* **`rolling_td_avg_15m`**: Takedowns landed per 15 minutes of control time.
+* **`rolling_damage_index`**: Cumulative head strikes absorbed weighted by defensive failure.
+* **`finish_rate_recent` & `win_streak_recent`**: Momentum and finishing frequency trajectory.
+
+### B. 6-Archetype Tactical Classification & Stylistic Interaction Matrix ($W_{\text{style}}$)
+Fighters are algorithmically clustered into 6 discrete tactical archetypes with specific rock-paper-scissors matchup modifiers:
+1. **🥋 Pressure Wrestler** (e.g., Khabib, Merab, Colby Covington): High takedown frequency ($\ge 2.5/15\text{min}$) and cage control dominance.
+2. **🥊 Sprawl-and-Brawler** (e.g., Justin Gaethje, Chuck Liddell, Robert Whittaker): TDD $\ge 75\%$ with heavy knockout power.
+3. **🐍 Submission Hunter** (e.g., Charles Oliveira, Demian Maia, Paul Craig): Submission finish ratio $\ge 35\%$ with high guard threat.
+4. **🎯 Distance Out-Fighter / Sniper** (e.g., Israel Adesanya, Sean O'Malley, Wonderboy): High distance strike ratio ($>70\%$) and high strike defense ($>58\%$).
+5. **🥊 Inside Pressure Boxer** (e.g., Ilia Topuria, Petr Yan, Max Holloway): High volume SLpM ($\ge 4.5$) with continuous forward pace.
+6. **⛓️ Clinch Grinder** (e.g., Randy Couture, Daniel Cormier): High cage control and dirty boxing durability.
+
+### C. Environmental & Contextual Modifiers
+* **Octagon Dimension**: Detects **UFC Apex 25ft Small Cage** ($518\text{ sq ft}$, $44\%$ less floor area, $+12\%$ finish rate) vs **Standard 30ft Arena Octagon** ($746\text{ sq ft}$).
+* **High Altitude ($\ge 4,000\text{ ft}$)**: Identifies altitude venues (Salt Lake City, Denver, Mexico City) applying cardiovascular penalties to fighters with low Cardio Elo.
+
+---
+
+## 🌲 2. Phase 2: Non-Linear Ensemble Modeling (LightGBM + Calibrated Ridge)
+
+Evaluated via **Walk-Forward Expanding Window Validation** across **5,867 out-of-sample modern era bouts**:
+
+| Model Architecture | Out-of-Sample Accuracy | Brier Score (Calibration) | Log-Loss |
+| :--- | :---: | :---: | :---: |
+| **Standard Base Elo** | 76.99% | 0.1951 | 0.5784 |
+| **Calibrated Logistic ML** | 77.30% | 0.1606 | 0.4933 |
+| **LightGBM Boosted Trees** | **77.67%** | 0.1614 | 0.4979 |
+| **Phase 2 Non-Linear Ensemble** | **77.47%** | **0.1592** | **0.4901** |
+
+### Top Non-Linear Feature Drivers (LightGBM Information Gain):
+1. `elo_diff`: Effective ratings differential.
+2. `card_elo_diff`: Cardiovascular endurance retention in rounds 3–5.
+3. `str_elo_diff`: Striking volume and knockdown differential.
+4. `grp_elo_diff`: Takedown threat and control time dominance.
+5. `age_cliff_diff`: Non-linear physiological age cliff degradation.
+6. `str_acc_diff`: Rolling strike accuracy.
+7. `tdd_diff`: Takedown defense grappling neutralization.
+
+---
+
+## 🎯 3. Phase 3: Multi-Target Method of Victory & Round Prop Engine
+
+Computes exact 6-way joint probability distributions and round proposition betting lines:
+
+$$\begin{bmatrix}
+P(\text{F1 by KO/TKO}) \\
+P(\text{F1 by Submission}) \\
+P(\text{F1 by Decision}) \\
+P(\text{F2 by KO/TKO}) \\
+P(\text{F2 by Submission}) \\
+P(\text{F2 by Decision})
+\end{bmatrix}$$
+
+* **Over/Under 1.5 & 2.5 Rounds**: Computed from weight-class historical baseline finish rates, fighter chin health, and submission density.
+* **Fight Goes the Distance**: Probability of a decision outcome vs early stoppage.
+
+---
+
+## 💰 4. Live Value Betting Radar & Multi-Sportsbook Line Shopping
+
+* Scans real upcoming UFC fight cards across global sportsbooks:
+  * **DraftKings**, **FanDuel**, **BetMGM**, **Caesars**, **BetRivers**, **Kalshi**, **Polymarket**.
+* Highlights the highest-paying bookmaker (`⭐ EN İYİ`) for each betting opportunity.
+* **Quarter-Kelly Bankroll Staking**:
+  $$f^* = \max\left(0, \min\left(0.05, 0.25 \times \frac{b \cdot p - q}{b}\right)\right)$$
 
 ---
 
@@ -76,23 +114,6 @@ pip install -r requirements.txt
 python app.py
 ```
 Open **`http://localhost:5000`** in your browser.
-
----
-
-## 🖥️ Application Features
-
-* 🏆 **Dynamic Rankings**: Real-time Pound-for-Pound and Division tables with inactivity decay and volatility indicators.
-* 💎 **+EV Value Radar Tab**: Live feed of upcoming fights with side-by-side sportsbook odds comparison (DraftKings, FanDuel, BetMGM, Caesars).
-* ⚔️ **Octagon Matchup Simulator**: Full Tale of the Tape biometrics, 3D radar skill breakdown, custom weight class selector, and quantitative betting advisory badge.
-* 📱 **Mobile & Desktop Responsive**: Built with modern Tailwind CSS, Lucide icons, and high-contrast dark/gold glassmorphism.
-
----
-
-## ☁️ 24/7 Cloud Deployment (Render / Railway)
-
-This repository includes [`render.yaml`](render.yaml) and [`Procfile`](Procfile) for 1-click cloud deployment:
-1. Connect your GitHub repository to [Render.com](https://render.com).
-2. Render will automatically detect the web service configuration and start the production server with Gunicorn.
 
 ---
 
