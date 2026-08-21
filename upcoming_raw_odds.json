@@ -1,0 +1,2216 @@
+[
+  {
+    "event_title": "UFC BJJ 10",
+    "event_date": "August 21st",
+    "fights": [
+      {
+        "fighter1": {
+          "name": "Andrew Tackett",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Jonnatas Gracie",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Briana Ste-Marie",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Rebeca Lima",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Bre Stikk",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Cassia Moura",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Adele Fornarino",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Carol Brunacio",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Fedor Nikolov",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "William Tackett",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Jalen Fonacier",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Mourece Ramirez",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Andy Varela",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Vagner Rocha",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Ana Lima",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Danielle Kelly",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      }
+    ]
+  },
+  {
+    "event_title": "UFC Sacramento",
+    "event_date": "August 22nd",
+    "fights": [
+      {
+        "fighter1": {
+          "name": "Anthony Hernandez",
+          "best_decimal": 1.55,
+          "best_american": "-182",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-183",
+              "decimal": 1.55
+            },
+            "BetMGM": {
+              "american": "-188▼",
+              "decimal": 1.53
+            },
+            "Caesars": {
+              "american": "-205▼",
+              "decimal": 1.49
+            },
+            "BetRivers": {
+              "american": "-186▼",
+              "decimal": 1.54
+            },
+            "Polymarket": {
+              "american": "-188▼",
+              "decimal": 1.53
+            },
+            "Kalshi": {
+              "american": "-186▼",
+              "decimal": 1.54
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Gregory Rodrigues",
+          "best_decimal": 2.7,
+          "best_american": "+170",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+152▲",
+              "decimal": 2.52
+            },
+            "BetMGM": {
+              "american": "+152▲",
+              "decimal": 2.52
+            },
+            "Caesars": {
+              "american": "+170",
+              "decimal": 2.7
+            },
+            "BetRivers": {
+              "american": "+150▲",
+              "decimal": 2.5
+            },
+            "Polymarket": {
+              "american": "+150▲",
+              "decimal": 2.5
+            },
+            "Kalshi": {
+              "american": "+150▲",
+              "decimal": 2.5
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Hernandez (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Rodrigues (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Rodrigues (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Hernandez (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Serghei Spivac",
+          "best_decimal": 2.3,
+          "best_american": "+130",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+128",
+              "decimal": 2.28
+            },
+            "BetMGM": {
+              "american": "+122▼",
+              "decimal": 2.22
+            },
+            "Caesars": {
+              "american": "+130",
+              "decimal": 2.3
+            },
+            "BetRivers": {
+              "american": "+120▼",
+              "decimal": 2.2
+            },
+            "Polymarket": {
+              "american": "+110▼",
+              "decimal": 2.1
+            },
+            "Kalshi": {
+              "american": "+120▼",
+              "decimal": 2.2
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Vitor Petrino",
+          "best_decimal": 1.72,
+          "best_american": "-139",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-149▲",
+              "decimal": 1.67
+            },
+            "BetMGM": {
+              "american": "-150▲",
+              "decimal": 1.67
+            },
+            "Caesars": {
+              "american": "-155▼",
+              "decimal": 1.65
+            },
+            "BetRivers": {
+              "american": "-148▲",
+              "decimal": 1.68
+            },
+            "Polymarket": {
+              "american": "-138",
+              "decimal": 1.72
+            },
+            "Kalshi": {
+              "american": "-148▲",
+              "decimal": 1.68
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Spivac (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Petrino (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Petrino (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Spivac (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Reinier de Ridder",
+          "best_decimal": 1.25,
+          "best_american": "-400",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-405▲",
+              "decimal": 1.25
+            },
+            "BetMGM": {
+              "american": "-430▲",
+              "decimal": 1.23
+            },
+            "Caesars": {
+              "american": "-440▼",
+              "decimal": 1.23
+            },
+            "BetRivers": {
+              "american": "-400",
+              "decimal": 1.25
+            },
+            "Polymarket": {
+              "american": "-400",
+              "decimal": 1.25
+            },
+            "Kalshi": {
+              "american": "-400",
+              "decimal": 1.25
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Roman Dolidze",
+          "best_decimal": 4.4,
+          "best_american": "+340",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+330",
+              "decimal": 4.3
+            },
+            "BetMGM": {
+              "american": "+320",
+              "decimal": 4.2
+            },
+            "Caesars": {
+              "american": "+340",
+              "decimal": 4.4
+            },
+            "BetRivers": {
+              "american": "+295▲",
+              "decimal": 3.95
+            },
+            "Polymarket": {
+              "american": "+300▲",
+              "decimal": 4.0
+            },
+            "Kalshi": {
+              "american": "+295▲",
+              "decimal": 3.95
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Ridder (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Dolidze (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Dolidze (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Ridder (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Marquel Mederos",
+          "best_decimal": 3.75,
+          "best_american": "+275",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+265▲",
+              "decimal": 3.65
+            },
+            "BetMGM": {
+              "american": "+235",
+              "decimal": 3.35
+            },
+            "Caesars": {
+              "american": "+275",
+              "decimal": 3.75
+            },
+            "BetRivers": {
+              "american": "+255▲",
+              "decimal": 3.55
+            },
+            "Polymarket": {
+              "american": "+210",
+              "decimal": 3.1
+            },
+            "Kalshi": {
+              "american": "+255▲",
+              "decimal": 3.55
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Mason Jones",
+          "best_decimal": 1.36,
+          "best_american": "-278",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-323▼",
+              "decimal": 1.31
+            },
+            "BetMGM": {
+              "american": "-300▼",
+              "decimal": 1.33
+            },
+            "Caesars": {
+              "american": "-350▼",
+              "decimal": 1.29
+            },
+            "BetRivers": {
+              "american": "-335▼",
+              "decimal": 1.3
+            },
+            "Polymarket": {
+              "american": "-275",
+              "decimal": 1.36
+            },
+            "Kalshi": {
+              "american": "-335▼",
+              "decimal": 1.3
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Mederos (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Jones (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Jones (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Mederos (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Carli Judice",
+          "best_decimal": 1.19,
+          "best_american": "-526",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-566▼",
+              "decimal": 1.18
+            },
+            "BetMGM": {
+              "american": "-590▲",
+              "decimal": 1.17
+            },
+            "Caesars": {
+              "american": "-600▼",
+              "decimal": 1.17
+            },
+            "BetRivers": {
+              "american": "-625▼",
+              "decimal": 1.16
+            },
+            "Polymarket": {
+              "american": "-549",
+              "decimal": 1.18
+            },
+            "Kalshi": {
+              "american": "-530",
+              "decimal": 1.19
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Jeisla Chaves",
+          "best_decimal": 5.55,
+          "best_american": "+455",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+455",
+              "decimal": 5.55
+            },
+            "BetMGM": {
+              "american": "+410▲",
+              "decimal": 5.1
+            },
+            "Caesars": {
+              "american": "+430▲",
+              "decimal": 5.3
+            },
+            "BetRivers": {
+              "american": "+420▲",
+              "decimal": 5.2
+            },
+            "Polymarket": {
+              "american": "+400▲",
+              "decimal": 5.0
+            },
+            "Kalshi": {
+              "american": "+360▲",
+              "decimal": 4.6
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Judice (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Chaves (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Chaves (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Judice (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Jamall Emmers",
+          "best_decimal": 4.2,
+          "best_american": "+320",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+295",
+              "decimal": 3.95
+            },
+            "BetMGM": {
+              "american": "+320",
+              "decimal": 4.2
+            },
+            "Caesars": {
+              "american": "+320",
+              "decimal": 4.2
+            },
+            "BetRivers": {
+              "american": "+295▲",
+              "decimal": 3.95
+            },
+            "Polymarket": {
+              "american": "+300▲",
+              "decimal": 4.0
+            },
+            "Kalshi": {
+              "american": "+295▲",
+              "decimal": 3.95
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Lerryan Douglas",
+          "best_decimal": 1.28,
+          "best_american": "-357",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-361",
+              "decimal": 1.28
+            },
+            "BetMGM": {
+              "american": "-430▼",
+              "decimal": 1.23
+            },
+            "Caesars": {
+              "american": "-420▼",
+              "decimal": 1.24
+            },
+            "BetRivers": {
+              "american": "-400▼",
+              "decimal": 1.25
+            },
+            "Polymarket": {
+              "american": "-400",
+              "decimal": 1.25
+            },
+            "Kalshi": {
+              "american": "-400▼",
+              "decimal": 1.25
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Emmers (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Douglas (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Douglas (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Emmers (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Kennedy Nzechukwu",
+          "best_decimal": 2.18,
+          "best_american": "+118",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+114▲",
+              "decimal": 2.14
+            },
+            "BetMGM": {
+              "american": "+118",
+              "decimal": 2.18
+            },
+            "Caesars": {
+              "american": "+115▼",
+              "decimal": 2.15
+            },
+            "BetRivers": {
+              "american": "+112▼",
+              "decimal": 2.12
+            },
+            "Polymarket": {
+              "american": "+110▼",
+              "decimal": 2.1
+            },
+            "Kalshi": {
+              "american": "+112▼",
+              "decimal": 2.12
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Shamil Gaziev",
+          "best_decimal": 1.74,
+          "best_american": "-135",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-137",
+              "decimal": 1.73
+            },
+            "BetMGM": {
+              "american": "-144▲",
+              "decimal": 1.69
+            },
+            "Caesars": {
+              "american": "-135",
+              "decimal": 1.74
+            },
+            "BetRivers": {
+              "american": "-139▲",
+              "decimal": 1.72
+            },
+            "Polymarket": {
+              "american": "-138▲",
+              "decimal": 1.72
+            },
+            "Kalshi": {
+              "american": "-139▲",
+              "decimal": 1.72
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Nzechukwu (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Gaziev (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Gaziev (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Nzechukwu (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Chris Padilla",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-108▼",
+              "decimal": 1.93
+            },
+            "BetMGM": {
+              "american": "-105▼",
+              "decimal": 1.95
+            },
+            "Caesars": {
+              "american": "-110▼",
+              "decimal": 1.91
+            },
+            "BetRivers": {
+              "american": "+100",
+              "decimal": 2.0
+            },
+            "Polymarket": {
+              "american": "-105▲",
+              "decimal": 1.95
+            },
+            "Kalshi": {
+              "american": "+100",
+              "decimal": 2.0
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Nasrat Haqparast",
+          "best_decimal": 1.91,
+          "best_american": "-110",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-112",
+              "decimal": 1.89
+            },
+            "BetMGM": {
+              "american": "-115▲",
+              "decimal": 1.87
+            },
+            "Caesars": {
+              "american": "-110",
+              "decimal": 1.91
+            },
+            "BetRivers": {
+              "american": "-124▲",
+              "decimal": 1.81
+            },
+            "Polymarket": {
+              "american": "-120",
+              "decimal": 1.83
+            },
+            "Kalshi": {
+              "american": "-124▲",
+              "decimal": 1.81
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Padilla (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Haqparast (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Haqparast (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Padilla (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Marcio Barbosa",
+          "best_decimal": 1.13,
+          "best_american": "-769",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-791",
+              "decimal": 1.13
+            },
+            "BetMGM": {
+              "american": "-950▼",
+              "decimal": 1.11
+            },
+            "Caesars": {
+              "american": "-900▼",
+              "decimal": 1.11
+            },
+            "BetRivers": {
+              "american": "-1667▼",
+              "decimal": 1.06
+            },
+            "Polymarket": {
+              "american": "-800▲",
+              "decimal": 1.12
+            },
+            "Kalshi": {
+              "american": "-1000",
+              "decimal": 1.1
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Ryan Kuse",
+          "best_decimal": 9.5,
+          "best_american": "+850",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+623",
+              "decimal": 7.23
+            },
+            "BetMGM": {
+              "american": "+590▲",
+              "decimal": 6.9
+            },
+            "Caesars": {
+              "american": "+600▲",
+              "decimal": 7.0
+            },
+            "BetRivers": {
+              "american": "+850",
+              "decimal": 9.5
+            },
+            "Polymarket": {
+              "american": "+500▼",
+              "decimal": 6.0
+            },
+            "Kalshi": {
+              "american": "+600",
+              "decimal": 7.0
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Barbosa (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Kuse (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Kuse (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Barbosa (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Gauge Young",
+          "best_decimal": 1.63,
+          "best_american": "-159",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-161▼",
+              "decimal": 1.62
+            },
+            "BetMGM": {
+              "american": "-160▲",
+              "decimal": 1.62
+            },
+            "Caesars": {
+              "american": "-160▼",
+              "decimal": 1.62
+            },
+            "BetRivers": {
+              "american": "-159",
+              "decimal": 1.63
+            },
+            "Polymarket": {
+              "american": "-163▼",
+              "decimal": 1.61
+            },
+            "Kalshi": {
+              "american": "-159",
+              "decimal": 1.63
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Stanley Dorsainvil",
+          "best_decimal": 2.35,
+          "best_american": "+135",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+128",
+              "decimal": 2.28
+            },
+            "BetMGM": {
+              "american": "+130▲",
+              "decimal": 2.3
+            },
+            "Caesars": {
+              "american": "+135▲",
+              "decimal": 2.35
+            },
+            "BetRivers": {
+              "american": "+128▲",
+              "decimal": 2.28
+            },
+            "Polymarket": {
+              "american": "+130▲",
+              "decimal": 2.3
+            },
+            "Kalshi": {
+              "american": "+128▲",
+              "decimal": 2.28
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Young (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Dorsainvil (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Dorsainvil (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Young (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Jackson McVey",
+          "best_decimal": 1.57,
+          "best_american": "-175",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-176▼",
+              "decimal": 1.57
+            },
+            "BetMGM": {
+              "american": "-192▼",
+              "decimal": 1.52
+            },
+            "Caesars": {
+              "american": "-175▲",
+              "decimal": 1.57
+            },
+            "BetRivers": {
+              "american": "-180▲",
+              "decimal": 1.56
+            },
+            "Polymarket": {
+              "american": "-188▼",
+              "decimal": 1.53
+            },
+            "Kalshi": {
+              "american": "-180▲",
+              "decimal": 1.56
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Wes Schultz",
+          "best_decimal": 2.54,
+          "best_american": "+154",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+145",
+              "decimal": 2.45
+            },
+            "BetMGM": {
+              "american": "+154",
+              "decimal": 2.54
+            },
+            "Caesars": {
+              "american": "+145▼",
+              "decimal": 2.45
+            },
+            "BetRivers": {
+              "american": "+143▼",
+              "decimal": 2.43
+            },
+            "Polymarket": {
+              "american": "+150▲",
+              "decimal": 2.5
+            },
+            "Kalshi": {
+              "american": "+143▼",
+              "decimal": 2.43
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "McVey (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Schultz (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Schultz (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "McVey (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Elise Reed",
+          "best_decimal": 8.0,
+          "best_american": "+700",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+623",
+              "decimal": 7.23
+            },
+            "BetMGM": {
+              "american": "+590▲",
+              "decimal": 6.9
+            },
+            "Caesars": {
+              "american": "+600▲",
+              "decimal": 7.0
+            },
+            "BetRivers": {
+              "american": "+700",
+              "decimal": 8.0
+            },
+            "Polymarket": {
+              "american": "+500▲",
+              "decimal": 6.0
+            },
+            "Kalshi": {
+              "american": "+525▲",
+              "decimal": 6.25
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Shanelle Dyer",
+          "best_decimal": 1.13,
+          "best_american": "-769",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-791▼",
+              "decimal": 1.13
+            },
+            "BetMGM": {
+              "american": "-950▼",
+              "decimal": 1.11
+            },
+            "Caesars": {
+              "american": "-900▼",
+              "decimal": 1.11
+            },
+            "BetRivers": {
+              "american": "-1250▼",
+              "decimal": 1.08
+            },
+            "Polymarket": {
+              "american": "-800▼",
+              "decimal": 1.12
+            },
+            "Kalshi": {
+              "american": "-835▼",
+              "decimal": 1.12
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Reed (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Dyer (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Dyer (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Reed (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      }
+    ]
+  },
+  {
+    "event_title": "UFC Sacramento",
+    "event_date": "August 23rd",
+    "fights": [
+      {
+        "fighter1": {
+          "name": "Anthony Wint",
+          "best_decimal": 1.1,
+          "best_american": "-1000",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "-970",
+              "decimal": 1.1
+            },
+            "BetMGM": {
+              "american": "-1200",
+              "decimal": 1.08
+            },
+            "Caesars": {
+              "american": "-1100▲",
+              "decimal": 1.09
+            },
+            "BetRivers": {
+              "american": "-1430▼",
+              "decimal": 1.07
+            },
+            "Polymarket": {
+              "american": "-1000▼",
+              "decimal": 1.1
+            },
+            "Kalshi": {
+              "american": "-1115",
+              "decimal": 1.09
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Terrance Chatman",
+          "best_decimal": 9.0,
+          "best_american": "+800",
+          "sportsbooks": {
+            "FanDuel": {
+              "american": "+754",
+              "decimal": 8.54
+            },
+            "BetMGM": {
+              "american": "+680▲",
+              "decimal": 7.8
+            },
+            "Caesars": {
+              "american": "+700▼",
+              "decimal": 8.0
+            },
+            "BetRivers": {
+              "american": "+800",
+              "decimal": 9.0
+            },
+            "Polymarket": {
+              "american": "+600▲",
+              "decimal": 7.0
+            },
+            "Kalshi": {
+              "american": "+650",
+              "decimal": 7.5
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Wint (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Chatman (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Chatman (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Wint (scorecards = no action)",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      }
+    ]
+  },
+  {
+    "event_title": "UFC Shanghai",
+    "event_date": "August 29th",
+    "fights": [
+      {
+        "fighter1": {
+          "name": "Song Yadong",
+          "best_decimal": 5.0,
+          "best_american": "+400",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "+350",
+              "decimal": 4.5
+            },
+            "Caesars": {
+              "american": "+325▲",
+              "decimal": 4.25
+            },
+            "BetRivers": {
+              "american": "+375▲",
+              "decimal": 4.75
+            },
+            "Polymarket": {
+              "american": "+400▲",
+              "decimal": 5.0
+            },
+            "Kalshi": {
+              "american": "+375▲",
+              "decimal": 4.75
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Umar Nurmagomedov",
+          "best_decimal": 1.2,
+          "best_american": "-500",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "-520",
+              "decimal": 1.19
+            },
+            "Caesars": {
+              "american": "-500",
+              "decimal": 1.2
+            },
+            "BetRivers": {
+              "american": "-530▼",
+              "decimal": 1.19
+            },
+            "Polymarket": {
+              "american": "-549▼",
+              "decimal": 1.18
+            },
+            "Kalshi": {
+              "american": "-530▼",
+              "decimal": 1.19
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Ce Liu",
+          "best_decimal": 1.44,
+          "best_american": "-227",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "-225",
+              "decimal": 1.44
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Levi Rodrigues",
+          "best_decimal": 2.63,
+          "best_american": "+163",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "+163",
+              "decimal": 2.63
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Julia Polastri",
+          "best_decimal": 1.5,
+          "best_american": "-200",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "-200",
+              "decimal": 1.5
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Xiong Jingnan",
+          "best_decimal": 2.63,
+          "best_american": "+163",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "+163",
+              "decimal": 2.63
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Andre Lima",
+          "best_decimal": 1.44,
+          "best_american": "-227",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "-225",
+              "decimal": 1.44
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Namsrai Batbayar",
+          "best_decimal": 2.75,
+          "best_american": "+175",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "+175",
+              "decimal": 2.75
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Francesco Nuzzi",
+          "best_decimal": 2.5,
+          "best_american": "+150",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "+150",
+              "decimal": 2.5
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Xiao Long",
+          "best_decimal": 1.53,
+          "best_american": "-189",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "-188",
+              "decimal": 1.53
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Bilal Hasan",
+          "best_decimal": 1.2,
+          "best_american": "-500",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "-500",
+              "decimal": 1.2
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Nilson Rojas",
+          "best_decimal": 4.5,
+          "best_american": "+350",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "+350",
+              "decimal": 4.5
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Cameron Nelson",
+          "best_decimal": 1.83,
+          "best_american": "-120",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "-120",
+              "decimal": 1.83
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Ding Meng",
+          "best_decimal": 1.91,
+          "best_american": "-110",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "-110",
+              "decimal": 1.91
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Hector Santiago",
+          "best_decimal": 3.5,
+          "best_american": "+250",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "+250",
+              "decimal": 3.5
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Lawrence Lui",
+          "best_decimal": 1.3,
+          "best_american": "-333",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "-333",
+              "decimal": 1.3
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Levi Rodrigues Jr",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Liu Ce",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Denise Gomes",
+          "best_decimal": 2.25,
+          "best_american": "+125",
+          "sportsbooks": {
+            "BetRivers": {
+              "american": "+125",
+              "decimal": 2.25
+            },
+            "Polymarket": {
+              "american": "+110",
+              "decimal": 2.1
+            },
+            "Kalshi": {
+              "american": "+125",
+              "decimal": 2.25
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Yan Xiaonan",
+          "best_decimal": 1.72,
+          "best_american": "-139",
+          "sportsbooks": {
+            "BetRivers": {
+              "american": "-157",
+              "decimal": 1.64
+            },
+            "Polymarket": {
+              "american": "-138",
+              "decimal": 1.72
+            },
+            "Kalshi": {
+              "american": "-157",
+              "decimal": 1.64
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Aoriqileng",
+          "best_decimal": 4.1,
+          "best_american": "+310",
+          "sportsbooks": {
+            "BetRivers": {
+              "american": "+310▲",
+              "decimal": 4.1
+            },
+            "Polymarket": {
+              "american": "+300",
+              "decimal": 4.0
+            },
+            "Kalshi": {
+              "american": "+310▲",
+              "decimal": 4.1
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Kai Asakura",
+          "best_decimal": 1.25,
+          "best_american": "-400",
+          "sportsbooks": {
+            "BetRivers": {
+              "american": "-420▼",
+              "decimal": 1.24
+            },
+            "Polymarket": {
+              "american": "-400",
+              "decimal": 1.25
+            },
+            "Kalshi": {
+              "american": "-420▼",
+              "decimal": 1.24
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Alex Perez",
+          "best_decimal": 2.75,
+          "best_american": "+175",
+          "sportsbooks": {
+            "BetRivers": {
+              "american": "+155",
+              "decimal": 2.55
+            },
+            "Polymarket": {
+              "american": "+175",
+              "decimal": 2.75
+            },
+            "Kalshi": {
+              "american": "+155",
+              "decimal": 2.55
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Sumudaerji Sumudaerji",
+          "best_decimal": 1.51,
+          "best_american": "-196",
+          "sportsbooks": {
+            "BetRivers": {
+              "american": "-195",
+              "decimal": 1.51
+            },
+            "Polymarket": {
+              "american": "-225",
+              "decimal": 1.44
+            },
+            "Kalshi": {
+              "american": "-195",
+              "decimal": 1.51
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Jack Jenkins",
+          "best_decimal": 2.2,
+          "best_american": "+120",
+          "sportsbooks": {
+            "BetRivers": {
+              "american": "+118▲",
+              "decimal": 2.18
+            },
+            "Polymarket": {
+              "american": "+120",
+              "decimal": 2.2
+            },
+            "Kalshi": {
+              "american": "+118▲",
+              "decimal": 2.18
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Sean Woodson",
+          "best_decimal": 1.68,
+          "best_american": "-147",
+          "sportsbooks": {
+            "BetRivers": {
+              "american": "-148▼",
+              "decimal": 1.68
+            },
+            "Polymarket": {
+              "american": "-150",
+              "decimal": 1.67
+            },
+            "Kalshi": {
+              "american": "-148▼",
+              "decimal": 1.68
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Kevin Borjas",
+          "best_decimal": 5.0,
+          "best_american": "+400",
+          "sportsbooks": {
+            "BetRivers": {
+              "american": "+400▼",
+              "decimal": 5.0
+            },
+            "Polymarket": {
+              "american": "+400",
+              "decimal": 5.0
+            },
+            "Kalshi": {
+              "american": "+400▼",
+              "decimal": 5.0
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Rei Tsuruya",
+          "best_decimal": 1.18,
+          "best_american": "-556",
+          "sportsbooks": {
+            "BetRivers": {
+              "american": "-590▲",
+              "decimal": 1.17
+            },
+            "Polymarket": {
+              "american": "-549",
+              "decimal": 1.18
+            },
+            "Kalshi": {
+              "american": "-590▲",
+              "decimal": 1.17
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "event_title": "UFC Fight Night",
+    "event_date": "September 5th",
+    "fights": [
+      {
+        "fighter1": {
+          "name": "Dan Hooker",
+          "best_decimal": 4.0,
+          "best_american": "+300",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "+300",
+              "decimal": 4.0
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Salahdine Parnasse",
+          "best_decimal": 1.25,
+          "best_american": "-400",
+          "sportsbooks": {
+            "Polymarket": {
+              "american": "-400",
+              "decimal": 1.25
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "event_title": "UFC Glendale",
+    "event_date": "September 12th",
+    "fights": [
+      {
+        "fighter1": {
+          "name": "Jean Silva",
+          "best_decimal": 1.25,
+          "best_american": "-400",
+          "sportsbooks": {
+            "Caesars": {
+              "american": "-450",
+              "decimal": 1.22
+            },
+            "Polymarket": {
+              "american": "-400",
+              "decimal": 1.25
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Jose Delgado",
+          "best_decimal": 4.5,
+          "best_american": "+350",
+          "sportsbooks": {
+            "Caesars": {
+              "american": "+350",
+              "decimal": 4.5
+            },
+            "Polymarket": {
+              "american": "+300",
+              "decimal": 4.0
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "event_title": "UFC 331",
+    "event_date": "September 19th",
+    "fights": [
+      {
+        "fighter1": {
+          "name": "Alexandre Pantoja",
+          "best_decimal": 2.05,
+          "best_american": "+105",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "-106",
+              "decimal": 1.94
+            },
+            "Caesars": {
+              "american": "+105",
+              "decimal": 2.05
+            },
+            "BetRivers": {
+              "american": "-112▼",
+              "decimal": 1.89
+            },
+            "Polymarket": {
+              "american": "-105",
+              "decimal": 1.95
+            },
+            "Kalshi": {
+              "american": "-112▼",
+              "decimal": 1.89
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Joshua van",
+          "best_decimal": 1.89,
+          "best_american": "-112",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "-120",
+              "decimal": 1.83
+            },
+            "Caesars": {
+              "american": "-125▼",
+              "decimal": 1.8
+            },
+            "BetRivers": {
+              "american": "-112",
+              "decimal": 1.89
+            },
+            "Polymarket": {
+              "american": "-120",
+              "decimal": 1.83
+            },
+            "Kalshi": {
+              "american": "-112",
+              "decimal": 1.89
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Gable Steveson",
+          "best_decimal": 1.07,
+          "best_american": "-1429",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "-1800",
+              "decimal": 1.06
+            },
+            "BetRivers": {
+              "american": "-1667",
+              "decimal": 1.06
+            },
+            "Polymarket": {
+              "american": "-1408",
+              "decimal": 1.07
+            },
+            "Kalshi": {
+              "american": "-1667▲",
+              "decimal": 1.06
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Sean Sharaf",
+          "best_decimal": 9.5,
+          "best_american": "+850",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "+800",
+              "decimal": 9.0
+            },
+            "BetRivers": {
+              "american": "+850",
+              "decimal": 9.5
+            },
+            "Polymarket": {
+              "american": "+600",
+              "decimal": 7.0
+            },
+            "Kalshi": {
+              "american": "+850",
+              "decimal": 9.5
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Arman Tsarukyan",
+          "best_decimal": 1.26,
+          "best_american": "-385",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "-390",
+              "decimal": 1.26
+            },
+            "Caesars": {
+              "american": "-380",
+              "decimal": 1.26
+            },
+            "BetRivers": {
+              "american": "-385",
+              "decimal": 1.26
+            },
+            "Polymarket": {
+              "american": "-400",
+              "decimal": 1.25
+            },
+            "Kalshi": {
+              "american": "-385",
+              "decimal": 1.26
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Mauricio Ruffy",
+          "best_decimal": 4.0,
+          "best_american": "+300",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "+280",
+              "decimal": 3.8
+            },
+            "Caesars": {
+              "american": "+300",
+              "decimal": 4.0
+            },
+            "BetRivers": {
+              "american": "+280",
+              "decimal": 3.8
+            },
+            "Polymarket": {
+              "american": "+300",
+              "decimal": 4.0
+            },
+            "Kalshi": {
+              "american": "+280",
+              "decimal": 3.8
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Robelis Despaigne",
+          "best_decimal": 1.2,
+          "best_american": "-500",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "-530",
+              "decimal": 1.19
+            },
+            "BetRivers": {
+              "american": "-590",
+              "decimal": 1.17
+            },
+            "Polymarket": {
+              "american": "-500",
+              "decimal": 1.2
+            },
+            "Kalshi": {
+              "american": "-590",
+              "decimal": 1.17
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Tai Tuivasa",
+          "best_decimal": 5.0,
+          "best_american": "+400",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "+360",
+              "decimal": 4.6
+            },
+            "BetRivers": {
+              "american": "+400",
+              "decimal": 5.0
+            },
+            "Polymarket": {
+              "american": "+350",
+              "decimal": 4.5
+            },
+            "Kalshi": {
+              "american": "+400",
+              "decimal": 5.0
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "event_title": "UFC 332",
+    "event_date": "October 4th",
+    "fights": [
+      {
+        "fighter1": {
+          "name": "Deiveson Figueiredo",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        },
+        "fighter2": {
+          "name": "Payton Talbott",
+          "best_decimal": 2.0,
+          "best_american": "-100",
+          "sportsbooks": {}
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Natalia Silva",
+          "best_decimal": 2.27,
+          "best_american": "+127",
+          "sportsbooks": {
+            "Caesars": {
+              "american": "+127",
+              "decimal": 2.27
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Valentina Shevchenko",
+          "best_decimal": 1.61,
+          "best_american": "-164",
+          "sportsbooks": {
+            "Caesars": {
+              "american": "-165",
+              "decimal": 1.61
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "event_title": "UFC 333",
+    "event_date": "October 24th",
+    "fights": [
+      {
+        "fighter1": {
+          "name": "Alexander Volkanovski",
+          "best_decimal": 1.89,
+          "best_american": "-112",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "-113",
+              "decimal": 1.88
+            },
+            "Caesars": {
+              "american": "-120",
+              "decimal": 1.83
+            },
+            "BetRivers": {
+              "american": "-112",
+              "decimal": 1.89
+            },
+            "Polymarket": {
+              "american": "-120",
+              "decimal": 1.83
+            },
+            "Kalshi": {
+              "american": "-112",
+              "decimal": 1.89
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Movsar Evloev",
+          "best_decimal": 1.95,
+          "best_american": "-105",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "-113",
+              "decimal": 1.88
+            },
+            "Caesars": {
+              "american": "-110",
+              "decimal": 1.91
+            },
+            "BetRivers": {
+              "american": "-112▼",
+              "decimal": 1.89
+            },
+            "Polymarket": {
+              "american": "-105",
+              "decimal": 1.95
+            },
+            "Kalshi": {
+              "american": "-112▼",
+              "decimal": 1.89
+            }
+          }
+        }
+      },
+      {
+        "fighter1": {
+          "name": "Merab Dvalishvili",
+          "best_decimal": 2.32,
+          "best_american": "+132",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "+132",
+              "decimal": 2.32
+            },
+            "Caesars": {
+              "american": "+120",
+              "decimal": 2.2
+            },
+            "BetRivers": {
+              "american": "+125▼",
+              "decimal": 2.25
+            },
+            "Polymarket": {
+              "american": "+130",
+              "decimal": 2.3
+            },
+            "Kalshi": {
+              "american": "+125▼",
+              "decimal": 2.25
+            }
+          }
+        },
+        "fighter2": {
+          "name": "Petr Yan",
+          "best_decimal": 1.67,
+          "best_american": "-149",
+          "sportsbooks": {
+            "BetMGM": {
+              "american": "-170",
+              "decimal": 1.59
+            },
+            "Caesars": {
+              "american": "-150",
+              "decimal": 1.67
+            },
+            "BetRivers": {
+              "american": "-157▲",
+              "decimal": 1.64
+            },
+            "Polymarket": {
+              "american": "-163",
+              "decimal": 1.61
+            },
+            "Kalshi": {
+              "american": "-157▲",
+              "decimal": 1.64
+            }
+          }
+        }
+      }
+    ]
+  }
+]

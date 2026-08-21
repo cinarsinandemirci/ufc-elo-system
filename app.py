@@ -1,5 +1,7 @@
 import os
 import json
+from collections import defaultdict
+from datetime import datetime
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
@@ -8,11 +10,19 @@ DATA_DIR = os.path.dirname(os.path.abspath(__file__))
 RANKINGS_FILE = os.path.join(DATA_DIR, "fighter_rankings.json")
 MATCHES_FILE = os.path.join(DATA_DIR, "matches.json")
 HISTORY_FILE = os.path.join(DATA_DIR, "elo_history.json")
+BIOMETRICS_FILE = os.path.join(DATA_DIR, "fighter_biometrics.json")
+DETAILS_FILE = os.path.join(DATA_DIR, "fighter_details.json")
+COMPONENTS_FILE = os.path.join(DATA_DIR, "fighter_component_elos.json")
+UPCOMING_FILE = os.path.join(DATA_DIR, "upcoming_events_with_signals.json")
 
 # In-Memory Cache Store
 _CACHE = {
     'rankings': [],
     'fighters_by_name': {},
+    'biometrics': {},
+    'details': {},
+    'components': {},
+    'upcoming': {},
     'stats': {},
     'weight_classes': [],
     'mtime': 0
@@ -36,8 +46,51 @@ def reload_cache_if_needed():
             with open(MATCHES_FILE, 'r', encoding='utf-8') as f:
                 matches = json.load(f)
 
+        biometrics = {}
+        if os.path.exists(BIOMETRICS_FILE):
+            try:
+                with open(BIOMETRICS_FILE, 'r', encoding='utf-8') as f:
+                    biometrics = json.load(f)
+            except Exception:
+                pass
+
+        details = {}
+        if os.path.exists(DETAILS_FILE):
+            try:
+                with open(DETAILS_FILE, 'r', encoding='utf-8') as f:
+                    details = json.load(f)
+            except Exception:
+                pass
+
+        components = {}
+        if os.path.exists(COMPONENTS_FILE):
+            try:
+                with open(COMPONENTS_FILE, 'r', encoding='utf-8') as f:
+                    components = json.load(f)
+            except Exception:
+                pass
+
+        upcoming = {}
+        if os.path.exists(UPCOMING_FILE):
+            try:
+                with open(UPCOMING_FILE, 'r', encoding='utf-8') as f:
+                    upcoming = json.load(f)
+            except Exception:
+                pass
+
+        # Enrich rankings with components
+        for f in rankings:
+            c = components.get(f['name'].lower(), {})
+            f['striking_elo'] = c.get('striking_elo', 1500.0)
+            f['grappling_elo'] = c.get('grappling_elo', 1500.0)
+            f['cardio_elo'] = c.get('cardio_elo', 1500.0)
+
         _CACHE['rankings'] = rankings
         _CACHE['fighters_by_name'] = {f['name'].lower(): f for f in rankings}
+        _CACHE['biometrics'] = biometrics
+        _CACHE['details'] = details
+        _CACHE['components'] = components
+        _CACHE['upcoming'] = upcoming
         _CACHE['mtime'] = mtime
 
         # Precompute stats
@@ -217,10 +270,413 @@ def get_rankings():
 @app.route('/api/fighter/<fighter_name>')
 def get_fighter(fighter_name):
     reload_cache_if_needed()
-    f = _CACHE['fighters_by_name'].get(fighter_name.strip().lower())
+    key = fighter_name.strip().lower()
+    f = _CACHE['fighters_by_name'].get(key)
     if f:
-        return jsonify(f)
+        comp = _CACHE['components'].get(key, {})
+        bio = {**_CACHE['biometrics'].get(key, {}), **_CACHE['details'].get(key, {})}
+        res = dict(f)
+        res['components'] = {
+            'striking_elo': comp.get('striking_elo', 1500.0),
+            'grappling_elo': comp.get('grappling_elo', 1500.0),
+            'cardio_elo': comp.get('cardio_elo', 1500.0),
+            'peak_striking_elo': comp.get('peak_striking_elo', 1500.0),
+            'peak_grappling_elo': comp.get('peak_grappling_elo', 1500.0),
+            'peak_cardio_elo': comp.get('peak_cardio_elo', 1500.0)
+        }
+        res['biometrics'] = bio
+        return jsonify(res)
     return jsonify({'error': 'Fighter not found'}), 404
+
+def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False):
+    div_hierarchy = {
+        "Women's Strawweight": 0,
+        "Women's Flyweight": 1,
+        "Women's Bantamweight": 2,
+        "Women's Featherweight": 3,
+        'Flyweight': 1,
+        'Bantamweight': 2,
+        'Featherweight': 3,
+        'Lightweight': 4,
+        'Welterweight': 5,
+        'Middleweight': 6,
+        'Light Heavyweight': 7,
+        'Heavyweight': 8,
+    }
+    t1 = div_hierarchy.get(f1.get('primary_weight_class', 'Lightweight'), 4)
+    t2 = div_hierarchy.get(f2.get('primary_weight_class', 'Lightweight'), 4)
+
+    if not target_weight_class or target_weight_class == 'auto':
+        target_tier = max(t1, t2)
+        target_div_name = next((k for k, v in div_hierarchy.items() if v == target_tier and not k.startswith("Women")), f1.get('primary_weight_class'))
+    else:
+        target_tier = div_hierarchy.get(target_weight_class, max(t1, t2))
+        target_div_name = target_weight_class
+
+    # 1. Weight Class Jump & Size Adjustment
+    size_adj_1 = 0.0
+    size_adj_2 = 0.0
+
+    f1_all_wc = f1.get('all_weight_classes', [])
+    f2_all_wc = f2.get('all_weight_classes', [])
+    f1_exp_at_target = 1 if target_div_name in f1_all_wc else 0
+    f2_exp_at_target = 1 if target_div_name in f2_all_wc else 0
+
+    if target_tier > t1:
+        tier_gap = target_tier - t1
+        base_pen = tier_gap * 35.0
+        if f1_exp_at_target: base_pen *= 0.5
+        size_adj_1 = -base_pen
+
+    if target_tier > t2:
+        tier_gap = target_tier - t2
+        base_pen = tier_gap * 35.0
+        if f2_exp_at_target: base_pen *= 0.5
+        size_adj_2 = -base_pen
+
+    # 2. Biometrics & Physical Dynamics
+    bio_db = _CACHE.get('biometrics', {})
+    det_db = _CACHE.get('details', {})
+
+    raw_bio_1 = bio_db.get(f1['name'].lower(), {})
+    raw_det_1 = det_db.get(f1['name'].lower(), {})
+    b1 = {**raw_bio_1, **raw_det_1}
+
+    raw_bio_2 = bio_db.get(f2['name'].lower(), {})
+    raw_det_2 = det_db.get(f2['name'].lower(), {})
+    b2 = {**raw_bio_2, **raw_det_2}
+
+    f1_age = b1.get('age') or (32.0 if f1.get('is_active') else 38.0)
+    f2_age = b2.get('age') or (32.0 if f2.get('is_active') else 38.0)
+
+    age_adj_1 = 0.0
+    age_adj_2 = 0.0
+    is_lighter_division = (target_tier <= 4)
+
+    if is_lighter_division:
+        if f1_age >= 35.0: age_adj_1 -= min(35.0, (f1_age - 34.0) * 12.0)
+        if f2_age >= 35.0: age_adj_2 -= min(35.0, (f2_age - 34.0) * 12.0)
+    else:
+        if f1_age >= 37.0: age_adj_1 -= min(30.0, (f1_age - 36.0) * 8.0)
+        if f2_age >= 37.0: age_adj_2 -= min(30.0, (f2_age - 36.0) * 8.0)
+
+    age_gap = f2_age - f1_age
+    if age_gap >= 6.0 and f1_age < 34.0:
+        age_adj_1 += min(15.0, (age_gap - 5.0) * 2.5)
+    elif age_gap <= -6.0 and f2_age < 34.0:
+        age_adj_2 += min(15.0, (-age_gap - 5.0) * 2.5)
+
+    f1_reach = b1.get('reach_inches') or 71.0
+    f2_reach = b2.get('reach_inches') or 71.0
+    f1_height_raw = b1.get('height_raw', '--')
+    f2_height_raw = b2.get('height_raw', '--')
+    f1_reach_raw = b1.get('reach_raw', '--')
+    f2_reach_raw = b2.get('reach_raw', '--')
+
+    reach_adj_1 = 0.0
+    reach_adj_2 = 0.0
+    reach_gap = f1_reach - f2_reach
+    if reach_gap >= 3.0:
+        reach_adj_1 += min(15.0, (reach_gap - 2.0) * 2.5)
+    elif reach_gap <= -3.0:
+        reach_adj_2 += min(15.0, (-reach_gap - 2.0) * 2.5)
+
+    f1_stance = b1.get('stance', 'Orthodox')
+    f2_stance = b2.get('stance', 'Orthodox')
+    stance_adj_1 = 0.0
+    stance_adj_2 = 0.0
+    if f1_stance == 'Southpaw' and f2_stance == 'Orthodox':
+        stance_adj_1 += 8.0
+    elif f2_stance == 'Southpaw' and f1_stance == 'Orthodox':
+        stance_adj_2 += 8.0
+    elif f1_stance == 'Switch':
+        stance_adj_1 += 4.0
+    elif f2_stance == 'Switch':
+        stance_adj_2 += 4.0
+
+    f1_ko_losses = f1.get('methods', {}).get('KO/TKO_loss', 0)
+    f2_ko_losses = f2.get('methods', {}).get('KO/TKO_loss', 0)
+    f1_ko_wins = f1.get('methods', {}).get('KO/TKO_win', 0)
+    f2_ko_wins = f2.get('methods', {}).get('KO/TKO_win', 0)
+
+    chin_adj_1 = 0.0
+    chin_adj_2 = 0.0
+    if f1_ko_losses >= 2 and f2_ko_wins >= 4:
+        chin_adj_1 -= min(20.0, 10.0 + (f1_ko_losses - 2) * 4.0)
+    if f2_ko_losses >= 2 and f1_ko_wins >= 4:
+        chin_adj_2 -= min(20.0, 10.0 + (f2_ko_losses - 2) * 4.0)
+
+    f1_tact = b1.get('tactical', {}) or {}
+    f2_tact = b2.get('tactical', {}) or {}
+    f1_tdd = f1_tact.get('td_def_pct', 70.0)
+    f2_tdd = f2_tact.get('td_def_pct', 70.0)
+    f1_slpm = f1_tact.get('slpm', 3.8)
+    f2_slpm = f2_tact.get('slpm', 3.8)
+
+    # 3. Stylistic & Dominance Indices
+    g1 = f1.get('grappling_index', 0.0)
+    g2 = f2.get('grappling_index', 0.0)
+    s1 = f1.get('striking_index', 0.0)
+    s2 = f2.get('striking_index', 0.0)
+
+    raw_grapple_advantage_1 = g1 - s2
+    raw_grapple_advantage_2 = g2 - s1
+
+    if f2_tdd >= 80.0 and raw_grapple_advantage_1 > 0:
+        raw_grapple_advantage_1 *= 0.45
+    if f1_tdd >= 80.0 and raw_grapple_advantage_2 > 0:
+        raw_grapple_advantage_2 *= 0.45
+
+    style_shift = (raw_grapple_advantage_1 - raw_grapple_advantage_2) * 3.5
+
+    # 4. Inactivity & Decay
+    now_str = "2026-08-21"
+    last_1 = f1.get('last_fight_date', '2025-01-01')
+    last_2 = f2.get('last_fight_date', '2025-01-01')
+
+    def calc_decay(last_date_str, current_elo):
+        try:
+            d_last = datetime.strptime(last_date_str, "%Y-%m-%d")
+            d_now = datetime.strptime(now_str, "%Y-%m-%d")
+            months = max(0.0, (d_now - d_last).days / 30.4375)
+            if months <= 18.0: return 0.0
+            excess = months - 18.0
+            return round(min(current_elo - 1200.0, excess * 7.5), 1)
+        except Exception:
+            return 0.0
+
+    inact_decay_1 = calc_decay(last_1, f1['elo'])
+    inact_decay_2 = calc_decay(last_2, f2['elo'])
+
+    eff_elo_1 = f1['elo'] - inact_decay_1 + size_adj_1 + age_adj_1 + reach_adj_1 + stance_adj_1 + chin_adj_1 + style_shift
+    eff_elo_2 = f2['elo'] - inact_decay_2 + size_adj_2 + age_adj_2 + reach_adj_2 + stance_adj_2 + chin_adj_2
+
+    # Model Probabilities
+    prob1 = 1.0 / (1.0 + 10.0 ** ((eff_elo_2 - eff_elo_1) / 400.0))
+    prob2 = 1.0 - prob1
+
+    # Props
+    over_2_5 = max(10, min(90, int(50 + ((eff_elo_1 + eff_elo_2)/2 - 1500) * 0.05)))
+    under_2_5 = 100 - over_2_5
+
+    m1_total = max(1, f1.get('wins', 1))
+    m2_total = max(1, f2.get('wins', 1))
+    f1_ko_pct = round((f1_ko_wins / m1_total) * 100, 1)
+    f1_sub_pct = round((f1.get('methods', {}).get('SUB_win', 0) / m1_total) * 100, 1)
+    f1_dec_pct = round((f1.get('methods', {}).get('DEC_win', 0) / m1_total) * 100, 1)
+
+    f2_ko_pct = round((f2_ko_wins / m2_total) * 100, 1)
+    f2_sub_pct = round((f2.get('methods', {}).get('SUB_win', 0) / m2_total) * 100, 1)
+    f2_dec_pct = round((f2.get('methods', {}).get('DEC_win', 0) / m2_total) * 100, 1)
+
+    k_base = 32.0 * (1.2 if is_title else 1.0)
+    u1 = f1.get('uncertainty_mult', 1.0)
+    u2 = f2.get('uncertainty_mult', 1.0)
+
+    f1_dec_delta = round((k_base * 1.0 * u1) * (1.0 - prob1), 1)
+    f1_dom_fin_delta = round((k_base * 1.5 * 1.2 * u1) * (1.0 - prob1), 1)
+    f2_dec_delta = round((k_base * 1.0 * u2) * (1.0 - prob2), 1)
+    f2_dom_fin_delta = round((k_base * 1.5 * 1.2 * u2) * (1.0 - prob2), 1)
+
+    def to_odds(p):
+        p_safe = max(0.005, min(0.995, p))
+        if p_safe >= 0.5:
+            american_fair = f"-{round((p_safe / (1.0 - p_safe)) * 100)}"
+        else:
+            american_fair = f"+{round(((1.0 - p_safe) / p_safe) * 100)}"
+        decimal_fair = round(1.0 / p_safe, 2)
+        return {
+            'american': american_fair,
+            'decimal': decimal_fair,
+            'implied_prob': round(p_safe * 100, 1)
+        }
+
+    # Vegas Consensus Market Line (4.5% vig + public unadjusted elo)
+    p1_mkt = 1.0 / (1.0 + 10.0 ** ((f2['elo'] - f1['elo']) / 400.0))
+    p2_mkt = 1.0 - p1_mkt
+    vig = 0.045
+    p1_vig = (p1_mkt * (1.0 + vig))
+    p2_vig = (p2_mkt * (1.0 + vig))
+
+    v1_line = f"-{round((p1_vig / max(0.001, 1.0 - p1_vig)) * 100)}" if p1_mkt >= 0.5 else f"+{round(((1.0 - p1_vig) / max(0.001, p1_vig)) * 100)}"
+    v2_line = f"-{round((p2_vig / max(0.001, 1.0 - p2_vig)) * 100)}" if p2_mkt >= 0.5 else f"+{round(((1.0 - p2_vig) / max(0.001, p2_vig)) * 100)}"
+
+    market_decimal_1 = round((1.0 - (vig / 2.0)) / max(0.01, p1_mkt), 2)
+    market_decimal_2 = round((1.0 - (vig / 2.0)) / max(0.01, p2_mkt), 2)
+
+    # Calculate Expected Value (+EV)
+    ev_1 = round(((prob1 * market_decimal_1) - 1.0) * 100, 2)
+    ev_2 = round(((prob2 * market_decimal_2) - 1.0) * 100, 2)
+
+    # Fractional Kelly (0.25x)
+    def get_kelly(p, dec_odds):
+        b = dec_odds - 1.0
+        q = 1.0 - p
+        if b <= 0: return 0.0
+        raw_k = (b * p - q) / b
+        return round(max(0.0, min(0.05, raw_k * 0.25)) * 100, 1)
+
+    kelly_1 = get_kelly(prob1, market_decimal_1)
+    kelly_2 = get_kelly(prob2, market_decimal_2)
+
+    # Edge Drivers
+    drivers_1 = []
+    drivers_2 = []
+    if age_adj_1 > 0: drivers_1.append(f"⚡ Prime Speed Edge (+{round(age_adj_1, 1)} Elo)")
+    if age_adj_2 < 0: drivers_1.append(f"⚠️ Opponent Age Cliff ({round(age_adj_2, 1)} Elo)")
+    if reach_adj_1 > 0: drivers_1.append(f"📏 +{round(reach_gap, 1)}\" Reach Advantage (+{round(reach_adj_1, 1)} Elo)")
+    if stance_adj_1 > 0: drivers_1.append(f"🥊 Open Stance Southpaw Angle (+{round(stance_adj_1, 1)} Elo)")
+    if f1_tdd >= 80.0 and g2 > 15.0: drivers_1.append(f"🛡️ {round(f1_tdd)}% TDD Neutralizer")
+
+    if age_adj_2 > 0: drivers_2.append(f"⚡ Prime Speed Edge (+{round(age_adj_2, 1)} Elo)")
+    if age_adj_1 < 0: drivers_2.append(f"⚠️ Opponent Age Cliff ({round(age_adj_1, 1)} Elo)")
+    if reach_adj_2 > 0: drivers_2.append(f"📏 +{round(-reach_gap, 1)}\" Reach Advantage (+{round(reach_adj_2, 1)} Elo)")
+    if stance_adj_2 > 0: drivers_2.append(f"🥊 Open Stance Southpaw Angle (+{round(stance_adj_2, 1)} Elo)")
+    if f2_tdd >= 80.0 and g1 > 15.0: drivers_2.append(f"🛡️ {round(f2_tdd)}% TDD Neutralizer")
+
+    # Value Tier Assignment
+    if ev_1 >= 10.0: tier_1 = "💎 ULTRA VALUE"
+    elif ev_1 >= 5.0: tier_1 = "⚡ STRONG VALUE"
+    elif ev_1 >= 3.0: tier_1 = "🎯 MODERATE VALUE"
+    else: tier_1 = "⚖️ FAIR / NO EDGE"
+
+    if ev_2 >= 10.0: tier_2 = "💎 ULTRA VALUE"
+    elif ev_2 >= 5.0: tier_2 = "⚡ STRONG VALUE"
+    elif ev_2 >= 3.0: tier_2 = "🎯 MODERATE VALUE"
+    else: tier_2 = "⚖️ FAIR / NO EDGE"
+
+    c1 = _CACHE.get('components', {}).get(f1['name'].lower(), {})
+    c2 = _CACHE.get('components', {}).get(f2['name'].lower(), {})
+
+    return {
+        'bout_context': {
+            'simulated_weight_class': target_div_name,
+            'is_title': is_title,
+            'style_shift': round(style_shift, 1),
+            'over_2_5_rounds': over_2_5,
+            'under_2_5_rounds': under_2_5,
+            'props': {
+                'over_2_5_rounds': to_odds(over_2_5 / 100.0),
+                'under_2_5_rounds': to_odds(under_2_5 / 100.0),
+                'f1_ko_tko': to_odds(f1_ko_pct / 100.0),
+                'f1_submission': to_odds(f1_sub_pct / 100.0),
+                'f1_decision': to_odds(f1_dec_pct / 100.0),
+                'f2_ko_tko': to_odds(f2_ko_pct / 100.0),
+                'f2_submission': to_odds(f2_sub_pct / 100.0),
+                'f2_decision': to_odds(f2_dec_pct / 100.0)
+            }
+        },
+        'fighter1': {
+            'name': f1['name'],
+            'elo': f1['elo'],
+            'effective_elo': round(eff_elo_1, 1),
+            'peak_elo': f1['peak_elo'],
+            'win_probability': round(prob1 * 100, 1),
+            'size_adjustment': round(size_adj_1, 1),
+            'grappling_index': round(g1, 1),
+            'striking_index': round(s1, 1),
+            'odds': {
+                'fair': to_odds(prob1),
+                'vegas_line': v1_line,
+                'market_decimal': market_decimal_1
+            },
+            'value_betting': {
+                'ev_pct': ev_1,
+                'kelly_stake_pct': kelly_1,
+                'tier': tier_1,
+                'has_value': ev_1 >= 3.0,
+                'edge_drivers': drivers_1
+            },
+            'methods': {
+                'ko_tko_pct': f1_ko_pct,
+                'submission_pct': f1_sub_pct,
+                'decision_pct': f1_dec_pct
+            },
+            'win_by_decision_delta': f1_dec_delta,
+            'win_by_finish_delta': f1_dom_fin_delta,
+            'weight_class': f1['primary_weight_class'],
+            'is_active': f1.get('is_active', True),
+            'months_inactive': f1.get('months_inactive', 0.0),
+            'uncertainty_mult': u1,
+            'components': {
+                'striking_elo': c1.get('striking_elo', 1500.0),
+                'grappling_elo': c1.get('grappling_elo', 1500.0),
+                'cardio_elo': c1.get('cardio_elo', 1500.0)
+            }
+        },
+        'fighter2': {
+            'name': f2['name'],
+            'elo': f2['elo'],
+            'effective_elo': round(eff_elo_2, 1),
+            'peak_elo': f2['peak_elo'],
+            'win_probability': round(prob2 * 100, 1),
+            'size_adjustment': round(size_adj_2, 1),
+            'grappling_index': round(g2, 1),
+            'striking_index': round(s2, 1),
+            'odds': {
+                'fair': to_odds(prob2),
+                'vegas_line': v2_line,
+                'market_decimal': market_decimal_2
+            },
+            'value_betting': {
+                'ev_pct': ev_2,
+                'kelly_stake_pct': kelly_2,
+                'tier': tier_2,
+                'has_value': ev_2 >= 3.0,
+                'edge_drivers': drivers_2
+            },
+            'methods': {
+                'ko_tko_pct': f2_ko_pct,
+                'submission_pct': f2_sub_pct,
+                'decision_pct': f2_dec_pct
+            },
+            'win_by_decision_delta': f2_dec_delta,
+            'win_by_finish_delta': f2_dom_fin_delta,
+            'weight_class': f2['primary_weight_class'],
+            'is_active': f2.get('is_active', True),
+            'components': {
+                'striking_elo': c2.get('striking_elo', 1500.0),
+                'grappling_elo': c2.get('grappling_elo', 1500.0),
+                'cardio_elo': c2.get('cardio_elo', 1500.0)
+            }
+        },
+        'biometrics': {
+            'fighter1': {
+                'age': f1_age,
+                'height': f1_height_raw,
+                'reach': f1_reach_raw,
+                'reach_inches': f1_reach,
+                'stance': f1_stance,
+                'tdd_pct': f1_tdd,
+                'slpm': f1_slpm,
+                'adjustments': {
+                    'age_elo': round(age_adj_1, 1),
+                    'reach_elo': round(reach_adj_1, 1),
+                    'stance_elo': round(stance_adj_1, 1),
+                    'chin_elo': round(chin_adj_1, 1)
+                }
+            },
+            'fighter2': {
+                'age': f2_age,
+                'height': f2_height_raw,
+                'reach': f2_reach_raw,
+                'reach_inches': f2_reach,
+                'stance': f2_stance,
+                'tdd_pct': f2_tdd,
+                'slpm': f2_slpm,
+                'adjustments': {
+                    'age_elo': round(age_adj_2, 1),
+                    'reach_elo': round(reach_adj_2, 1),
+                    'stance_elo': round(stance_adj_2, 1),
+                    'chin_elo': round(chin_adj_2, 1)
+                }
+            },
+            'comparisons': {
+                'reach_diff_in': round(reach_gap, 1),
+                'age_diff_years': round(age_gap, 1)
+            }
+        }
+    }
 
 @app.route('/api/matchup')
 def simulate_matchup():
@@ -236,241 +692,93 @@ def simulate_matchup():
     if not f1 or not f2:
         return jsonify({'error': 'One or both fighters not found'}), 400
 
-    div_hierarchy = {
-        "Women's Strawweight": 0,
-        "Women's Flyweight": 1,
-        "Women's Bantamweight": 2,
-        "Women's Featherweight": 3,
-        'Flyweight': 1,
-        'Bantamweight': 2,
-        'Featherweight': 3,
-        'Lightweight': 4,
-        'Welterweight': 5,
-        'Middleweight': 6,
-        'Light Heavyweight': 7,
-        'Heavyweight': 8,
-    }
+    payload = compute_detailed_matchup(f1, f2, target_weight_class, is_title)
+    return jsonify(payload)
 
-    t1 = div_hierarchy.get(f1.get('primary_weight_class', 'Lightweight'), 4)
-    t2 = div_hierarchy.get(f2.get('primary_weight_class', 'Lightweight'), 4)
+@app.route('/api/upcoming-cards')
+def get_upcoming_cards():
+    reload_cache_if_needed()
+    upcoming_data = _CACHE.get('upcoming', {})
+    return jsonify(upcoming_data)
 
-    if not target_weight_class or target_weight_class == 'auto':
-        target_tier = max(t1, t2)
-        # Find division name for this tier
-        target_div_name = next((k for k, v in div_hierarchy.items() if v == target_tier and not k.startswith("Women")), f1.get('primary_weight_class'))
-    else:
-        target_tier = div_hierarchy.get(target_weight_class, max(t1, t2))
-        target_div_name = target_weight_class
+@app.route('/api/value-bets')
+def get_value_bets():
+    reload_cache_if_needed()
+    min_ev = float(request.args.get('min_ev', 3.0))
+    limit = int(request.args.get('limit', 30))
+    source = request.args.get('source', 'upcoming').strip().lower()
 
-    # 1. Weight Class Jump, Size & Reach Frame Adjustment
-    size_adj_1 = 0.0
-    size_adj_2 = 0.0
+    if source == 'upcoming' and _CACHE.get('upcoming') and _CACHE['upcoming'].get('top_upcoming_value_bets'):
+        raw_signals = _CACHE['upcoming']['top_upcoming_value_bets']
+        filtered = [s for s in raw_signals if s['ev_pct'] >= min_ev]
+        return jsonify({
+            'source': 'upcoming_live_sportsbooks',
+            'total_opportunities_found': len(filtered),
+            'min_ev_filter': min_ev,
+            'signals': filtered[:limit]
+        })
 
-    f1_all_wc = f1.get('all_weight_classes', [])
-    f2_all_wc = f2.get('all_weight_classes', [])
-    f1_exp_at_target = 1 if target_div_name in f1_all_wc else 0
-    f2_exp_at_target = 1 if target_div_name in f2_all_wc else 0
+    # Fallback / Alternate mode: Pairwise divisional contenders
+    active_fighters = [f for f in _CACHE['rankings'] if f.get('is_active', True) and f.get('total_fights', 0) >= 3]
+    by_div = defaultdict(list)
+    for f in active_fighters:
+        by_div[f.get('primary_weight_class', 'Lightweight')].append(f)
 
-    if target_tier > t1:
-        tier_gap = target_tier - t1
-        base_pen = tier_gap * 35.0
-        if f1_exp_at_target: base_pen *= 0.5 # Acclimated multi-division fighter
-        size_adj_1 = -base_pen
+    value_signals = []
+    for div, fighters in by_div.items():
+        top_tier = fighters[:10]
+        n = len(top_tier)
+        for i in range(n):
+            for j in range(i + 1, n):
+                f1, f2 = top_tier[i], top_tier[j]
+                match_data = compute_detailed_matchup(f1, f2, target_weight_class=div)
+                
+                vb1 = match_data['fighter1']['value_betting']
+                if vb1['ev_pct'] >= min_ev:
+                    value_signals.append({
+                        'event': f"UFC Simulation: {div}",
+                        'date': "Active Contenders",
+                        'value_fighter': f1['name'],
+                        'opponent': f2['name'],
+                        'division': div,
+                        'model_prob': match_data['fighter1']['win_probability'],
+                        'fair_odds': match_data['fighter1']['odds']['fair']['decimal'],
+                        'best_book_odds': match_data['fighter1']['odds']['market_decimal'],
+                        'ev_pct': vb1['ev_pct'],
+                        'kelly_stake': vb1['kelly_stake_pct'],
+                        'tier': vb1['tier'],
+                        'edge_drivers': vb1['edge_drivers'],
+                        'sportsbooks': {
+                            'Consensus Market': {'american': match_data['fighter1']['odds']['vegas_line'], 'decimal': match_data['fighter1']['odds']['market_decimal']}
+                        }
+                    })
 
-    if target_tier > t2:
-        tier_gap = target_tier - t2
-        base_pen = tier_gap * 35.0
-        if f2_exp_at_target: base_pen *= 0.5
-        size_adj_2 = -base_pen
+                vb2 = match_data['fighter2']['value_betting']
+                if vb2['ev_pct'] >= min_ev:
+                    value_signals.append({
+                        'event': f"UFC Simulation: {div}",
+                        'date': "Active Contenders",
+                        'value_fighter': f2['name'],
+                        'opponent': f1['name'],
+                        'division': div,
+                        'model_prob': match_data['fighter2']['win_probability'],
+                        'fair_odds': match_data['fighter2']['odds']['fair']['decimal'],
+                        'best_book_odds': match_data['fighter2']['odds']['market_decimal'],
+                        'ev_pct': vb2['ev_pct'],
+                        'kelly_stake': vb2['kelly_stake_pct'],
+                        'tier': vb2['tier'],
+                        'edge_drivers': vb2['edge_drivers'],
+                        'sportsbooks': {
+                            'Consensus Market': {'american': match_data['fighter2']['odds']['vegas_line'], 'decimal': match_data['fighter2']['odds']['market_decimal']}
+                        }
+                    })
 
-    eff_elo_1 = f1['elo'] + size_adj_1
-    eff_elo_2 = f2['elo'] + size_adj_2
-
-    # 2. Stylistic Grappling vs Striking Clash
-    f1_fights = max(1, f1.get('total_fights', 1))
-    f2_fights = max(1, f2.get('total_fights', 1))
-    f1_wins = max(1, f1.get('wins', 1))
-    f2_wins = max(1, f2.get('wins', 1))
-
-    g1 = (f1.get('total_td', 0) / f1_fights) * 1.5 + (f1['methods'].get('SUB_win', 0) / f1_wins) * 10.0
-    g2 = (f2.get('total_td', 0) / f2_fights) * 1.5 + (f2['methods'].get('SUB_win', 0) / f2_wins) * 10.0
-
-    s1 = (f1.get('total_sig_str', 0) / f1_fights) * 0.08 + (f1.get('total_kd', 0) / f1_fights) * 6.0 + (f1['methods'].get('KO/TKO_win', 0) / f1_wins) * 8.0
-    s2 = (f2.get('total_sig_str', 0) / f2_fights) * 0.08 + (f2.get('total_kd', 0) / f2_fights) * 6.0 + (f2['methods'].get('KO/TKO_win', 0) / f2_wins) * 8.0
-
-    style_shift = 0.0
-    if g1 > g2 + 4.0:
-        style_shift += min(25.0, (g1 - g2) * 2.5)
-    elif g2 > g1 + 4.0:
-        style_shift -= min(25.0, (g2 - g1) * 2.5)
-
-    eff_elo_1 += style_shift
-
-    # 3. Bradley-Terry Win Probabilities
-    prob1 = 1.0 / (1.0 + 10.0 ** ((eff_elo_2 - eff_elo_1) / 400.0))
-    prob2 = 1.0 - prob1
-
-    # 4. Finish Method Probability Distribution
-    f1_ko_ratio = f1['methods'].get('KO/TKO_win', 0) / f1_wins
-    f1_sub_ratio = f1['methods'].get('SUB_win', 0) / f1_wins
-    f1_dec_ratio = (f1['methods'].get('DEC_win', 0) + f1['methods'].get('OTHER_win', 0)) / f1_wins
-
-    f2_losses = max(1, f2.get('losses', 1))
-    f2_ko_vuln = (f2['methods'].get('KO/TKO_loss', 0) + 0.5) / (f2_losses + 1.5)
-    f2_sub_vuln = (f2['methods'].get('SUB_loss', 0) + 0.5) / (f2_losses + 1.5)
-
-    f1_ko_w = f1_ko_ratio * (0.8 + 0.4 * f2_ko_vuln)
-    f1_sub_w = f1_sub_ratio * (0.8 + 0.4 * f2_sub_vuln)
-    f1_dec_w = f1_dec_ratio * 1.0
-    f1_tot_w = (f1_ko_w + f1_sub_w + f1_dec_w) or 1.0
-
-    f1_ko_pct = round(prob1 * (f1_ko_w / f1_tot_w) * 100, 1)
-    f1_sub_pct = round(prob1 * (f1_sub_w / f1_tot_w) * 100, 1)
-    f1_dec_pct = round(prob1 * (f1_dec_w / f1_tot_w) * 100, 1)
-
-    f2_ko_ratio = f2['methods'].get('KO/TKO_win', 0) / f2_wins
-    f2_sub_ratio = f2['methods'].get('SUB_win', 0) / f2_wins
-    f2_dec_ratio = (f2['methods'].get('DEC_win', 0) + f2['methods'].get('OTHER_win', 0)) / f2_wins
-
-    f1_losses = max(1, f1.get('losses', 1))
-    f1_ko_vuln = (f1['methods'].get('KO/TKO_loss', 0) + 0.5) / (f1_losses + 1.5)
-    f1_sub_vuln = (f1['methods'].get('SUB_loss', 0) + 0.5) / (f1_losses + 1.5)
-
-    f2_ko_w = f2_ko_ratio * (0.8 + 0.4 * f1_ko_vuln)
-    f2_sub_w = f2_sub_ratio * (0.8 + 0.4 * f1_sub_vuln)
-    f2_dec_w = f2_dec_ratio * 1.0
-    f2_tot_w = (f2_ko_w + f2_sub_w + f2_dec_w) or 1.0
-
-    f2_ko_pct = round(prob2 * (f2_ko_w / f2_tot_w) * 100, 1)
-    f2_sub_pct = round(prob2 * (f2_sub_w / f2_tot_w) * 100, 1)
-    f2_dec_pct = round(prob2 * (f2_dec_w / f2_tot_w) * 100, 1)
-
-    # Over / Under 2.5 Rounds
-    tot_finish = (f1_ko_pct + f1_sub_pct + f2_ko_pct + f2_sub_pct) / 100.0
-    under_2_5 = round(min(85.0, max(15.0, tot_finish * 75.0)), 1)
-    over_2_5 = round(100.0 - under_2_5, 1)
-
-    # Elo Delta Stakes
-    k_base = 32.0 * (1.2 if is_title else 1.0)
-    u1 = f1.get('uncertainty_mult', 1.0)
-    u2 = f2.get('uncertainty_mult', 1.0)
-
-    f1_dec_delta = round((k_base * 1.0 * u1) * (1.0 - prob1), 1)
-    f1_dom_fin_delta = round((k_base * 1.5 * 1.2 * u1) * (1.0 - prob1), 1)
-    f2_dec_delta = round((k_base * 1.0 * u2) * (1.0 - prob2), 1)
-    f2_dom_fin_delta = round((k_base * 1.5 * 1.2 * u2) * (1.0 - prob2), 1)
-
-    # Helper for UFC Betting Odds Conversions
-    def to_odds(p):
-        p_safe = max(0.005, min(0.995, p))
-        # Fair American
-        if p_safe >= 0.5:
-            american_fair = f"-{round((p_safe / (1.0 - p_safe)) * 100)}"
-        else:
-            american_fair = f"+{round(((1.0 - p_safe) / p_safe) * 100)}"
-        
-        # Decimal Odds
-        decimal_fair = round(1.0 / p_safe, 2)
-        
-        return {
-            'american': american_fair,
-            'decimal': decimal_fair,
-            'implied_prob': round(p_safe * 100, 1)
-        }
-
-    # Vegas Bookmaker Lines with standard 4.5% market vig
-    def to_vegas_odds(p_w, p_l):
-        # Apply ~4.5% total overround
-        vig_mult = 1.045
-        p1_vig = (p_w * vig_mult) / (p_w + p_l)
-        p2_vig = (p_l * vig_mult) / (p_w + p_l)
-        
-        o1 = to_odds(p1_vig / vig_mult) # fair
-        o2 = to_odds(p2_vig / vig_mult)
-        
-        # Vegas adjusted lines
-        if p_w >= 0.5:
-            v1 = f"-{round((p1_vig / (1.0 - p1_vig + 0.0001)) * 100)}"
-            v2 = f"+{round(((1.0 - p2_vig + 0.0001) / p2_vig) * 100)}"
-        else:
-            v1 = f"+{round(((1.0 - p1_vig + 0.0001) / p1_vig) * 100)}"
-            v2 = f"-{round((p2_vig / (1.0 - p2_vig + 0.0001)) * 100)}"
-            
-        return v1, v2
-
-    v1_line, v2_line = to_vegas_odds(prob1, prob2)
-
-    # Prop Bet Odds
-    props = {
-        'over_2_5_rounds': to_odds(over_2_5 / 100.0),
-        'under_2_5_rounds': to_odds(under_2_5 / 100.0),
-        'f1_ko_tko': to_odds(f1_ko_pct / 100.0),
-        'f1_submission': to_odds(f1_sub_pct / 100.0),
-        'f1_decision': to_odds(f1_dec_pct / 100.0),
-        'f2_ko_tko': to_odds(f2_ko_pct / 100.0),
-        'f2_submission': to_odds(f2_sub_pct / 100.0),
-        'f2_decision': to_odds(f2_dec_pct / 100.0)
-    }
-
+    value_signals.sort(key=lambda x: x['ev_pct'], reverse=True)
     return jsonify({
-        'bout_context': {
-            'simulated_weight_class': target_div_name,
-            'is_title': is_title,
-            'style_shift': round(style_shift, 1),
-            'over_2_5_rounds': over_2_5,
-            'under_2_5_rounds': under_2_5,
-            'props': props
-        },
-        'fighter1': {
-            'name': f1['name'],
-            'elo': f1['elo'],
-            'effective_elo': round(eff_elo_1, 1),
-            'peak_elo': f1['peak_elo'],
-            'win_probability': round(prob1 * 100, 1),
-            'size_adjustment': round(size_adj_1, 1),
-            'grappling_index': round(g1, 1),
-            'striking_index': round(s1, 1),
-            'odds': {
-                'fair': to_odds(prob1),
-                'vegas_line': v1_line
-            },
-            'methods': {
-                'ko_tko_pct': f1_ko_pct,
-                'submission_pct': f1_sub_pct,
-                'decision_pct': f1_dec_pct
-            },
-            'win_by_decision_delta': f1_dec_delta,
-            'win_by_finish_delta': f1_dom_fin_delta,
-            'weight_class': f1['primary_weight_class'],
-            'is_active': f1.get('is_active', True),
-            'months_inactive': f1.get('months_inactive', 0.0),
-            'uncertainty_mult': u1
-        },
-        'fighter2': {
-            'name': f2['name'],
-            'elo': f2['elo'],
-            'effective_elo': round(eff_elo_2, 1),
-            'peak_elo': f2['peak_elo'],
-            'win_probability': round(prob2 * 100, 1),
-            'size_adjustment': round(size_adj_2, 1),
-            'grappling_index': round(g2, 1),
-            'striking_index': round(s2, 1),
-            'odds': {
-                'fair': to_odds(prob2),
-                'vegas_line': v2_line
-            },
-            'methods': {
-                'ko_tko_pct': f2_ko_pct,
-                'submission_pct': f2_sub_pct,
-                'decision_pct': f2_dec_pct
-            },
-            'win_by_decision_delta': f2_dec_delta,
-            'win_by_finish_delta': f2_dom_fin_delta,
-            'weight_class': f2['primary_weight_class'],
-            'is_active': f2.get('is_active', True),
-            'months_inactive': f2.get('months_inactive', 0.0),
-            'uncertainty_mult': u2
-        }
+        'source': 'divisional_simulation',
+        'total_opportunities_found': len(value_signals),
+        'min_ev_filter': min_ev,
+        'signals': value_signals[:limit]
     })
 
 if __name__ == '__main__':

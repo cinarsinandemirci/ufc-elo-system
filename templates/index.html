@@ -95,18 +95,24 @@
             </div>
 
             <!-- Header Controls -->
-            <div class="flex items-center space-x-3">
-                <button onclick="openSimulatorModal()" class="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-400 border border-amber-500/30 text-xs font-semibold transition-all">
-                    <i data-lucide="swords" class="w-4 h-4"></i>
-                    <span>Matchup Simulator</span>
-                </button>
-                <div class="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <span class="text-xs font-medium text-slate-300">25-Year Dataset</span>
+            <div class="flex items-center space-x-2.5">
+                <!-- Navigation Tabs -->
+                <div class="flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800">
+                    <button id="navRankingsBtn" onclick="switchMainTab('rankings')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-white shadow-sm">
+                        <i data-lucide="trophy" class="w-3.5 h-3.5 text-amber-400"></i>
+                        <span>Rankings</span>
+                    </button>
+                    <button id="navValueRadarBtn" onclick="switchMainTab('value-radar')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-400"></i>
+                        <span>+EV Value Radar</span>
+                        <span class="inline-flex items-center px-1.5 py-0.2 rounded-full text-[9px] font-black bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 animate-pulse">LIVE</span>
+                    </button>
                 </div>
+
+                <button onclick="openSimulatorModal()" class="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-rose-900/80 to-amber-900/80 hover:from-rose-800 hover:to-amber-800 text-amber-300 border border-amber-500/40 text-xs font-bold shadow-lg transition-all">
+                    <i data-lucide="swords" class="w-4 h-4 text-amber-400"></i>
+                    <span class="hidden sm:inline">Octagon Simulator</span>
+                </button>
             </div>
         </div>
     </header>
@@ -325,6 +331,88 @@
             <!-- Dynamic Cards inserted here -->
         </section>
 
+        <!-- +EV Quantitative Value Radar Section (New Dedicated View) -->
+        <section id="valueRadarSection" class="hidden space-y-6">
+            <!-- Value Radar Header & Metrics Banner -->
+            <div class="glass-card rounded-2xl p-6 border border-emerald-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/20 shadow-2xl relative overflow-hidden">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            </span>
+                            <div>
+                                <h2 class="font-display font-black text-2xl text-white tracking-wide flex items-center gap-2">
+                                    QUANTITATIVE +EV VALUE RADAR
+                                    <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">Alpha Engine</span>
+                                </h2>
+                                <p class="text-xs text-slate-400 mt-0.5">Vegas Piyasa Kapanış Oranları (%4.5 Vig) ile Biyometrik 3D Elo Motorumuz Arasındaki Fiyatlama Yanılgıları</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mini KPI Stats in Banner -->
+                    <div class="flex items-center gap-3">
+                        <div class="px-3.5 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-center">
+                            <span class="text-[10px] text-slate-400 block uppercase font-bold">Tarihsel ROI</span>
+                            <span class="font-display font-black text-emerald-400 text-base">+%18.10</span>
+                        </div>
+                        <div class="px-3.5 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-center">
+                            <span class="text-[10px] text-slate-400 block uppercase font-bold">Strateji</span>
+                            <span class="font-display font-bold text-amber-400 text-base">Quarter-Kelly</span>
+                        </div>
+                        <div class="px-3.5 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-center">
+                            <span class="text-[10px] text-slate-400 block uppercase font-bold">Piyasa Vig</span>
+                            <span class="font-display font-bold text-slate-300 text-base">%4.5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Filters for Value Bets -->
+                <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <!-- Source Mode Toggle (Real Upcoming Cards vs Simulated Contenders) -->
+                    <div class="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800">
+                        <button id="srcUpcomingBtn" onclick="switchValueSource('upcoming')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-600 text-white shadow-md flex items-center gap-1.5">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                            <span>📅 Yaklaşan Gerçek UFC Kartları</span>
+                        </button>
+                        <button id="srcDivisionalBtn" onclick="switchValueSource('divisional')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-1.5">
+                            <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
+                            <span>⚡ Tüm Sıkletler Simülasyonu</span>
+                        </button>
+                    </div>
+
+                    <!-- EV Minimum Filter Thresholds -->
+                    <div class="flex items-center space-x-2 flex-wrap gap-1.5" id="evFilterPills">
+                        <span class="text-xs font-bold text-slate-400 mr-1">Minimum +EV:</span>
+                        <button onclick="filterValueBets(3.0)" class="ev-filter-pill px-3 py-1 rounded-lg text-xs font-bold transition-all bg-emerald-600 text-white" data-ev="3.0">
+                            Tümü (≥ +%3)
+                        </button>
+                        <button onclick="filterValueBets(5.0)" class="ev-filter-pill px-3 py-1 rounded-lg text-xs font-bold transition-all bg-slate-800 text-slate-300 hover:text-white" data-ev="5.0">
+                            ⚡ Güçlü (≥ +%5)
+                        </button>
+                        <button onclick="filterValueBets(10.0)" class="ev-filter-pill px-3 py-1 rounded-lg text-xs font-bold transition-all bg-slate-800 text-slate-300 hover:text-white" data-ev="10.0">
+                            💎 Ultra (≥ +%10)
+                        </button>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <span id="valueBetsCount" class="text-xs font-semibold text-emerald-400 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+                            Tarama Yapılıyor...
+                        </span>
+                        <button onclick="refreshValueBets()" title="Yenile" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all">
+                            <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Bets Cards Grid -->
+            <div id="valueBetsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Dynamically loaded Value Cards -->
+            </div>
+        </section>
+
     </main>
 
     <!-- Fighter Career & Fight History Modal -->
@@ -368,6 +456,26 @@
                 <div>
                     <span class="text-[10px] text-slate-400 uppercase font-bold">Inactivity / Volatility</span>
                     <p id="modalInactivityStatus" class="font-display font-bold text-amber-400 text-sm">--</p>
+                </div>
+            </div>
+
+            <!-- 3D Component Elo & Physical Matrix Bar -->
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 p-3.5 bg-slate-900/80 border-b border-slate-800 text-xs">
+                <div class="p-2 rounded-xl bg-slate-950/70 border border-rose-500/20 text-center">
+                    <span class="text-[10px] text-slate-400 block font-semibold">🥊 STRIKING ELO</span>
+                    <span id="modalStrElo" class="font-display font-black text-rose-400 text-base">1500.0</span>
+                </div>
+                <div class="p-2 rounded-xl bg-slate-950/70 border border-sky-500/20 text-center">
+                    <span class="text-[10px] text-slate-400 block font-semibold">🥋 GRAPPLING ELO</span>
+                    <span id="modalGrpElo" class="font-display font-black text-sky-400 text-base">1500.0</span>
+                </div>
+                <div class="p-2 rounded-xl bg-slate-950/70 border border-amber-500/20 text-center">
+                    <span class="text-[10px] text-slate-400 block font-semibold">🫁 CARDIO ELO</span>
+                    <span id="modalCarElo" class="font-display font-black text-amber-400 text-base">1500.0</span>
+                </div>
+                <div class="p-2 rounded-xl bg-slate-950/70 border border-indigo-500/20 text-center flex flex-col justify-center">
+                    <span class="text-[10px] text-slate-400 block font-semibold">📏 FRAME & STANCE</span>
+                    <span id="modalBioFrame" class="font-bold text-indigo-300 text-xs">-- / --</span>
                 </div>
             </div>
 
@@ -474,6 +582,88 @@
                         </div>
                     </div>
 
+                    <!-- Tale of the Tape & Biometrics Radar Matrix -->
+                    <div class="p-4 rounded-xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900 border border-indigo-500/30 space-y-3 shadow-inner">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="p-1 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
+                                    <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+                                </span>
+                                <span class="font-display font-bold text-xs uppercase tracking-wider text-white">Tale of the Tape & Physical Biometrics</span>
+                            </div>
+                            <span id="simBioAdvantageBadge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                                Frame Matrix Analyzed
+                            </span>
+                        </div>
+
+                        <!-- 5-Row Comparison Grid -->
+                        <div class="space-y-1.5 text-xs">
+                            <!-- Age Row -->
+                            <div class="grid grid-cols-5 items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800/80">
+                                <div class="col-span-2 text-left font-bold text-slate-200" id="simBioAge1">-- yrs</div>
+                                <div class="text-center text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center justify-center gap-1">
+                                    🎂 Age
+                                </div>
+                                <div class="col-span-2 text-right font-bold text-slate-200" id="simBioAge2">-- yrs</div>
+                            </div>
+
+                            <!-- Height & Reach Row -->
+                            <div class="grid grid-cols-5 items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800/80">
+                                <div class="col-span-2 text-left font-bold text-slate-200" id="simBioReach1">-- (--)</div>
+                                <div class="text-center text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center justify-center gap-1">
+                                    📏 Height / Reach
+                                </div>
+                                <div class="col-span-2 text-right font-bold text-slate-200" id="simBioReach2">-- (--)</div>
+                            </div>
+
+                            <!-- Stance Row -->
+                            <div class="grid grid-cols-5 items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800/80">
+                                <div class="col-span-2 text-left font-semibold text-amber-300" id="simBioStance1">--</div>
+                                <div class="text-center text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center justify-center gap-1">
+                                    🥊 Stance
+                                </div>
+                                <div class="col-span-2 text-right font-semibold text-amber-300" id="simBioStance2">--</div>
+                            </div>
+
+                            <!-- TDD % & Strike Output Row -->
+                            <div class="grid grid-cols-5 items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800/80">
+                                <div class="col-span-2 text-left text-[11px] text-slate-300" id="simBioTact1">TDD: --% | -- SLpM</div>
+                                <div class="text-center text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center justify-center gap-1">
+                                    🛡️ TDD / Output
+                                </div>
+                                <div class="col-span-2 text-right text-[11px] text-slate-300" id="simBioTact2">TDD: --% | -- SLpM</div>
+                            </div>
+
+                            <!-- 3D Component Elo Row (Striking / Grappling / Cardio) -->
+                            <div class="grid grid-cols-5 items-center bg-slate-950/80 p-2.5 rounded-lg border border-indigo-500/20">
+                                <div class="col-span-2 text-left text-[11px] font-bold space-y-0.5" id="simCompElo1">
+                                    <span class="text-rose-400 block">🥊 Str: --</span>
+                                    <span class="text-sky-400 block">🥋 Grp: --</span>
+                                    <span class="text-amber-400 block">🫁 Car: --</span>
+                                </div>
+                                <div class="text-center text-[10px] text-indigo-300 font-black uppercase tracking-wider flex flex-col items-center justify-center">
+                                    <span>⚡ 3D SKILL</span>
+                                    <span class="text-[9px] text-slate-400">COMPONENT ELO</span>
+                                </div>
+                                <div class="col-span-2 text-right text-[11px] font-bold space-y-0.5" id="simCompElo2">
+                                    <span class="text-rose-400 block">🥊 Str: --</span>
+                                    <span class="text-sky-400 block">🥋 Grp: --</span>
+                                    <span class="text-amber-400 block">🫁 Car: --</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Real-time Elo Factor Impact Breakdown -->
+                        <div class="pt-2 border-t border-slate-800/80 flex flex-wrap justify-between items-center gap-2 text-[11px]">
+                            <div class="flex items-center space-x-1.5 flex-wrap gap-1" id="simBioChips1">
+                                <!-- Populated dynamically -->
+                            </div>
+                            <div class="flex items-center space-x-1.5 flex-wrap gap-1" id="simBioChips2">
+                                <!-- Populated dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
                         <!-- Fighter 1 Card -->
                         <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-left space-y-3">
@@ -551,6 +741,32 @@
                                     <span id="simFinDelta2" class="text-emerald-400 font-bold">+-- Elo</span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- +EV Quantitative Betting Edge & Kelly Signal Box -->
+                    <div id="simValueBetBox" class="p-4 rounded-xl border transition-all bg-slate-900/90 border-slate-800 space-y-2.5">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-2">
+                                <span class="p-1 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                                </span>
+                                <h4 class="font-display font-black text-xs sm:text-sm text-white tracking-wide uppercase flex items-center gap-2">
+                                    QUANTITATIVE VALUE BETTING SIGNAL (+EV)
+                                    <span id="simValueBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">Analiz Ediliyor</span>
+                                </h4>
+                            </div>
+                            <div id="simKellyBadge" class="text-xs font-bold text-amber-400">
+                                Kelly: --%
+                            </div>
+                        </div>
+
+                        <div id="simValueDescription" class="text-xs text-slate-300 bg-slate-950/80 p-2.5 rounded-lg border border-slate-800/80 flex justify-between items-center">
+                            <span>Simülasyon hesaplanıyor...</span>
+                        </div>
+
+                        <div id="simValueDrivers" class="flex flex-wrap gap-1.5 text-[10px]">
+                            <!-- Value edge drivers chips populated dynamically -->
                         </div>
                     </div>
 
@@ -1021,6 +1237,10 @@
                 const mRec = document.getElementById('modalRecord');
                 const mDec = document.getElementById('modalTotalDecay');
                 const mInact = document.getElementById('modalInactivityStatus');
+                const mStr = document.getElementById('modalStrElo');
+                const mGrp = document.getElementById('modalGrpElo');
+                const mCar = document.getElementById('modalCarElo');
+                const mBio = document.getElementById('modalBioFrame');
 
                 if (mName) mName.textContent = f.name;
                 if (mDiv) mDiv.textContent = f.primary_weight_class;
@@ -1032,6 +1252,19 @@
                 
                 const inactText = f.is_active ? `Active (${f.months_inactive || 0}m)` : `${Math.round(f.months_inactive || 0)}m Inactive (${f.uncertainty_mult || 1.0}x K Volatility)`;
                 if (mInact) mInact.textContent = inactText;
+
+                // 3D Component & Physical Bio
+                if (f.components) {
+                    if (mStr) mStr.textContent = Number(f.components.striking_elo || 1500).toFixed(1);
+                    if (mGrp) mGrp.textContent = Number(f.components.grappling_elo || 1500).toFixed(1);
+                    if (mCar) mCar.textContent = Number(f.components.cardio_elo || 1500).toFixed(1);
+                }
+                if (f.biometrics && mBio) {
+                    const h = f.biometrics.height_raw || '--';
+                    const r = f.biometrics.reach_raw || '--';
+                    const s = f.biometrics.stance || 'Orthodox';
+                    mBio.textContent = `${h} • ${r} (${s})`;
+                }
 
                 const list = document.getElementById('modalFightsList');
                 if (list) {
@@ -1240,7 +1473,92 @@
                 if (d1) d1.textContent = `+${data.fighter1.win_by_decision_delta} Elo`;
                 if (fn1) fn1.textContent = `+${data.fighter1.win_by_finish_delta} Elo`;
 
-                // Fighter 2
+                // Populate Biometrics & Tale of the Tape
+                if (data.biometrics) {
+                    const b = data.biometrics;
+                    const b1 = b.fighter1;
+                    const b2 = b.fighter2;
+                    const cmp = b.comparisons || {};
+
+                    const elAge1 = document.getElementById('simBioAge1');
+                    const elAge2 = document.getElementById('simBioAge2');
+                    const elReach1 = document.getElementById('simBioReach1');
+                    const elReach2 = document.getElementById('simBioReach2');
+                    const elStance1 = document.getElementById('simBioStance1');
+                    const elStance2 = document.getElementById('simBioStance2');
+                    const elTact1 = document.getElementById('simBioTact1');
+                    const elTact2 = document.getElementById('simBioTact2');
+                    const badge = document.getElementById('simBioAdvantageBadge');
+                    const chips1 = document.getElementById('simBioChips1');
+                    const chips2 = document.getElementById('simBioChips2');
+
+                    if (elAge1) elAge1.innerHTML = `${b1.age ? b1.age + ' yrs' : '--'} ${b1.adjustments.age_elo < 0 ? `<span class="text-rose-400 text-[10px] block">⚠️ Age Cliff (${b1.adjustments.age_elo} Elo)</span>` : (b1.adjustments.age_elo > 0 ? `<span class="text-emerald-400 text-[10px] block">⚡ Prime Speed (+${b1.adjustments.age_elo} Elo)</span>` : '')}`;
+                    if (elAge2) elAge2.innerHTML = `${b2.age ? b2.age + ' yrs' : '--'} ${b2.adjustments.age_elo < 0 ? `<span class="text-rose-400 text-[10px] block">⚠️ Age Cliff (${b2.adjustments.age_elo} Elo)</span>` : (b2.adjustments.age_elo > 0 ? `<span class="text-emerald-400 text-[10px] block">⚡ Prime Speed (+${b2.adjustments.age_elo} Elo)</span>` : '')}`;
+
+                    if (elReach1) elReach1.innerHTML = `${b1.height || '--'} • Reach: ${b1.reach || '--'} ${b1.adjustments.reach_elo > 0 ? `<span class="text-emerald-400 text-[10px] block">📏 Reach Edge (+${b1.adjustments.reach_elo} Elo)</span>` : ''}`;
+                    if (elReach2) elReach2.innerHTML = `${b2.height || '--'} • Reach: ${b2.reach || '--'} ${b2.adjustments.reach_elo > 0 ? `<span class="text-emerald-400 text-[10px] block">📏 Reach Edge (+${b2.adjustments.reach_elo} Elo)</span>` : ''}`;
+
+                    if (elStance1) elStance1.innerHTML = `${b1.stance || 'Orthodox'} ${b1.adjustments.stance_elo > 0 ? `<span class="text-sky-400 text-[10px]">🥋 (+${b1.adjustments.stance_elo})</span>` : ''}`;
+                    if (elStance2) elStance2.innerHTML = `${b2.stance || 'Orthodox'} ${b2.adjustments.stance_elo > 0 ? `<span class="text-sky-400 text-[10px]">🥋 (+${b2.adjustments.stance_elo})</span>` : ''}`;
+
+                    if (elTact1) elTact1.textContent = `TDD: ${Math.round(b1.tdd_pct)}% | ${b1.slpm} SLpM`;
+                    if (elTact2) elTact2.textContent = `TDD: ${Math.round(b2.tdd_pct)}% | ${b2.slpm} SLpM`;
+
+                    const elComp1 = document.getElementById('simCompElo1');
+                    const elComp2 = document.getElementById('simCompElo2');
+                    const c1 = data.fighter1.components || {};
+                    const c2 = data.fighter2.components || {};
+
+                    if (elComp1) {
+                        elComp1.innerHTML = `
+                            <span class="text-rose-400 block">🥊 Striking: <b>${c1.striking_elo || 1500}</b></span>
+                            <span class="text-sky-400 block">🥋 Grappling: <b>${c1.grappling_elo || 1500}</b></span>
+                            <span class="text-amber-400 block">🫁 Cardio: <b>${c1.cardio_elo || 1500}</b></span>
+                        `;
+                    }
+                    if (elComp2) {
+                        elComp2.innerHTML = `
+                            <span class="text-rose-400 block">🥊 Striking: <b>${c2.striking_elo || 1500}</b></span>
+                            <span class="text-sky-400 block">🥋 Grappling: <b>${c2.grappling_elo || 1500}</b></span>
+                            <span class="text-amber-400 block">🫁 Cardio: <b>${c2.cardio_elo || 1500}</b></span>
+                        `;
+                    }
+
+                    if (badge) {
+                        if (cmp.reach_diff_in && Math.abs(cmp.reach_diff_in) >= 3.0) {
+                            const leader = cmp.reach_diff_in > 0 ? data.fighter1.name : data.fighter2.name;
+                            badge.textContent = `📏 ${Math.abs(cmp.reach_diff_in)}" Reach Edge (${leader.split(' ')[0]})`;
+                        } else if (cmp.age_diff_years && Math.abs(cmp.age_diff_years) >= 6.0) {
+                            const younger = cmp.age_diff_years > 0 ? data.fighter1.name : data.fighter2.name;
+                            badge.textContent = `⚡ ${Math.abs(cmp.age_diff_years)}y Youth Advantage (${younger.split(' ')[0]})`;
+                        } else {
+                            badge.textContent = `🎯 Physical Equilibrium`;
+                        }
+                    }
+
+                    // Chips
+                    if (chips1) {
+                        const cList = [];
+                        if (b1.adjustments.reach_elo > 0) cList.push(`<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">📏 Reach: +${b1.adjustments.reach_elo}</span>`);
+                        if (b1.adjustments.age_elo !== 0) cList.push(`<span class="px-2 py-0.5 rounded ${b1.adjustments.age_elo > 0 ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : 'bg-rose-500/20 text-rose-400 border-rose-500/30'}">🎂 Age: ${b1.adjustments.age_elo > 0 ? '+' : ''}${b1.adjustments.age_elo}</span>`);
+                        if (b1.adjustments.stance_elo > 0) cList.push(`<span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-400 border border-sky-500/30">🥊 Stance: +${b1.adjustments.stance_elo}</span>`);
+                        if (b1.adjustments.chin_elo < 0) cList.push(`<span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 border-rose-500/30">🥊 Chin Fragility: ${b1.adjustments.chin_elo}</span>`);
+                        if (data.fighter1.size_adjustment < 0) cList.push(`<span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">⚖️ Size Jump: ${data.fighter1.size_adjustment}</span>`);
+                        chips1.innerHTML = cList.length > 0 ? `<span class="text-[10px] text-slate-400 block w-full mb-0.5">${data.fighter1.name} Adjustments:</span>` + cList.join(' ') : `<span class="text-[10px] text-slate-500">${data.fighter1.name}: Neutral Biometrics</span>`;
+                    }
+
+                    if (chips2) {
+                        const cList2 = [];
+                        if (b2.adjustments.reach_elo > 0) cList2.push(`<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">📏 Reach: +${b2.adjustments.reach_elo}</span>`);
+                        if (b2.adjustments.age_elo !== 0) cList2.push(`<span class="px-2 py-0.5 rounded ${b2.adjustments.age_elo > 0 ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : 'bg-rose-500/20 text-rose-400 border-rose-500/30'}">🎂 Age: ${b2.adjustments.age_elo > 0 ? '+' : ''}${b2.adjustments.age_elo}</span>`);
+                        if (b2.adjustments.stance_elo > 0) cList2.push(`<span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-400 border border-sky-500/30">🥊 Stance: +${b2.adjustments.stance_elo}</span>`);
+                        if (b2.adjustments.chin_elo < 0) cList2.push(`<span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 border-rose-500/30">🥊 Chin Fragility: ${b2.adjustments.chin_elo}</span>`);
+                        if (data.fighter2.size_adjustment < 0) cList2.push(`<span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30">⚖️ Size Jump: ${data.fighter2.size_adjustment}</span>`);
+                        chips2.innerHTML = cList2.length > 0 ? `<span class="text-[10px] text-slate-400 block w-full mb-0.5">${data.fighter2.name} Adjustments:</span>` + cList2.join(' ') : `<span class="text-[10px] text-slate-500">${data.fighter2.name}: Neutral Biometrics</span>`;
+                    }
+                }
+
+                // Fighter 2 Card Metrics
                 const n2 = document.getElementById('simName2');
                 const p2 = document.getElementById('simProb2');
                 const m2 = document.getElementById('simMeta2');
@@ -1289,6 +1607,53 @@
                     if (decOddsOver) decOddsOver.textContent = `(${pr.over_2_5_rounds.decimal})`;
                     if (oddsUnder) oddsUnder.textContent = pr.under_2_5_rounds.american;
                     if (decOddsUnder) decOddsUnder.textContent = `(${pr.under_2_5_rounds.decimal})`;
+                }
+
+                // Populate +EV Value Betting Signal Box
+                const valBox = document.getElementById('simValueBetBox');
+                const valBadge = document.getElementById('simValueBadge');
+                const kellyBadge = document.getElementById('simKellyBadge');
+                const valDesc = document.getElementById('simValueDescription');
+                const valDrivers = document.getElementById('simValueDrivers');
+
+                const vb1 = data.fighter1.value_betting || {};
+                const vb2 = data.fighter2.value_betting || {};
+
+                if (vb1.has_value || vb2.has_value) {
+                    const best = vb1.ev_pct >= vb2.ev_pct ? { f: data.fighter1.name, vb: vb1, opp: data.fighter2.name, mOdds: data.fighter1.odds.market_decimal, fOdds: data.fighter1.odds.fair.decimal } : { f: data.fighter2.name, vb: vb2, opp: data.fighter1.name, mOdds: data.fighter2.odds.market_decimal, fOdds: data.fighter2.odds.fair.decimal };
+                    
+                    if (valBox) valBox.className = "p-4 rounded-xl border transition-all bg-gradient-to-r from-slate-900 via-emerald-950/30 to-slate-900 border-emerald-500/50 shadow-lg glow-green space-y-2.5";
+                    if (valBadge) {
+                        valBadge.className = "text-[10px] font-black px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 animate-pulse";
+                        valBadge.textContent = best.vb.tier || "⚡ POSITIVE EXPECTED VALUE";
+                    }
+                    if (kellyBadge) kellyBadge.textContent = `🎯 Quarter-Kelly: %${best.vb.kelly_stake_pct} Bankroll`;
+                    if (valDesc) {
+                        valDesc.innerHTML = `
+                            <div>
+                                <span class="font-bold text-white">${best.f}</span> üzerinde <span class="font-display font-black text-emerald-400">+%${best.vb.ev_pct} EV</span> tespit edildi!
+                                <span class="text-[11px] text-slate-400 block mt-0.5">Model Adil Oranı: <b>${best.fOdds}</b> vs Piyasa Oranı: <b>${best.mOdds}</b></span>
+                            </div>
+                            <span class="px-2 py-1 rounded bg-emerald-500/20 text-emerald-300 font-black text-xs border border-emerald-500/30">DEĞERLİ BAHİS</span>
+                        `;
+                    }
+                    if (valDrivers) {
+                        valDrivers.innerHTML = (best.vb.edge_drivers || []).map(d => `<span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-300 border border-emerald-500/30 font-medium">${d}</span>`).join(' ');
+                    }
+                } else {
+                    if (valBox) valBox.className = "p-4 rounded-xl border transition-all bg-slate-900/90 border-slate-800 space-y-2.5";
+                    if (valBadge) {
+                        valBadge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700";
+                        valBadge.textContent = "⚖️ PİYASA DENGEDE";
+                    }
+                    if (kellyBadge) kellyBadge.textContent = `Kelly: %0.0 (NO BET)`;
+                    if (valDesc) {
+                        valDesc.innerHTML = `
+                            <span>Bu eşleşmede bahis şirketinin komisyonunu (%4.5 Vig) aşan belirgin bir fiyatlama avantajı bulunamadı.</span>
+                            <span class="px-2 py-1 rounded bg-slate-800 text-slate-400 font-bold text-[11px]">PAS GEÇ</span>
+                        `;
+                    }
+                    if (valDrivers) valDrivers.innerHTML = `<span class="text-[10px] text-slate-500">Her iki dövüşçü de piyasa beklentilerine yakın fiyatlanmış.</span>`;
                 }
 
                 // Populate Bet Market Selector
@@ -1347,6 +1712,230 @@
             if (profitEl) profitEl.textContent = `+$${netProfit.toFixed(2)}`;
             if (payoutEl) payoutEl.textContent = `$${totalPayout.toFixed(2)}`;
         }
+
+        // =========================================================================
+        // +EV VALUE RADAR SECTION LOGIC (MULTI-SPORTSBOOK & UPCOMING CARDS)
+        // =========================================================================
+        let currentMainTab = 'rankings';
+        let currentMinEv = 3.0;
+        let currentValueSource = 'upcoming';
+
+        function switchMainTab(tab) {
+            currentMainTab = tab;
+            const btnRankings = document.getElementById('navRankingsBtn');
+            const btnRadar = document.getElementById('navValueRadarBtn');
+            const tableCont = document.getElementById('tableContainer');
+            const cardsCont = document.getElementById('cardsContainer');
+            const filterBar = document.getElementById('filterBar');
+            const radarSec = document.getElementById('valueRadarSection');
+
+            if (tab === 'rankings') {
+                if (btnRankings) btnRankings.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-white shadow-sm';
+                if (btnRadar) btnRadar.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative';
+                
+                if (filterBar) filterBar.classList.remove('hidden');
+                if (currentView === 'table' && tableCont) tableCont.classList.remove('hidden');
+                if (currentView === 'cards' && cardsCont) cardsCont.classList.remove('hidden');
+                if (radarSec) radarSec.classList.add('hidden');
+            } else {
+                if (btnRadar) btnRadar.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-600/90 text-white shadow-sm relative';
+                if (btnRankings) btnRankings.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white';
+
+                if (filterBar) filterBar.classList.add('hidden');
+                if (tableCont) tableCont.classList.add('hidden');
+                if (cardsCont) cardsCont.classList.add('hidden');
+                if (radarSec) {
+                    radarSec.classList.remove('hidden');
+                    fetchValueBets(currentMinEv);
+                }
+            }
+        }
+
+        function switchValueSource(source) {
+            currentValueSource = source;
+            const btnUp = document.getElementById('srcUpcomingBtn');
+            const btnDiv = document.getElementById('srcDivisionalBtn');
+
+            if (source === 'upcoming') {
+                if (btnUp) btnUp.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-600 text-white shadow-md flex items-center gap-1.5';
+                if (btnDiv) btnDiv.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-1.5';
+            } else {
+                if (btnDiv) btnDiv.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-600 text-white shadow-md flex items-center gap-1.5';
+                if (btnUp) btnUp.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-1.5';
+            }
+            fetchValueBets(currentMinEv);
+        }
+
+        function filterValueBets(minEv) {
+            currentMinEv = minEv;
+            document.querySelectorAll('.ev-filter-pill').forEach(btn => {
+                if (parseFloat(btn.getAttribute('data-ev')) === minEv) {
+                    btn.className = 'ev-filter-pill px-3 py-1 rounded-lg text-xs font-bold transition-all bg-emerald-600 text-white';
+                } else {
+                    btn.className = 'ev-filter-pill px-3 py-1 rounded-lg text-xs font-bold transition-all bg-slate-800 text-slate-300 hover:text-white';
+                }
+            });
+            fetchValueBets(minEv);
+        }
+
+        function refreshValueBets() {
+            fetchValueBets(currentMinEv);
+        }
+
+        async function fetchValueBets(minEv = 3.0) {
+            const grid = document.getElementById('valueBetsGrid');
+            const countEl = document.getElementById('valueBetsCount');
+            if (grid) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-slate-400">
+                        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-500 mb-2"></div>
+                        <p class="text-xs font-bold">Gerçek Bahis Siteleri (DraftKings, FanDuel, BetMGM, Caesars) & 15 Biyometrik Boyut Taranıyor...</p>
+                    </div>
+                `;
+            }
+
+            try {
+                const res = await fetch(`/api/value-bets?source=${currentValueSource}&min_ev=${minEv}&limit=30`);
+                const data = await res.json();
+                
+                if (countEl) countEl.textContent = `${data.total_opportunities_found} Değerli Bahis Fırsatı`;
+
+                if (!data.signals || data.signals.length === 0) {
+                    if (grid) {
+                        grid.innerHTML = `
+                            <div class="col-span-full py-12 text-center glass-card rounded-2xl p-8 text-slate-400">
+                                <i data-lucide="shield-check" class="w-12 h-12 text-emerald-400 mx-auto mb-3"></i>
+                                <h4 class="font-bold text-white text-base">Bu Eşikte Aktif Fiyatlama Yanılgısı Bulunamadı</h4>
+                                <p class="text-xs text-slate-500 mt-1">Lütfen minimum +EV eşiğini düşürün veya farklı bir tarama moduna geçin.</p>
+                            </div>
+                        `;
+                    }
+                    if (window.lucide) lucide.createIcons();
+                    return;
+                }
+
+                if (grid) {
+                    grid.innerHTML = data.signals.map(s => {
+                        const tierColor = s.ev_pct >= 10.0 ? 'from-emerald-950/40 via-slate-900 to-slate-950 border-emerald-500/50 glow-green' : 'from-slate-900 via-slate-900 to-slate-950 border-emerald-500/20';
+                        
+                        // Render multi-sportsbook comparison chips
+                        const sbEntries = Object.entries(s.sportsbooks || {});
+                        let sbHtml = '';
+                        if (sbEntries.length > 0) {
+                            sbHtml = `
+                                <div class="mt-3 pt-2.5 border-t border-slate-800/80">
+                                    <span class="text-[10px] text-slate-400 uppercase font-bold block mb-1.5">📊 Bahis Siteleri Oran Karşılaştırması (Line Shopping):</span>
+                                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-[11px]">
+                                        ${sbEntries.map(([bName, bData]) => {
+                                            const isBest = (bData.decimal === s.best_book_odds);
+                                            const borderCls = isBest ? 'border-amber-400/60 bg-amber-500/10 text-amber-300 font-bold' : 'border-slate-800 bg-slate-950/70 text-slate-300';
+                                            return `
+                                                <div class="p-1.5 rounded-lg border ${borderCls} flex justify-between items-center px-2">
+                                                    <span class="truncate max-w-[80px]">${bName}:</span>
+                                                    <span class="font-mono ${isBest ? 'text-amber-400 font-black' : 'text-slate-200'}">
+                                                        ${bData.american || bData.decimal} ${isBest ? '⭐' : ''}
+                                                    </span>
+                                                </div>
+                                            `;
+                                        }).join('')}
+                                    </div>
+                                </div>
+                            `;
+                        }
+
+                        const eventBadge = s.event ? `
+                            <div class="flex items-center gap-1.5 text-[10px] text-amber-400 font-semibold mb-1">
+                                <i data-lucide="calendar" class="w-3 h-3"></i>
+                                <span>${s.event} ${s.date ? `(${s.date})` : ''}</span>
+                            </div>
+                        ` : '';
+
+                        return `
+                            <div class="glass-card bg-gradient-to-br ${tierColor} rounded-2xl p-5 border flex flex-col justify-between space-y-4 hover:border-emerald-500/60 transition-all shadow-xl">
+                                <div>
+                                    ${eventBadge}
+                                    <div class="flex justify-between items-start">
+                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 uppercase">
+                                            ${s.division || s.tier || '+EV Alpha'}
+                                        </span>
+                                        <span class="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1 shadow-sm">
+                                            <span>+${s.ev_pct}% EV</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mt-3">
+                                        <div class="flex items-baseline gap-1.5">
+                                            <span class="text-[10px] text-emerald-400 font-black uppercase">🎯 DEĞERLİ SEÇİM:</span>
+                                            <h3 class="font-display font-black text-xl text-white tracking-wide">${s.value_fighter || s.fighter}</h3>
+                                        </div>
+                                        <p class="text-xs text-slate-400 mt-0.5">vs <span class="font-semibold text-slate-200">${s.opponent}</span></p>
+                                    </div>
+
+                                    <!-- Odds & Probability Metric -->
+                                    <div class="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-slate-800/80 text-center">
+                                        <div class="p-2 rounded-xl bg-slate-950/70 border border-slate-800">
+                                            <span class="text-[10px] text-slate-400 block uppercase font-semibold">Model İhtimal</span>
+                                            <span class="font-display font-black text-emerald-400 text-sm">%${s.model_prob}</span>
+                                        </div>
+                                        <div class="p-2 rounded-xl bg-slate-950/70 border border-slate-800">
+                                            <span class="text-[10px] text-slate-400 block uppercase font-semibold">Adil Oran</span>
+                                            <span class="font-bold text-slate-200 text-sm">${s.fair_odds}</span>
+                                        </div>
+                                        <div class="p-2 rounded-xl bg-slate-950/70 border border-amber-500/40 bg-amber-500/5">
+                                            <span class="text-[10px] text-amber-400 block uppercase font-bold">En İyi Piyasa</span>
+                                            <span class="font-display font-black text-amber-400 text-sm">${s.best_book_odds || s.market_odds}</span>
+                                        </div>
+                                    </div>
+
+                                    ${sbHtml}
+
+                                    <!-- Edge Drivers Chips -->
+                                    <div class="mt-3 flex flex-wrap gap-1 text-[10px]">
+                                        ${(s.edge_drivers || []).map(d => `<span class="px-2 py-0.5 rounded bg-slate-800/90 text-emerald-300 border border-emerald-500/20 font-medium">${d}</span>`).join('')}
+                                    </div>
+                                </div>
+
+                                <div class="pt-3 border-t border-slate-800/80 flex justify-between items-center text-xs">
+                                    <div>
+                                        <span class="text-[10px] text-slate-400 block">Önerilen Bahis Payı</span>
+                                        <span class="font-bold text-amber-400">Quarter-Kelly: %${s.kelly_stake || s.kelly_stake_pct} Kasa</span>
+                                    </div>
+                                    <button onclick="quickSimulate('${encodeURIComponent(s.value_fighter || s.fighter)}', '${encodeURIComponent(s.opponent)}', '${encodeURIComponent(s.division || 'Lightweight')}')" class="px-3 py-1.5 rounded-lg bg-emerald-600/80 hover:bg-emerald-600 text-white font-bold text-xs transition-all flex items-center gap-1 shadow-md">
+                                        <i data-lucide="swords" class="w-3.5 h-3.5"></i>
+                                        <span>Simüle Et</span>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+                if (window.lucide) lucide.createIcons();
+            } catch (err) {
+                console.error("Failed to fetch value bets:", err);
+            }
+        }
+
+        function quickSimulate(f1Name, f2Name, divName) {
+            openSimulatorModal();
+            const s1 = document.getElementById('simFighter1');
+            const s2 = document.getElementById('simFighter2');
+            const sDiv = document.getElementById('simWeightClass');
+
+            const name1 = decodeURIComponent(f1Name);
+            const name2 = decodeURIComponent(f2Name);
+            const division = decodeURIComponent(divName);
+
+            if (s1) s1.value = name1;
+            if (s2) s2.value = name2;
+            if (sDiv) sDiv.value = division;
+
+            calculateSimulation();
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchValueBets(3.0);
+        });
     </script>
 </body>
 </html>
