@@ -1,0 +1,162 @@
+{
+  "gable steveson": {
+    "tier": "olympic_ncaa_d1_adcc",
+    "tier_level": 1,
+    "title": "🥇 Olympic Gold Medalist (Freestyle Wrestling) & 2x NCAA D1 National Champion (Dan Hodge Trophy)",
+    "prior_elo": 1650.0,
+    "grappling_anchor": 1820.0,
+    "striking_anchor": 1500.0,
+    "max_fights_decay": 3,
+    "notes": "Generational heavyweight wrestling ceiling; deliberately boxed in regional/early bouts with 0 takedown attempts."
+  },
+  "bo nickal": {
+    "tier": "olympic_ncaa_d1_adcc",
+    "tier_level": 1,
+    "title": "🥇 3x NCAA D1 National Champion & Dan Hodge Trophy Winner (Penn State Wrestling)",
+    "prior_elo": 1640.0,
+    "grappling_anchor": 1800.0,
+    "striking_anchor": 1500.0,
+    "max_fights_decay": 3,
+    "notes": "Elite collegiate wrestling pedigree, fast-track sub-1-minute finish velocity."
+  },
+  "alex pereira": {
+    "tier": "glory_k1_kickboxing",
+    "tier_level": 2,
+    "title": "🥊 Glory 2-Division World Champion (Middleweight & Light Heavyweight Kickboxing Hall of Famer)",
+    "prior_elo": 1620.0,
+    "grappling_anchor": 1400.0,
+    "striking_anchor": 1840.0,
+    "max_fights_decay": 4,
+    "notes": "Generational knockout power (Poatan left hook); elite distance striking evasion and timing."
+  },
+  "kayla harrison": {
+    "tier": "olympic_ncaa_d1_adcc",
+    "tier_level": 1,
+    "title": "🥇 2x Olympic Gold Medalist (Judo) & 2x PFL Women's Lightweight World Champion",
+    "prior_elo": 1660.0,
+    "grappling_anchor": 1850.0,
+    "striking_anchor": 1520.0,
+    "max_fights_decay": 3,
+    "notes": "Unmatched judo throw leverage, elite ground-and-pound control."
+  },
+  "henry cejudo": {
+    "tier": "olympic_ncaa_d1_adcc",
+    "tier_level": 1,
+    "title": "🥇 Olympic Freestyle Wrestling Gold Medalist (Beijing 2008)",
+    "prior_elo": 1650.0,
+    "grappling_anchor": 1820.0,
+    "striking_anchor": 1500.0,
+    "max_fights_decay": 3,
+    "notes": "Youngest American wrestling gold medalist in history; impenetrable counter-grappling."
+  },
+  "daniel cormier": {
+    "tier": "olympic_ncaa_d1_adcc",
+    "tier_level": 1,
+    "title": "🥇 2x US Olympic Freestyle Wrestling Team Captain & NCAA D1 All-American",
+    "prior_elo": 1650.0,
+    "grappling_anchor": 1820.0,
+    "striking_anchor": 1550.0,
+    "max_fights_decay": 3,
+    "notes": "Strikeforce Heavyweight GP champion; unmatched high-crotch slam leverage."
+  },
+  "michael chandler": {
+    "tier": "major_promotion_champ",
+    "tier_level": 3,
+    "title": "🏆 3x Bellator Lightweight World Champion & NCAA D1 All-American Wrestler",
+    "prior_elo": 1650.0,
+    "grappling_anchor": 1680.0,
+    "striking_anchor": 1660.0,
+    "max_fights_decay": 3,
+    "notes": "Immediate top-5 lightweight contender caliber upon UFC debut (KO over Dan Hooker)."
+  },
+  "justin gaethje": {
+    "tier": "major_promotion_champ",
+    "tier_level": 3,
+    "title": "🏆 Undefeated WSOF Lightweight World Champion & NCAA D1 All-American",
+    "prior_elo": 1640.0,
+    "grappling_anchor": 1660.0,
+    "striking_anchor": 1720.0,
+    "max_fights_decay": 3,
+    "notes": "Aggressive sprawl-and-brawl striker with 100% collegiate wrestling base."
+  },
+  "jiri prochazka": {
+    "tier": "major_promotion_champ",
+    "tier_level": 3,
+    "title": "🏆 RIZIN Light Heavyweight World Champion (Inaugural)",
+    "prior_elo": 1640.0,
+    "grappling_anchor": 1500.0,
+    "striking_anchor": 1750.0,
+    "max_fights_decay": 3,
+    "notes": "Elite knockout finishing rate across international promotions."
+  },
+  "eddie alvarez": {
+    "tier": "major_promotion_champ",
+    "tier_level": 3,
+    "title": "🏆 2x Bellator Lightweight World Champion & BodogFIGHT Welterweight Champion",
+    "prior_elo": 1640.0,
+    "grappling_anchor": 1620.0,
+    "striking_anchor": 1660.0,
+    "max_fights_decay": 3,
+    "notes": "Veteran world champion entering directly into top-ranked UFC matchups."
+  },
+  "israel adesanya": {
+    "tier": "glory_k1_kickboxing",
+    "tier_level": 2,
+    "title": "🥊 Glory Middleweight Contender Winner & 75-5 Professional Kickboxing Record",
+    "prior_elo": 1610.0,
+    "grappling_anchor": 1400.0,
+    "striking_anchor": 1800.0,
+    "max_fights_decay": 4,
+    "notes": "Elite distance sniper, feint mastery, and lateral counter-striking angles."
+  },
+  "mark o. madsen": {
+    "tier": "olympic_ncaa_d1_adcc",
+    "tier_level": 1,
+    "title": "🥈 Olympic Silver Medalist (Greco-Roman Wrestling, Rio 2016) & 5x World Championship Medalist",
+    "prior_elo": 1620.0,
+    "grappling_anchor": 1780.0,
+    "striking_anchor": 1450.0,
+    "max_fights_decay": 3,
+    "notes": "World-class Greco-Roman upper body clinch and body lock control."
+  },
+  "ben askren": {
+    "tier": "olympic_ncaa_d1_adcc",
+    "tier_level": 1,
+    "title": "🥇 US Olympian (Wrestling), 2x NCAA D1 Champion (Dan Hodge Trophy), Bellator & ONE World Champion",
+    "prior_elo": 1650.0,
+    "grappling_anchor": 1840.0,
+    "striking_anchor": 1350.0,
+    "max_fights_decay": 3,
+    "notes": "Funky style folkstyle wrestling, suffocating ride time."
+  },
+  "khamzat chimaev": {
+    "tier": "unbeaten_regional_phenom",
+    "tier_level": 4,
+    "title": "⚡ 3x Swedish National Freestyle Wrestling Champion & Undefeated 100% Finish Phenom",
+    "prior_elo": 1580.0,
+    "grappling_anchor": 1780.0,
+    "striking_anchor": 1600.0,
+    "max_fights_decay": 3,
+    "notes": "Historic zero-strike absorbed 3-fight start in UFC history."
+  },
+  "ilia topuria": {
+    "tier": "unbeaten_regional_phenom",
+    "tier_level": 4,
+    "title": "⚡ Greco-Roman Wrestling Base, BJJ Black Belt & Undefeated European Champion",
+    "prior_elo": 1570.0,
+    "grappling_anchor": 1680.0,
+    "striking_anchor": 1700.0,
+    "max_fights_decay": 3,
+    "notes": "Compact inside boxing power combined with submission versatility."
+  },
+  "shara magomedov": {
+    "tier": "unbeaten_regional_phenom",
+    "tier_level": 4,
+    "title": "⚡ Russian Muay Thai Champion & Undefeated Dagestani Striking Phenom",
+    "prior_elo": 1550.0,
+    "grappling_anchor": 1420.0,
+    "striking_anchor": 1720.0,
+    "max_fights_decay": 3,
+    "notes": "Unorthodox spinning attacks, elbows, and Muay Thai clinch knees."
+  }
+}

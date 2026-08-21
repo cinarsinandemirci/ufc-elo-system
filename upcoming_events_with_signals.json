@@ -3870,14 +3870,15 @@
           "fighter1": {
             "name": "Gable Steveson",
             "elo": 1525.2,
-            "effective_elo": 1530.0,
-            "model_prob": 61.3,
-            "fair_odds": 1.63,
+            "effective_elo": 1613.2,
+            "model_prob": 71.9,
+            "fair_odds": 1.39,
             "bookmaker_odds": 1.07,
-            "ev_pct": -34.45,
+            "ev_pct": -23.11,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
+              "🥇 Pedigree Prior (+83.2 Elo)",
               "⚡ Prime Speed (+4.8 Elo)"
             ],
             "components": {
@@ -3913,11 +3914,11 @@
             "name": "Sean Sharaf",
             "elo": 1447.8,
             "effective_elo": 1450.3,
-            "model_prob": 38.7,
-            "fair_odds": 2.58,
+            "model_prob": 28.1,
+            "fair_odds": 3.55,
             "bookmaker_odds": 9.5,
-            "ev_pct": 267.97,
-            "kelly_pct": 6.0,
+            "ev_pct": 167.35,
+            "kelly_pct": 4.9,
             "has_value": true,
             "edge_drivers": [
               "📏 +3.0\" Reach Edge (+2.5 Elo)"
@@ -4534,39 +4535,6 @@
       }
     },
     {
-      "event": "UFC 331",
-      "date": "September 19th",
-      "value_fighter": "Sean Sharaf",
-      "opponent": "Gable Steveson",
-      "model_prob": 38.7,
-      "fair_odds": 2.58,
-      "best_book_odds": 9.5,
-      "ev_pct": 267.97,
-      "kelly_stake": 6.0,
-      "tier": "💎 ULTRA VALUE",
-      "edge_drivers": [
-        "📏 +3.0\" Reach Edge (+2.5 Elo)"
-      ],
-      "sportsbooks": {
-        "BetMGM": {
-          "american": "+800",
-          "decimal": 9.0
-        },
-        "BetRivers": {
-          "american": "+850",
-          "decimal": 9.5
-        },
-        "Polymarket": {
-          "american": "+600",
-          "decimal": 7.0
-        },
-        "Kalshi": {
-          "american": "+850",
-          "decimal": 9.5
-        }
-      }
-    },
-    {
       "event": "UFC Sacramento",
       "date": "August 22nd",
       "value_fighter": "Elise Reed",
@@ -4636,6 +4604,39 @@
         "Kalshi": {
           "american": "+400",
           "decimal": 5.0
+        }
+      }
+    },
+    {
+      "event": "UFC 331",
+      "date": "September 19th",
+      "value_fighter": "Sean Sharaf",
+      "opponent": "Gable Steveson",
+      "model_prob": 28.1,
+      "fair_odds": 3.55,
+      "best_book_odds": 9.5,
+      "ev_pct": 167.35,
+      "kelly_stake": 4.9,
+      "tier": "💎 ULTRA VALUE",
+      "edge_drivers": [
+        "📏 +3.0\" Reach Edge (+2.5 Elo)"
+      ],
+      "sportsbooks": {
+        "BetMGM": {
+          "american": "+800",
+          "decimal": 9.0
+        },
+        "BetRivers": {
+          "american": "+850",
+          "decimal": 9.5
+        },
+        "Polymarket": {
+          "american": "+600",
+          "decimal": 7.0
+        },
+        "Kalshi": {
+          "american": "+850",
+          "decimal": 9.5
         }
       }
     },

@@ -18,6 +18,16 @@ UPCOMING_FILE = os.path.join(DATA_DIR, "upcoming_events_with_signals.json")
 ARCHETYPES_FILE = os.path.join(DATA_DIR, "fighter_archetypes.json")
 ROLLING_FILE = os.path.join(DATA_DIR, "fighter_rolling_features.json")
 ADVANCED_RESULTS_FILE = os.path.join(DATA_DIR, "advanced_model_results.json")
+PEDIGREE_FILE = os.path.join(DATA_DIR, "pedigree_database.json")
+
+from pedigree_engine import PedigreeCalibrationEngine
+pedigree_engine = PedigreeCalibrationEngine(PEDIGREE_FILE)
+
+try:
+    from method_of_victory_engine import MethodOfVictoryPredictor
+    mov_engine = MethodOfVictoryPredictor()
+except Exception:
+    mov_engine = None
 
 # In-Memory Cache Store
 _CACHE = {
@@ -485,8 +495,17 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
     inact_decay_1 = calc_decay(last_1, f1['elo'])
     inact_decay_2 = calc_decay(last_2, f2['elo'])
 
-    eff_elo_1 = f1['elo'] - inact_decay_1 + size_adj_1 + age_adj_1 + reach_adj_1 + stance_adj_1 + chin_adj_1 + style_shift
-    eff_elo_2 = f2['elo'] - inact_decay_2 + size_adj_2 + age_adj_2 + reach_adj_2 + stance_adj_2 + chin_adj_2
+    # 5. Bayesian Pre-UFC Combat Pedigree Prior & Latent Skill Imputation
+    c1_raw = _CACHE.get('components', {}).get(f1['name'].lower(), {})
+    c2_raw = _CACHE.get('components', {}).get(f2['name'].lower(), {})
+    ped1 = pedigree_engine.calibrate_fighter_ratings(f1['name'], f1['elo'], f1.get('total_fights', 0), c1_raw)
+    ped2 = pedigree_engine.calibrate_fighter_ratings(f2['name'], f2['elo'], f2.get('total_fights', 0), c2_raw)
+
+    ped_adj_1 = round(ped1['effective_elo'] - f1['elo'], 1) if ped1.get('pedigree_active') else 0.0
+    ped_adj_2 = round(ped2['effective_elo'] - f2['elo'], 1) if ped2.get('pedigree_active') else 0.0
+
+    eff_elo_1 = f1['elo'] - inact_decay_1 + size_adj_1 + age_adj_1 + reach_adj_1 + stance_adj_1 + chin_adj_1 + style_shift + ped_adj_1
+    eff_elo_2 = f2['elo'] - inact_decay_2 + size_adj_2 + age_adj_2 + reach_adj_2 + stance_adj_2 + chin_adj_2 + ped_adj_2
 
     # Model Probabilities
     prob1 = 1.0 / (1.0 + 10.0 ** ((eff_elo_2 - eff_elo_1) / 400.0))
@@ -559,12 +578,14 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
     # Edge Drivers
     drivers_1 = []
     drivers_2 = []
+    if ped_adj_1 > 0: drivers_1.append(f"🥇 Fast-Track Pedigree: {ped1.get('pedigree_title', 'Elite Title')} (+{round(ped_adj_1, 1)} Elo)")
     if age_adj_1 > 0: drivers_1.append(f"⚡ Prime Speed Edge (+{round(age_adj_1, 1)} Elo)")
     if age_adj_2 < 0: drivers_1.append(f"⚠️ Opponent Age Cliff ({round(age_adj_2, 1)} Elo)")
     if reach_adj_1 > 0: drivers_1.append(f"📏 +{round(reach_gap, 1)}\" Reach Advantage (+{round(reach_adj_1, 1)} Elo)")
     if stance_adj_1 > 0: drivers_1.append(f"🥊 Open Stance Southpaw Angle (+{round(stance_adj_1, 1)} Elo)")
     if f1_tdd >= 80.0 and g2 > 15.0: drivers_1.append(f"🛡️ {round(f1_tdd)}% TDD Neutralizer")
 
+    if ped_adj_2 > 0: drivers_2.append(f"🥇 Fast-Track Pedigree: {ped2.get('pedigree_title', 'Elite Title')} (+{round(ped_adj_2, 1)} Elo)")
     if age_adj_2 > 0: drivers_2.append(f"⚡ Prime Speed Edge (+{round(age_adj_2, 1)} Elo)")
     if age_adj_1 < 0: drivers_2.append(f"⚠️ Opponent Age Cliff ({round(age_adj_1, 1)} Elo)")
     if reach_adj_2 > 0: drivers_2.append(f"📏 +{round(-reach_gap, 1)}\" Reach Advantage (+{round(reach_adj_2, 1)} Elo)")
@@ -587,9 +608,10 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
 
     # Phase 3: Method of Victory & Round Prop Engine
     try:
-        from method_of_victory_engine import MethodOfVictoryPredictor
-        mov_engine = MethodOfVictoryPredictor()
-        mov_props = mov_engine.predict_detailed_props(f1['name'], f2['name'], prob1, target_div_name)
+        if mov_engine is not None:
+            mov_props = mov_engine.predict_detailed_props(f1['name'], f2['name'], prob1, target_div_name)
+        else:
+            raise RuntimeError("mov_engine is None")
     except Exception as e:
         mov_props = {
             'f1_methods': {'ko_tko': f1_ko_pct, 'submission': f1_sub_pct, 'decision': f1_dec_pct},
@@ -669,10 +691,11 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
             'is_active': f1.get('is_active', True),
             'months_inactive': f1.get('months_inactive', 0.0),
             'uncertainty_mult': u1,
+            'pedigree': ped1,
             'components': {
-                'striking_elo': c1.get('striking_elo', 1500.0),
-                'grappling_elo': c1.get('grappling_elo', 1500.0),
-                'cardio_elo': c1.get('cardio_elo', 1500.0)
+                'striking_elo': ped1['comp_elos'].get('striking_elo', c1.get('striking_elo', 1500.0)),
+                'grappling_elo': ped1['comp_elos'].get('grappling_elo', c1.get('grappling_elo', 1500.0)),
+                'cardio_elo': ped1['comp_elos'].get('cardio_elo', c1.get('cardio_elo', 1500.0))
             }
         },
         'fighter2': {
@@ -707,10 +730,11 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
             'win_by_finish_delta': f2_dom_fin_delta,
             'weight_class': f2['primary_weight_class'],
             'is_active': f2.get('is_active', True),
+            'pedigree': ped2,
             'components': {
-                'striking_elo': c2.get('striking_elo', 1500.0),
-                'grappling_elo': c2.get('grappling_elo', 1500.0),
-                'cardio_elo': c2.get('cardio_elo', 1500.0)
+                'striking_elo': ped2['comp_elos'].get('striking_elo', c2.get('striking_elo', 1500.0)),
+                'grappling_elo': ped2['comp_elos'].get('grappling_elo', c2.get('grappling_elo', 1500.0)),
+                'cardio_elo': ped2['comp_elos'].get('cardio_elo', c2.get('cardio_elo', 1500.0))
             }
         },
         'biometrics': {
@@ -722,7 +746,9 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
                 'stance': f1_stance,
                 'tdd_pct': f1_tdd,
                 'slpm': f1_slpm,
+                'pedigree': ped1,
                 'adjustments': {
+                    'pedigree_elo': round(ped_adj_1, 1),
                     'age_elo': round(age_adj_1, 1),
                     'reach_elo': round(reach_adj_1, 1),
                     'stance_elo': round(stance_adj_1, 1),
@@ -737,7 +763,9 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
                 'stance': f2_stance,
                 'tdd_pct': f2_tdd,
                 'slpm': f2_slpm,
+                'pedigree': ped2,
                 'adjustments': {
+                    'pedigree_elo': round(ped_adj_2, 1),
                     'age_elo': round(age_adj_2, 1),
                     'reach_elo': round(reach_adj_2, 1),
                     'stance_elo': round(stance_adj_2, 1),

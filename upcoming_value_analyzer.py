@@ -3,6 +3,7 @@ import re
 import sys
 from datetime import datetime
 from elo_engine import UFCEloEngine, DIVISION_HIERARCHY
+from pedigree_engine import PedigreeCalibrationEngine
 
 sys.stdout.reconfigure(encoding='utf-8')
 
@@ -24,6 +25,7 @@ with open('fighter_component_elos.json', 'r', encoding='utf-8') as f:
     comp_db = json.load(f)
 
 engine = UFCEloEngine(base_elo=1500.0, base_k=40.0, decay_per_month=7.5, inactivity_threshold_months=18.0)
+pedigree_engine = PedigreeCalibrationEngine()
 
 def find_fighter(name):
     key = name.strip().lower()
@@ -117,8 +119,14 @@ def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
     d1 = engine.calculate_inactivity_and_decay(f1_obj.get('last_fight_date', '2025-01-01'), '2026-08-21', f1_obj['elo'])
     d2 = engine.calculate_inactivity_and_decay(f2_obj.get('last_fight_date', '2025-01-01'), '2026-08-21', f2_obj['elo'])
 
-    eff_1 = f1_obj['elo'] - d1['decay'] + size_adj_1 + age_adj_1 + reach_adj_1 + stance_adj_1 + style_shift
-    eff_2 = f2_obj['elo'] - d2['decay'] + size_adj_2 + age_adj_2 + reach_adj_2 + stance_adj_2
+    # 4. Bayesian Pre-UFC Combat Pedigree Prior
+    ped1 = pedigree_engine.calibrate_fighter_ratings(f1_obj['name'], f1_obj['elo'], f1_obj.get('total_fights', 0), comp_db.get(f1_obj['name'].lower()))
+    ped2 = pedigree_engine.calibrate_fighter_ratings(f2_obj['name'], f2_obj['elo'], f2_obj.get('total_fights', 0), comp_db.get(f2_obj['name'].lower()))
+    ped_adj_1 = round(ped1['effective_elo'] - f1_obj['elo'], 1) if ped1.get('pedigree_active') else 0.0
+    ped_adj_2 = round(ped2['effective_elo'] - f2_obj['elo'], 1) if ped2.get('pedigree_active') else 0.0
+
+    eff_1 = f1_obj['elo'] - d1['decay'] + size_adj_1 + age_adj_1 + reach_adj_1 + stance_adj_1 + style_shift + ped_adj_1
+    eff_2 = f2_obj['elo'] - d2['decay'] + size_adj_2 + age_adj_2 + reach_adj_2 + stance_adj_2 + ped_adj_2
 
     p1 = 1.0 / (1.0 + 10.0 ** ((eff_2 - eff_1) / 400.0))
     p2 = 1.0 - p1
@@ -142,12 +150,14 @@ def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
 
     drivers_1 = []
     drivers_2 = []
+    if ped_adj_1 > 0: drivers_1.append(f"🥇 Pedigree Prior (+{round(ped_adj_1, 1)} Elo)")
     if age_adj_1 > 0: drivers_1.append(f"⚡ Prime Speed (+{round(age_adj_1, 1)} Elo)")
     if age_adj_2 < 0: drivers_1.append(f"⚠️ Opponent Age Cliff ({round(age_adj_2, 1)} Elo)")
     if reach_adj_1 > 0: drivers_1.append(f"📏 +{round(reach_gap, 1)}\" Reach Edge (+{round(reach_adj_1, 1)} Elo)")
     if stance_adj_1 > 0: drivers_1.append(f"🥊 Open Stance Southpaw (+{round(stance_adj_1, 1)} Elo)")
     if tdd1 >= 80.0 and g2 > 10.0: drivers_1.append(f"🛡️ {round(tdd1)}% TDD Wall")
 
+    if ped_adj_2 > 0: drivers_2.append(f"🥇 Pedigree Prior (+{round(ped_adj_2, 1)} Elo)")
     if age_adj_2 > 0: drivers_2.append(f"⚡ Prime Speed (+{round(age_adj_2, 1)} Elo)")
     if age_adj_1 < 0: drivers_2.append(f"⚠️ Opponent Age Cliff ({round(age_adj_1, 1)} Elo)")
     if reach_adj_2 > 0: drivers_2.append(f"📏 +{round(-reach_gap, 1)}\" Reach Edge (+{round(reach_adj_2, 1)} Elo)")

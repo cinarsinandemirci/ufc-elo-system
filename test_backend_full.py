@@ -47,6 +47,7 @@ data_files = [
     ("upcoming_raw_odds.json", 1, 100),
     ("advanced_model_results.json", 1, 10),
     ("all_time_comparison.json", 40, 60),
+    ("pedigree_database.json", 10, 100),
 ]
 
 for filename, min_count, max_count in data_files:
@@ -163,6 +164,15 @@ for f1, f2, p1, div in test_pairs:
         props_valid = False
 
 run_assertion("Method of Victory probabilities partition cleanly across all test pairs", props_valid)
+
+# Pedigree Engine Verification
+from pedigree_engine import PedigreeCalibrationEngine
+ped_engine = PedigreeCalibrationEngine()
+gable_test = ped_engine.calibrate_fighter_ratings("Gable Steveson", 1500.0, 0)
+islam_test = ped_engine.calibrate_fighter_ratings("Islam Makhachev", 1864.0, 16)
+
+run_assertion("Gable Steveson correctly receives 1650 Prior Elo & 1820 Grappling Anchor", gable_test['effective_elo'] == 1650.0 and gable_test['comp_elos']['grappling_elo'] == 1820.0)
+run_assertion("Islam Makhachev (16 fights) has alpha=0.0 and 0.00% pedigree inflation", islam_test['effective_elo'] == 1864.0 and islam_test['alpha_decay'] == 0.0)
 
 # =========================================================================
 # TEST SUITE 4: LIVE FLASK BACKEND REST API ENDPOINTS

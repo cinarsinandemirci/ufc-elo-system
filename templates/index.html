@@ -1553,6 +1553,7 @@
                     // Chips
                     if (chips1) {
                         const cList = [];
+                        if (b1.adjustments.pedigree_elo && b1.adjustments.pedigree_elo > 0) cList.push(`<span class="px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-300 border border-yellow-500/40 font-semibold">🥇 Fast-Track Pedigree: +${b1.adjustments.pedigree_elo}</span>`);
                         if (b1.adjustments.reach_elo > 0) cList.push(`<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">📏 Reach: +${b1.adjustments.reach_elo}</span>`);
                         if (b1.adjustments.age_elo !== 0) cList.push(`<span class="px-2 py-0.5 rounded ${b1.adjustments.age_elo > 0 ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : 'bg-rose-500/20 text-rose-400 border-rose-500/30'}">🎂 Age: ${b1.adjustments.age_elo > 0 ? '+' : ''}${b1.adjustments.age_elo}</span>`);
                         if (b1.adjustments.stance_elo > 0) cList.push(`<span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-400 border border-sky-500/30">🥊 Stance: +${b1.adjustments.stance_elo}</span>`);
@@ -1563,6 +1564,7 @@
 
                     if (chips2) {
                         const cList2 = [];
+                        if (b2.adjustments.pedigree_elo && b2.adjustments.pedigree_elo > 0) cList2.push(`<span class="px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-300 border border-yellow-500/40 font-semibold">🥇 Fast-Track Pedigree: +${b2.adjustments.pedigree_elo}</span>`);
                         if (b2.adjustments.reach_elo > 0) cList2.push(`<span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">📏 Reach: +${b2.adjustments.reach_elo}</span>`);
                         if (b2.adjustments.age_elo !== 0) cList2.push(`<span class="px-2 py-0.5 rounded ${b2.adjustments.age_elo > 0 ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' : 'bg-rose-500/20 text-rose-400 border-rose-500/30'}">🎂 Age: ${b2.adjustments.age_elo > 0 ? '+' : ''}${b2.adjustments.age_elo}</span>`);
                         if (b2.adjustments.stance_elo > 0) cList2.push(`<span class="px-2 py-0.5 rounded bg-sky-500/20 text-sky-400 border border-sky-500/30">🥊 Stance: +${b2.adjustments.stance_elo}</span>`);
