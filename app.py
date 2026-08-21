@@ -360,13 +360,66 @@ def simulate_matchup():
     f2_dec_delta = round((k_base * 1.0 * u2) * (1.0 - prob2), 1)
     f2_dom_fin_delta = round((k_base * 1.5 * 1.2 * u2) * (1.0 - prob2), 1)
 
+    # Helper for UFC Betting Odds Conversions
+    def to_odds(p):
+        p_safe = max(0.005, min(0.995, p))
+        # Fair American
+        if p_safe >= 0.5:
+            american_fair = f"-{round((p_safe / (1.0 - p_safe)) * 100)}"
+        else:
+            american_fair = f"+{round(((1.0 - p_safe) / p_safe) * 100)}"
+        
+        # Decimal Odds
+        decimal_fair = round(1.0 / p_safe, 2)
+        
+        return {
+            'american': american_fair,
+            'decimal': decimal_fair,
+            'implied_prob': round(p_safe * 100, 1)
+        }
+
+    # Vegas Bookmaker Lines with standard 4.5% market vig
+    def to_vegas_odds(p_w, p_l):
+        # Apply ~4.5% total overround
+        vig_mult = 1.045
+        p1_vig = (p_w * vig_mult) / (p_w + p_l)
+        p2_vig = (p_l * vig_mult) / (p_w + p_l)
+        
+        o1 = to_odds(p1_vig / vig_mult) # fair
+        o2 = to_odds(p2_vig / vig_mult)
+        
+        # Vegas adjusted lines
+        if p_w >= 0.5:
+            v1 = f"-{round((p1_vig / (1.0 - p1_vig + 0.0001)) * 100)}"
+            v2 = f"+{round(((1.0 - p2_vig + 0.0001) / p2_vig) * 100)}"
+        else:
+            v1 = f"+{round(((1.0 - p1_vig + 0.0001) / p1_vig) * 100)}"
+            v2 = f"-{round((p2_vig / (1.0 - p2_vig + 0.0001)) * 100)}"
+            
+        return v1, v2
+
+    v1_line, v2_line = to_vegas_odds(prob1, prob2)
+
+    # Prop Bet Odds
+    props = {
+        'over_2_5_rounds': to_odds(over_2_5 / 100.0),
+        'under_2_5_rounds': to_odds(under_2_5 / 100.0),
+        'f1_ko_tko': to_odds(f1_ko_pct / 100.0),
+        'f1_submission': to_odds(f1_sub_pct / 100.0),
+        'f1_decision': to_odds(f1_dec_pct / 100.0),
+        'f2_ko_tko': to_odds(f2_ko_pct / 100.0),
+        'f2_submission': to_odds(f2_sub_pct / 100.0),
+        'f2_decision': to_odds(f2_dec_pct / 100.0)
+    }
+
     return jsonify({
         'bout_context': {
             'simulated_weight_class': target_div_name,
             'is_title': is_title,
             'style_shift': round(style_shift, 1),
             'over_2_5_rounds': over_2_5,
-            'under_2_5_rounds': under_2_5
+            'under_2_5_rounds': under_2_5,
+            'props': props
         },
         'fighter1': {
             'name': f1['name'],
@@ -377,6 +430,10 @@ def simulate_matchup():
             'size_adjustment': round(size_adj_1, 1),
             'grappling_index': round(g1, 1),
             'striking_index': round(s1, 1),
+            'odds': {
+                'fair': to_odds(prob1),
+                'vegas_line': v1_line
+            },
             'methods': {
                 'ko_tko_pct': f1_ko_pct,
                 'submission_pct': f1_sub_pct,
@@ -398,6 +455,10 @@ def simulate_matchup():
             'size_adjustment': round(size_adj_2, 1),
             'grappling_index': round(g2, 1),
             'striking_index': round(s2, 1),
+            'odds': {
+                'fair': to_odds(prob2),
+                'vegas_line': v2_line
+            },
             'methods': {
                 'ko_tko_pct': f2_ko_pct,
                 'submission_pct': f2_sub_pct,

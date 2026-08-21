@@ -553,6 +553,90 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- UFC Broadcast Fight Odds & Payout Calculator -->
+                    <div class="p-4 rounded-xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-amber-500/30 space-y-4">
+                        <div class="flex flex-wrap justify-between items-center border-b border-slate-800 pb-2.5 gap-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                                    <i data-lucide="calculator" class="w-4 h-4"></i>
+                                </span>
+                                <div>
+                                    <h4 class="font-display font-black text-sm text-white tracking-wide">UFC FIGHT ODDS & PAYOUT CALCULATOR</h4>
+                                    <p class="text-[10px] text-slate-400">Vegas Moneyline & Prop Bets with Real-time Payout Estimation</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1.5 text-xs">
+                                <span class="text-[11px] text-slate-400 font-medium">Odds:</span>
+                                <span class="px-2 py-0.5 rounded bg-rose-600/30 text-rose-300 font-bold border border-rose-500/30 text-[11px]" id="simOddsMode">American / Decimal</span>
+                            </div>
+                        </div>
+
+                        <!-- Vegas Odds Badges Strip -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+                            <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
+                                <span class="text-[10px] text-slate-400 block truncate" id="simOddsName1">Fighter 1</span>
+                                <span class="font-display font-black text-base text-amber-400" id="simMoneyline1">-320</span>
+                                <span class="text-[10px] text-slate-400 block" id="simDecOdds1">(1.31)</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
+                                <span class="text-[10px] text-slate-400 block truncate" id="simOddsName2">Fighter 2</span>
+                                <span class="font-display font-black text-base text-amber-400" id="simMoneyline2">+320</span>
+                                <span class="text-[10px] text-slate-400 block" id="simDecOdds2">(4.20)</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
+                                <span class="text-[10px] text-slate-400 block">Over 2.5 Rds</span>
+                                <span class="font-display font-black text-base text-emerald-400" id="simOddsOver">-160</span>
+                                <span class="text-[10px] text-slate-400 block" id="simDecOddsOver">(1.63)</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
+                                <span class="text-[10px] text-slate-400 block">Under 2.5 Rds</span>
+                                <span class="font-display font-black text-base text-rose-400" id="simOddsUnder">+160</span>
+                                <span class="text-[10px] text-slate-400 block" id="simDecOddsUnder">(2.60)</span>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Bet Simulator Form -->
+                        <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 space-y-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-[10px] font-bold uppercase text-slate-400 mb-1">Select Bet Market</label>
+                                    <select id="betMarketSelect" onchange="updateBetPayout()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:border-amber-500">
+                                        <!-- Dynamically populated -->
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-bold uppercase text-slate-400 mb-1">Stake Amount ($ USD)</label>
+                                    <div class="flex items-center space-x-2">
+                                        <div class="relative w-full">
+                                            <span class="absolute left-2.5 top-1.5 text-xs text-slate-400">$</span>
+                                            <input type="number" id="betStakeInput" value="100" min="1" oninput="updateBetPayout()" class="w-full bg-slate-900 border border-slate-700 rounded-lg pl-6 pr-2 py-1.5 text-xs text-white font-bold focus:border-amber-500">
+                                        </div>
+                                        <button type="button" onclick="setQuickStake(50)" class="px-2 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-[10px] font-bold text-slate-300">$50</button>
+                                        <button type="button" onclick="setQuickStake(100)" class="px-2 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-[10px] font-bold text-slate-300">$100</button>
+                                        <button type="button" onclick="setQuickStake(250)" class="px-2 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-[10px] font-bold text-slate-300">$250</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Payout Output Cards -->
+                            <div class="grid grid-cols-3 gap-2 text-center pt-2 border-t border-slate-800/80">
+                                <div class="p-2 rounded-lg bg-slate-900/90 border border-slate-800">
+                                    <span class="text-[9px] text-slate-400 block uppercase font-medium">Implied Win Chance</span>
+                                    <span class="font-display font-black text-sm text-sky-400" id="betImpliedProb">--%</span>
+                                </div>
+                                <div class="p-2 rounded-lg bg-slate-900/90 border border-slate-800">
+                                    <span class="text-[9px] text-slate-400 block uppercase font-medium">Net Profit</span>
+                                    <span class="font-display font-black text-sm text-emerald-400" id="betNetProfit">+$0.00</span>
+                                </div>
+                                <div class="p-2 rounded-lg bg-slate-900/90 border border-slate-800">
+                                    <span class="text-[9px] text-slate-400 block uppercase font-medium">Total Payout</span>
+                                    <span class="font-display font-black text-sm text-amber-400" id="betTotalPayout">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             </div>
@@ -1122,34 +1206,89 @@
                 if (d1) d1.textContent = `+${data.fighter1.win_by_decision_delta} Elo`;
                 if (fn1) fn1.textContent = `+${data.fighter1.win_by_finish_delta} Elo`;
 
-                // Fighter 2
-                const n2 = document.getElementById('simName2');
-                const p2 = document.getElementById('simProb2');
-                const m2 = document.getElementById('simMeta2');
-                const ko2 = document.getElementById('simKo2');
-                const sub2 = document.getElementById('simSub2');
-                const dec2 = document.getElementById('simDec2');
-                const d2 = document.getElementById('simDecDelta2');
-                const fn2 = document.getElementById('simFinDelta2');
+                // Populate UFC Broadcast Odds Strip
+                const oddsName1 = document.getElementById('simOddsName1');
+                const oddsName2 = document.getElementById('simOddsName2');
+                const ml1 = document.getElementById('simMoneyline1');
+                const ml2 = document.getElementById('simMoneyline2');
+                const dec1 = document.getElementById('simDecOdds1');
+                const dec2 = document.getElementById('simDecOdds2');
+                const oddsOver = document.getElementById('simOddsOver');
+                const decOddsOver = document.getElementById('simDecOddsOver');
+                const oddsUnder = document.getElementById('simOddsUnder');
+                const decOddsUnder = document.getElementById('simDecOddsUnder');
 
-                if (n2) n2.textContent = data.fighter2.name;
-                if (p2) p2.textContent = `${data.fighter2.win_probability}%`;
-                if (m2) {
-                    const sizeAdj = data.fighter2.size_adjustment;
-                    const sizeTxt = sizeAdj < 0 ? ` (Size Disadv: ${sizeAdj} Elo)` : '';
-                    m2.textContent = `Base: ${data.fighter2.elo} | Eff: ${data.fighter2.effective_elo}${sizeTxt}`;
+                if (oddsName1) oddsName1.textContent = data.fighter1.name;
+                if (oddsName2) oddsName2.textContent = data.fighter2.name;
+
+                if (ml1) ml1.textContent = data.fighter1.odds ? data.fighter1.odds.vegas_line : `${data.fighter1.win_probability}%`;
+                if (ml2) ml2.textContent = data.fighter2.odds ? data.fighter2.odds.vegas_line : `${data.fighter2.win_probability}%`;
+                if (dec1 && data.fighter1.odds) dec1.textContent = `(${data.fighter1.odds.fair.decimal})`;
+                if (dec2 && data.fighter2.odds) dec2.textContent = `(${data.fighter2.odds.fair.decimal})`;
+
+                if (data.bout_context.props) {
+                    const pr = data.bout_context.props;
+                    if (oddsOver) oddsOver.textContent = pr.over_2_5_rounds.american;
+                    if (decOddsOver) decOddsOver.textContent = `(${pr.over_2_5_rounds.decimal})`;
+                    if (oddsUnder) oddsUnder.textContent = pr.under_2_5_rounds.american;
+                    if (decOddsUnder) decOddsUnder.textContent = `(${pr.under_2_5_rounds.decimal})`;
                 }
-                if (ko2) ko2.textContent = `${data.fighter2.methods.ko_tko_pct}%`;
-                if (sub2) sub2.textContent = `${data.fighter2.methods.submission_pct}%`;
-                if (dec2) dec2.textContent = `${data.fighter2.methods.decision_pct}%`;
-                if (d2) d2.textContent = `+${data.fighter2.win_by_decision_delta} Elo`;
-                if (fn2) fn2.textContent = `+${data.fighter2.win_by_finish_delta} Elo`;
+
+                // Populate Bet Market Selector
+                const betSelect = document.getElementById('betMarketSelect');
+                if (betSelect && data.fighter1.odds && data.bout_context.props) {
+                    const pr = data.bout_context.props;
+                    betSelect.innerHTML = `
+                        <option value="${data.fighter1.odds.fair.decimal}" data-prob="${data.fighter1.win_probability}">${data.fighter1.name} Moneyline (${data.fighter1.odds.vegas_line})</option>
+                        <option value="${data.fighter2.odds.fair.decimal}" data-prob="${data.fighter2.win_probability}">${data.fighter2.name} Moneyline (${data.fighter2.odds.vegas_line})</option>
+                        <option value="${pr.over_2_5_rounds.decimal}" data-prob="${data.bout_context.over_2_5_rounds}">Fight Goes Over 2.5 Rounds (${pr.over_2_5_rounds.american})</option>
+                        <option value="${pr.under_2_5_rounds.decimal}" data-prob="${data.bout_context.under_2_5_rounds}">Fight Goes Under 2.5 Rounds (${pr.under_2_5_rounds.american})</option>
+                        <option value="${pr.f1_submission.decimal}" data-prob="${data.fighter1.methods.submission_pct}">${data.fighter1.name} by Submission (${pr.f1_submission.american})</option>
+                        <option value="${pr.f1_ko_tko.decimal}" data-prob="${data.fighter1.methods.ko_tko_pct}">${data.fighter1.name} by KO/TKO (${pr.f1_ko_tko.american})</option>
+                        <option value="${pr.f1_decision.decimal}" data-prob="${data.fighter1.methods.decision_pct}">${data.fighter1.name} by Decision (${pr.f1_decision.american})</option>
+                        <option value="${pr.f2_ko_tko.decimal}" data-prob="${data.fighter2.methods.ko_tko_pct}">${data.fighter2.name} by KO/TKO (${pr.f2_ko_tko.american})</option>
+                        <option value="${pr.f2_submission.decimal}" data-prob="${data.fighter2.methods.submission_pct}">${data.fighter2.name} by Submission (${pr.f2_submission.american})</option>
+                        <option value="${pr.f2_decision.decimal}" data-prob="${data.fighter2.methods.decision_pct}">${data.fighter2.name} by Decision (${pr.f2_decision.american})</option>
+                    `;
+                    updateBetPayout();
+                }
 
                 const results = document.getElementById('simResults');
                 if (results) results.classList.remove('hidden');
+                if (window.lucide) lucide.createIcons();
             } catch (err) {
                 console.error("Simulation failed:", err);
             }
+        }
+
+        function setQuickStake(amount) {
+            const input = document.getElementById('betStakeInput');
+            if (input) {
+                input.value = amount;
+                updateBetPayout();
+            }
+        }
+
+        function updateBetPayout() {
+            const select = document.getElementById('betMarketSelect');
+            const stakeInput = document.getElementById('betStakeInput');
+            if (!select || !stakeInput) return;
+
+            const decimalOdds = parseFloat(select.value) || 2.0;
+            const stake = parseFloat(stakeInput.value) || 0;
+            const selectedOpt = select.options[select.selectedIndex];
+            const prob = selectedOpt ? selectedOpt.getAttribute('data-prob') : '50.0';
+
+            const totalPayout = stake * decimalOdds;
+            const netProfit = totalPayout - stake;
+
+            const probEl = document.getElementById('betImpliedProb');
+            const profitEl = document.getElementById('betNetProfit');
+            const payoutEl = document.getElementById('betTotalPayout');
+
+            if (probEl) probEl.textContent = `${prob}%`;
+            if (profitEl) profitEl.textContent = `+$${netProfit.toFixed(2)}`;
+            if (payoutEl) payoutEl.textContent = `$${totalPayout.toFixed(2)}`;
         }
     </script>
 </body>
