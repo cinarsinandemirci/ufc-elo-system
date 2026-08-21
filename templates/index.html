@@ -653,12 +653,18 @@
         let searchTimeout = null;
         let p4pKingName = "Islam Makhachev";
 
-        document.addEventListener('DOMContentLoaded', () => {
-            if (window.lucide) lucide.createIcons();
+        function initApp() {
+            try { if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons(); } catch (e) {}
             loadStats();
             loadWeightClasses();
             fetchRankings();
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp();
+        }
 
         async function loadStats() {
             try {
@@ -1121,18 +1127,32 @@
             if (modal) modal.classList.add('hidden');
         }
 
-        function openSimulatorModal() {
+        async function openSimulatorModal() {
             const modal = document.getElementById('simulatorModal');
             if (modal) modal.classList.remove('hidden');
 
             const s1 = document.getElementById('simFighter1');
             const s2 = document.getElementById('simFighter2');
-            if (s1 && s2 && (s1.children.length === 0 || s1.options.length < 2)) {
-                populateSimulatorSelects(allFighters);
+            
+            if (s1 && s2 && s1.options.length < 2) {
+                if (allFighters && allFighters.length > 0) {
+                    populateSimulatorSelects(allFighters);
+                } else {
+                    try {
+                        const res = await fetch('/api/rankings?weight_class=all&active_only=true');
+                        const data = await res.json();
+                        if (data.fighters) {
+                            allFighters = data.fighters;
+                            populateSimulatorSelects(allFighters);
+                        }
+                    } catch (e) {
+                        console.error("Could not fetch fighters for simulator:", e);
+                    }
+                }
             }
 
             calculateSimulation();
-            try { if (window.lucide) lucide.createIcons(); } catch (e) {}
+            try { if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons(); } catch (e) {}
         }
 
         function closeSimulatorModal() {
