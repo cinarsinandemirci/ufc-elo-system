@@ -354,12 +354,12 @@
           "date": "August 22nd",
           "fighter1": {
             "name": "Anthony Hernandez",
-            "elo": 1651.1,
-            "effective_elo": 1651.1,
+            "elo": 1651.9,
+            "effective_elo": 1651.9,
             "model_prob": 50.7,
             "fair_odds": 1.97,
             "bookmaker_odds": 1.55,
-            "ev_pct": -21.43,
+            "ev_pct": -21.36,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -402,12 +402,12 @@
           },
           "fighter2": {
             "name": "Gregory Rodrigues",
-            "elo": 1646.3,
-            "effective_elo": 1646.3,
+            "elo": 1646.8,
+            "effective_elo": 1646.8,
             "model_prob": 49.3,
             "fair_odds": 2.03,
             "bookmaker_odds": 2.7,
-            "ev_pct": 33.14,
+            "ev_pct": 33.02,
             "kelly_pct": 4.9,
             "has_value": true,
             "edge_drivers": [],
@@ -534,12 +534,12 @@
           "date": "August 22nd",
           "fighter1": {
             "name": "Serghei Spivac",
-            "elo": 1580.1,
-            "effective_elo": 1580.1,
-            "model_prob": 53.6,
+            "elo": 1580.4,
+            "effective_elo": 1580.4,
+            "model_prob": 53.7,
             "fair_odds": 1.86,
             "bookmaker_odds": 2.3,
-            "ev_pct": 23.36,
+            "ev_pct": 23.43,
             "kelly_pct": 4.5,
             "has_value": true,
             "edge_drivers": [],
@@ -582,12 +582,12 @@
           },
           "fighter2": {
             "name": "Vitor Petrino",
-            "elo": 1589.8,
-            "effective_elo": 1554.8,
-            "model_prob": 46.4,
+            "elo": 1589.9,
+            "effective_elo": 1554.9,
+            "model_prob": 46.3,
             "fair_odds": 2.16,
             "bookmaker_odds": 1.72,
-            "ev_pct": -20.25,
+            "ev_pct": -20.3,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -714,12 +714,12 @@
           "date": "August 22nd",
           "fighter1": {
             "name": "Reinier de Ridder",
-            "elo": 1573.5,
-            "effective_elo": 1581.5,
-            "model_prob": 50.3,
-            "fair_odds": 1.99,
+            "elo": 1581.0,
+            "effective_elo": 1589.0,
+            "model_prob": 51.2,
+            "fair_odds": 1.95,
             "bookmaker_odds": 1.25,
-            "ev_pct": -37.18,
+            "ev_pct": -35.95,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
@@ -765,12 +765,12 @@
           },
           "fighter2": {
             "name": "Roman Dolidze",
-            "elo": 1596.5,
-            "effective_elo": 1579.7,
-            "model_prob": 49.7,
-            "fair_odds": 2.01,
+            "elo": 1597.2,
+            "effective_elo": 1580.4,
+            "model_prob": 48.8,
+            "fair_odds": 2.05,
             "bookmaker_odds": 4.4,
-            "ev_pct": 118.86,
+            "ev_pct": 114.56,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [],
@@ -1444,8 +1444,8 @@
           "date": "August 22nd",
           "fighter1": {
             "name": "Kennedy Nzechukwu",
-            "elo": 1550.3,
-            "effective_elo": 1534.5,
+            "elo": 1550.4,
+            "effective_elo": 1534.7,
             "model_prob": 55.2,
             "fair_odds": 1.81,
             "bookmaker_odds": 2.18,
@@ -1496,8 +1496,8 @@
           },
           "fighter2": {
             "name": "Shamil Gaziev",
-            "elo": 1498.6,
-            "effective_elo": 1498.6,
+            "elo": 1498.7,
+            "effective_elo": 1498.7,
             "model_prob": 44.8,
             "fair_odds": 2.23,
             "bookmaker_odds": 1.74,
@@ -1628,12 +1628,12 @@
           "date": "August 22nd",
           "fighter1": {
             "name": "Chris Padilla",
-            "elo": 1578.7,
-            "effective_elo": 1578.7,
-            "model_prob": 49.3,
+            "elo": 1578.8,
+            "effective_elo": 1578.8,
+            "model_prob": 49.2,
             "fair_odds": 2.03,
             "bookmaker_odds": 2.0,
-            "ev_pct": -1.47,
+            "ev_pct": -1.58,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -1676,12 +1676,12 @@
           },
           "fighter2": {
             "name": "Nasrat Haqparast",
-            "elo": 1575.8,
-            "effective_elo": 1583.8,
-            "model_prob": 50.7,
+            "elo": 1576.3,
+            "effective_elo": 1584.3,
+            "model_prob": 50.8,
             "fair_odds": 1.97,
             "bookmaker_odds": 1.91,
-            "ev_pct": -3.1,
+            "ev_pct": -2.99,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
@@ -2704,12 +2704,12 @@
           "date": "August 29th",
           "fighter1": {
             "name": "Song Yadong",
-            "elo": 1664.2,
-            "effective_elo": 1664.2,
-            "model_prob": 50.8,
-            "fair_odds": 1.97,
+            "elo": 1667.3,
+            "effective_elo": 1667.3,
+            "model_prob": 51.2,
+            "fair_odds": 1.95,
             "bookmaker_odds": 5.0,
-            "ev_pct": 153.96,
+            "ev_pct": 155.97,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [],
@@ -2748,12 +2748,12 @@
           },
           "fighter2": {
             "name": "Umar Nurmagomedov",
-            "elo": 1658.7,
-            "effective_elo": 1658.7,
-            "model_prob": 49.2,
-            "fair_odds": 2.03,
+            "elo": 1659.0,
+            "effective_elo": 1659.0,
+            "model_prob": 48.8,
+            "fair_odds": 2.05,
             "bookmaker_odds": 1.2,
-            "ev_pct": -40.95,
+            "ev_pct": -41.43,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -3313,12 +3313,12 @@
           "date": "August 29th",
           "fighter1": {
             "name": "Aoriqileng",
-            "elo": 1491.2,
-            "effective_elo": 1491.2,
+            "elo": 1491.3,
+            "effective_elo": 1491.3,
             "model_prob": 54.9,
             "fair_odds": 1.82,
             "bookmaker_odds": 4.1,
-            "ev_pct": 125.11,
+            "ev_pct": 125.17,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [],
@@ -3354,7 +3354,7 @@
             "model_prob": 45.1,
             "fair_odds": 2.22,
             "bookmaker_odds": 1.25,
-            "ev_pct": -43.63,
+            "ev_pct": -43.65,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -3389,12 +3389,12 @@
           "date": "August 29th",
           "fighter1": {
             "name": "Alex Perez",
-            "elo": 1545.8,
-            "effective_elo": 1545.8,
-            "model_prob": 49.5,
+            "elo": 1546.2,
+            "effective_elo": 1546.2,
+            "model_prob": 49.6,
             "fair_odds": 2.02,
             "bookmaker_odds": 2.75,
-            "ev_pct": 36.19,
+            "ev_pct": 36.35,
             "kelly_pct": 5.2,
             "has_value": true,
             "edge_drivers": [],
@@ -3427,10 +3427,10 @@
             "name": "Sumudaerji",
             "elo": 1528.6,
             "effective_elo": 1549.1,
-            "model_prob": 50.5,
+            "model_prob": 50.4,
             "fair_odds": 1.98,
             "bookmaker_odds": 1.51,
-            "ev_pct": -23.78,
+            "ev_pct": -23.87,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
@@ -3470,10 +3470,10 @@
             "name": "Jack Jenkins",
             "elo": 1518.7,
             "effective_elo": 1522.7,
-            "model_prob": 40.7,
+            "model_prob": 40.6,
             "fair_odds": 2.46,
             "bookmaker_odds": 2.2,
-            "ev_pct": -10.53,
+            "ev_pct": -10.59,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
@@ -3506,12 +3506,12 @@
           },
           "fighter2": {
             "name": "Sean Woodson",
-            "elo": 1573.3,
-            "effective_elo": 1588.3,
-            "model_prob": 59.3,
-            "fair_odds": 1.69,
+            "elo": 1573.5,
+            "effective_elo": 1588.5,
+            "model_prob": 59.4,
+            "fair_odds": 1.68,
             "bookmaker_odds": 1.68,
-            "ev_pct": -0.33,
+            "ev_pct": -0.28,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
@@ -3630,12 +3630,12 @@
           "date": "September 5th",
           "fighter1": {
             "name": "Dan Hooker",
-            "elo": 1591.9,
-            "effective_elo": 1570.9,
-            "model_prob": 59.5,
-            "fair_odds": 1.68,
+            "elo": 1599.5,
+            "effective_elo": 1578.5,
+            "model_prob": 60.6,
+            "fair_odds": 1.65,
             "bookmaker_odds": 4.0,
-            "ev_pct": 138.18,
+            "ev_pct": 142.38,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [
@@ -3663,10 +3663,10 @@
             "name": "Salahdine Parnasse",
             "elo": 1500.0,
             "effective_elo": 1503.8,
-            "model_prob": 40.5,
-            "fair_odds": 2.47,
+            "model_prob": 39.4,
+            "fair_odds": 2.54,
             "bookmaker_odds": 1.25,
-            "ev_pct": -49.43,
+            "ev_pct": -50.74,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
@@ -3697,12 +3697,12 @@
           "date": "September 12th",
           "fighter1": {
             "name": "Jean Silva",
-            "elo": 1626.9,
-            "effective_elo": 1626.9,
+            "elo": 1627.2,
+            "effective_elo": 1627.2,
             "model_prob": 56.9,
             "fair_odds": 1.76,
             "bookmaker_odds": 1.25,
-            "ev_pct": -28.9,
+            "ev_pct": -28.85,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -3734,7 +3734,7 @@
             "model_prob": 43.1,
             "fair_odds": 2.32,
             "bookmaker_odds": 4.5,
-            "ev_pct": 94.05,
+            "ev_pct": 93.86,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [
@@ -3774,8 +3774,8 @@
           "date": "September 19th",
           "fighter1": {
             "name": "Alexandre Pantoja",
-            "elo": 1683.3,
-            "effective_elo": 1655.7,
+            "elo": 1683.7,
+            "effective_elo": 1656.1,
             "model_prob": 43.3,
             "fair_odds": 2.31,
             "bookmaker_odds": 2.05,
@@ -3818,8 +3818,8 @@
           },
           "fighter2": {
             "name": "Joshua Van",
-            "elo": 1687.2,
-            "effective_elo": 1702.2,
+            "elo": 1687.6,
+            "effective_elo": 1702.6,
             "model_prob": 56.7,
             "fair_odds": 1.77,
             "bookmaker_odds": 1.89,
@@ -3869,16 +3869,15 @@
           "date": "September 19th",
           "fighter1": {
             "name": "Gable Steveson",
-            "elo": 1525.2,
-            "effective_elo": 1613.2,
-            "model_prob": 71.9,
-            "fair_odds": 1.39,
+            "elo": 1664.5,
+            "effective_elo": 1659.5,
+            "model_prob": 76.9,
+            "fair_odds": 1.3,
             "bookmaker_odds": 1.07,
-            "ev_pct": -23.11,
+            "ev_pct": -17.68,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
-              "🥇 Pedigree Prior (+83.2 Elo)",
               "⚡ Prime Speed (+4.8 Elo)"
             ],
             "components": {
@@ -3914,11 +3913,11 @@
             "name": "Sean Sharaf",
             "elo": 1447.8,
             "effective_elo": 1450.3,
-            "model_prob": 28.1,
-            "fair_odds": 3.55,
+            "model_prob": 23.1,
+            "fair_odds": 4.34,
             "bookmaker_odds": 9.5,
-            "ev_pct": 167.35,
-            "kelly_pct": 4.9,
+            "ev_pct": 119.14,
+            "kelly_pct": 3.5,
             "has_value": true,
             "edge_drivers": [
               "📏 +3.0\" Reach Edge (+2.5 Elo)"
@@ -3958,12 +3957,12 @@
           "date": "September 19th",
           "fighter1": {
             "name": "Arman Tsarukyan",
-            "elo": 1691.5,
-            "effective_elo": 1691.5,
-            "model_prob": 63.5,
-            "fair_odds": 1.57,
+            "elo": 1692.8,
+            "effective_elo": 1692.8,
+            "model_prob": 62.6,
+            "fair_odds": 1.6,
             "bookmaker_odds": 1.26,
-            "ev_pct": -19.96,
+            "ev_pct": -21.17,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -4002,13 +4001,13 @@
           },
           "fighter2": {
             "name": "Mauricio Ruffy",
-            "elo": 1592.6,
-            "effective_elo": 1595.1,
-            "model_prob": 36.5,
-            "fair_odds": 2.74,
+            "elo": 1601.1,
+            "effective_elo": 1603.6,
+            "model_prob": 37.4,
+            "fair_odds": 2.67,
             "bookmaker_odds": 4.0,
-            "ev_pct": 45.89,
-            "kelly_pct": 3.8,
+            "ev_pct": 49.75,
+            "kelly_pct": 4.1,
             "has_value": true,
             "edge_drivers": [
               "📏 +3.0\" Reach Edge (+2.5 Elo)"
@@ -4054,10 +4053,10 @@
             "name": "Robelis Despaigne",
             "elo": 1468.0,
             "effective_elo": 1442.8,
-            "model_prob": 43.8,
+            "model_prob": 43.7,
             "fair_odds": 2.29,
             "bookmaker_odds": 1.2,
-            "ev_pct": -47.49,
+            "ev_pct": -47.54,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
@@ -4094,12 +4093,12 @@
           },
           "fighter2": {
             "name": "Tai Tuivasa",
-            "elo": 1478.4,
-            "effective_elo": 1486.4,
-            "model_prob": 56.2,
+            "elo": 1478.7,
+            "effective_elo": 1486.7,
+            "model_prob": 56.3,
             "fair_odds": 1.78,
             "bookmaker_odds": 5.0,
-            "ev_pct": 181.21,
+            "ev_pct": 181.42,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [
@@ -4147,12 +4146,12 @@
           "date": "October 4th",
           "fighter1": {
             "name": "Deiveson Figueiredo",
-            "elo": 1612.9,
-            "effective_elo": 1577.9,
-            "model_prob": 47.3,
-            "fair_odds": 2.11,
+            "elo": 1613.6,
+            "effective_elo": 1578.6,
+            "model_prob": 46.9,
+            "fair_odds": 2.13,
             "bookmaker_odds": 2.0,
-            "ev_pct": -5.43,
+            "ev_pct": -6.15,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -4170,13 +4169,13 @@
           },
           "fighter2": {
             "name": "Payton Talbott",
-            "elo": 1592.8,
-            "effective_elo": 1596.8,
-            "model_prob": 52.7,
-            "fair_odds": 1.9,
+            "elo": 1596.0,
+            "effective_elo": 1600.0,
+            "model_prob": 53.1,
+            "fair_odds": 1.88,
             "bookmaker_odds": 2.0,
-            "ev_pct": 5.43,
-            "kelly_pct": 1.4,
+            "ev_pct": 6.15,
+            "kelly_pct": 1.5,
             "has_value": true,
             "edge_drivers": [
               "🥊 Open Stance Southpaw (+4.0 Elo)"
@@ -4268,13 +4267,13 @@
           "date": "October 24th",
           "fighter1": {
             "name": "Alexander Volkanovski",
-            "elo": 1751.7,
-            "effective_elo": 1716.7,
-            "model_prob": 56.5,
-            "fair_odds": 1.77,
+            "elo": 1755.6,
+            "effective_elo": 1720.6,
+            "model_prob": 57.0,
+            "fair_odds": 1.76,
             "bookmaker_odds": 1.89,
-            "ev_pct": 6.7,
-            "kelly_pct": 1.9,
+            "ev_pct": 7.66,
+            "kelly_pct": 2.2,
             "has_value": true,
             "edge_drivers": [],
             "components": {
@@ -4312,12 +4311,12 @@
           },
           "fighter2": {
             "name": "Movsar Evloev",
-            "elo": 1671.6,
-            "effective_elo": 1671.6,
-            "model_prob": 43.5,
-            "fair_odds": 2.3,
+            "elo": 1671.9,
+            "effective_elo": 1671.9,
+            "model_prob": 43.0,
+            "fair_odds": 2.32,
             "bookmaker_odds": 1.95,
-            "ev_pct": -15.09,
+            "ev_pct": -16.08,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
@@ -4362,13 +4361,13 @@
           "date": "October 24th",
           "fighter1": {
             "name": "Merab Dvalishvili",
-            "elo": 1722.0,
-            "effective_elo": 1702.8,
-            "model_prob": 51.4,
-            "fair_odds": 1.95,
+            "elo": 1725.1,
+            "effective_elo": 1705.9,
+            "model_prob": 51.7,
+            "fair_odds": 1.93,
             "bookmaker_odds": 2.32,
-            "ev_pct": 19.2,
-            "kelly_pct": 3.6,
+            "ev_pct": 20.04,
+            "kelly_pct": 3.8,
             "has_value": true,
             "edge_drivers": [],
             "components": {
@@ -4406,12 +4405,12 @@
           },
           "fighter2": {
             "name": "Petr Yan",
-            "elo": 1689.2,
-            "effective_elo": 1693.2,
-            "model_prob": 48.6,
-            "fair_odds": 2.06,
+            "elo": 1689.8,
+            "effective_elo": 1693.8,
+            "model_prob": 48.3,
+            "fair_odds": 2.07,
             "bookmaker_odds": 1.67,
-            "ev_pct": -18.81,
+            "ev_pct": -19.41,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
@@ -4578,10 +4577,10 @@
       "date": "September 19th",
       "value_fighter": "Tai Tuivasa",
       "opponent": "Robelis Despaigne",
-      "model_prob": 56.2,
+      "model_prob": 56.3,
       "fair_odds": 1.78,
       "best_book_odds": 5.0,
-      "ev_pct": 181.21,
+      "ev_pct": 181.42,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
@@ -4608,47 +4607,14 @@
       }
     },
     {
-      "event": "UFC 331",
-      "date": "September 19th",
-      "value_fighter": "Sean Sharaf",
-      "opponent": "Gable Steveson",
-      "model_prob": 28.1,
-      "fair_odds": 3.55,
-      "best_book_odds": 9.5,
-      "ev_pct": 167.35,
-      "kelly_stake": 4.9,
-      "tier": "💎 ULTRA VALUE",
-      "edge_drivers": [
-        "📏 +3.0\" Reach Edge (+2.5 Elo)"
-      ],
-      "sportsbooks": {
-        "BetMGM": {
-          "american": "+800",
-          "decimal": 9.0
-        },
-        "BetRivers": {
-          "american": "+850",
-          "decimal": 9.5
-        },
-        "Polymarket": {
-          "american": "+600",
-          "decimal": 7.0
-        },
-        "Kalshi": {
-          "american": "+850",
-          "decimal": 9.5
-        }
-      }
-    },
-    {
       "event": "UFC Shanghai",
       "date": "August 29th",
       "value_fighter": "Song Yadong",
       "opponent": "Umar Nurmagomedov",
-      "model_prob": 50.8,
-      "fair_odds": 1.97,
+      "model_prob": 51.2,
+      "fair_odds": 1.95,
       "best_book_odds": 5.0,
-      "ev_pct": 153.96,
+      "ev_pct": 155.97,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
@@ -4672,6 +4638,28 @@
         "Kalshi": {
           "american": "+375▲",
           "decimal": 4.75
+        }
+      }
+    },
+    {
+      "event": "UFC Fight Night",
+      "date": "September 5th",
+      "value_fighter": "Dan Hooker",
+      "opponent": "Salahdine Parnasse",
+      "model_prob": 60.6,
+      "fair_odds": 1.65,
+      "best_book_odds": 4.0,
+      "ev_pct": 142.38,
+      "kelly_stake": 6.0,
+      "tier": "💎 ULTRA VALUE",
+      "edge_drivers": [
+        "📏 +4.0\" Reach Edge (+5.0 Elo)",
+        "🥊 Open Stance Southpaw (+4.0 Elo)"
+      ],
+      "sportsbooks": {
+        "Polymarket": {
+          "american": "+300",
+          "decimal": 4.0
         }
       }
     },
@@ -4715,28 +4703,6 @@
       }
     },
     {
-      "event": "UFC Fight Night",
-      "date": "September 5th",
-      "value_fighter": "Dan Hooker",
-      "opponent": "Salahdine Parnasse",
-      "model_prob": 59.5,
-      "fair_odds": 1.68,
-      "best_book_odds": 4.0,
-      "ev_pct": 138.18,
-      "kelly_stake": 6.0,
-      "tier": "💎 ULTRA VALUE",
-      "edge_drivers": [
-        "📏 +4.0\" Reach Edge (+5.0 Elo)",
-        "🥊 Open Stance Southpaw (+4.0 Elo)"
-      ],
-      "sportsbooks": {
-        "Polymarket": {
-          "american": "+300",
-          "decimal": 4.0
-        }
-      }
-    },
-    {
       "event": "UFC Shanghai",
       "date": "August 29th",
       "value_fighter": "Aoriqileng",
@@ -4744,7 +4710,7 @@
       "model_prob": 54.9,
       "fair_odds": 1.82,
       "best_book_odds": 4.1,
-      "ev_pct": 125.11,
+      "ev_pct": 125.17,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
@@ -4783,14 +4749,47 @@
       }
     },
     {
+      "event": "UFC 331",
+      "date": "September 19th",
+      "value_fighter": "Sean Sharaf",
+      "opponent": "Gable Steveson",
+      "model_prob": 23.1,
+      "fair_odds": 4.34,
+      "best_book_odds": 9.5,
+      "ev_pct": 119.14,
+      "kelly_stake": 3.5,
+      "tier": "💎 ULTRA VALUE",
+      "edge_drivers": [
+        "📏 +3.0\" Reach Edge (+2.5 Elo)"
+      ],
+      "sportsbooks": {
+        "BetMGM": {
+          "american": "+800",
+          "decimal": 9.0
+        },
+        "BetRivers": {
+          "american": "+850",
+          "decimal": 9.5
+        },
+        "Polymarket": {
+          "american": "+600",
+          "decimal": 7.0
+        },
+        "Kalshi": {
+          "american": "+850",
+          "decimal": 9.5
+        }
+      }
+    },
+    {
       "event": "UFC Sacramento",
       "date": "August 22nd",
       "value_fighter": "Roman Dolidze",
       "opponent": "Reinier de Ridder",
-      "model_prob": 49.7,
-      "fair_odds": 2.01,
+      "model_prob": 48.8,
+      "fair_odds": 2.05,
       "best_book_odds": 4.4,
-      "ev_pct": 118.86,
+      "ev_pct": 114.56,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
@@ -4875,7 +4874,7 @@
       "model_prob": 43.1,
       "fair_odds": 2.32,
       "best_book_odds": 4.5,
-      "ev_pct": 94.05,
+      "ev_pct": 93.86,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
@@ -5053,11 +5052,11 @@
       "date": "September 19th",
       "value_fighter": "Mauricio Ruffy",
       "opponent": "Arman Tsarukyan",
-      "model_prob": 36.5,
-      "fair_odds": 2.74,
+      "model_prob": 37.4,
+      "fair_odds": 2.67,
       "best_book_odds": 4.0,
-      "ev_pct": 45.89,
-      "kelly_stake": 3.8,
+      "ev_pct": 49.75,
+      "kelly_stake": 4.1,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
         "📏 +3.0\" Reach Edge (+2.5 Elo)"
@@ -5107,10 +5106,10 @@
       "date": "August 29th",
       "value_fighter": "Alex Perez",
       "opponent": "Sumudaerji",
-      "model_prob": 49.5,
+      "model_prob": 49.6,
       "fair_odds": 2.02,
       "best_book_odds": 2.75,
-      "ev_pct": 36.19,
+      "ev_pct": 36.35,
       "kelly_stake": 5.2,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
@@ -5137,7 +5136,7 @@
       "model_prob": 49.3,
       "fair_odds": 2.03,
       "best_book_odds": 2.7,
-      "ev_pct": 33.14,
+      "ev_pct": 33.02,
       "kelly_stake": 4.9,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
@@ -5228,10 +5227,10 @@
       "date": "August 22nd",
       "value_fighter": "Serghei Spivac",
       "opponent": "Vitor Petrino",
-      "model_prob": 53.6,
+      "model_prob": 53.7,
       "fair_odds": 1.86,
       "best_book_odds": 2.3,
-      "ev_pct": 23.36,
+      "ev_pct": 23.43,
       "kelly_stake": 4.5,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
@@ -5310,11 +5309,11 @@
       "date": "October 24th",
       "value_fighter": "Merab Dvalishvili",
       "opponent": "Petr Yan",
-      "model_prob": 51.4,
-      "fair_odds": 1.95,
+      "model_prob": 51.7,
+      "fair_odds": 1.93,
       "best_book_odds": 2.32,
-      "ev_pct": 19.2,
-      "kelly_stake": 3.6,
+      "ev_pct": 20.04,
+      "kelly_stake": 3.8,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
       "sportsbooks": {
@@ -5428,6 +5427,41 @@
       }
     },
     {
+      "event": "UFC 333",
+      "date": "October 24th",
+      "value_fighter": "Alexander Volkanovski",
+      "opponent": "Movsar Evloev",
+      "model_prob": 57.0,
+      "fair_odds": 1.76,
+      "best_book_odds": 1.89,
+      "ev_pct": 7.66,
+      "kelly_stake": 2.2,
+      "tier": "⚡ STRONG VALUE",
+      "edge_drivers": [],
+      "sportsbooks": {
+        "BetMGM": {
+          "american": "-113",
+          "decimal": 1.88
+        },
+        "Caesars": {
+          "american": "-120",
+          "decimal": 1.83
+        },
+        "BetRivers": {
+          "american": "-112",
+          "decimal": 1.89
+        },
+        "Polymarket": {
+          "american": "-120",
+          "decimal": 1.83
+        },
+        "Kalshi": {
+          "american": "-112",
+          "decimal": 1.89
+        }
+      }
+    },
+    {
       "event": "UFC 331",
       "date": "September 19th",
       "value_fighter": "Joshua Van",
@@ -5466,50 +5500,15 @@
       }
     },
     {
-      "event": "UFC 333",
-      "date": "October 24th",
-      "value_fighter": "Alexander Volkanovski",
-      "opponent": "Movsar Evloev",
-      "model_prob": 56.5,
-      "fair_odds": 1.77,
-      "best_book_odds": 1.89,
-      "ev_pct": 6.7,
-      "kelly_stake": 1.9,
-      "tier": "⚡ STRONG VALUE",
-      "edge_drivers": [],
-      "sportsbooks": {
-        "BetMGM": {
-          "american": "-113",
-          "decimal": 1.88
-        },
-        "Caesars": {
-          "american": "-120",
-          "decimal": 1.83
-        },
-        "BetRivers": {
-          "american": "-112",
-          "decimal": 1.89
-        },
-        "Polymarket": {
-          "american": "-120",
-          "decimal": 1.83
-        },
-        "Kalshi": {
-          "american": "-112",
-          "decimal": 1.89
-        }
-      }
-    },
-    {
       "event": "UFC 332",
       "date": "October 4th",
       "value_fighter": "Payton Talbott",
       "opponent": "Deiveson Figueiredo",
-      "model_prob": 52.7,
-      "fair_odds": 1.9,
+      "model_prob": 53.1,
+      "fair_odds": 1.88,
       "best_book_odds": 2.0,
-      "ev_pct": 5.43,
-      "kelly_stake": 1.4,
+      "ev_pct": 6.15,
+      "kelly_stake": 1.5,
       "tier": "⚡ STRONG VALUE",
       "edge_drivers": [
         "🥊 Open Stance Southpaw (+4.0 Elo)"

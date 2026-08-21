@@ -42,7 +42,7 @@ KNOWN_SHORT_NOTICE_REPLACEMENTS = {
 }
 
 class UFCEloEngine:
-    def __init__(self, base_elo=1500.0, base_k=32.0, decay_per_month=5.0, inactivity_threshold_months=18.0, current_date="2026-08-21"):
+    def __init__(self, base_elo=1500.0, base_k=32.0, decay_per_month=5.0, inactivity_threshold_months=18.0, current_date="2026-08-21", pedigree_file="pedigree_database.json"):
         self.base_elo = base_elo
         self.base_k = base_k
         self.decay_per_month = decay_per_month
@@ -50,14 +50,25 @@ class UFCEloEngine:
         self.current_date = current_date
         self.fighters = {}
         self.history = []
+        self.ped_db = {}
+        if os.path.exists(pedigree_file):
+            try:
+                with open(pedigree_file, 'r', encoding='utf-8') as f:
+                    self.ped_db = json.load(f)
+            except Exception:
+                pass
 
     def get_or_create_fighter(self, name):
         if name not in self.fighters:
+            init_elo = self.base_elo
+            if self.ped_db and name.lower() in self.ped_db:
+                init_elo = self.ped_db[name.lower()].get('prior_elo', self.base_elo)
+
             self.fighters[name] = {
                 'name': name,
-                'elo': self.base_elo,
-                'peak_elo': self.base_elo,
-                'lowest_elo': self.base_elo,
+                'elo': init_elo,
+                'peak_elo': init_elo,
+                'lowest_elo': init_elo,
                 'wins': 0,
                 'losses': 0,
                 'draws': 0,
