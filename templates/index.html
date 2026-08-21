@@ -871,7 +871,7 @@
                 const subPct = (sub / totalWins) * 100;
                 const decPct = (dec / totalWins) * 100;
 
-                const initials = f.name.split(' ').map(n=>n[0]).join('').slice(0,2);
+                const initials = (f.name || 'UF').split(' ').filter(Boolean).map(n => n[0]).join('').slice(0, 2) || 'UF';
 
                 return `
                     <tr class="hover:bg-slate-800/40 transition-colors group cursor-pointer" onclick="openFighterModal('${encodeURIComponent(f.name)}')">
@@ -1124,7 +1124,15 @@
         function openSimulatorModal() {
             const modal = document.getElementById('simulatorModal');
             if (modal) modal.classList.remove('hidden');
-            if (window.lucide) lucide.createIcons();
+
+            const s1 = document.getElementById('simFighter1');
+            const s2 = document.getElementById('simFighter2');
+            if (s1 && s2 && (s1.children.length === 0 || s1.options.length < 2)) {
+                populateSimulatorSelects(allFighters);
+            }
+
+            calculateSimulation();
+            try { if (window.lucide) lucide.createIcons(); } catch (e) {}
         }
 
         function closeSimulatorModal() {
@@ -1136,9 +1144,16 @@
             const s1 = document.getElementById('simFighter1');
             const s2 = document.getElementById('simFighter2');
             
-            if (!s1 || !s2 || s1.children.length > 0) return;
+            if (!s1 || !s2) return;
+            if (s1.children.length > 5) return;
 
-            fighters.slice(0, 150).forEach((f) => {
+            const list = (fighters && fighters.length > 0) ? fighters : allFighters;
+            if (!list || list.length === 0) return;
+
+            s1.innerHTML = '';
+            s2.innerHTML = '';
+
+            list.slice(0, 250).forEach((f) => {
                 const opt1 = new Option(`${f.name} (${Number(f.elo).toFixed(1)})`, f.name);
                 const opt2 = new Option(`${f.name} (${Number(f.elo).toFixed(1)})`, f.name);
                 s1.add(opt1);
