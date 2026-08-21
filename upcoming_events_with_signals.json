@@ -301,10 +301,10 @@
             "name": "Juliana Lima",
             "elo": 1451.7,
             "effective_elo": 1251.7,
-            "model_prob": 17.2,
-            "fair_odds": 5.82,
+            "model_prob": 17.0,
+            "fair_odds": 5.88,
             "bookmaker_odds": 2.0,
-            "ev_pct": -65.65,
+            "ev_pct": -65.98,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -323,17 +323,17 @@
           "fighter2": {
             "name": "Danielle Kelly",
             "elo": 1500.0,
-            "effective_elo": 1525.0,
-            "model_prob": 82.8,
-            "fair_odds": 1.21,
+            "effective_elo": 1527.0,
+            "model_prob": 83.0,
+            "fair_odds": 1.2,
             "bookmaker_odds": 2.0,
-            "ev_pct": 65.65,
+            "ev_pct": 65.98,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [
               "⚡ Prime Speed (+15.0 Elo)",
               "⚠️ Opponent Age Cliff (-35.0 Elo)",
-              "📏 +6.0\" Reach Edge (+10.0 Elo)"
+              "📏 +6.0\" Reach Edge (+12.0 Elo)"
             ],
             "components": {
               "striking_elo": 1500.0,
@@ -716,14 +716,14 @@
             "name": "Reinier de Ridder",
             "elo": 1575.4,
             "effective_elo": 1583.4,
-            "model_prob": 50.5,
-            "fair_odds": 1.98,
+            "model_prob": 51.1,
+            "fair_odds": 1.96,
             "bookmaker_odds": 1.25,
-            "ev_pct": -36.85,
+            "ev_pct": -36.13,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
-              "⚠️ Opponent Age Cliff (-16.8 Elo)",
+              "⚠️ Opponent Age Cliff (-20.8 Elo)",
               "🥊 Open Stance Southpaw (+8.0 Elo)"
             ],
             "components": {
@@ -766,11 +766,11 @@
           "fighter2": {
             "name": "Roman Dolidze",
             "elo": 1596.6,
-            "effective_elo": 1579.8,
-            "model_prob": 49.5,
-            "fair_odds": 2.02,
+            "effective_elo": 1575.8,
+            "model_prob": 48.9,
+            "fair_odds": 2.04,
             "bookmaker_odds": 4.4,
-            "ev_pct": 117.72,
+            "ev_pct": 115.19,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [],
@@ -899,10 +899,10 @@
             "name": "MarQuel Mederos",
             "elo": 1543.9,
             "effective_elo": 1543.9,
-            "model_prob": 50.3,
-            "fair_odds": 1.99,
+            "model_prob": 50.1,
+            "fair_odds": 2.0,
             "bookmaker_odds": 3.75,
-            "ev_pct": 88.63,
+            "ev_pct": 87.82,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [],
@@ -946,15 +946,15 @@
           "fighter2": {
             "name": "Mason Jones",
             "elo": 1534.3,
-            "effective_elo": 1541.8,
-            "model_prob": 49.7,
-            "fair_odds": 2.01,
+            "effective_elo": 1543.3,
+            "model_prob": 49.9,
+            "fair_odds": 2.0,
             "bookmaker_odds": 1.36,
-            "ev_pct": -32.41,
+            "ev_pct": -32.12,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
-              "📏 +5.0\" Reach Edge (+7.5 Elo)"
+              "📏 +5.0\" Reach Edge (+9.0 Elo)"
             ],
             "components": {
               "name": "Mason Jones",
@@ -1266,7 +1266,7 @@
             "model_prob": 45.1,
             "fair_odds": 2.22,
             "bookmaker_odds": 4.2,
-            "ev_pct": 89.25,
+            "ev_pct": 89.28,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [],
@@ -1310,15 +1310,15 @@
           "fighter2": {
             "name": "Lerryan Douglas",
             "elo": 1528.9,
-            "effective_elo": 1534.2,
+            "effective_elo": 1534.1,
             "model_prob": 54.9,
             "fair_odds": 1.82,
             "bookmaker_odds": 1.28,
-            "ev_pct": -29.67,
+            "ev_pct": -29.69,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
-              "⚡ Prime Speed (+5.3 Elo)",
+              "⚡ Prime Speed (+5.2 Elo)",
               "⚠️ Opponent Age Cliff (-35.0 Elo)"
             ],
             "components": {
@@ -1445,16 +1445,17 @@
           "fighter1": {
             "name": "Kennedy Nzechukwu",
             "elo": 1550.3,
-            "effective_elo": 1534.5,
-            "model_prob": 55.2,
-            "fair_odds": 1.81,
+            "effective_elo": 1536.1,
+            "model_prob": 56.5,
+            "fair_odds": 1.77,
             "bookmaker_odds": 2.18,
-            "ev_pct": 20.24,
-            "kelly_pct": 4.3,
+            "ev_pct": 23.26,
+            "kelly_pct": 4.9,
             "has_value": true,
             "edge_drivers": [
               "⚡ Prime Speed (+3.8 Elo)",
-              "📏 +5.0\" Reach Edge (+7.5 Elo)",
+              "⚠️ Opponent Age Cliff (-8.2 Elo)",
+              "📏 +5.0\" Reach Edge (+9.0 Elo)",
               "🥊 Open Stance Southpaw (+8.0 Elo)"
             ],
             "components": {
@@ -1497,11 +1498,11 @@
           "fighter2": {
             "name": "Shamil Gaziev",
             "elo": 1498.6,
-            "effective_elo": 1498.6,
-            "model_prob": 44.8,
-            "fair_odds": 2.23,
+            "effective_elo": 1490.4,
+            "model_prob": 43.5,
+            "fair_odds": 2.3,
             "bookmaker_odds": 1.74,
-            "ev_pct": -21.97,
+            "ev_pct": -24.38,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -2798,10 +2799,10 @@
             "name": "Ce Liu",
             "elo": 1500.0,
             "effective_elo": 1395.0,
-            "model_prob": 38.1,
-            "fair_odds": 2.62,
+            "model_prob": 37.9,
+            "fair_odds": 2.64,
             "bookmaker_odds": 1.44,
-            "ev_pct": -45.08,
+            "ev_pct": -45.37,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -2820,15 +2821,15 @@
           "fighter2": {
             "name": "Levi Rodrigues Jr.",
             "elo": 1471.5,
-            "effective_elo": 1479.0,
-            "model_prob": 61.9,
-            "fair_odds": 1.62,
+            "effective_elo": 1480.5,
+            "model_prob": 62.1,
+            "fair_odds": 1.61,
             "bookmaker_odds": 2.63,
-            "ev_pct": 62.69,
+            "ev_pct": 63.22,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [
-              "📏 +5.0\" Reach Edge (+7.5 Elo)"
+              "📏 +5.0\" Reach Edge (+9.0 Elo)"
             ],
             "components": {
               "name": "Levi Rodrigues Jr.",
@@ -2854,15 +2855,15 @@
           "fighter1": {
             "name": "Julia Polastri",
             "elo": 1497.2,
-            "effective_elo": 1510.0,
+            "effective_elo": 1510.1,
             "model_prob": 58.4,
             "fair_odds": 1.71,
             "bookmaker_odds": 1.5,
-            "ev_pct": -12.44,
+            "ev_pct": -12.41,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
-              "⚡ Prime Speed (+12.8 Elo)",
+              "⚡ Prime Speed (+12.9 Elo)",
               "⚠️ Opponent Age Cliff (-35.0 Elo)"
             ],
             "components": {
@@ -2889,8 +2890,8 @@
             "model_prob": 41.6,
             "fair_odds": 2.4,
             "bookmaker_odds": 2.63,
-            "ev_pct": 9.47,
-            "kelly_pct": 1.5,
+            "ev_pct": 9.43,
+            "kelly_pct": 1.4,
             "has_value": true,
             "edge_drivers": [
               "🥊 Open Stance Southpaw (+4.0 Elo)"
@@ -3191,15 +3192,15 @@
           "fighter1": {
             "name": "Levi Rodrigues Jr.",
             "elo": 1471.5,
-            "effective_elo": 1479.0,
-            "model_prob": 61.9,
-            "fair_odds": 1.62,
+            "effective_elo": 1480.5,
+            "model_prob": 62.1,
+            "fair_odds": 1.61,
             "bookmaker_odds": 2.0,
-            "ev_pct": 23.72,
-            "kelly_pct": 5.9,
+            "ev_pct": 24.12,
+            "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [
-              "📏 +5.0\" Reach Edge (+7.5 Elo)"
+              "📏 +5.0\" Reach Edge (+9.0 Elo)"
             ],
             "components": {
               "name": "Levi Rodrigues Jr.",
@@ -3217,10 +3218,10 @@
             "name": "Liu Ce",
             "elo": 1500.0,
             "effective_elo": 1395.0,
-            "model_prob": 38.1,
-            "fair_odds": 2.62,
+            "model_prob": 37.9,
+            "fair_odds": 2.64,
             "bookmaker_odds": 2.0,
-            "ev_pct": -23.72,
+            "ev_pct": -24.12,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -3391,11 +3392,11 @@
             "name": "Alex Perez",
             "elo": 1545.9,
             "effective_elo": 1545.9,
-            "model_prob": 49.5,
-            "fair_odds": 2.02,
+            "model_prob": 49.2,
+            "fair_odds": 2.03,
             "bookmaker_odds": 2.75,
-            "ev_pct": 36.23,
-            "kelly_pct": 5.2,
+            "ev_pct": 35.24,
+            "kelly_pct": 5.0,
             "has_value": true,
             "edge_drivers": [],
             "components": {
@@ -3426,15 +3427,15 @@
           "fighter2": {
             "name": "Sumudaerji",
             "elo": 1528.6,
-            "effective_elo": 1549.1,
-            "model_prob": 50.5,
-            "fair_odds": 1.98,
+            "effective_elo": 1551.6,
+            "model_prob": 50.8,
+            "fair_odds": 1.97,
             "bookmaker_odds": 1.51,
-            "ev_pct": -23.8,
+            "ev_pct": -23.26,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
-              "📏 +7.0\" Reach Edge (+12.5 Elo)",
+              "📏 +7.0\" Reach Edge (+15.0 Elo)",
               "🥊 Open Stance Southpaw (+8.0 Elo)"
             ],
             "components": {
@@ -3470,10 +3471,10 @@
             "name": "Jack Jenkins",
             "elo": 1518.7,
             "effective_elo": 1522.7,
-            "model_prob": 40.7,
-            "fair_odds": 2.46,
+            "model_prob": 40.5,
+            "fair_odds": 2.47,
             "bookmaker_odds": 2.2,
-            "ev_pct": -10.56,
+            "ev_pct": -10.86,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
@@ -3507,15 +3508,15 @@
           "fighter2": {
             "name": "Sean Woodson",
             "elo": 1573.4,
-            "effective_elo": 1588.4,
-            "model_prob": 59.3,
-            "fair_odds": 1.69,
+            "effective_elo": 1589.4,
+            "model_prob": 59.5,
+            "fair_odds": 1.68,
             "bookmaker_odds": 1.68,
-            "ev_pct": -0.3,
+            "ev_pct": -0.07,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
-              "📏 +10.0\" Reach Edge (+15.0 Elo)"
+              "📏 +10.0\" Reach Edge (+16.0 Elo)"
             ],
             "components": {
               "name": "Sean Woodson",
@@ -3631,15 +3632,15 @@
           "fighter1": {
             "name": "Dan Hooker",
             "elo": 1593.6,
-            "effective_elo": 1572.6,
-            "model_prob": 59.8,
-            "fair_odds": 1.67,
+            "effective_elo": 1568.6,
+            "model_prob": 59.2,
+            "fair_odds": 1.69,
             "bookmaker_odds": 4.0,
-            "ev_pct": 139.12,
+            "ev_pct": 136.88,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [
-              "📏 +4.0\" Reach Edge (+5.0 Elo)",
+              "📏 +4.0\" Reach Edge (+6.0 Elo)",
               "🥊 Open Stance Southpaw (+4.0 Elo)"
             ],
             "components": {
@@ -3663,15 +3664,15 @@
             "name": "Salahdine Parnasse",
             "elo": 1500.0,
             "effective_elo": 1503.8,
-            "model_prob": 40.2,
-            "fair_odds": 2.49,
+            "model_prob": 40.8,
+            "fair_odds": 2.45,
             "bookmaker_odds": 1.25,
-            "ev_pct": -49.73,
+            "ev_pct": -49.02,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
               "⚡ Prime Speed (+3.8 Elo)",
-              "⚠️ Opponent Age Cliff (-30.0 Elo)"
+              "⚠️ Opponent Age Cliff (-35.0 Elo)"
             ],
             "components": {
               "striking_elo": 1500.0,
@@ -3699,10 +3700,10 @@
             "name": "Jean Silva",
             "elo": 1627.0,
             "effective_elo": 1627.0,
-            "model_prob": 56.9,
+            "model_prob": 56.8,
             "fair_odds": 1.76,
             "bookmaker_odds": 1.25,
-            "ev_pct": -28.88,
+            "ev_pct": -29.06,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -3730,15 +3731,15 @@
           "fighter2": {
             "name": "Jose Delgado",
             "elo": 1569.8,
-            "effective_elo": 1578.8,
-            "model_prob": 43.1,
-            "fair_odds": 2.32,
+            "effective_elo": 1579.8,
+            "model_prob": 43.2,
+            "fair_odds": 2.31,
             "bookmaker_odds": 4.5,
-            "ev_pct": 93.98,
+            "ev_pct": 94.62,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [
-              "📏 +4.0\" Reach Edge (+5.0 Elo)",
+              "📏 +4.0\" Reach Edge (+6.0 Elo)",
               "🥊 Open Stance Southpaw (+4.0 Elo)"
             ],
             "components": {
@@ -3775,11 +3776,11 @@
           "fighter1": {
             "name": "Alexandre Pantoja",
             "elo": 1683.4,
-            "effective_elo": 1655.8,
-            "model_prob": 43.3,
-            "fair_odds": 2.31,
+            "effective_elo": 1649.2,
+            "model_prob": 42.4,
+            "fair_odds": 2.36,
             "bookmaker_odds": 2.05,
-            "ev_pct": -11.14,
+            "ev_pct": -13.04,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -3820,15 +3821,15 @@
             "name": "Joshua Van",
             "elo": 1687.3,
             "effective_elo": 1702.3,
-            "model_prob": 56.7,
-            "fair_odds": 1.77,
+            "model_prob": 57.6,
+            "fair_odds": 1.74,
             "bookmaker_odds": 1.89,
-            "ev_pct": 7.07,
-            "kelly_pct": 2.0,
+            "ev_pct": 8.82,
+            "kelly_pct": 2.5,
             "has_value": true,
             "edge_drivers": [
               "⚡ Prime Speed (+15.0 Elo)",
-              "⚠️ Opponent Age Cliff (-27.6 Elo)"
+              "⚠️ Opponent Age Cliff (-34.2 Elo)"
             ],
             "components": {
               "name": "Joshua Van",
@@ -3871,15 +3872,15 @@
             "name": "Gable Steveson",
             "elo": 1559.8,
             "effective_elo": 1624.6,
-            "model_prob": 73.2,
+            "model_prob": 73.1,
             "fair_odds": 1.37,
             "bookmaker_odds": 1.07,
-            "ev_pct": -21.7,
+            "ev_pct": -21.76,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
               "🥇 Pedigree Prior (+60.1 Elo)",
-              "⚡ Prime Speed (+4.8 Elo)"
+              "⚡ Prime Speed (+4.7 Elo)"
             ],
             "components": {
               "name": "Gable Steveson",
@@ -3913,15 +3914,15 @@
           "fighter2": {
             "name": "Sean Sharaf",
             "elo": 1447.8,
-            "effective_elo": 1450.3,
-            "model_prob": 26.8,
-            "fair_odds": 3.73,
+            "effective_elo": 1450.8,
+            "model_prob": 26.9,
+            "fair_odds": 3.72,
             "bookmaker_odds": 9.5,
-            "ev_pct": 154.82,
+            "ev_pct": 155.38,
             "kelly_pct": 4.6,
             "has_value": true,
             "edge_drivers": [
-              "📏 +3.0\" Reach Edge (+2.5 Elo)"
+              "📏 +3.0\" Reach Edge (+3.0 Elo)"
             ],
             "components": {
               "name": "Sean Sharaf",
@@ -3960,10 +3961,10 @@
             "name": "Arman Tsarukyan",
             "elo": 1691.8,
             "effective_elo": 1691.8,
-            "model_prob": 63.3,
+            "model_prob": 63.2,
             "fair_odds": 1.58,
             "bookmaker_odds": 1.26,
-            "ev_pct": -20.26,
+            "ev_pct": -20.34,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -4003,15 +4004,15 @@
           "fighter2": {
             "name": "Mauricio Ruffy",
             "elo": 1594.7,
-            "effective_elo": 1597.2,
-            "model_prob": 36.7,
+            "effective_elo": 1597.7,
+            "model_prob": 36.8,
             "fair_odds": 2.72,
             "bookmaker_odds": 4.0,
-            "ev_pct": 46.85,
+            "ev_pct": 47.12,
             "kelly_pct": 3.9,
             "has_value": true,
             "edge_drivers": [
-              "📏 +3.0\" Reach Edge (+2.5 Elo)"
+              "📏 +3.0\" Reach Edge (+3.0 Elo)"
             ],
             "components": {
               "name": "Mauricio Ruffy",
@@ -4053,15 +4054,15 @@
           "fighter1": {
             "name": "Robelis Despaigne",
             "elo": 1468.0,
-            "effective_elo": 1442.8,
-            "model_prob": 43.7,
-            "fair_odds": 2.29,
+            "effective_elo": 1439.4,
+            "model_prob": 43.3,
+            "fair_odds": 2.31,
             "bookmaker_odds": 1.2,
-            "ev_pct": -47.51,
+            "ev_pct": -48.08,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
-              "📏 +9.0\" Reach Edge (+15.0 Elo)"
+              "📏 +9.0\" Reach Edge (+16.0 Elo)"
             ],
             "components": {
               "name": "Robelis Despaigne",
@@ -4096,14 +4097,14 @@
             "name": "Tai Tuivasa",
             "elo": 1478.5,
             "effective_elo": 1486.5,
-            "model_prob": 56.3,
-            "fair_odds": 1.78,
+            "model_prob": 56.7,
+            "fair_odds": 1.76,
             "bookmaker_odds": 5.0,
-            "ev_pct": 181.28,
+            "ev_pct": 183.67,
             "kelly_pct": 6.0,
             "has_value": true,
             "edge_drivers": [
-              "⚠️ Opponent Age Cliff (-15.2 Elo)",
+              "⚠️ Opponent Age Cliff (-19.6 Elo)",
               "🥊 Open Stance Southpaw (+8.0 Elo)"
             ],
             "components": {
@@ -4200,15 +4201,15 @@
           "fighter1": {
             "name": "Natalia Silva",
             "elo": 1649.3,
-            "effective_elo": 1659.3,
+            "effective_elo": 1659.1,
             "model_prob": 43.8,
             "fair_odds": 2.28,
             "bookmaker_odds": 2.27,
-            "ev_pct": -0.48,
+            "ev_pct": -0.55,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
-              "⚡ Prime Speed (+10.0 Elo)",
+              "⚡ Prime Speed (+9.8 Elo)",
               "⚠️ Opponent Age Cliff (-35.0 Elo)"
             ],
             "components": {
@@ -4235,7 +4236,7 @@
             "model_prob": 56.2,
             "fair_odds": 1.78,
             "bookmaker_odds": 1.61,
-            "ev_pct": -9.59,
+            "ev_pct": -9.54,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [],
@@ -4363,12 +4364,12 @@
           "fighter1": {
             "name": "Merab Dvalishvili",
             "elo": 1722.8,
-            "effective_elo": 1703.6,
-            "model_prob": 51.5,
-            "fair_odds": 1.94,
+            "effective_elo": 1697.5,
+            "model_prob": 50.6,
+            "fair_odds": 1.98,
             "bookmaker_odds": 2.32,
-            "ev_pct": 19.4,
-            "kelly_pct": 3.7,
+            "ev_pct": 17.36,
+            "kelly_pct": 3.3,
             "has_value": true,
             "edge_drivers": [],
             "components": {
@@ -4408,14 +4409,14 @@
             "name": "Petr Yan",
             "elo": 1689.4,
             "effective_elo": 1693.4,
-            "model_prob": 48.5,
-            "fair_odds": 2.06,
+            "model_prob": 49.4,
+            "fair_odds": 2.02,
             "bookmaker_odds": 1.67,
-            "ev_pct": -18.95,
+            "ev_pct": -17.48,
             "kelly_pct": 0.0,
             "has_value": false,
             "edge_drivers": [
-              "⚠️ Opponent Age Cliff (-19.2 Elo)",
+              "⚠️ Opponent Age Cliff (-25.3 Elo)",
               "🥊 Open Stance Southpaw (+4.0 Elo)"
             ],
             "components": {
@@ -4578,14 +4579,14 @@
       "date": "September 19th",
       "value_fighter": "Tai Tuivasa",
       "opponent": "Robelis Despaigne",
-      "model_prob": 56.3,
-      "fair_odds": 1.78,
+      "model_prob": 56.7,
+      "fair_odds": 1.76,
       "best_book_odds": 5.0,
-      "ev_pct": 181.28,
+      "ev_pct": 183.67,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
-        "⚠️ Opponent Age Cliff (-15.2 Elo)",
+        "⚠️ Opponent Age Cliff (-19.6 Elo)",
         "🥊 Open Stance Southpaw (+8.0 Elo)"
       ],
       "sportsbooks": {
@@ -4612,14 +4613,14 @@
       "date": "September 19th",
       "value_fighter": "Sean Sharaf",
       "opponent": "Gable Steveson",
-      "model_prob": 26.8,
-      "fair_odds": 3.73,
+      "model_prob": 26.9,
+      "fair_odds": 3.72,
       "best_book_odds": 9.5,
-      "ev_pct": 154.82,
+      "ev_pct": 155.38,
       "kelly_stake": 4.6,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
-        "📏 +3.0\" Reach Edge (+2.5 Elo)"
+        "📏 +3.0\" Reach Edge (+3.0 Elo)"
       ],
       "sportsbooks": {
         "BetMGM": {
@@ -4719,14 +4720,14 @@
       "date": "September 5th",
       "value_fighter": "Dan Hooker",
       "opponent": "Salahdine Parnasse",
-      "model_prob": 59.8,
-      "fair_odds": 1.67,
+      "model_prob": 59.2,
+      "fair_odds": 1.69,
       "best_book_odds": 4.0,
-      "ev_pct": 139.12,
+      "ev_pct": 136.88,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
-        "📏 +4.0\" Reach Edge (+5.0 Elo)",
+        "📏 +4.0\" Reach Edge (+6.0 Elo)",
         "🥊 Open Stance Southpaw (+4.0 Elo)"
       ],
       "sportsbooks": {
@@ -4787,10 +4788,10 @@
       "date": "August 22nd",
       "value_fighter": "Roman Dolidze",
       "opponent": "Reinier de Ridder",
-      "model_prob": 49.5,
-      "fair_odds": 2.02,
+      "model_prob": 48.9,
+      "fair_odds": 2.04,
       "best_book_odds": 4.4,
-      "ev_pct": 117.72,
+      "ev_pct": 115.19,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
@@ -4872,14 +4873,14 @@
       "date": "September 12th",
       "value_fighter": "Jose Delgado",
       "opponent": "Jean Silva",
-      "model_prob": 43.1,
-      "fair_odds": 2.32,
+      "model_prob": 43.2,
+      "fair_odds": 2.31,
       "best_book_odds": 4.5,
-      "ev_pct": 93.98,
+      "ev_pct": 94.62,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
-        "📏 +4.0\" Reach Edge (+5.0 Elo)",
+        "📏 +4.0\" Reach Edge (+6.0 Elo)",
         "🥊 Open Stance Southpaw (+4.0 Elo)"
       ],
       "sportsbooks": {
@@ -4901,7 +4902,7 @@
       "model_prob": 45.1,
       "fair_odds": 2.22,
       "best_book_odds": 4.2,
-      "ev_pct": 89.25,
+      "ev_pct": 89.28,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
@@ -4937,10 +4938,10 @@
       "date": "August 22nd",
       "value_fighter": "MarQuel Mederos",
       "opponent": "Mason Jones",
-      "model_prob": 50.3,
-      "fair_odds": 1.99,
+      "model_prob": 50.1,
+      "fair_odds": 2.0,
       "best_book_odds": 3.75,
-      "ev_pct": 88.63,
+      "ev_pct": 87.82,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
@@ -4976,16 +4977,16 @@
       "date": "August 21st",
       "value_fighter": "Danielle Kelly",
       "opponent": "Juliana Lima",
-      "model_prob": 82.8,
-      "fair_odds": 1.21,
+      "model_prob": 83.0,
+      "fair_odds": 1.2,
       "best_book_odds": 2.0,
-      "ev_pct": 65.65,
+      "ev_pct": 65.98,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
         "⚡ Prime Speed (+15.0 Elo)",
         "⚠️ Opponent Age Cliff (-35.0 Elo)",
-        "📏 +6.0\" Reach Edge (+10.0 Elo)"
+        "📏 +6.0\" Reach Edge (+12.0 Elo)"
       ],
       "sportsbooks": {}
     },
@@ -4994,14 +4995,14 @@
       "date": "August 29th",
       "value_fighter": "Levi Rodrigues Jr.",
       "opponent": "Ce Liu",
-      "model_prob": 61.9,
-      "fair_odds": 1.62,
+      "model_prob": 62.1,
+      "fair_odds": 1.61,
       "best_book_odds": 2.63,
-      "ev_pct": 62.69,
+      "ev_pct": 63.22,
       "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
-        "📏 +5.0\" Reach Edge (+7.5 Elo)"
+        "📏 +5.0\" Reach Edge (+9.0 Elo)"
       ],
       "sportsbooks": {
         "Polymarket": {
@@ -5053,14 +5054,14 @@
       "date": "September 19th",
       "value_fighter": "Mauricio Ruffy",
       "opponent": "Arman Tsarukyan",
-      "model_prob": 36.7,
+      "model_prob": 36.8,
       "fair_odds": 2.72,
       "best_book_odds": 4.0,
-      "ev_pct": 46.85,
+      "ev_pct": 47.12,
       "kelly_stake": 3.9,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
-        "📏 +3.0\" Reach Edge (+2.5 Elo)"
+        "📏 +3.0\" Reach Edge (+3.0 Elo)"
       ],
       "sportsbooks": {
         "BetMGM": {
@@ -5107,11 +5108,11 @@
       "date": "August 29th",
       "value_fighter": "Alex Perez",
       "opponent": "Sumudaerji",
-      "model_prob": 49.5,
-      "fair_odds": 2.02,
+      "model_prob": 49.2,
+      "fair_odds": 2.03,
       "best_book_odds": 2.75,
-      "ev_pct": 36.23,
-      "kelly_stake": 5.2,
+      "ev_pct": 35.24,
+      "kelly_stake": 5.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
       "sportsbooks": {
@@ -5212,14 +5213,14 @@
       "date": "August 29th",
       "value_fighter": "Levi Rodrigues Jr.",
       "opponent": "Liu Ce",
-      "model_prob": 61.9,
-      "fair_odds": 1.62,
+      "model_prob": 62.1,
+      "fair_odds": 1.61,
       "best_book_odds": 2.0,
-      "ev_pct": 23.72,
-      "kelly_stake": 5.9,
+      "ev_pct": 24.12,
+      "kelly_stake": 6.0,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
-        "📏 +5.0\" Reach Edge (+7.5 Elo)"
+        "📏 +5.0\" Reach Edge (+9.0 Elo)"
       ],
       "sportsbooks": {}
     },
@@ -5267,15 +5268,16 @@
       "date": "August 22nd",
       "value_fighter": "Kennedy Nzechukwu",
       "opponent": "Shamil Gaziev",
-      "model_prob": 55.2,
-      "fair_odds": 1.81,
+      "model_prob": 56.5,
+      "fair_odds": 1.77,
       "best_book_odds": 2.18,
-      "ev_pct": 20.24,
-      "kelly_stake": 4.3,
+      "ev_pct": 23.26,
+      "kelly_stake": 4.9,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [
         "⚡ Prime Speed (+3.8 Elo)",
-        "📏 +5.0\" Reach Edge (+7.5 Elo)",
+        "⚠️ Opponent Age Cliff (-8.2 Elo)",
+        "📏 +5.0\" Reach Edge (+9.0 Elo)",
         "🥊 Open Stance Southpaw (+8.0 Elo)"
       ],
       "sportsbooks": {
@@ -5310,11 +5312,11 @@
       "date": "October 24th",
       "value_fighter": "Merab Dvalishvili",
       "opponent": "Petr Yan",
-      "model_prob": 51.5,
-      "fair_odds": 1.94,
+      "model_prob": 50.6,
+      "fair_odds": 1.98,
       "best_book_odds": 2.32,
-      "ev_pct": 19.4,
-      "kelly_stake": 3.7,
+      "ev_pct": 17.36,
+      "kelly_stake": 3.3,
       "tier": "💎 ULTRA VALUE",
       "edge_drivers": [],
       "sportsbooks": {
@@ -5414,8 +5416,8 @@
       "model_prob": 41.6,
       "fair_odds": 2.4,
       "best_book_odds": 2.63,
-      "ev_pct": 9.47,
-      "kelly_stake": 1.5,
+      "ev_pct": 9.43,
+      "kelly_stake": 1.4,
       "tier": "⚡ STRONG VALUE",
       "edge_drivers": [
         "🥊 Open Stance Southpaw (+4.0 Elo)"
@@ -5432,15 +5434,15 @@
       "date": "September 19th",
       "value_fighter": "Joshua Van",
       "opponent": "Alexandre Pantoja",
-      "model_prob": 56.7,
-      "fair_odds": 1.77,
+      "model_prob": 57.6,
+      "fair_odds": 1.74,
       "best_book_odds": 1.89,
-      "ev_pct": 7.07,
-      "kelly_stake": 2.0,
+      "ev_pct": 8.82,
+      "kelly_stake": 2.5,
       "tier": "⚡ STRONG VALUE",
       "edge_drivers": [
         "⚡ Prime Speed (+15.0 Elo)",
-        "⚠️ Opponent Age Cliff (-27.6 Elo)"
+        "⚠️ Opponent Age Cliff (-34.2 Elo)"
       ],
       "sportsbooks": {
         "BetMGM": {

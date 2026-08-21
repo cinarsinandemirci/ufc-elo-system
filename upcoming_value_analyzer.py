@@ -64,22 +64,33 @@ def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
     size_adj_1 = -(target_tier - t1) * 35.0 if target_tier > t1 else 0.0
     size_adj_2 = -(target_tier - t2) * 35.0 if target_tier > t2 else 0.0
 
-    # 2. Biometrics
+    # 2. Biometrics & DOB Parsing
     b1 = {**bio_db.get(f1_obj['name'].lower(), {}), **det_db.get(f1_obj['name'].lower(), {})}
     b2 = {**bio_db.get(f2_obj['name'].lower(), {}), **det_db.get(f2_obj['name'].lower(), {})}
 
-    age1 = b1.get('age') or 30.0
-    age2 = b2.get('age') or 30.0
+    def parse_age(detail_dict, fallback=30.0):
+        dob_str = detail_dict.get('dob')
+        if dob_str:
+            try:
+                dob = datetime.strptime(dob_str, '%b %d, %Y')
+                now = datetime.strptime('2026-08-21', '%Y-%m-%d')
+                return (now - dob).days / 365.25
+            except Exception:
+                pass
+        return detail_dict.get('age') or fallback
+
+    age1 = parse_age(b1, 30.0)
+    age2 = parse_age(b2, 30.0)
     is_light = (target_tier <= 4)
 
     age_adj_1 = 0.0
     age_adj_2 = 0.0
     if is_light:
-        if age1 >= 35.0: age_adj_1 -= min(35.0, (age1 - 34.0) * 12.0)
-        if age2 >= 35.0: age_adj_2 -= min(35.0, (age2 - 34.0) * 12.0)
+        if age1 >= 34.5: age_adj_1 -= min(35.0, (age1 - 33.5) * 12.0)
+        if age2 >= 34.5: age_adj_2 -= min(35.0, (age2 - 33.5) * 12.0)
     else:
-        if age1 >= 37.0: age_adj_1 -= min(30.0, (age1 - 36.0) * 8.0)
-        if age2 >= 37.0: age_adj_2 -= min(30.0, (age2 - 36.0) * 8.0)
+        if age1 >= 36.5: age_adj_1 -= min(30.0, (age1 - 35.5) * 8.0)
+        if age2 >= 36.5: age_adj_2 -= min(30.0, (age2 - 35.5) * 8.0)
 
     age_gap = age2 - age1
     if age_gap >= 6.0 and age1 < 34.0:
@@ -93,8 +104,8 @@ def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
 
     reach_adj_1 = 0.0
     reach_adj_2 = 0.0
-    if reach_gap >= 3.0: reach_adj_1 += min(15.0, (reach_gap - 2.0) * 2.5)
-    elif reach_gap <= -3.0: reach_adj_2 += min(15.0, (-reach_gap - 2.0) * 2.5)
+    if reach_gap >= 3.0: reach_adj_1 += min(16.0, (reach_gap - 2.0) * 3.0)
+    elif reach_gap <= -3.0: reach_adj_2 += min(16.0, (-reach_gap - 2.0) * 3.0)
 
     stance1 = b1.get('stance', 'Orthodox')
     stance2 = b2.get('stance', 'Orthodox')
@@ -104,16 +115,29 @@ def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
     tdd1 = b1.get('tactical', {}).get('td_def_pct', 70.0) if b1.get('tactical') else 70.0
     tdd2 = b2.get('tactical', {}).get('td_def_pct', 70.0) if b2.get('tactical') else 70.0
 
-    g1 = f1_obj.get('grappling_index', 0.0)
-    g2 = f2_obj.get('grappling_index', 0.0)
-    s1 = f1_obj.get('striking_index', 0.0)
-    s2 = f2_obj.get('striking_index', 0.0)
+    # Stylistic interaction
+    arch1 = f1_obj.get('archetype', 'Distance Out-Fighter')
+    arch2 = f2_obj.get('archetype', 'Distance Out-Fighter')
+    style_matrix = {
+        ('Pressure Wrestler', 'Distance Out-Fighter'): 20.0,
+        ('Pressure Wrestler', 'Inside Pressure Boxer'): 16.0,
+        ('Sprawl-and-Brawler', 'Pressure Wrestler'): 18.0,
+        ('Submission Hunter', 'Clinch Grinder'): 15.0,
+        ('Inside Pressure Boxer', 'Distance Out-Fighter'): 14.0,
+        ('Distance Out-Fighter', 'Clinch Grinder'): 14.0,
+    }
+    style_bonus = 0.0
+    if (arch1, arch2) in style_matrix:
+        style_bonus = style_matrix[(arch1, arch2)]
+    elif (arch2, arch1) in style_matrix:
+        style_bonus = -style_matrix[(arch2, arch1)]
 
-    raw_g_adv_1 = g1 - s2
-    raw_g_adv_2 = g2 - s1
-    if tdd2 >= 80.0 and raw_g_adv_1 > 0: raw_g_adv_1 *= 0.45
-    if tdd1 >= 80.0 and raw_g_adv_2 > 0: raw_g_adv_2 *= 0.45
-    style_shift = (raw_g_adv_1 - raw_g_adv_2) * 3.5
+    if 'Wrestler' in arch1 and tdd2 >= 82.0 and style_bonus > 0:
+        style_bonus *= 0.35
+    if 'Wrestler' in arch2 and tdd1 >= 82.0 and style_bonus < 0:
+        style_bonus *= 0.35
+
+    style_shift = style_bonus
 
     # 3. Inactivity decay
     d1 = engine.calculate_inactivity_and_decay(f1_obj.get('last_fight_date', '2025-01-01'), '2026-08-21', f1_obj['elo'])
@@ -155,14 +179,16 @@ def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
     if age_adj_2 < 0: drivers_1.append(f"⚠️ Opponent Age Cliff ({round(age_adj_2, 1)} Elo)")
     if reach_adj_1 > 0: drivers_1.append(f"📏 +{round(reach_gap, 1)}\" Reach Edge (+{round(reach_adj_1, 1)} Elo)")
     if stance_adj_1 > 0: drivers_1.append(f"🥊 Open Stance Southpaw (+{round(stance_adj_1, 1)} Elo)")
-    if tdd1 >= 80.0 and g2 > 10.0: drivers_1.append(f"🛡️ {round(tdd1)}% TDD Wall")
+    if tdd1 >= 80.0 and 'Wrestler' in arch2: drivers_1.append(f"🛡️ {round(tdd1)}% TDD Wall")
+    if style_shift > 5.0: drivers_1.append(f"🥋 Tactical Style Edge (+{round(style_shift, 1)} Elo)")
 
     if ped_adj_2 > 0: drivers_2.append(f"🥇 Pedigree Prior (+{round(ped_adj_2, 1)} Elo)")
     if age_adj_2 > 0: drivers_2.append(f"⚡ Prime Speed (+{round(age_adj_2, 1)} Elo)")
     if age_adj_1 < 0: drivers_2.append(f"⚠️ Opponent Age Cliff ({round(age_adj_1, 1)} Elo)")
     if reach_adj_2 > 0: drivers_2.append(f"📏 +{round(-reach_gap, 1)}\" Reach Edge (+{round(reach_adj_2, 1)} Elo)")
     if stance_adj_2 > 0: drivers_2.append(f"🥊 Open Stance Southpaw (+{round(stance_adj_2, 1)} Elo)")
-    if tdd2 >= 80.0 and g1 > 10.0: drivers_2.append(f"🛡️ {round(tdd2)}% TDD Wall")
+    if tdd2 >= 80.0 and 'Wrestler' in arch1: drivers_2.append(f"🛡️ {round(tdd2)}% TDD Wall")
+    if style_shift < -5.0: drivers_2.append(f"🥋 Tactical Style Edge (+{round(-style_shift, 1)} Elo)")
 
     c1 = comp_db.get(f1_obj['name'].lower(), {'striking_elo': 1500.0, 'grappling_elo': 1500.0, 'cardio_elo': 1500.0})
     c2 = comp_db.get(f2_obj['name'].lower(), {'striking_elo': 1500.0, 'grappling_elo': 1500.0, 'cardio_elo': 1500.0})

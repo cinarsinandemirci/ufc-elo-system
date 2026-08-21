@@ -393,19 +393,32 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
     raw_det_2 = det_db.get(f2['name'].lower(), {})
     b2 = {**raw_bio_2, **raw_det_2}
 
-    f1_age = b1.get('age') or (32.0 if f1.get('is_active') else 38.0)
-    f2_age = b2.get('age') or (32.0 if f2.get('is_active') else 38.0)
+    now_str = "2026-08-21"
+
+    def parse_age(detail_dict, fallback=32.0):
+        dob_str = detail_dict.get('dob')
+        if dob_str:
+            try:
+                dob = datetime.strptime(dob_str, '%b %d, %Y')
+                now = datetime.strptime(now_str, '%Y-%m-%d')
+                return (now - dob).days / 365.25
+            except Exception:
+                pass
+        return detail_dict.get('age') or fallback
+
+    f1_age = parse_age(b1, 32.0 if f1.get('is_active') else 38.0)
+    f2_age = parse_age(b2, 32.0 if f2.get('is_active') else 38.0)
 
     age_adj_1 = 0.0
     age_adj_2 = 0.0
     is_lighter_division = (target_tier <= 4)
 
     if is_lighter_division:
-        if f1_age >= 35.0: age_adj_1 -= min(35.0, (f1_age - 34.0) * 12.0)
-        if f2_age >= 35.0: age_adj_2 -= min(35.0, (f2_age - 34.0) * 12.0)
+        if f1_age >= 34.5: age_adj_1 -= min(35.0, (f1_age - 33.5) * 12.0)
+        if f2_age >= 34.5: age_adj_2 -= min(35.0, (f2_age - 33.5) * 12.0)
     else:
-        if f1_age >= 37.0: age_adj_1 -= min(30.0, (f1_age - 36.0) * 8.0)
-        if f2_age >= 37.0: age_adj_2 -= min(30.0, (f2_age - 36.0) * 8.0)
+        if f1_age >= 36.5: age_adj_1 -= min(30.0, (f1_age - 35.5) * 8.0)
+        if f2_age >= 36.5: age_adj_2 -= min(30.0, (f2_age - 35.5) * 8.0)
 
     age_gap = f2_age - f1_age
     if age_gap >= 6.0 and f1_age < 34.0:
@@ -424,9 +437,9 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
     reach_adj_2 = 0.0
     reach_gap = f1_reach - f2_reach
     if reach_gap >= 3.0:
-        reach_adj_1 += min(15.0, (reach_gap - 2.0) * 2.5)
+        reach_adj_1 += min(16.0, (reach_gap - 2.0) * 3.0)
     elif reach_gap <= -3.0:
-        reach_adj_2 += min(15.0, (-reach_gap - 2.0) * 2.5)
+        reach_adj_2 += min(16.0, (-reach_gap - 2.0) * 3.0)
 
     f1_stance = b1.get('stance', 'Orthodox')
     f2_stance = b2.get('stance', 'Orthodox')
@@ -460,21 +473,37 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
     f1_slpm = f1_tact.get('slpm', 3.8)
     f2_slpm = f2_tact.get('slpm', 3.8)
 
-    # 3. Stylistic & Dominance Indices
     g1 = f1.get('grappling_index', 0.0)
     g2 = f2.get('grappling_index', 0.0)
     s1 = f1.get('striking_index', 0.0)
     s2 = f2.get('striking_index', 0.0)
 
-    raw_grapple_advantage_1 = g1 - s2
-    raw_grapple_advantage_2 = g2 - s1
+    # 3. Stylistic & Archetype Interactions
+    arch1 = f1.get('archetype', 'Distance Out-Fighter')
+    arch2 = f2.get('archetype', 'Distance Out-Fighter')
+    
+    style_matrix = {
+        ('Pressure Wrestler', 'Distance Out-Fighter'): 20.0,
+        ('Pressure Wrestler', 'Inside Pressure Boxer'): 16.0,
+        ('Sprawl-and-Brawler', 'Pressure Wrestler'): 18.0,
+        ('Submission Hunter', 'Clinch Grinder'): 15.0,
+        ('Inside Pressure Boxer', 'Distance Out-Fighter'): 14.0,
+        ('Distance Out-Fighter', 'Clinch Grinder'): 14.0,
+    }
+    
+    style_bonus_1 = 0.0
+    if (arch1, arch2) in style_matrix:
+        style_bonus_1 = style_matrix[(arch1, arch2)]
+    elif (arch2, arch1) in style_matrix:
+        style_bonus_1 = -style_matrix[(arch2, arch1)]
 
-    if f2_tdd >= 80.0 and raw_grapple_advantage_1 > 0:
-        raw_grapple_advantage_1 *= 0.45
-    if f1_tdd >= 80.0 and raw_grapple_advantage_2 > 0:
-        raw_grapple_advantage_2 *= 0.45
+    # TDD Neutralizer: If opponent has >= 82% TDD, neutralize wrestler advantage
+    if 'Wrestler' in arch1 and f2_tdd >= 82.0 and style_bonus_1 > 0:
+        style_bonus_1 *= 0.35
+    if 'Wrestler' in arch2 and f1_tdd >= 82.0 and style_bonus_1 < 0:
+        style_bonus_1 *= 0.35
 
-    style_shift = (raw_grapple_advantage_1 - raw_grapple_advantage_2) * 3.5
+    style_shift = style_bonus_1
 
     # 4. Inactivity & Decay
     now_str = "2026-08-21"
@@ -583,14 +612,16 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
     if age_adj_2 < 0: drivers_1.append(f"⚠️ Opponent Age Cliff ({round(age_adj_2, 1)} Elo)")
     if reach_adj_1 > 0: drivers_1.append(f"📏 +{round(reach_gap, 1)}\" Reach Advantage (+{round(reach_adj_1, 1)} Elo)")
     if stance_adj_1 > 0: drivers_1.append(f"🥊 Open Stance Southpaw Angle (+{round(stance_adj_1, 1)} Elo)")
-    if f1_tdd >= 80.0 and g2 > 15.0: drivers_1.append(f"🛡️ {round(f1_tdd)}% TDD Neutralizer")
+    if f1_tdd >= 80.0 and 'Wrestler' in arch2: drivers_1.append(f"🛡️ {round(f1_tdd)}% TDD Neutralizer")
+    if style_shift > 5.0: drivers_1.append(f"🥋 Tactical Style Edge (+{round(style_shift, 1)} Elo)")
 
     if ped_adj_2 > 0: drivers_2.append(f"🥇 Fast-Track Pedigree: {ped2.get('pedigree_title', 'Elite Title')} (+{round(ped_adj_2, 1)} Elo)")
     if age_adj_2 > 0: drivers_2.append(f"⚡ Prime Speed Edge (+{round(age_adj_2, 1)} Elo)")
     if age_adj_1 < 0: drivers_2.append(f"⚠️ Opponent Age Cliff ({round(age_adj_1, 1)} Elo)")
     if reach_adj_2 > 0: drivers_2.append(f"📏 +{round(-reach_gap, 1)}\" Reach Advantage (+{round(reach_adj_2, 1)} Elo)")
     if stance_adj_2 > 0: drivers_2.append(f"🥊 Open Stance Southpaw Angle (+{round(stance_adj_2, 1)} Elo)")
-    if f2_tdd >= 80.0 and g1 > 15.0: drivers_2.append(f"🛡️ {round(f2_tdd)}% TDD Neutralizer")
+    if f2_tdd >= 80.0 and 'Wrestler' in arch1: drivers_2.append(f"🛡️ {round(f2_tdd)}% TDD Neutralizer")
+    if style_shift < -5.0: drivers_2.append(f"🥋 Tactical Style Edge (+{round(-style_shift, 1)} Elo)")
 
     # Value Tier Assignment
     if ev_1 >= 10.0: tier_1 = "💎 ULTRA VALUE"
