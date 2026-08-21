@@ -42,12 +42,13 @@ KNOWN_SHORT_NOTICE_REPLACEMENTS = {
 }
 
 class UFCEloEngine:
-    def __init__(self, base_elo=1500.0, base_k=32.0, decay_per_month=5.0, inactivity_threshold_months=18.0, current_date="2026-08-21", pedigree_file="pedigree_database.json"):
+    def __init__(self, base_elo=1500.0, base_k=32.0, decay_per_month=5.0, inactivity_threshold_months=18.0, current_date="2026-08-21", pedigree_file="pedigree_database.json", prior_dampening=0.25):
         self.base_elo = base_elo
         self.base_k = base_k
         self.decay_per_month = decay_per_month
         self.inactivity_threshold_months = inactivity_threshold_months
         self.current_date = current_date
+        self.prior_dampening = prior_dampening
         self.fighters = {}
         self.history = []
         self.ped_db = {}
@@ -61,8 +62,9 @@ class UFCEloEngine:
     def get_or_create_fighter(self, name):
         if name not in self.fighters:
             init_elo = self.base_elo
-            if self.ped_db and name.lower() in self.ped_db:
-                init_elo = self.ped_db[name.lower()].get('prior_elo', self.base_elo)
+            if self.ped_db and name.lower() in self.ped_db and self.prior_dampening > 0:
+                raw_prior = self.ped_db[name.lower()].get('prior_elo', self.base_elo)
+                init_elo = self.base_elo + (raw_prior - self.base_elo) * self.prior_dampening
 
             self.fighters[name] = {
                 'name': name,
