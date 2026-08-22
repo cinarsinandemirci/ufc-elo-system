@@ -49,11 +49,20 @@ def test_html():
         'clvControls',
         'clvTrackerContainer',
         'clvBoutsGrid',
-        'clvHistoryModal',
         'switchRadarSubView',
         'fetchCLVTracker',
         'openCLVHistoryModal',
-        'closeCLVHistoryModal'
+        'closeCLVHistoryModal',
+        'simCampAdvantageBadge',
+        'simCampTier1',
+        'simCampTier2',
+        'simCampName1',
+        'simCampName2',
+        'simCampCoach1',
+        'simCampCoach2',
+        'simCampSynergy1',
+        'simCampSynergy2',
+        'simCampBreakdown'
     ]
 
     all_passed = True

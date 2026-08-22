@@ -1,0 +1,246 @@
+{
+  "gyms": {
+    "American Kickboxing Academy": {
+      "id": "aka",
+      "name": "American Kickboxing Academy (AKA)",
+      "head_coach": "Javier Mendez & Khabib Nurmagomedov",
+      "location": "San Jose, CA, USA & Dagestan",
+      "tier": "S-Tier",
+      "rating_bonus": 45.0,
+      "gameplan_execution": 1.18,
+      "specialties": ["Dagestani Handcuff", "Chain Takedowns", "Endless Cardio", "Top Pressure"],
+      "synergy_archetypes": ["Pressure Wrestler", "Grind Wrestler", "BJJ Specialist"],
+      "title_fight_win_rate": 84.6,
+      "roster": [
+        "Islam Makhachev", "Khabib Nurmagomedov", "Umar Nurmagomedov", "Usman Nurmagomedov",
+        "Daniel Cormier", "Cain Velasquez", "Luke Rockhold", "Tagir Ulanbekov", "Abubakar Nurmagomedov"
+      ]
+    },
+    "City Kickboxing": {
+      "id": "ckb",
+      "name": "City Kickboxing (CKB)",
+      "head_coach": "Eugene Bareman",
+      "location": "Auckland, New Zealand",
+      "tier": "S-Tier",
+      "rating_bonus": 42.0,
+      "gameplan_execution": 1.16,
+      "specialties": ["Feint Trap Systems", "Calf Kick Strategy", "Dynamic Footwork", "In-Fight Adjustments"],
+      "synergy_archetypes": ["Distance Out-Fighter", "Counter Striker", "Muay Thai Blitz"],
+      "title_fight_win_rate": 78.3,
+      "roster": [
+        "Israel Adesanya", "Alexander Volkanovski", "Dan Hooker", "Kai Kara-France",
+        "Carlos Ulberg", "Brad Riddell", "Junior Tafa", "Mike Mathetha"
+      ]
+    },
+    "ONX Sports / Elevation Fight Team": {
+      "id": "onx_elevation",
+      "name": "ONX Sports / Elevation",
+      "head_coach": "Trevor Wittman",
+      "location": "Denver, CO, USA",
+      "tier": "S-Tier",
+      "rating_bonus": 40.0,
+      "gameplan_execution": 1.15,
+      "specialties": ["Fundamental Boxing Combinations", "Footwork Pivot Angles", "Sprawl & Brawl", "High Altitude Conditioning"],
+      "synergy_archetypes": ["Distance Out-Fighter", "Counter Striker", "High-Volume Boxer"],
+      "title_fight_win_rate": 75.0,
+      "roster": [
+        "Kamaru Usman", "Justin Gaethje", "Rose Namajunas", "Cory Sandhagen", "Curtis Blaydes", "Drew Dober", "Neil Magny"
+      ]
+    },
+    "Fighting Nerds": {
+      "id": "fighting_nerds",
+      "name": "The Fighting Nerds",
+      "head_coach": "Pablo Sucupira",
+      "location": "São Paulo, Brazil",
+      "tier": "S-Tier",
+      "rating_bonus": 38.0,
+      "gameplan_execution": 1.15,
+      "specialties": ["Data-Driven Scouting", "Precision Power Striking", "Explosive Submission Traps", "Mental Warfare"],
+      "synergy_archetypes": ["Counter Striker", "BJJ Specialist", "Pressure Wrestler"],
+      "title_fight_win_rate": 88.9,
+      "roster": [
+        "Caio Borralho", "Jean Silva", "Diego Lopes", "Mauricio Ruffy", "Bruna Brasil"
+      ]
+    },
+    "American Top Team": {
+      "id": "att",
+      "name": "American Top Team (ATT)",
+      "head_coach": "Mike Brown & Din Thomas",
+      "location": "Coconut Creek, FL, USA",
+      "tier": "S-Tier",
+      "rating_bonus": 38.0,
+      "gameplan_execution": 1.14,
+      "specialties": ["Complete MMA Integration", "Elite Sparring Roster Depth", "Volume Striking & Scrambles"],
+      "synergy_archetypes": ["BJJ Specialist", "Pressure Wrestler", "Distance Out-Fighter", "Clinch Striker"],
+      "title_fight_win_rate": 72.5,
+      "roster": [
+        "Dustin Poirier", "Alexandre Pantoja", "Kayla Harrison", "Jorge Masvidal", "Mateusz Gamrot",
+        "Arman Tsarukyan", "Renato Moicano", "Movsar Evloev", "Gillian Robertson", "Grant Dawson", "Edson Barboza"
+      ]
+    },
+    "Chute Boxe Diego Lima": {
+      "id": "chute_boxe_diego_lima",
+      "name": "Chute Boxe Diego Lima",
+      "head_coach": "Diego Lima",
+      "location": "São Paulo, Brazil",
+      "tier": "S-Tier",
+      "rating_bonus": 36.0,
+      "gameplan_execution": 1.12,
+      "specialties": ["Aggressive Muay Thai Pressure", "Guillotine & RNC Choke Mastery", "Dogfight Mentality"],
+      "synergy_archetypes": ["Clinch Striker", "BJJ Specialist", "Muay Thai Blitz"],
+      "title_fight_win_rate": 70.0,
+      "roster": [
+        "Charles Oliveira", "Elves Brener", "Allan Nascimento", "Daniel Santos", "Poliana Viana"
+      ]
+    },
+    "Kill Cliff FC": {
+      "id": "kill_cliff",
+      "name": "Kill Cliff FC (Sanford MMA)",
+      "head_coach": "Henri Hooft & Greg Jones",
+      "location": "Deerfield Beach, FL, USA",
+      "tier": "A-Tier",
+      "rating_bonus": 30.0,
+      "gameplan_execution": 1.10,
+      "specialties": ["Dutch Kickboxing Power", "Heavy Overhands & Low Kicks", "Explosive Wrestling Transitions"],
+      "synergy_archetypes": ["Clinch Striker", "Distance Out-Fighter", "Pressure Wrestler"],
+      "title_fight_win_rate": 64.0,
+      "roster": [
+        "Gilbert Burns", "Michael Chandler", "Vicente Luque", "Shavkat Rakhmonov", "Rafael Fiziev",
+        "Robbie Lawler", "Li Jingliang", "Jason Jackson"
+      ]
+    },
+    "Xtreme Couture": {
+      "id": "xtreme_couture",
+      "name": "Xtreme Couture MMA",
+      "head_coach": "Eric Nicksick & Dewey Cooper",
+      "location": "Las Vegas, NV, USA",
+      "tier": "A-Tier",
+      "rating_bonus": 30.0,
+      "gameplan_execution": 1.10,
+      "specialties": ["Wall Wrestling Defense", "Forward Pressure Pace", "Heavy Weight Class Mastery", "Gritty Boxing"],
+      "synergy_archetypes": ["Pressure Wrestler", "Clinch Striker", "Distance Out-Fighter"],
+      "title_fight_win_rate": 66.7,
+      "roster": [
+        "Francis Ngannou", "Sean Strickland", "Dan Ige", "Magomed Ankalaev", "Aljamain Sterling", "Miesha Tate", "Chris Curtis"
+      ]
+    },
+    "Allstars Training Center": {
+      "id": "allstars",
+      "name": "Allstars Training Center",
+      "head_coach": "Andreas Michael & Alan Finfou",
+      "location": "Stockholm, Sweden",
+      "tier": "A-Tier",
+      "rating_bonus": 28.0,
+      "gameplan_execution": 1.09,
+      "specialties": ["Freestyle Wrestling Explosion", "Heavy Ground & Pound", "High-Torque Boxing"],
+      "synergy_archetypes": ["Pressure Wrestler", "Grind Wrestler"],
+      "title_fight_win_rate": 62.5,
+      "roster": [
+        "Khamzat Chimaev", "Alexander Gustafsson", "Volkan Oezdemir", "Guram Kutateladze", "Ilia Topuria"
+      ]
+    },
+    "Tristar Gym": {
+      "id": "tristar",
+      "name": "Tristar Gym",
+      "head_coach": "Firas Zahabi",
+      "location": "Montreal, Quebec, Canada",
+      "tier": "A-Tier",
+      "rating_bonus": 28.0,
+      "gameplan_execution": 1.10,
+      "specialties": ["Piston Jab Control", "Reactive Double Leg Timing", "Strategic IQ & Pacing"],
+      "synergy_archetypes": ["Distance Out-Fighter", "Counter Striker", "Pressure Wrestler"],
+      "title_fight_win_rate": 80.0,
+      "roster": [
+        "Georges St-Pierre", "Rory MacDonald", "Kenny Florian", "Kevin Lee", "Aiemann Zahabi"
+      ]
+    },
+    "Nova União": {
+      "id": "nova_uniao",
+      "name": "Nova União",
+      "head_coach": "Andre Pederneiras",
+      "location": "Rio de Janeiro, Brazil",
+      "tier": "A-Tier",
+      "rating_bonus": 25.0,
+      "gameplan_execution": 1.08,
+      "specialties": ["Takedown Defense Wall", "Leg Kick Destruction", "Old School BJJ Black Belt Guard"],
+      "synergy_archetypes": ["Distance Out-Fighter", "BJJ Specialist"],
+      "title_fight_win_rate": 71.4,
+      "roster": [
+        "Jose Aldo", "Renan Barao", "Junior dos Santos", "Jussier Formiga", "Claudia Gadelha"
+      ]
+    },
+    "Team Alpha Male": {
+      "id": "alpha_male",
+      "name": "Team Alpha Male",
+      "head_coach": "Urijah Faber & Danny Castillo",
+      "location": "Sacramento, CA, USA",
+      "tier": "A-Tier",
+      "rating_bonus": 24.0,
+      "gameplan_execution": 1.07,
+      "specialties": ["Guillotine Chokes", "Scramble Speed", "Heavy Right Overhands", "Bantamweight/Featherweight Agility"],
+      "synergy_archetypes": ["Pressure Wrestler", "Clinch Striker"],
+      "title_fight_win_rate": 55.0,
+      "roster": [
+        "Urijah Faber", "Cody Garbrandt", "Chad Mendes", "Song Yadong", "Yan Xiaonan", "Josh Emmett"
+      ]
+    },
+    "Kings MMA": {
+      "id": "kings_mma",
+      "name": "Kings MMA",
+      "head_coach": "Rafael Cordeiro",
+      "location": "Huntington Beach, CA, USA",
+      "tier": "A-Tier",
+      "rating_bonus": 24.0,
+      "gameplan_execution": 1.08,
+      "specialties": ["Aggressive Muay Thai Pressure", "Destructive Clinch Knees", "Heavy Body Kicks"],
+      "synergy_archetypes": ["Clinch Striker", "Muay Thai Blitz"],
+      "title_fight_win_rate": 60.0,
+      "roster": [
+        "Rafael dos Anjos", "Fabricio Werdum", "Kelvin Gastelum", "Beneil Dariush", "Marvin Vettori"
+      ]
+    },
+    "Serra-Longo Fight Team / LAW MMA": {
+      "id": "serra_longo",
+      "name": "Serra-Longo Fight Team",
+      "head_coach": "Ray Longo & Matt Serra",
+      "location": "Long Island, NY, USA",
+      "tier": "A-Tier",
+      "rating_bonus": 25.0,
+      "gameplan_execution": 1.09,
+      "specialties": ["Dutch Style Kickboxing Angles", "Renzo Gracie BJJ", "Grit & Heart"],
+      "synergy_archetypes": ["Distance Out-Fighter", "BJJ Specialist"],
+      "title_fight_win_rate": 62.5,
+      "roster": [
+        "Chris Weidman", "Aljamain Sterling", "Merab Dvalishvili", "Matt Frevola", "Al Iaquinta"
+      ]
+    },
+    "Syndicate MMA": {
+      "id": "syndicate",
+      "name": "Syndicate MMA",
+      "head_coach": "John Wood",
+      "location": "Las Vegas, NV, USA",
+      "tier": "B-Tier",
+      "rating_bonus": 15.0,
+      "gameplan_execution": 1.04,
+      "specialties": ["Well-Rounded Fundamentals", "Cage Control", "High Work Rate"],
+      "synergy_archetypes": ["Pressure Wrestler", "Clinch Striker"],
+      "title_fight_win_rate": 45.0,
+      "roster": [
+        "Joanne Wood", "Roxanne Modafferi", "Merab Dvalishvili"
+      ]
+    },
+    "Universal Independent / Regional Gym": {
+      "id": "regional",
+      "name": "Regional / Independent Gym",
+      "head_coach": "Regional Head Coach",
+      "location": "Local Training Camp",
+      "tier": "Regional",
+      "rating_bonus": 5.0,
+      "gameplan_execution": 1.00,
+      "specialties": ["Standard Fundamentals"],
+      "synergy_archetypes": [],
+      "title_fight_win_rate": 35.0,
+      "roster": []
+    }
+  }
+}

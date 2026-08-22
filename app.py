@@ -23,6 +23,9 @@ PEDIGREE_FILE = os.path.join(DATA_DIR, "pedigree_database.json")
 from pedigree_engine import PedigreeCalibrationEngine
 pedigree_engine = PedigreeCalibrationEngine(PEDIGREE_FILE)
 
+from camp_and_coach_engine import CampAndCoachEngine
+camp_engine = CampAndCoachEngine()
+
 try:
     from method_of_victory_engine import MethodOfVictoryPredictor
     mov_engine = MethodOfVictoryPredictor()
@@ -842,8 +845,21 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False,
                 'reach_diff_in': round(reach_gap, 1),
                 'age_diff_years': round(age_gap, 1)
             }
-        }
+        },
+        'camp_analysis': camp_engine.evaluate_camp_matchup(
+            f1['name'],
+            f2['name'],
+            arch1.get('archetype', 'Universal Balanced') if isinstance(arch1, dict) else 'Universal Balanced',
+            arch2.get('archetype', 'Universal Balanced') if isinstance(arch2, dict) else 'Universal Balanced'
+        )
     }
+
+@app.route('/api/camps')
+def get_all_camps():
+    return jsonify({
+        'status': 'success',
+        'data': camp_engine.get_all_camps_summary()
+    })
 
 @app.route('/api/matchup')
 def simulate_matchup():

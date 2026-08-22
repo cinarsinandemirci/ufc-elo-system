@@ -238,10 +238,12 @@ try:
     has_methods = bool(f1_res.get('methods') and f2_res.get('methods'))
     has_props = bool(bout_ctx.get('round_props'))
     has_value_signal = 'value_betting' in f1_res
+    has_camp = bool(data.get('camp_analysis'))
     
     run_assertion(f"/api/matchup returns Archetypes ({f1_res.get('archetype')} vs {f2_res.get('archetype')})", has_archetypes)
     run_assertion("/api/matchup returns Phase 3 Method of Victory breakdown", has_methods)
     run_assertion("/api/matchup returns Phase 3 Round Props (Over/Under/Distance)", has_props)
+    run_assertion("/api/matchup returns Phase 4.3 Camp Quality & Head Coach Analysis", has_camp)
     run_assertion("/api/matchup returns +EV Quantitative Value Signal & Kelly Stake", has_value_signal)
     run_assertion(f"/api/matchup calculation latency: {elapsed*1000:.1f}ms (< 50ms target)", elapsed < 0.050)
 except Exception as e:
@@ -282,8 +284,8 @@ except Exception as e:
 try:
     status, data, elapsed = get_api('/api/system/version')
     run_assertion("API /api/system/version returns 200 OK", status == 200)
-    run_assertion("Active model tag is v2.6.0", data.get('current_version_tag') == 'v2.6.0')
-    run_assertion(f"All versions count >= 7 (count: {len(data.get('all_versions', []))})", len(data.get('all_versions', [])) >= 7)
+    run_assertion("Active model tag is v2.7.0", data.get('current_version_tag') == 'v2.7.0')
+    run_assertion(f"All versions count >= 8 (count: {len(data.get('all_versions', []))})", len(data.get('all_versions', [])) >= 8)
 except Exception as e:
     run_assertion("API /api/system/version accessible", False, str(e))
 
@@ -323,6 +325,15 @@ try:
     run_assertion("Fighter timeline contains 5 stages", len(data_hist.get('bout', {}).get('timeline', [])) == 5)
 except Exception as e:
     run_assertion("API /api/clv-tracker accessible", False, str(e))
+
+# 12. /api/camps (Phase 4.3 Camp Quality & Head Coach Matrix)
+try:
+    status, data, elapsed = get_api('/api/camps')
+    run_assertion("API /api/camps returns 200 OK", status == 200)
+    camps_data = data.get('data', {})
+    run_assertion(f"Total registered elite gyms >= 15 (count: {camps_data.get('total_registered_gyms', 0)})", camps_data.get('total_registered_gyms', 0) >= 15)
+except Exception as e:
+    run_assertion("API /api/camps accessible", False, str(e))
 
 # =========================================================================
 # TEST SUITE 5: EDGE CASES & EXTREME STRESS TESTING

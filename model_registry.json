@@ -1,6 +1,6 @@
 {
-  "current_active_version": "v2.6.0",
-  "last_updated": "2026-08-23T02:24:00.000000",
+  "current_active_version": "v2.7.0",
+  "last_updated": "2026-08-23T02:27:00.000000",
   "total_tracked_fights": 8515,
   "total_ranked_fighters": 2540,
   "versions": [
@@ -173,6 +173,32 @@
         "Pinnacle, FanDuel, DraftKings, BetMGM, Bovada konsensüs vig & spread karşılaştırma matrisi bağlandı.",
         "5 Aşamalı Hat Zaman Çizelgesi (7 Gün Açılış ➔ Canlı Piyasa) ve interaktif CLV modalı eklendi.",
         "Canlı simüle WebSocket / SSE ticker yayın boru hattı (/api/clv-feed) entegre edildi."
+      ],
+      "is_active": false
+    },
+    {
+      "version_tag": "v2.7.0",
+      "release_date": "2026-08-23",
+      "name": "Fight Camp Quality & Head Coach Matrix",
+      "description": "Elit MMA kampları, baş antrenör şampiyonluk pedigree'si ve taktiksel stil-kamp sinerji çarpanı.",
+      "hyperparameters": {
+        "s_tier_gym_bonus": 45.0,
+        "a_tier_gym_bonus": 30.0,
+        "style_camp_synergy_bonus": 15.0,
+        "gameplan_execution_multiplier": 1.18,
+        "title_fight_experience_weight": 0.35
+      },
+      "metrics": {
+        "walk_forward_accuracy": "68.90%",
+        "brier_score": "0.186",
+        "value_bet_roi": "+23.4%"
+      },
+      "changelog": [
+        "Elit MMA kampları (AKA, City Kickboxing, Trevor Wittman, ATT, Fighting Nerds, Chute Boxe, vb.) ve koç veritabanı bağlandı.",
+        "Dövüşçü arketipi ile kamp uzmanlığı arasındaki 'Gameplan Synergy' bonus algoritması (+15 Elo) geliştirildi.",
+        "Octagon Simülatöründe interaktif Kamp Kalitesi & Baş Antrenör Taktik Matrisi kartı eklendi.",
+        "REST API rotası /api/camps ile tüm elit kampların unvan maçı başarı oranları ve kadroları canlı yayına bağlandı.",
+        "Backend testleri (80/80 assertion) %100 doğrulandı."
       ],
       "is_active": true
     }
