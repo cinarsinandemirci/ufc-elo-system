@@ -26,6 +26,9 @@ pedigree_engine = PedigreeCalibrationEngine(PEDIGREE_FILE)
 from camp_and_coach_engine import CampAndCoachEngine
 camp_engine = CampAndCoachEngine()
 
+from monte_carlo_engine import VectorizedMonteCarloEngine
+mc_engine = VectorizedMonteCarloEngine()
+
 try:
     from method_of_victory_engine import MethodOfVictoryPredictor
     mov_engine = MethodOfVictoryPredictor()
@@ -851,6 +854,24 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False,
             f2['name'],
             arch1.get('archetype', 'Universal Balanced') if isinstance(arch1, dict) else 'Universal Balanced',
             arch2.get('archetype', 'Universal Balanced') if isinstance(arch2, dict) else 'Universal Balanced'
+        ),
+        'monte_carlo': mc_engine.simulate_bout(
+            {
+                'name': f1['name'],
+                'effective_elo': eff_elo_1,
+                'components': {'striking_elo': s1, 'grappling_elo': g1, 'cardio_elo': c1.get('cardio_elo', 1500.0)},
+                'methods': {'ko_tko_pct': mov_props.get('f1_methods', {}).get('ko_tko', f1_ko_pct), 'submission_pct': mov_props.get('f1_methods', {}).get('submission', f1_sub_pct), 'decision_pct': mov_props.get('f1_methods', {}).get('decision', f1_dec_pct)}
+            },
+            {
+                'name': f2['name'],
+                'effective_elo': eff_elo_2,
+                'components': {'striking_elo': s2, 'grappling_elo': g2, 'cardio_elo': c2.get('cardio_elo', 1500.0)},
+                'methods': {'ko_tko_pct': mov_props.get('f2_methods', {}).get('ko_tko', f2_ko_pct), 'submission_pct': mov_props.get('f2_methods', {}).get('submission', f2_sub_pct), 'decision_pct': mov_props.get('f2_methods', {}).get('decision', f2_dec_pct)}
+            },
+            total_rounds=5 if is_title else 3,
+            num_sims=100000,
+            is_apex=is_apex,
+            is_altitude=is_high_altitude
         )
     }
 
@@ -859,6 +880,52 @@ def get_all_camps():
     return jsonify({
         'status': 'success',
         'data': camp_engine.get_all_camps_summary()
+    })
+
+@app.route('/api/monte-carlo')
+def get_monte_carlo_simulation():
+    reload_cache_if_needed()
+    f1_name = request.args.get('f1', '').strip().lower()
+    f2_name = request.args.get('f2', '').strip().lower()
+    num_sims = int(request.args.get('sims', 100000))
+    total_rounds = int(request.args.get('rounds', 3))
+    is_apex = request.args.get('is_apex', 'false').lower() == 'true'
+    is_altitude = request.args.get('is_high_altitude', 'false').lower() == 'true'
+
+    f1 = _CACHE['fighters_by_name'].get(f1_name)
+    f2 = _CACHE['fighters_by_name'].get(f2_name)
+
+    if not f1 or not f2:
+        return jsonify({'error': 'One or both fighters not found'}), 400
+
+    match_data = compute_detailed_matchup(f1, f2, is_title=(total_rounds == 5), is_apex=is_apex, is_high_altitude=is_altitude)
+    
+    f1_mc_data = {
+        'name': f1['name'],
+        'effective_elo': match_data['fighter1']['effective_elo'],
+        'components': match_data['fighter1']['components'],
+        'methods': match_data['fighter1']['methods']
+    }
+    f2_mc_data = {
+        'name': f2['name'],
+        'effective_elo': match_data['fighter2']['effective_elo'],
+        'components': match_data['fighter2']['components'],
+        'methods': match_data['fighter2']['methods']
+    }
+
+    num_sims = max(10000, min(500000, num_sims))
+    mc_payload = mc_engine.simulate_bout(
+        f1_mc_data,
+        f2_mc_data,
+        total_rounds=total_rounds,
+        num_sims=num_sims,
+        is_apex=is_apex,
+        is_altitude=is_altitude
+    )
+    
+    return jsonify({
+        'status': 'success',
+        'data': mc_payload
     })
 
 @app.route('/api/matchup')

@@ -239,11 +239,13 @@ try:
     has_props = bool(bout_ctx.get('round_props'))
     has_value_signal = 'value_betting' in f1_res
     has_camp = bool(data.get('camp_analysis'))
+    has_monte_carlo = bool(data.get('monte_carlo'))
     
     run_assertion(f"/api/matchup returns Archetypes ({f1_res.get('archetype')} vs {f2_res.get('archetype')})", has_archetypes)
     run_assertion("/api/matchup returns Phase 3 Method of Victory breakdown", has_methods)
     run_assertion("/api/matchup returns Phase 3 Round Props (Over/Under/Distance)", has_props)
     run_assertion("/api/matchup returns Phase 4.3 Camp Quality & Head Coach Analysis", has_camp)
+    run_assertion("/api/matchup returns Phase 5.1 Vectorized Monte Carlo simulation", has_monte_carlo)
     run_assertion("/api/matchup returns +EV Quantitative Value Signal & Kelly Stake", has_value_signal)
     run_assertion(f"/api/matchup calculation latency: {elapsed*1000:.1f}ms (< 50ms target)", elapsed < 0.050)
 except Exception as e:
@@ -284,8 +286,8 @@ except Exception as e:
 try:
     status, data, elapsed = get_api('/api/system/version')
     run_assertion("API /api/system/version returns 200 OK", status == 200)
-    run_assertion("Active model tag is v2.7.0", data.get('current_version_tag') == 'v2.7.0')
-    run_assertion(f"All versions count >= 8 (count: {len(data.get('all_versions', []))})", len(data.get('all_versions', [])) >= 8)
+    run_assertion("Active model tag is v2.8.0", data.get('current_version_tag') == 'v2.8.0')
+    run_assertion(f"All versions count >= 9 (count: {len(data.get('all_versions', []))})", len(data.get('all_versions', [])) >= 9)
 except Exception as e:
     run_assertion("API /api/system/version accessible", False, str(e))
 
@@ -334,6 +336,17 @@ try:
     run_assertion(f"Total registered elite gyms >= 15 (count: {camps_data.get('total_registered_gyms', 0)})", camps_data.get('total_registered_gyms', 0) >= 15)
 except Exception as e:
     run_assertion("API /api/camps accessible", False, str(e))
+
+# 13. /api/monte-carlo (Phase 5.1 Dynamic Vectorized Monte Carlo Engine)
+try:
+    status, data, elapsed = get_api('/api/monte-carlo?f1=Islam%20Makhachev&f2=Dustin%20Poirier&sims=100000&rounds=5')
+    run_assertion("API /api/monte-carlo (100k sims) returns 200 OK", status == 200)
+    mc_data = data.get('data', {})
+    run_assertion(f"Monte Carlo 100k executed in {mc_data.get('config', {}).get('execution_time_ms', 0)}ms (< 75ms target)", mc_data.get('config', {}).get('execution_time_ms', 0) < 75)
+    run_assertion("Monte Carlo contains round_distribution", 'round_distribution' in mc_data)
+    run_assertion("Monte Carlo contains distance_props", 'distance_props' in mc_data)
+except Exception as e:
+    run_assertion("API /api/monte-carlo accessible", False, str(e))
 
 # =========================================================================
 # TEST SUITE 5: EDGE CASES & EXTREME STRESS TESTING

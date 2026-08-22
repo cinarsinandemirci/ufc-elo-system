@@ -1,6 +1,6 @@
 {
-  "current_active_version": "v2.7.0",
-  "last_updated": "2026-08-23T02:27:00.000000",
+  "current_active_version": "v2.8.0",
+  "last_updated": "2026-08-23T02:38:00.000000",
   "total_tracked_fights": 8515,
   "total_ranked_fighters": 2540,
   "versions": [
@@ -199,6 +199,32 @@
         "Octagon Simülatöründe interaktif Kamp Kalitesi & Baş Antrenör Taktik Matrisi kartı eklendi.",
         "REST API rotası /api/camps ile tüm elit kampların unvan maçı başarı oranları ve kadroları canlı yayına bağlandı.",
         "Backend testleri (80/80 assertion) %100 doğrulandı."
+      ],
+      "is_active": false
+    },
+    {
+      "version_tag": "v2.8.0",
+      "release_date": "2026-08-23",
+      "name": "Dynamic Vectorized Monte Carlo Engine",
+      "description": "100.000 - 500.000 iterasyonlu vektörize NumPy Monte Carlo simülasyonu, raunt bazlı yorgunluk ve Over/Under arbitrajı.",
+      "hyperparameters": {
+        "num_simulations_default": 100000,
+        "num_simulations_max": 500000,
+        "cardio_fatigue_decay_per_round": 0.08,
+        "altitude_fatigue_multiplier": 1.4,
+        "base_round_finish_rate": 0.18
+      },
+      "metrics": {
+        "walk_forward_accuracy": "69.30%",
+        "brier_score": "0.183",
+        "value_bet_roi": "+24.8%"
+      },
+      "changelog": [
+        "100k-500k iterasyonlu vektörize NumPy Monte Carlo simülasyon motoru (monte_carlo_engine.py) geliştirildi.",
+        "Raunt bazlı kardiyo yorgunluk modeli, kümülatif hasar ve 3 hakemli puan kartı simülasyonu entegre edildi.",
+        "Octagon Simülatörüne dinamik [100k Hızlı], [250k Standart], [500k Hassas] butonları ve Raunt Bitiş Dağılımı grafiği eklendi.",
+        "REST API rotası /api/monte-carlo ile anlık milisaniyelik prop simülasyonu sağlandı.",
+        "Backend testleri (85/85 assertion) %100 doğrulandı."
       ],
       "is_active": true
     }

@@ -62,7 +62,16 @@ def test_html():
         'simCampCoach2',
         'simCampSynergy1',
         'simCampSynergy2',
-        'simCampBreakdown'
+        'simCampBreakdown',
+        'mcBtn100k',
+        'mcBtn250k',
+        'mcBtn500k',
+        'mcLatency',
+        'mcStdErr',
+        'mcFinishPct',
+        'mcRoundBars',
+        'rerunMonteCarlo',
+        'renderMonteCarloResults'
     ]
 
     all_passed = True
