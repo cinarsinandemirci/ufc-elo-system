@@ -55,7 +55,7 @@ def find_fighter(name):
         'methods': {'KO/TKO_win': 1, 'SUB_win': 0, 'DEC_win': 1, 'KO/TKO_loss': 0}
     }
 
-def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
+def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False, is_apex=False, is_high_altitude=False):
     t1 = DIVISION_HIERARCHY.get(f1_obj.get('primary_weight_class', 'Lightweight'), 4)
     t2 = DIVISION_HIERARCHY.get(f2_obj.get('primary_weight_class', 'Lightweight'), 4)
     target_tier = max(t1, t2)
@@ -139,6 +139,37 @@ def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
 
     style_shift = style_bonus
 
+    # 2b. Women's Division Volume Output
+    is_women_div = f1_obj.get('primary_weight_class', '').startswith("Women's") or f2_obj.get('primary_weight_class', '').startswith("Women's")
+    slpm1 = b1.get('tactical', {}).get('slpm', 3.8) if b1.get('tactical') else 3.8
+    slpm2 = b2.get('tactical', {}).get('slpm', 3.8) if b2.get('tactical') else 3.8
+    vol_multiplier = 4.0 if is_women_div else 1.8
+    vol_diff = (slpm1 - slpm2) * vol_multiplier
+    vol_adj_1 = max(-18.0, min(18.0, vol_diff)) if vol_diff > 0 else 0.0
+    vol_adj_2 = max(-18.0, min(18.0, -vol_diff)) if vol_diff < 0 else 0.0
+
+    # 2c. Environmental Adjustments (Apex 25ft Cage + High Altitude)
+    apex_adj_1 = 0.0
+    apex_adj_2 = 0.0
+    if is_apex:
+        if arch1 in ['Pressure Wrestler', 'Inside Pressure Boxer', 'Clinch Grinder'] and arch2 == 'Distance Out-Fighter':
+            apex_adj_1 += 12.0
+        elif arch2 in ['Pressure Wrestler', 'Inside Pressure Boxer', 'Clinch Grinder'] and arch1 == 'Distance Out-Fighter':
+            apex_adj_2 += 12.0
+
+    c1_comp = comp_db.get(f1_obj['name'].lower(), {})
+    c2_comp = comp_db.get(f2_obj['name'].lower(), {})
+    alt_adj_1 = 0.0
+    alt_adj_2 = 0.0
+    if is_high_altitude:
+        c1_card = c1_comp.get('cardio_elo', 1500.0) if c1_comp else 1500.0
+        c2_card = c2_comp.get('cardio_elo', 1500.0) if c2_comp else 1500.0
+        card_diff = (c1_card - c2_card) / 400.0
+        if card_diff > 0:
+            alt_adj_1 += min(18.0, card_diff * 35.0)
+        elif card_diff < 0:
+            alt_adj_2 += min(18.0, -card_diff * 35.0)
+
     # 3. Inactivity decay
     d1 = engine.calculate_inactivity_and_decay(f1_obj.get('last_fight_date', '2025-01-01'), '2026-08-21', f1_obj['elo'])
     d2 = engine.calculate_inactivity_and_decay(f2_obj.get('last_fight_date', '2025-01-01'), '2026-08-21', f2_obj['elo'])
@@ -149,8 +180,8 @@ def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
     ped_adj_1 = round(ped1['effective_elo'] - f1_obj['elo'], 1) if ped1.get('pedigree_active') else 0.0
     ped_adj_2 = round(ped2['effective_elo'] - f2_obj['elo'], 1) if ped2.get('pedigree_active') else 0.0
 
-    eff_1 = f1_obj['elo'] - d1['decay'] + size_adj_1 + age_adj_1 + reach_adj_1 + stance_adj_1 + style_shift + ped_adj_1
-    eff_2 = f2_obj['elo'] - d2['decay'] + size_adj_2 + age_adj_2 + reach_adj_2 + stance_adj_2 + ped_adj_2
+    eff_1 = f1_obj['elo'] - d1['decay'] + size_adj_1 + age_adj_1 + reach_adj_1 + stance_adj_1 + style_shift + vol_adj_1 + apex_adj_1 + alt_adj_1 + ped_adj_1
+    eff_2 = f2_obj['elo'] - d2['decay'] + size_adj_2 + age_adj_2 + reach_adj_2 + stance_adj_2 + vol_adj_2 + apex_adj_2 + alt_adj_2 + ped_adj_2
 
     p1 = 1.0 / (1.0 + 10.0 ** ((eff_2 - eff_1) / 400.0))
     p2 = 1.0 - p1
@@ -178,6 +209,11 @@ def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
     if age_adj_1 > 0: drivers_1.append(f"⚡ Prime Speed (+{round(age_adj_1, 1)} Elo)")
     if age_adj_2 < 0: drivers_1.append(f"⚠️ Opponent Age Cliff ({round(age_adj_2, 1)} Elo)")
     if reach_adj_1 > 0: drivers_1.append(f"📏 +{round(reach_gap, 1)}\" Reach Edge (+{round(reach_adj_1, 1)} Elo)")
+    if stance_adj_1 > 0: drivers_1.append(f"🥊 Open Stance Southpaw (+{round(stance_adj_1, 1)} Elo)")
+    if style_shift > 5.0: drivers_1.append(f"🥋 Tactical Style Edge (+{round(style_shift, 1)} Elo)")
+    if vol_adj_1 >= 5.0: drivers_1.append(f"📊 High Volume Output (+{round(vol_adj_1, 1)} Elo)")
+    if is_apex and apex_adj_1 > 0: drivers_1.append(f"🏟️ 25-ft Apex Cage (+12.0 Elo)")
+    if is_high_altitude and alt_adj_1 > 0: drivers_1.append(f"🏔️ Altitude Cardio (+{round(alt_adj_1, 1)} Elo)")
     if stance_adj_1 > 0: drivers_1.append(f"🥊 Open Stance Southpaw (+{round(stance_adj_1, 1)} Elo)")
     if tdd1 >= 80.0 and 'Wrestler' in arch2: drivers_1.append(f"🛡️ {round(tdd1)}% TDD Wall")
     if style_shift > 5.0: drivers_1.append(f"🥋 Tactical Style Edge (+{round(style_shift, 1)} Elo)")
@@ -225,9 +261,14 @@ def analyze_matchup(f1_obj, f2_obj, book_dec_1, book_dec_2, is_title=False):
 analyzed_events = []
 all_value_signals = []
 
+ALTITUDE_KEYWORDS = ['salt lake city', 'denver', 'mexico', 'albuquerque', 'bogota', 'utah', 'colorado']
+
 for e in events_raw:
     ev_title = e['event_title']
     ev_date = e['event_date']
+    ev_lower = ev_title.lower()
+    is_apex = ('apex' in ev_lower or ('vegas' in ev_lower and 'ufc 3' not in ev_lower and 'ufc 2' not in ev_lower))
+    is_high_alt = any(alt in ev_lower for alt in ALTITUDE_KEYWORDS)
     analyzed_fights = []
 
     for f in e['fights']:
@@ -240,7 +281,7 @@ for e in events_raw:
         book_1 = raw_f1['best_decimal']
         book_2 = raw_f2['best_decimal']
 
-        analysis = analyze_matchup(f1_obj, f2_obj, book_1, book_2)
+        analysis = analyze_matchup(f1_obj, f2_obj, book_1, book_2, is_title=False, is_apex=is_apex, is_high_altitude=is_high_alt)
 
         fight_entry = {
             'event': ev_title,

@@ -335,7 +335,7 @@ def get_fighter(fighter_name):
         return jsonify(res)
     return jsonify({'error': 'Fighter not found'}), 404
 
-def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False):
+def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False, is_apex=False, is_high_altitude=False):
     div_hierarchy = {
         "Women's Strawweight": 0,
         "Women's Flyweight": 1,
@@ -505,6 +505,35 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
 
     style_shift = style_bonus_1
 
+    # 3b. Improvement 3: Decision-Heavy & Women's Volume Scoring
+    is_women_div = target_div_name.startswith("Women's")
+    vol_multiplier = 4.0 if is_women_div else 1.8
+    vol_diff = (f1_slpm - f2_slpm) * vol_multiplier
+    vol_adj_1 = max(-18.0, min(18.0, vol_diff)) if vol_diff > 0 else 0.0
+    vol_adj_2 = max(-18.0, min(18.0, -vol_diff)) if vol_diff < 0 else 0.0
+
+    # 3c. Improvement 4: Environmental Cage Size & High Altitude Venue
+    apex_adj_1 = 0.0
+    apex_adj_2 = 0.0
+    if is_apex:
+        if arch1 in ['Pressure Wrestler', 'Inside Pressure Boxer', 'Clinch Grinder'] and arch2 == 'Distance Out-Fighter':
+            apex_adj_1 += 12.0
+        elif arch2 in ['Pressure Wrestler', 'Inside Pressure Boxer', 'Clinch Grinder'] and arch1 == 'Distance Out-Fighter':
+            apex_adj_2 += 12.0
+
+    c1 = _CACHE.get('components', {}).get(f1['name'].lower(), {})
+    c2 = _CACHE.get('components', {}).get(f2['name'].lower(), {})
+    alt_adj_1 = 0.0
+    alt_adj_2 = 0.0
+    if is_high_altitude:
+        c1_card = c1.get('cardio_elo', 1500.0)
+        c2_card = c2.get('cardio_elo', 1500.0)
+        card_diff = (c1_card - c2_card) / 400.0
+        if card_diff > 0:
+            alt_adj_1 += min(18.0, card_diff * 35.0)
+        elif card_diff < 0:
+            alt_adj_2 += min(18.0, -card_diff * 35.0)
+
     # 4. Inactivity & Decay
     now_str = "2026-08-21"
     last_1 = f1.get('last_fight_date', '2025-01-01')
@@ -533,8 +562,8 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
     ped_adj_1 = round(ped1['effective_elo'] - f1['elo'], 1) if ped1.get('pedigree_active') else 0.0
     ped_adj_2 = round(ped2['effective_elo'] - f2['elo'], 1) if ped2.get('pedigree_active') else 0.0
 
-    eff_elo_1 = f1['elo'] - inact_decay_1 + size_adj_1 + age_adj_1 + reach_adj_1 + stance_adj_1 + chin_adj_1 + style_shift + ped_adj_1
-    eff_elo_2 = f2['elo'] - inact_decay_2 + size_adj_2 + age_adj_2 + reach_adj_2 + stance_adj_2 + chin_adj_2 + ped_adj_2
+    eff_elo_1 = f1['elo'] - inact_decay_1 + size_adj_1 + age_adj_1 + reach_adj_1 + stance_adj_1 + chin_adj_1 + style_shift + vol_adj_1 + apex_adj_1 + alt_adj_1 + ped_adj_1
+    eff_elo_2 = f2['elo'] - inact_decay_2 + size_adj_2 + age_adj_2 + reach_adj_2 + stance_adj_2 + chin_adj_2 + vol_adj_2 + apex_adj_2 + alt_adj_2 + ped_adj_2
 
     # Model Probabilities
     prob1 = 1.0 / (1.0 + 10.0 ** ((eff_elo_2 - eff_elo_1) / 400.0))
@@ -614,6 +643,9 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
     if stance_adj_1 > 0: drivers_1.append(f"🥊 Open Stance Southpaw Angle (+{round(stance_adj_1, 1)} Elo)")
     if f1_tdd >= 80.0 and 'Wrestler' in arch2: drivers_1.append(f"🛡️ {round(f1_tdd)}% TDD Neutralizer")
     if style_shift > 5.0: drivers_1.append(f"🥋 Tactical Style Edge (+{round(style_shift, 1)} Elo)")
+    if vol_adj_1 >= 5.0: drivers_1.append(f"📊 High Volume Output Edge (+{round(vol_adj_1, 1)} Elo)")
+    if is_apex and apex_adj_1 > 0: drivers_1.append(f"🏟️ 25-ft Apex Cage Leverage (+{round(apex_adj_1, 1)} Elo)")
+    if is_high_altitude and alt_adj_1 > 0: drivers_1.append(f"🏔️ High Altitude Cardio Edge (+{round(alt_adj_1, 1)} Elo)")
 
     if ped_adj_2 > 0: drivers_2.append(f"🥇 Fast-Track Pedigree: {ped2.get('pedigree_title', 'Elite Title')} (+{round(ped_adj_2, 1)} Elo)")
     if age_adj_2 > 0: drivers_2.append(f"⚡ Prime Speed Edge (+{round(age_adj_2, 1)} Elo)")
@@ -622,6 +654,9 @@ def compute_detailed_matchup(f1, f2, target_weight_class='auto', is_title=False)
     if stance_adj_2 > 0: drivers_2.append(f"🥊 Open Stance Southpaw Angle (+{round(stance_adj_2, 1)} Elo)")
     if f2_tdd >= 80.0 and 'Wrestler' in arch1: drivers_2.append(f"🛡️ {round(f2_tdd)}% TDD Neutralizer")
     if style_shift < -5.0: drivers_2.append(f"🥋 Tactical Style Edge (+{round(-style_shift, 1)} Elo)")
+    if vol_adj_2 >= 5.0: drivers_2.append(f"📊 High Volume Output Edge (+{round(vol_adj_2, 1)} Elo)")
+    if is_apex and apex_adj_2 > 0: drivers_2.append(f"🏟️ 25-ft Apex Cage Leverage (+{round(apex_adj_2, 1)} Elo)")
+    if is_high_altitude and alt_adj_2 > 0: drivers_2.append(f"🏔️ High Altitude Cardio Edge (+{round(alt_adj_2, 1)} Elo)")
 
     # Value Tier Assignment
     if ev_1 >= 10.0: tier_1 = "💎 ULTRA VALUE"
@@ -816,6 +851,8 @@ def simulate_matchup():
     f1_name = request.args.get('f1', '').strip().lower()
     f2_name = request.args.get('f2', '').strip().lower()
     is_title = request.args.get('is_title', 'false').lower() == 'true'
+    is_apex = request.args.get('is_apex', 'false').lower() == 'true'
+    is_high_altitude = request.args.get('is_high_altitude', 'false').lower() == 'true'
     target_weight_class = request.args.get('weight_class', 'auto').strip()
 
     f1 = _CACHE['fighters_by_name'].get(f1_name)
@@ -824,7 +861,7 @@ def simulate_matchup():
     if not f1 or not f2:
         return jsonify({'error': 'One or both fighters not found'}), 400
 
-    payload = compute_detailed_matchup(f1, f2, target_weight_class, is_title)
+    payload = compute_detailed_matchup(f1, f2, target_weight_class, is_title, is_apex=is_apex, is_high_altitude=is_high_altitude)
     return jsonify(payload)
 
 @app.route('/api/upcoming-cards')
