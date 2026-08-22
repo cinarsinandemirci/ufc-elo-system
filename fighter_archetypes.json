@@ -19,16 +19,6 @@
     "rolling_damage_index": 1.5,
     "recent_form": "4W in last 4"
   },
-  "max holloway": {
-    "name": "Max Holloway",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.6,
-    "rolling_sapm": 4.01,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.63,
-    "rolling_damage_index": 2.56,
-    "recent_form": "2W in last 4"
-  },
   "charles oliveira": {
     "name": "Charles Oliveira",
     "archetype": "Submission Hunter",
@@ -38,6 +28,16 @@
     "rolling_td_avg": 2.32,
     "rolling_damage_index": 1.24,
     "recent_form": "3W in last 4"
+  },
+  "max holloway": {
+    "name": "Max Holloway",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.6,
+    "rolling_sapm": 4.01,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.63,
+    "rolling_damage_index": 2.56,
+    "recent_form": "2W in last 4"
   },
   "alexander volkanovski": {
     "name": "Alexander Volkanovski",
@@ -59,6 +59,16 @@
     "rolling_damage_index": 3.2,
     "recent_form": "1W in last 4"
   },
+  "ilia topuria": {
+    "name": "Ilia Topuria",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 5.07,
+    "rolling_sapm": 4.36,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.84,
+    "rolling_damage_index": 2.86,
+    "recent_form": "3W in last 4"
+  },
   "valentina shevchenko": {
     "name": "Valentina Shevchenko",
     "archetype": "Pressure Wrestler",
@@ -68,6 +78,16 @@
     "rolling_td_avg": 3.05,
     "rolling_damage_index": 1.33,
     "recent_form": "3W in last 4"
+  },
+  "alex pereira": {
+    "name": "Alex Pereira",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.61,
+    "rolling_sapm": 4.02,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.0,
+    "rolling_damage_index": 2.37,
+    "recent_form": "2W in last 4"
   },
   "ciryl gane": {
     "name": "Ciryl Gane",
@@ -89,16 +109,6 @@
     "rolling_damage_index": 2.89,
     "recent_form": "3W in last 4"
   },
-  "ilia topuria": {
-    "name": "Ilia Topuria",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 5.07,
-    "rolling_sapm": 4.36,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.84,
-    "rolling_damage_index": 2.86,
-    "recent_form": "3W in last 4"
-  },
   "aljamain sterling": {
     "name": "Aljamain Sterling",
     "archetype": "Pressure Wrestler",
@@ -107,6 +117,26 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 4.39,
     "rolling_damage_index": 0.88,
+    "recent_form": "3W in last 4"
+  },
+  "khamzat chimaev": {
+    "name": "Khamzat Chimaev",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 2.83,
+    "rolling_sapm": 2.99,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 6.51,
+    "rolling_damage_index": 1.66,
+    "recent_form": "3W in last 4"
+  },
+  "justin gaethje": {
+    "name": "Justin Gaethje",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 5.42,
+    "rolling_sapm": 6.03,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.12,
+    "rolling_damage_index": 4.79,
     "recent_form": "3W in last 4"
   },
   "merab dvalishvili": {
@@ -119,26 +149,6 @@
     "rolling_damage_index": 3.57,
     "recent_form": "3W in last 4"
   },
-  "alex pereira": {
-    "name": "Alex Pereira",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.61,
-    "rolling_sapm": 4.02,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.0,
-    "rolling_damage_index": 2.37,
-    "recent_form": "2W in last 4"
-  },
-  "khamzat chimaev": {
-    "name": "Khamzat Chimaev",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 2.83,
-    "rolling_sapm": 2.99,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 6.51,
-    "rolling_damage_index": 1.66,
-    "recent_form": "3W in last 4"
-  },
   "brendan allen": {
     "name": "Brendan Allen",
     "archetype": "Submission Hunter",
@@ -147,16 +157,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.29,
     "rolling_damage_index": 3.06,
-    "recent_form": "3W in last 4"
-  },
-  "justin gaethje": {
-    "name": "Justin Gaethje",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 5.42,
-    "rolling_sapm": 6.03,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.12,
-    "rolling_damage_index": 4.79,
     "recent_form": "3W in last 4"
   },
   "magomed ankalaev": {
@@ -219,6 +219,16 @@
     "rolling_damage_index": 3.93,
     "recent_form": "4W in last 4"
   },
+  "dustin poirier": {
+    "name": "Dustin Poirier",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.94,
+    "rolling_sapm": 6.48,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.28,
+    "rolling_damage_index": 5.0,
+    "recent_form": "1W in last 4"
+  },
   "joshua van": {
     "name": "Joshua Van",
     "archetype": "Inside Pressure Boxer",
@@ -228,16 +238,6 @@
     "rolling_td_avg": 1.52,
     "rolling_damage_index": 2.89,
     "recent_form": "4W in last 4"
-  },
-  "alexandre pantoja": {
-    "name": "Alexandre Pantoja",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 2.62,
-    "rolling_sapm": 1.8,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.37,
-    "rolling_damage_index": 0.68,
-    "recent_form": "3W in last 4"
   },
   "robert whittaker": {
     "name": "Robert Whittaker",
@@ -249,15 +249,15 @@
     "rolling_damage_index": 1.61,
     "recent_form": "2W in last 4"
   },
-  "dustin poirier": {
-    "name": "Dustin Poirier",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.94,
-    "rolling_sapm": 6.48,
+  "alexandre pantoja": {
+    "name": "Alexandre Pantoja",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 2.62,
+    "rolling_sapm": 1.8,
     "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.28,
-    "rolling_damage_index": 5.0,
-    "recent_form": "1W in last 4"
+    "rolling_td_avg": 2.37,
+    "rolling_damage_index": 0.68,
+    "recent_form": "3W in last 4"
   },
   "carlos ulberg": {
     "name": "Carlos Ulberg",
@@ -389,6 +389,16 @@
     "rolling_damage_index": 4.39,
     "recent_form": "1W in last 4"
   },
+  "paddy pimblett": {
+    "name": "Paddy Pimblett",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 3.49,
+    "rolling_sapm": 2.34,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.04,
+    "rolling_damage_index": 0.81,
+    "recent_form": "3W in last 4"
+  },
   "umar nurmagomedov": {
     "name": "Umar Nurmagomedov",
     "archetype": "Pressure Wrestler",
@@ -418,16 +428,6 @@
     "rolling_td_avg": 1.88,
     "rolling_damage_index": 1.68,
     "recent_form": "1W in last 4"
-  },
-  "paddy pimblett": {
-    "name": "Paddy Pimblett",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 3.49,
-    "rolling_sapm": 2.34,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.04,
-    "rolling_damage_index": 0.81,
-    "recent_form": "3W in last 4"
   },
   "arnold allen": {
     "name": "Arnold Allen",
@@ -479,16 +479,6 @@
     "rolling_damage_index": 3.86,
     "recent_form": "3W in last 4"
   },
-  "quillan salkilld": {
-    "name": "Quillan Salkilld",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 2.25,
-    "rolling_sapm": 0.75,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 3.89,
-    "rolling_damage_index": 0.1,
-    "recent_form": "4W in last 4"
-  },
   "anthony hernandez": {
     "name": "Anthony Hernandez",
     "archetype": "Pressure Wrestler",
@@ -498,6 +488,16 @@
     "rolling_td_avg": 3.49,
     "rolling_damage_index": 3.02,
     "recent_form": "3W in last 4"
+  },
+  "quillan salkilld": {
+    "name": "Quillan Salkilld",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 2.25,
+    "rolling_sapm": 0.75,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 3.89,
+    "rolling_damage_index": 0.1,
+    "recent_form": "4W in last 4"
   },
   "natalia silva": {
     "name": "Natalia Silva",
@@ -527,6 +527,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 3.54,
     "rolling_damage_index": 2.02,
+    "recent_form": "3W in last 4"
+  },
+  "jiri prochazka": {
+    "name": "Jiri Prochazka",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 5.29,
+    "rolling_sapm": 5.24,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.98,
+    "rolling_damage_index": 3.96,
     "recent_form": "3W in last 4"
   },
   "michael chiesa": {
@@ -679,6 +689,16 @@
     "rolling_damage_index": 2.86,
     "recent_form": "2W in last 4"
   },
+  "israel adesanya": {
+    "name": "Israel Adesanya",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.25,
+    "rolling_sapm": 3.74,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 2.34,
+    "recent_form": "0W in last 4"
+  },
   "king green": {
     "name": "King Green",
     "archetype": "Pressure Wrestler",
@@ -739,16 +759,6 @@
     "rolling_damage_index": 2.1,
     "recent_form": "4W in last 4"
   },
-  "randy brown": {
-    "name": "Randy Brown",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 4.57,
-    "rolling_sapm": 3.47,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.94,
-    "rolling_damage_index": 2.17,
-    "recent_form": "2W in last 4"
-  },
   "neil magny": {
     "name": "Neil Magny",
     "archetype": "Clinch Grinder",
@@ -759,6 +769,26 @@
     "rolling_damage_index": 0.45,
     "recent_form": "3W in last 4"
   },
+  "randy brown": {
+    "name": "Randy Brown",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 4.57,
+    "rolling_sapm": 3.47,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.94,
+    "rolling_damage_index": 2.17,
+    "recent_form": "2W in last 4"
+  },
+  "bo nickal": {
+    "name": "Bo Nickal",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 3.75,
+    "rolling_sapm": 1.46,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.52,
+    "rolling_damage_index": 0.51,
+    "recent_form": "3W in last 4"
+  },
   "jean silva": {
     "name": "Jean Silva",
     "archetype": "Pressure Wrestler",
@@ -767,16 +797,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 2.64,
     "rolling_damage_index": 3.42,
-    "recent_form": "3W in last 4"
-  },
-  "jiri prochazka": {
-    "name": "Jiri Prochazka",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 5.29,
-    "rolling_sapm": 5.24,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.98,
-    "rolling_damage_index": 3.96,
     "recent_form": "3W in last 4"
   },
   "navajo stirling": {
@@ -798,16 +818,6 @@
     "rolling_td_avg": 4.14,
     "rolling_damage_index": 0.69,
     "recent_form": "3W in last 4"
-  },
-  "israel adesanya": {
-    "name": "Israel Adesanya",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.25,
-    "rolling_sapm": 3.74,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 2.34,
-    "recent_form": "0W in last 4"
   },
   "jailton almeida": {
     "name": "Jailton Almeida",
@@ -939,16 +949,6 @@
     "rolling_damage_index": 0.35,
     "recent_form": "4W in last 4"
   },
-  "virna jandiroba": {
-    "name": "Virna Jandiroba",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 2.34,
-    "rolling_sapm": 2.93,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 5.42,
-    "rolling_damage_index": 1.76,
-    "recent_form": "3W in last 4"
-  },
   "colby covington": {
     "name": "Colby Covington",
     "archetype": "Clinch Grinder",
@@ -959,6 +959,16 @@
     "rolling_damage_index": 3.31,
     "recent_form": "1W in last 4"
   },
+  "virna jandiroba": {
+    "name": "Virna Jandiroba",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 2.34,
+    "rolling_sapm": 2.93,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 5.42,
+    "rolling_damage_index": 1.76,
+    "recent_form": "3W in last 4"
+  },
   "joselyne edwards": {
     "name": "Joselyne Edwards",
     "archetype": "Inside Pressure Boxer",
@@ -968,6 +978,16 @@
     "rolling_td_avg": 2.32,
     "rolling_damage_index": 1.87,
     "recent_form": "4W in last 4"
+  },
+  "kayla harrison": {
+    "name": "Kayla Harrison",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 4.0,
+    "rolling_sapm": 1.09,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.99,
+    "rolling_damage_index": 0.37,
+    "recent_form": "3W in last 4"
   },
   "deiveson figueiredo": {
     "name": "Deiveson Figueiredo",
@@ -989,16 +1009,6 @@
     "rolling_damage_index": 2.92,
     "recent_form": "2W in last 4"
   },
-  "maycee barber": {
-    "name": "Maycee Barber",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.59,
-    "rolling_sapm": 2.86,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.83,
-    "rolling_damage_index": 1.44,
-    "recent_form": "3W in last 4"
-  },
   "vicente luque": {
     "name": "Vicente Luque",
     "archetype": "Submission Hunter",
@@ -1008,6 +1018,16 @@
     "rolling_td_avg": 0.34,
     "rolling_damage_index": 3.41,
     "recent_form": "1W in last 4"
+  },
+  "maycee barber": {
+    "name": "Maycee Barber",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.59,
+    "rolling_sapm": 2.86,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.83,
+    "rolling_damage_index": 1.44,
+    "recent_form": "3W in last 4"
   },
   "jasmine jasudavicius": {
     "name": "Jasmine Jasudavicius",
@@ -1059,16 +1079,6 @@
     "rolling_damage_index": 3.83,
     "recent_form": "2W in last 4"
   },
-  "bo nickal": {
-    "name": "Bo Nickal",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 3.75,
-    "rolling_sapm": 1.46,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.52,
-    "rolling_damage_index": 0.51,
-    "recent_form": "3W in last 4"
-  },
   "beneil dariush": {
     "name": "Beneil Dariush",
     "archetype": "Pressure Wrestler",
@@ -1109,26 +1119,6 @@
     "rolling_damage_index": 1.61,
     "recent_form": "3W in last 4"
   },
-  "ateba gautier": {
-    "name": "Ateba Gautier",
-    "archetype": "Clinch Grinder",
-    "rolling_slpm": 2.51,
-    "rolling_sapm": 2.3,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.96,
-    "rolling_damage_index": 0.93,
-    "recent_form": "4W in last 4"
-  },
-  "luana santos": {
-    "name": "Luana Santos",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 1.14,
-    "rolling_sapm": 1.42,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.6,
-    "rolling_damage_index": 0.54,
-    "recent_form": "3W in last 4"
-  },
   "jan blachowicz": {
     "name": "Jan Blachowicz",
     "archetype": "Distance Out-Fighter",
@@ -1138,6 +1128,26 @@
     "rolling_td_avg": 0.34,
     "rolling_damage_index": 4.78,
     "recent_form": "0W in last 4"
+  },
+  "shara magomedov": {
+    "name": "Shara Magomedov",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 4.86,
+    "rolling_sapm": 3.38,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.98,
+    "rolling_damage_index": 2.25,
+    "recent_form": "3W in last 4"
+  },
+  "ateba gautier": {
+    "name": "Ateba Gautier",
+    "archetype": "Clinch Grinder",
+    "rolling_slpm": 2.51,
+    "rolling_sapm": 2.3,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.96,
+    "rolling_damage_index": 0.93,
+    "recent_form": "4W in last 4"
   },
   "jose aldo": {
     "name": "Jose Aldo",
@@ -1149,6 +1159,16 @@
     "rolling_damage_index": 4.09,
     "recent_form": "1W in last 4"
   },
+  "luana santos": {
+    "name": "Luana Santos",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 1.14,
+    "rolling_sapm": 1.42,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.6,
+    "rolling_damage_index": 0.54,
+    "recent_form": "3W in last 4"
+  },
   "ikram aliskerov": {
     "name": "Ikram Aliskerov",
     "archetype": "Pressure Wrestler",
@@ -1157,6 +1177,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 4.62,
     "rolling_damage_index": 1.75,
+    "recent_form": "3W in last 4"
+  },
+  "volkan oezdemir": {
+    "name": "Volkan Oezdemir",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 5.24,
+    "rolling_sapm": 2.94,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.41,
+    "rolling_damage_index": 1.07,
     "recent_form": "3W in last 4"
   },
   "valter walker": {
@@ -1168,16 +1198,6 @@
     "rolling_td_avg": 3.33,
     "rolling_damage_index": 1.05,
     "recent_form": "4W in last 4"
-  },
-  "volkan oezdemir": {
-    "name": "Volkan Oezdemir",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 5.24,
-    "rolling_sapm": 2.94,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.41,
-    "rolling_damage_index": 1.07,
-    "recent_form": "3W in last 4"
   },
   "marlon vera": {
     "name": "Marlon Vera",
@@ -1209,6 +1229,16 @@
     "rolling_damage_index": 3.27,
     "recent_form": "2W in last 4"
   },
+  "dominick reyes": {
+    "name": "Dominick Reyes",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.7,
+    "rolling_sapm": 1.88,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.54,
+    "rolling_damage_index": 0.6,
+    "recent_form": "3W in last 4"
+  },
   "kevin vallejos": {
     "name": "Kevin Vallejos",
     "archetype": "Pressure Wrestler",
@@ -1228,16 +1258,6 @@
     "rolling_td_avg": 3.45,
     "rolling_damage_index": 0.91,
     "recent_form": "4W in last 4"
-  },
-  "shara magomedov": {
-    "name": "Shara Magomedov",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 4.86,
-    "rolling_sapm": 3.38,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.98,
-    "rolling_damage_index": 2.25,
-    "recent_form": "3W in last 4"
   },
   "melquizael costa": {
     "name": "Melquizael Costa",
@@ -1259,34 +1279,14 @@
     "rolling_damage_index": 0.41,
     "recent_form": "4W in last 4"
   },
-  "dominick reyes": {
-    "name": "Dominick Reyes",
+  "mauricio ruffy": {
+    "name": "Mauricio Ruffy",
     "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.7,
-    "rolling_sapm": 1.88,
+    "rolling_slpm": 3.79,
+    "rolling_sapm": 1.81,
     "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.54,
+    "rolling_td_avg": 2.32,
     "rolling_damage_index": 0.6,
-    "recent_form": "3W in last 4"
-  },
-  "nursulton ruziboev": {
-    "name": "Nursulton Ruziboev",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 1.42,
-    "rolling_sapm": 1.37,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 3.62,
-    "rolling_damage_index": 0.41,
-    "recent_form": "3W in last 4"
-  },
-  "norma dumont": {
-    "name": "Norma Dumont",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 5.04,
-    "rolling_sapm": 3.85,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.17,
-    "rolling_damage_index": 2.62,
     "recent_form": "3W in last 4"
   },
   "rafael dos anjos": {
@@ -1299,34 +1299,24 @@
     "rolling_damage_index": 2.18,
     "recent_form": "1W in last 4"
   },
-  "mateusz gamrot": {
-    "name": "Mateusz Gamrot",
-    "archetype": "Clinch Grinder",
-    "rolling_slpm": 2.14,
-    "rolling_sapm": 2.14,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.14,
-    "rolling_damage_index": 0.89,
-    "recent_form": "1W in last 4"
-  },
-  "payton talbott": {
-    "name": "Payton Talbott",
+  "norma dumont": {
+    "name": "Norma Dumont",
     "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 6.62,
-    "rolling_sapm": 3.35,
+    "rolling_slpm": 5.04,
+    "rolling_sapm": 3.85,
     "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.35,
-    "rolling_damage_index": 2.1,
+    "rolling_td_avg": 1.17,
+    "rolling_damage_index": 2.62,
     "recent_form": "3W in last 4"
   },
-  "mauricio ruffy": {
-    "name": "Mauricio Ruffy",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.79,
-    "rolling_sapm": 1.81,
+  "nursulton ruziboev": {
+    "name": "Nursulton Ruziboev",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 1.42,
+    "rolling_sapm": 1.37,
     "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.32,
-    "rolling_damage_index": 0.6,
+    "rolling_td_avg": 3.62,
+    "rolling_damage_index": 0.41,
     "recent_form": "3W in last 4"
   },
   "dan hooker": {
@@ -1339,6 +1329,26 @@
     "rolling_damage_index": 5.88,
     "recent_form": "2W in last 4"
   },
+  "payton talbott": {
+    "name": "Payton Talbott",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 6.62,
+    "rolling_sapm": 3.35,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.35,
+    "rolling_damage_index": 2.1,
+    "recent_form": "3W in last 4"
+  },
+  "mateusz gamrot": {
+    "name": "Mateusz Gamrot",
+    "archetype": "Clinch Grinder",
+    "rolling_slpm": 2.14,
+    "rolling_sapm": 2.14,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.14,
+    "rolling_damage_index": 0.89,
+    "recent_form": "1W in last 4"
+  },
   "daniel rodriguez": {
     "name": "Daniel Rodriguez",
     "archetype": "Distance Out-Fighter",
@@ -1348,6 +1358,16 @@
     "rolling_td_avg": 0.61,
     "rolling_damage_index": 2.3,
     "recent_form": "3W in last 4"
+  },
+  "paulo costa": {
+    "name": "Paulo Costa",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 6.66,
+    "rolling_sapm": 5.41,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.73,
+    "rolling_damage_index": 4.05,
+    "recent_form": "2W in last 4"
   },
   "vitor petrino": {
     "name": "Vitor Petrino",
@@ -1379,14 +1399,14 @@
     "rolling_damage_index": 2.05,
     "recent_form": "3W in last 4"
   },
-  "paulo costa": {
-    "name": "Paulo Costa",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 6.66,
-    "rolling_sapm": 5.41,
+  "rob font": {
+    "name": "Rob Font",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.98,
+    "rolling_sapm": 2.78,
     "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.73,
-    "rolling_damage_index": 4.05,
+    "rolling_td_avg": 0.3,
+    "rolling_damage_index": 1.49,
     "recent_form": "2W in last 4"
   },
   "denise gomes": {
@@ -1398,16 +1418,6 @@
     "rolling_td_avg": 3.2,
     "rolling_damage_index": 1.8,
     "recent_form": "4W in last 4"
-  },
-  "rob font": {
-    "name": "Rob Font",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.98,
-    "rolling_sapm": 2.78,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.3,
-    "rolling_damage_index": 1.49,
-    "recent_form": "2W in last 4"
   },
   "jairzinho rozenstruik": {
     "name": "Jairzinho Rozenstruik",
@@ -1539,6 +1549,26 @@
     "rolling_damage_index": 0.88,
     "recent_form": "3W in last 4"
   },
+  "rafael fiziev": {
+    "name": "Rafael Fiziev",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.65,
+    "rolling_sapm": 3.96,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.49,
+    "rolling_damage_index": 2.53,
+    "recent_form": "2W in last 4"
+  },
+  "jared cannonier": {
+    "name": "Jared Cannonier",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 2.2,
+    "rolling_sapm": 4.44,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 3.28,
+    "rolling_damage_index": 3.24,
+    "recent_form": "1W in last 4"
+  },
   "charles jourdain": {
     "name": "Charles Jourdain",
     "archetype": "Submission Hunter",
@@ -1559,16 +1589,6 @@
     "rolling_damage_index": 2.72,
     "recent_form": "3W in last 4"
   },
-  "kayla harrison": {
-    "name": "Kayla Harrison",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 4.0,
-    "rolling_sapm": 1.09,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.99,
-    "rolling_damage_index": 0.37,
-    "recent_form": "3W in last 4"
-  },
   "jeremiah wells": {
     "name": "Jeremiah Wells",
     "archetype": "Clinch Grinder",
@@ -1587,26 +1607,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 2.36,
     "rolling_damage_index": 3.21,
-    "recent_form": "2W in last 4"
-  },
-  "jared cannonier": {
-    "name": "Jared Cannonier",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 2.2,
-    "rolling_sapm": 4.44,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 3.28,
-    "rolling_damage_index": 3.24,
-    "recent_form": "1W in last 4"
-  },
-  "rafael fiziev": {
-    "name": "Rafael Fiziev",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.65,
-    "rolling_sapm": 3.96,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.49,
-    "rolling_damage_index": 2.53,
     "recent_form": "2W in last 4"
   },
   "aiemann zahabi": {
@@ -1659,16 +1659,6 @@
     "rolling_damage_index": 0.72,
     "recent_form": "3W in last 4"
   },
-  "alonzo menifield": {
-    "name": "Alonzo Menifield",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.97,
-    "rolling_sapm": 3.48,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.82,
-    "rolling_damage_index": 1.73,
-    "recent_form": "3W in last 4"
-  },
   "francis ngannou": {
     "name": "Francis Ngannou",
     "archetype": "Pressure Wrestler",
@@ -1678,6 +1668,16 @@
     "rolling_td_avg": 2.57,
     "rolling_damage_index": 0.96,
     "recent_form": "4W in last 4"
+  },
+  "alonzo menifield": {
+    "name": "Alonzo Menifield",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.97,
+    "rolling_sapm": 3.48,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.82,
+    "rolling_damage_index": 1.73,
+    "recent_form": "3W in last 4"
   },
   "drew dober": {
     "name": "Drew Dober",
@@ -1759,16 +1759,6 @@
     "rolling_damage_index": 4.16,
     "recent_form": "2W in last 4"
   },
-  "alexia thainara": {
-    "name": "Alexia Thainara",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 5.02,
-    "rolling_sapm": 3.22,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 4.12,
-    "rolling_damage_index": 2.08,
-    "recent_form": "4W in last 4"
-  },
   "michael page": {
     "name": "Michael Page",
     "archetype": "Distance Out-Fighter",
@@ -1779,14 +1769,14 @@
     "rolling_damage_index": 0.67,
     "recent_form": "3W in last 4"
   },
-  "fatima kline": {
-    "name": "Fatima Kline",
+  "alexia thainara": {
+    "name": "Alexia Thainara",
     "archetype": "Pressure Wrestler",
-    "rolling_slpm": 5.89,
-    "rolling_sapm": 2.51,
+    "rolling_slpm": 5.02,
+    "rolling_sapm": 3.22,
     "rolling_tdd": 65.0,
-    "rolling_td_avg": 5.29,
-    "rolling_damage_index": 1.43,
+    "rolling_td_avg": 4.12,
+    "rolling_damage_index": 2.08,
     "recent_form": "4W in last 4"
   },
   "gilbert burns": {
@@ -1798,6 +1788,16 @@
     "rolling_td_avg": 1.82,
     "rolling_damage_index": 3.87,
     "recent_form": "0W in last 4"
+  },
+  "fatima kline": {
+    "name": "Fatima Kline",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 5.89,
+    "rolling_sapm": 2.51,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 5.29,
+    "rolling_damage_index": 1.43,
+    "recent_form": "4W in last 4"
   },
   "nasrat haqparast": {
     "name": "Nasrat Haqparast",
@@ -1817,6 +1817,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.48,
     "rolling_damage_index": 1.07,
+    "recent_form": "2W in last 4"
+  },
+  "reinier de ridder": {
+    "name": "Reinier de Ridder",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 2.74,
+    "rolling_sapm": 2.84,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.09,
+    "rolling_damage_index": 1.81,
     "recent_form": "2W in last 4"
   },
   "brian ortega": {
@@ -1839,16 +1849,6 @@
     "rolling_damage_index": 2.59,
     "recent_form": "3W in last 4"
   },
-  "khaos williams": {
-    "name": "Khaos Williams",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.56,
-    "rolling_sapm": 4.29,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.86,
-    "rolling_damage_index": 2.35,
-    "recent_form": "2W in last 4"
-  },
   "dustin jacoby": {
     "name": "Dustin Jacoby",
     "archetype": "Distance Out-Fighter",
@@ -1858,6 +1858,16 @@
     "rolling_td_avg": 1.13,
     "rolling_damage_index": 1.84,
     "recent_form": "3W in last 4"
+  },
+  "khaos williams": {
+    "name": "Khaos Williams",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.56,
+    "rolling_sapm": 4.29,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.86,
+    "rolling_damage_index": 2.35,
+    "recent_form": "2W in last 4"
   },
   "daniil donchenko": {
     "name": "Daniil Donchenko",
@@ -1879,16 +1889,6 @@
     "rolling_damage_index": 1.4,
     "recent_form": "3W in last 4"
   },
-  "rafa garcia": {
-    "name": "Rafa Garcia",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 4.7,
-    "rolling_sapm": 4.49,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 3.01,
-    "rolling_damage_index": 3.32,
-    "recent_form": "3W in last 4"
-  },
   "cub swanson": {
     "name": "Cub Swanson",
     "archetype": "Inside Pressure Boxer",
@@ -1898,6 +1898,16 @@
     "rolling_td_avg": 0.86,
     "rolling_damage_index": 5.13,
     "recent_form": "2W in last 4"
+  },
+  "rafa garcia": {
+    "name": "Rafa Garcia",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 4.7,
+    "rolling_sapm": 4.49,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 3.01,
+    "rolling_damage_index": 3.32,
+    "recent_form": "3W in last 4"
   },
   "chase hooper": {
     "name": "Chase Hooper",
@@ -1909,6 +1919,16 @@
     "rolling_damage_index": 0.4,
     "recent_form": "2W in last 4"
   },
+  "kelvin gastelum": {
+    "name": "Kelvin Gastelum",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.12,
+    "rolling_sapm": 5.0,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.25,
+    "rolling_damage_index": 3.64,
+    "recent_form": "2W in last 4"
+  },
   "ignacio bahamondes": {
     "name": "Ignacio Bahamondes",
     "archetype": "Distance Out-Fighter",
@@ -1917,16 +1937,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.9,
     "rolling_damage_index": 1.84,
-    "recent_form": "2W in last 4"
-  },
-  "reinier de ridder": {
-    "name": "Reinier de Ridder",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 2.74,
-    "rolling_sapm": 2.84,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.09,
-    "rolling_damage_index": 1.81,
     "recent_form": "2W in last 4"
   },
   "jacobe smith": {
@@ -1949,16 +1959,6 @@
     "rolling_damage_index": 2.87,
     "recent_form": "3W in last 4"
   },
-  "kelvin gastelum": {
-    "name": "Kelvin Gastelum",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.12,
-    "rolling_sapm": 5.0,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.25,
-    "rolling_damage_index": 3.64,
-    "recent_form": "2W in last 4"
-  },
   "derrick lewis": {
     "name": "Derrick Lewis",
     "archetype": "Distance Out-Fighter",
@@ -1978,6 +1978,16 @@
     "rolling_td_avg": 9.42,
     "rolling_damage_index": 0.61,
     "recent_form": "3W in last 4"
+  },
+  "khalil rountree jr.": {
+    "name": "Khalil Rountree Jr.",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.44,
+    "rolling_sapm": 4.77,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.3,
+    "rolling_damage_index": 3.7,
+    "recent_form": "2W in last 4"
   },
   "martin buday": {
     "name": "Martin Buday",
@@ -2099,16 +2109,6 @@
     "rolling_damage_index": 0.89,
     "recent_form": "3W in last 4"
   },
-  "khalil rountree jr.": {
-    "name": "Khalil Rountree Jr.",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.44,
-    "rolling_sapm": 4.77,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.3,
-    "rolling_damage_index": 3.7,
-    "recent_form": "2W in last 4"
-  },
   "yaroslav amosov": {
     "name": "Yaroslav Amosov",
     "archetype": "Pressure Wrestler",
@@ -2159,16 +2159,6 @@
     "rolling_damage_index": 2.67,
     "recent_form": "1W in last 4"
   },
-  "david martinez": {
-    "name": "David Martinez",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 5.19,
-    "rolling_sapm": 2.98,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.09,
-    "rolling_damage_index": 1.82,
-    "recent_form": "3W in last 4"
-  },
   "abus magomedov": {
     "name": "Abus Magomedov",
     "archetype": "Pressure Wrestler",
@@ -2177,6 +2167,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 2.61,
     "rolling_damage_index": 0.63,
+    "recent_form": "3W in last 4"
+  },
+  "david martinez": {
+    "name": "David Martinez",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 5.19,
+    "rolling_sapm": 2.98,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.09,
+    "rolling_damage_index": 1.82,
     "recent_form": "3W in last 4"
   },
   "abdul rakhman yakhyaev": {
@@ -2198,6 +2198,16 @@
     "rolling_td_avg": 3.33,
     "rolling_damage_index": 2.52,
     "recent_form": "3W in last 4"
+  },
+  "henry cejudo": {
+    "name": "Henry Cejudo",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.2,
+    "rolling_sapm": 7.76,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.89,
+    "rolling_damage_index": 6.19,
+    "recent_form": "0W in last 4"
   },
   "elijah smith": {
     "name": "Elijah Smith",
@@ -2319,6 +2329,16 @@
     "rolling_damage_index": 0.68,
     "recent_form": "2W in last 4"
   },
+  "ketlen vieira": {
+    "name": "Ketlen Vieira",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.05,
+    "rolling_sapm": 3.74,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.3,
+    "rolling_damage_index": 2.62,
+    "recent_form": "2W in last 4"
+  },
   "ismail naurdiev": {
     "name": "Ismail Naurdiev",
     "archetype": "Clinch Grinder",
@@ -2339,14 +2359,24 @@
     "rolling_damage_index": 3.75,
     "recent_form": "2W in last 4"
   },
-  "ketlen vieira": {
-    "name": "Ketlen Vieira",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.05,
-    "rolling_sapm": 3.74,
+  "gable steveson": {
+    "name": "Gable Steveson",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 9.11,
+    "rolling_sapm": 2.89,
     "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.3,
-    "rolling_damage_index": 2.62,
+    "rolling_td_avg": 3.33,
+    "rolling_damage_index": 1.14,
+    "recent_form": "1W in last 4"
+  },
+  "stipe miocic": {
+    "name": "Stipe Miocic",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.16,
+    "rolling_sapm": 6.14,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.2,
+    "rolling_damage_index": 4.65,
     "recent_form": "2W in last 4"
   },
   "donte johnson": {
@@ -2379,16 +2409,6 @@
     "rolling_damage_index": 2.56,
     "recent_form": "3W in last 4"
   },
-  "stipe miocic": {
-    "name": "Stipe Miocic",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.16,
-    "rolling_sapm": 6.14,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.2,
-    "rolling_damage_index": 4.65,
-    "recent_form": "2W in last 4"
-  },
   "elizeu zaleski dos santos": {
     "name": "Elizeu Zaleski dos Santos",
     "archetype": "Clinch Grinder",
@@ -2397,6 +2417,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 2.23,
     "rolling_damage_index": 2.49,
+    "recent_form": "1W in last 4"
+  },
+  "jamahal hill": {
+    "name": "Jamahal Hill",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 4.54,
+    "rolling_sapm": 5.28,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.07,
+    "rolling_damage_index": 3.99,
     "recent_form": "1W in last 4"
   },
   "kai kara-france": {
@@ -2499,16 +2529,6 @@
     "rolling_damage_index": 1.12,
     "recent_form": "4W in last 4"
   },
-  "jamahal hill": {
-    "name": "Jamahal Hill",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 4.54,
-    "rolling_sapm": 5.28,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.07,
-    "rolling_damage_index": 3.99,
-    "recent_form": "1W in last 4"
-  },
   "alessandro costa": {
     "name": "Alessandro Costa",
     "archetype": "Clinch Grinder",
@@ -2538,16 +2558,6 @@
     "rolling_td_avg": 1.6,
     "rolling_damage_index": 2.01,
     "recent_form": "3W in last 4"
-  },
-  "henry cejudo": {
-    "name": "Henry Cejudo",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.2,
-    "rolling_sapm": 7.76,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.89,
-    "rolling_damage_index": 6.19,
-    "recent_form": "0W in last 4"
   },
   "da'mon blackshear": {
     "name": "Da'Mon Blackshear",
@@ -2609,16 +2619,6 @@
     "rolling_damage_index": 2.93,
     "recent_form": "2W in last 4"
   },
-  "damian pinas": {
-    "name": "Damian Pinas",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 4.72,
-    "rolling_sapm": 5.37,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 3.33,
-    "rolling_damage_index": 2.43,
-    "recent_form": "2W in last 4"
-  },
   "michal oleksiejczuk": {
     "name": "Michal Oleksiejczuk",
     "archetype": "Distance Out-Fighter",
@@ -2628,6 +2628,16 @@
     "rolling_td_avg": 1.2,
     "rolling_damage_index": 1.12,
     "recent_form": "3W in last 4"
+  },
+  "damian pinas": {
+    "name": "Damian Pinas",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 4.72,
+    "rolling_sapm": 5.37,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 3.33,
+    "rolling_damage_index": 2.43,
+    "recent_form": "2W in last 4"
   },
   "kyler phillips": {
     "name": "Kyler Phillips",
@@ -2719,16 +2729,6 @@
     "rolling_damage_index": 2.57,
     "recent_form": "1W in last 4"
   },
-  "jean matsumoto": {
-    "name": "Jean Matsumoto",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 5.97,
-    "rolling_sapm": 5.71,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 4.13,
-    "rolling_damage_index": 4.5,
-    "recent_form": "2W in last 4"
-  },
   "josh emmett": {
     "name": "Josh Emmett",
     "archetype": "Distance Out-Fighter",
@@ -2739,6 +2739,16 @@
     "rolling_damage_index": 3.94,
     "recent_form": "1W in last 4"
   },
+  "jean matsumoto": {
+    "name": "Jean Matsumoto",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 5.97,
+    "rolling_sapm": 5.71,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 4.13,
+    "rolling_damage_index": 4.5,
+    "recent_form": "2W in last 4"
+  },
   "alex perez": {
     "name": "Alex Perez",
     "archetype": "Distance Out-Fighter",
@@ -2748,6 +2758,16 @@
     "rolling_td_avg": 1.65,
     "rolling_damage_index": 1.31,
     "recent_form": "1W in last 4"
+  },
+  "marvin vettori": {
+    "name": "Marvin Vettori",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 6.71,
+    "rolling_sapm": 7.0,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.57,
+    "rolling_damage_index": 5.58,
+    "recent_form": "0W in last 4"
   },
   "ludovit klein": {
     "name": "Ludovit Klein",
@@ -2768,16 +2788,6 @@
     "rolling_td_avg": 4.31,
     "rolling_damage_index": 2.99,
     "recent_form": "3W in last 4"
-  },
-  "marvin vettori": {
-    "name": "Marvin Vettori",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 6.71,
-    "rolling_sapm": 7.0,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.57,
-    "rolling_damage_index": 5.58,
-    "recent_form": "0W in last 4"
   },
   "jacqueline cavalcanti": {
     "name": "Jacqueline Cavalcanti",
@@ -2809,16 +2819,6 @@
     "rolling_damage_index": 2.9,
     "recent_form": "2W in last 4"
   },
-  "marquel mederos": {
-    "name": "MarQuel Mederos",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 5.96,
-    "rolling_sapm": 3.53,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.11,
-    "rolling_damage_index": 2.42,
-    "recent_form": "3W in last 4"
-  },
   "charles johnson": {
     "name": "Charles Johnson",
     "archetype": "Distance Out-Fighter",
@@ -2828,6 +2828,16 @@
     "rolling_td_avg": 0.69,
     "rolling_damage_index": 2.92,
     "recent_form": "2W in last 4"
+  },
+  "marquel mederos": {
+    "name": "MarQuel Mederos",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 5.96,
+    "rolling_sapm": 3.53,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.11,
+    "rolling_damage_index": 2.42,
+    "recent_form": "3W in last 4"
   },
   "dooho choi": {
     "name": "Dooho Choi",
@@ -2959,6 +2969,16 @@
     "rolling_damage_index": 5.07,
     "recent_form": "1W in last 4"
   },
+  "glover teixeira": {
+    "name": "Glover Teixeira",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 3.65,
+    "rolling_sapm": 6.99,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.54,
+    "rolling_damage_index": 5.24,
+    "recent_form": "2W in last 4"
+  },
   "amanda lemos": {
     "name": "Amanda Lemos",
     "archetype": "Distance Out-Fighter",
@@ -2988,6 +3008,16 @@
     "rolling_td_avg": 0.78,
     "rolling_damage_index": 1.99,
     "recent_form": "1W in last 4"
+  },
+  "edson barboza": {
+    "name": "Edson Barboza",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.37,
+    "rolling_sapm": 7.23,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 5.28,
+    "recent_form": "0W in last 4"
   },
   "cody haddon": {
     "name": "Cody Haddon",
@@ -3019,26 +3049,6 @@
     "rolling_damage_index": 1.32,
     "recent_form": "2W in last 4"
   },
-  "edson barboza": {
-    "name": "Edson Barboza",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.37,
-    "rolling_sapm": 7.23,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 5.28,
-    "recent_form": "0W in last 4"
-  },
-  "glover teixeira": {
-    "name": "Glover Teixeira",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 3.65,
-    "rolling_sapm": 6.99,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.54,
-    "rolling_damage_index": 5.24,
-    "recent_form": "2W in last 4"
-  },
   "chidi njokuani": {
     "name": "Chidi Njokuani",
     "archetype": "Inside Pressure Boxer",
@@ -3047,16 +3057,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.67,
     "rolling_damage_index": 3.33,
-    "recent_form": "2W in last 4"
-  },
-  "karol rosa": {
-    "name": "Karol Rosa",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.45,
-    "rolling_sapm": 2.32,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.73,
-    "rolling_damage_index": 1.18,
     "recent_form": "2W in last 4"
   },
   "billy elekana": {
@@ -3068,6 +3068,16 @@
     "rolling_td_avg": 2.03,
     "rolling_damage_index": 2.12,
     "recent_form": "3W in last 4"
+  },
+  "karol rosa": {
+    "name": "Karol Rosa",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.45,
+    "rolling_sapm": 2.32,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.73,
+    "rolling_damage_index": 1.18,
+    "recent_form": "2W in last 4"
   },
   "charles radtke": {
     "name": "Charles Radtke",
@@ -3088,6 +3098,16 @@
     "rolling_td_avg": 1.11,
     "rolling_damage_index": 3.47,
     "recent_form": "2W in last 4"
+  },
+  "tony ferguson": {
+    "name": "Tony Ferguson",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 3.4,
+    "rolling_sapm": 4.84,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.08,
+    "rolling_damage_index": 2.48,
+    "recent_form": "0W in last 4"
   },
   "joseph morales": {
     "name": "Joseph Morales",
@@ -3179,6 +3199,16 @@
     "rolling_damage_index": 3.04,
     "recent_form": "3W in last 4"
   },
+  "aleksandar rakic": {
+    "name": "Aleksandar Rakic",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.26,
+    "rolling_sapm": 2.76,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.51,
+    "rolling_damage_index": 1.44,
+    "recent_form": "1W in last 4"
+  },
   "chris curtis": {
     "name": "Chris Curtis",
     "archetype": "Distance Out-Fighter",
@@ -3188,16 +3218,6 @@
     "rolling_td_avg": 0.31,
     "rolling_damage_index": 2.59,
     "recent_form": "1W in last 4"
-  },
-  "tony ferguson": {
-    "name": "Tony Ferguson",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 3.4,
-    "rolling_sapm": 4.84,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.08,
-    "rolling_damage_index": 2.48,
-    "recent_form": "0W in last 4"
   },
   "anthony smith": {
     "name": "Anthony Smith",
@@ -3218,6 +3238,16 @@
     "rolling_td_avg": 3.33,
     "rolling_damage_index": 3.43,
     "recent_form": "2W in last 4"
+  },
+  "nikita krylov": {
+    "name": "Nikita Krylov",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 3.88,
+    "rolling_sapm": 3.67,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.82,
+    "rolling_damage_index": 2.33,
+    "recent_form": "1W in last 4"
   },
   "melissa croden": {
     "name": "Melissa Croden",
@@ -3259,16 +3289,6 @@
     "rolling_damage_index": 1.88,
     "recent_form": "2W in last 4"
   },
-  "nikita krylov": {
-    "name": "Nikita Krylov",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 3.88,
-    "rolling_sapm": 3.67,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.82,
-    "rolling_damage_index": 2.33,
-    "recent_form": "1W in last 4"
-  },
   "marcin tybura": {
     "name": "Marcin Tybura",
     "archetype": "Distance Out-Fighter",
@@ -3286,16 +3306,6 @@
     "rolling_sapm": 2.7,
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.69,
-    "rolling_damage_index": 1.44,
-    "recent_form": "1W in last 4"
-  },
-  "aleksandar rakic": {
-    "name": "Aleksandar Rakic",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.26,
-    "rolling_sapm": 2.76,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.51,
     "rolling_damage_index": 1.44,
     "recent_form": "1W in last 4"
   },
@@ -3379,6 +3389,16 @@
     "rolling_damage_index": 2.26,
     "recent_form": "2W in last 4"
   },
+  "michael johnson": {
+    "name": "Michael Johnson",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.81,
+    "rolling_sapm": 2.72,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.04,
+    "rolling_damage_index": 1.57,
+    "recent_form": "3W in last 4"
+  },
   "tecia pennington": {
     "name": "Tecia Pennington",
     "archetype": "Inside Pressure Boxer",
@@ -3439,16 +3459,6 @@
     "rolling_damage_index": 4.44,
     "recent_form": "1W in last 4"
   },
-  "michael johnson": {
-    "name": "Michael Johnson",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.81,
-    "rolling_sapm": 2.72,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.04,
-    "rolling_damage_index": 1.57,
-    "recent_form": "3W in last 4"
-  },
   "lerryan douglas": {
     "name": "Lerryan Douglas",
     "archetype": "Pressure Wrestler",
@@ -3489,6 +3499,16 @@
     "rolling_damage_index": 0.56,
     "recent_form": "3W in last 4"
   },
+  "allan nascimento": {
+    "name": "Allan Nascimento",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 3.83,
+    "rolling_sapm": 3.27,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.32,
+    "rolling_damage_index": 1.91,
+    "recent_form": "3W in last 4"
+  },
   "ketlen souza": {
     "name": "Ketlen Souza",
     "archetype": "Distance Out-Fighter",
@@ -3508,16 +3528,6 @@
     "rolling_td_avg": 3.33,
     "rolling_damage_index": 0.31,
     "recent_form": "1W in last 4"
-  },
-  "allan nascimento": {
-    "name": "Allan Nascimento",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 3.83,
-    "rolling_sapm": 3.27,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.32,
-    "rolling_damage_index": 1.91,
-    "recent_form": "3W in last 4"
   },
   "axel sola": {
     "name": "Axel Sola",
@@ -3679,16 +3689,6 @@
     "rolling_damage_index": 1.28,
     "recent_form": "1W in last 4"
   },
-  "gable steveson": {
-    "name": "Gable Steveson",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 9.11,
-    "rolling_sapm": 2.89,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 3.33,
-    "rolling_damage_index": 1.14,
-    "recent_form": "1W in last 4"
-  },
   "gokhan saricam": {
     "name": "Gokhan Saricam",
     "archetype": "Inside Pressure Boxer",
@@ -3719,16 +3719,6 @@
     "rolling_damage_index": 0.51,
     "recent_form": "1W in last 4"
   },
-  "kaan ofli": {
-    "name": "Kaan Ofli",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 2.97,
-    "rolling_sapm": 2.38,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.38,
-    "rolling_damage_index": 0.95,
-    "recent_form": "3W in last 4"
-  },
   "marcos rogerio de lima": {
     "name": "Marcos Rogerio de Lima",
     "archetype": "Clinch Grinder",
@@ -3737,6 +3727,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.65,
     "rolling_damage_index": 1.15,
+    "recent_form": "3W in last 4"
+  },
+  "kaan ofli": {
+    "name": "Kaan Ofli",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 2.97,
+    "rolling_sapm": 2.38,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.38,
+    "rolling_damage_index": 0.95,
     "recent_form": "3W in last 4"
   },
   "noah gugnon": {
@@ -3959,6 +3959,16 @@
     "rolling_damage_index": 2.24,
     "recent_form": "1W in last 4"
   },
+  "li jingliang": {
+    "name": "Li Jingliang",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 4.83,
+    "rolling_sapm": 5.57,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.59,
+    "rolling_damage_index": 3.9,
+    "recent_form": "1W in last 4"
+  },
   "jafel filho": {
     "name": "Jafel Filho",
     "archetype": "Pressure Wrestler",
@@ -3987,16 +3997,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.83,
     "rolling_damage_index": 4.54,
-    "recent_form": "1W in last 4"
-  },
-  "li jingliang": {
-    "name": "Li Jingliang",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 4.83,
-    "rolling_sapm": 5.57,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.59,
-    "rolling_damage_index": 3.9,
     "recent_form": "1W in last 4"
   },
   "andre muniz": {
@@ -4079,6 +4079,16 @@
     "rolling_damage_index": 3.61,
     "recent_form": "1W in last 4"
   },
+  "rodolfo vieira": {
+    "name": "Rodolfo Vieira",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 3.38,
+    "rolling_sapm": 4.32,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.32,
+    "rolling_damage_index": 3.19,
+    "recent_form": "1W in last 4"
+  },
   "jack jenkins": {
     "name": "Jack Jenkins",
     "archetype": "Distance Out-Fighter",
@@ -4099,15 +4109,15 @@
     "rolling_damage_index": 3.52,
     "recent_form": "2W in last 4"
   },
-  "donghun choi": {
-    "name": "DongHun Choi",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 2.67,
-    "rolling_sapm": 0.44,
+  "julianna pena": {
+    "name": "Julianna Pena",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.92,
+    "rolling_sapm": 3.8,
     "rolling_tdd": 65.0,
-    "rolling_td_avg": 3.33,
-    "rolling_damage_index": 0.04,
-    "recent_form": "1W in last 4"
+    "rolling_td_avg": 0.54,
+    "rolling_damage_index": 2.65,
+    "recent_form": "2W in last 4"
   },
   "carlos leal": {
     "name": "Carlos Leal",
@@ -4118,6 +4128,16 @@
     "rolling_td_avg": 1.18,
     "rolling_damage_index": 3.88,
     "recent_form": "2W in last 4"
+  },
+  "donghun choi": {
+    "name": "DongHun Choi",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 2.67,
+    "rolling_sapm": 0.44,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 3.33,
+    "rolling_damage_index": 0.04,
+    "recent_form": "1W in last 4"
   },
   "magomed zaynukov": {
     "name": "Magomed Zaynukov",
@@ -4209,16 +4229,6 @@
     "rolling_damage_index": 3.51,
     "recent_form": "2W in last 4"
   },
-  "ramiz brahimaj": {
-    "name": "Ramiz Brahimaj",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 1.54,
-    "rolling_sapm": 2.15,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.63,
-    "rolling_damage_index": 1.01,
-    "recent_form": "2W in last 4"
-  },
   "santiago luna": {
     "name": "Santiago Luna",
     "archetype": "Distance Out-Fighter",
@@ -4229,6 +4239,16 @@
     "rolling_damage_index": 1.46,
     "recent_form": "2W in last 4"
   },
+  "ramiz brahimaj": {
+    "name": "Ramiz Brahimaj",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 1.54,
+    "rolling_sapm": 2.15,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.63,
+    "rolling_damage_index": 1.01,
+    "recent_form": "2W in last 4"
+  },
   "shane collins": {
     "name": "Shane Collins",
     "archetype": "Inside Pressure Boxer",
@@ -4236,16 +4256,6 @@
     "rolling_sapm": 4.3,
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.11,
-    "rolling_damage_index": 3.19,
-    "recent_form": "1W in last 4"
-  },
-  "rodolfo vieira": {
-    "name": "Rodolfo Vieira",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 3.38,
-    "rolling_sapm": 4.32,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.32,
     "rolling_damage_index": 3.19,
     "recent_form": "1W in last 4"
   },
@@ -4339,16 +4349,6 @@
     "rolling_damage_index": 1.52,
     "recent_form": "1W in last 4"
   },
-  "julianna pena": {
-    "name": "Julianna Pena",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.92,
-    "rolling_sapm": 3.8,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.54,
-    "rolling_damage_index": 2.65,
-    "recent_form": "2W in last 4"
-  },
   "mantas kondratavicius": {
     "name": "Mantas Kondratavicius",
     "archetype": "Inside Pressure Boxer",
@@ -4358,6 +4358,16 @@
     "rolling_td_avg": 2.22,
     "rolling_damage_index": 0.58,
     "recent_form": "1W in last 4"
+  },
+  "jorge masvidal": {
+    "name": "Jorge Masvidal",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.01,
+    "rolling_sapm": 3.38,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 2.36,
+    "recent_form": "0W in last 4"
   },
   "steve erceg": {
     "name": "Steve Erceg",
@@ -4439,16 +4449,6 @@
     "rolling_damage_index": 3.47,
     "recent_form": "1W in last 4"
   },
-  "jorge masvidal": {
-    "name": "Jorge Masvidal",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.01,
-    "rolling_sapm": 3.38,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 2.36,
-    "recent_form": "0W in last 4"
-  },
   "joe solecki": {
     "name": "Joe Solecki",
     "archetype": "Submission Hunter",
@@ -4479,6 +4479,16 @@
     "rolling_damage_index": 4.06,
     "recent_form": "2W in last 4"
   },
+  "alex morono": {
+    "name": "Alex Morono",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 5.44,
+    "rolling_sapm": 10.55,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.11,
+    "rolling_damage_index": 8.44,
+    "recent_form": "0W in last 4"
+  },
   "nate maness": {
     "name": "Nate Maness",
     "archetype": "Distance Out-Fighter",
@@ -4498,16 +4508,6 @@
     "rolling_td_avg": 1.11,
     "rolling_damage_index": 2.51,
     "recent_form": "1W in last 4"
-  },
-  "alex morono": {
-    "name": "Alex Morono",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 5.44,
-    "rolling_sapm": 10.55,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.11,
-    "rolling_damage_index": 8.44,
-    "recent_form": "0W in last 4"
   },
   "carlos vera": {
     "name": "Carlos Vera",
@@ -4659,6 +4659,16 @@
     "rolling_damage_index": 0.76,
     "recent_form": "2W in last 4"
   },
+  "khabib nurmagomedov": {
+    "name": "Khabib Nurmagomedov",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 3.02,
+    "rolling_sapm": 2.37,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 4.49,
+    "rolling_damage_index": 1.33,
+    "recent_form": "4W in last 4"
+  },
   "katlyn cerminara": {
     "name": "Katlyn Cerminara",
     "archetype": "Inside Pressure Boxer",
@@ -4668,6 +4678,16 @@
     "rolling_td_avg": 0.8,
     "rolling_damage_index": 4.61,
     "recent_form": "2W in last 4"
+  },
+  "paul craig": {
+    "name": "Paul Craig",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 2.48,
+    "rolling_sapm": 3.91,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 2.03,
+    "recent_form": "0W in last 4"
   },
   "yanal ashmouz": {
     "name": "Yanal Ashmouz",
@@ -4688,6 +4708,16 @@
     "rolling_td_avg": 2.47,
     "rolling_damage_index": 1.41,
     "recent_form": "1W in last 4"
+  },
+  "robbie lawler": {
+    "name": "Robbie Lawler",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 5.11,
+    "rolling_sapm": 7.04,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.7,
+    "rolling_damage_index": 3.33,
+    "recent_form": "2W in last 4"
   },
   "jhonata diniz": {
     "name": "Jhonata Diniz",
@@ -4739,6 +4769,16 @@
     "rolling_damage_index": 0.96,
     "recent_form": "2W in last 4"
   },
+  "jai herbert": {
+    "name": "Jai Herbert",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.08,
+    "rolling_sapm": 3.7,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.89,
+    "rolling_damage_index": 2.19,
+    "recent_form": "2W in last 4"
+  },
   "kody steele": {
     "name": "Kody Steele",
     "archetype": "Submission Hunter",
@@ -4748,16 +4788,6 @@
     "rolling_td_avg": 2.49,
     "rolling_damage_index": 1.21,
     "recent_form": "1W in last 4"
-  },
-  "paul craig": {
-    "name": "Paul Craig",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 2.48,
-    "rolling_sapm": 3.91,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 2.03,
-    "recent_form": "0W in last 4"
   },
   "josefine knutsson": {
     "name": "Josefine Knutsson",
@@ -4769,24 +4799,14 @@
     "rolling_damage_index": 1.79,
     "recent_form": "2W in last 4"
   },
-  "jai herbert": {
-    "name": "Jai Herbert",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.08,
-    "rolling_sapm": 3.7,
+  "derek brunson": {
+    "name": "Derek Brunson",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 3.89,
+    "rolling_sapm": 5.76,
     "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.89,
-    "rolling_damage_index": 2.19,
-    "recent_form": "2W in last 4"
-  },
-  "robbie lawler": {
-    "name": "Robbie Lawler",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 5.11,
-    "rolling_sapm": 7.04,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.7,
-    "rolling_damage_index": 3.33,
+    "rolling_td_avg": 3.1,
+    "rolling_damage_index": 4.13,
     "recent_form": "2W in last 4"
   },
   "claudio puelles": {
@@ -4818,26 +4838,6 @@
     "rolling_td_avg": 2.24,
     "rolling_damage_index": 2.72,
     "recent_form": "1W in last 4"
-  },
-  "khabib nurmagomedov": {
-    "name": "Khabib Nurmagomedov",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 3.02,
-    "rolling_sapm": 2.37,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 4.49,
-    "rolling_damage_index": 1.33,
-    "recent_form": "4W in last 4"
-  },
-  "derek brunson": {
-    "name": "Derek Brunson",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 3.89,
-    "rolling_sapm": 5.76,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 3.1,
-    "rolling_damage_index": 4.13,
-    "recent_form": "2W in last 4"
   },
   "nikolas motta": {
     "name": "Nikolas Motta",
@@ -4919,6 +4919,16 @@
     "rolling_damage_index": 1.88,
     "recent_form": "1W in last 4"
   },
+  "kyle daukaus": {
+    "name": "Kyle Daukaus",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 1.3,
+    "rolling_sapm": 3.47,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.48,
+    "rolling_damage_index": 1.48,
+    "recent_form": "2W in last 4"
+  },
   "francisco trinaldo": {
     "name": "Francisco Trinaldo",
     "archetype": "Distance Out-Fighter",
@@ -4937,6 +4947,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.2,
     "rolling_damage_index": 3.62,
+    "recent_form": "1W in last 4"
+  },
+  "brad tavares": {
+    "name": "Brad Tavares",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.55,
+    "rolling_sapm": 3.79,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.49,
+    "rolling_damage_index": 2.63,
     "recent_form": "1W in last 4"
   },
   "andreas gustafsson": {
@@ -4958,26 +4978,6 @@
     "rolling_td_avg": 1.02,
     "rolling_damage_index": 1.55,
     "recent_form": "1W in last 4"
-  },
-  "brad tavares": {
-    "name": "Brad Tavares",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.55,
-    "rolling_sapm": 3.79,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.49,
-    "rolling_damage_index": 2.63,
-    "recent_form": "1W in last 4"
-  },
-  "kyle daukaus": {
-    "name": "Kyle Daukaus",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 1.3,
-    "rolling_sapm": 3.47,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.48,
-    "rolling_damage_index": 1.48,
-    "recent_form": "2W in last 4"
   },
   "nyamjargal tumendemberel": {
     "name": "Nyamjargal Tumendemberel",
@@ -6277,16 +6277,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 2.38,
     "rolling_damage_index": 3.0,
-    "recent_form": "2W in last 4"
-  },
-  "todd duffee": {
-    "name": "Todd Duffee",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.33,
-    "rolling_sapm": 2.83,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.41,
-    "rolling_damage_index": 1.04,
     "recent_form": "2W in last 4"
   },
   "mike pierce": {
@@ -8679,6 +8669,16 @@
     "rolling_damage_index": 2.92,
     "recent_form": "2W in last 4"
   },
+  "ben askren": {
+    "name": "Ben Askren",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 4.76,
+    "rolling_sapm": 3.87,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.87,
+    "rolling_damage_index": 2.08,
+    "recent_form": "1W in last 4"
+  },
   "nicolae negumereanu": {
     "name": "Nicolae Negumereanu",
     "archetype": "Distance Out-Fighter",
@@ -9049,6 +9049,16 @@
     "rolling_damage_index": 5.22,
     "recent_form": "1W in last 4"
   },
+  "cody brundage": {
+    "name": "Cody Brundage",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.58,
+    "rolling_sapm": 2.58,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.71,
+    "rolling_damage_index": 1.3,
+    "recent_form": "1W in last 4"
+  },
   "andre petroski": {
     "name": "Andre Petroski",
     "archetype": "Distance Out-Fighter",
@@ -9068,16 +9078,6 @@
     "rolling_td_avg": 1.54,
     "rolling_damage_index": 3.59,
     "recent_form": "2W in last 4"
-  },
-  "cody brundage": {
-    "name": "Cody Brundage",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.58,
-    "rolling_sapm": 2.58,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.71,
-    "rolling_damage_index": 1.3,
-    "recent_form": "1W in last 4"
   },
   "diyar nurgozhay": {
     "name": "Diyar Nurgozhay",
@@ -9249,16 +9249,6 @@
     "rolling_damage_index": 4.01,
     "recent_form": "1W in last 4"
   },
-  "gabriella fernandes": {
-    "name": "Gabriella Fernandes",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.25,
-    "rolling_sapm": 5.9,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.81,
-    "rolling_damage_index": 3.89,
-    "recent_form": "3W in last 4"
-  },
   "billy quarantillo": {
     "name": "Billy Quarantillo",
     "archetype": "Inside Pressure Boxer",
@@ -9268,6 +9258,16 @@
     "rolling_td_avg": 1.54,
     "rolling_damage_index": 5.41,
     "recent_form": "1W in last 4"
+  },
+  "gabriella fernandes": {
+    "name": "Gabriella Fernandes",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.25,
+    "rolling_sapm": 5.9,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.81,
+    "rolling_damage_index": 3.89,
+    "recent_form": "3W in last 4"
   },
   "gabe green": {
     "name": "Gabe Green",
@@ -9419,16 +9419,6 @@
     "rolling_damage_index": 4.47,
     "recent_form": "1W in last 4"
   },
-  "john yannis": {
-    "name": "John Yannis",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.33,
-    "rolling_sapm": 3.46,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.02,
-    "rolling_damage_index": 1.7,
-    "recent_form": "1W in last 4"
-  },
   "conor mcgregor": {
     "name": "Conor McGregor",
     "archetype": "Inside Pressure Boxer",
@@ -9437,6 +9427,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.34,
     "rolling_damage_index": 2.46,
+    "recent_form": "1W in last 4"
+  },
+  "john yannis": {
+    "name": "John Yannis",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.33,
+    "rolling_sapm": 3.46,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.02,
+    "rolling_damage_index": 1.7,
     "recent_form": "1W in last 4"
   },
   "mayra bueno silva": {
@@ -9739,6 +9739,16 @@
     "rolling_damage_index": 0.1,
     "recent_form": "0W in last 4"
   },
+  "michael chandler": {
+    "name": "Michael Chandler",
+    "archetype": "Clinch Grinder",
+    "rolling_slpm": 1.48,
+    "rolling_sapm": 4.5,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.57,
+    "rolling_damage_index": 2.89,
+    "recent_form": "0W in last 4"
+  },
   "mark choinski": {
     "name": "Mark Choinski",
     "archetype": "Distance Out-Fighter",
@@ -9939,16 +9949,6 @@
     "rolling_damage_index": 5.87,
     "recent_form": "0W in last 4"
   },
-  "djorden santos": {
-    "name": "Djorden Santos",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 6.99,
-    "rolling_sapm": 7.99,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.55,
-    "rolling_damage_index": 6.4,
-    "recent_form": "1W in last 4"
-  },
   "tai tuivasa": {
     "name": "Tai Tuivasa",
     "archetype": "Distance Out-Fighter",
@@ -9958,6 +9958,16 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 2.18,
     "recent_form": "0W in last 4"
+  },
+  "djorden santos": {
+    "name": "Djorden Santos",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 6.99,
+    "rolling_sapm": 7.99,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.55,
+    "rolling_damage_index": 6.4,
+    "recent_form": "1W in last 4"
   },
   "marina spasic": {
     "name": "Marina Spasic",
@@ -10049,16 +10059,6 @@
     "rolling_damage_index": 4.43,
     "recent_form": "2W in last 4"
   },
-  "melsik baghdasaryan": {
-    "name": "Melsik Baghdasaryan",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 1.82,
-    "rolling_sapm": 2.24,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.19,
-    "rolling_damage_index": 0.84,
-    "recent_form": "1W in last 4"
-  },
   "andre fili": {
     "name": "Andre Fili",
     "archetype": "Distance Out-Fighter",
@@ -10067,6 +10067,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 2.12,
     "rolling_damage_index": 6.89,
+    "recent_form": "1W in last 4"
+  },
+  "melsik baghdasaryan": {
+    "name": "Melsik Baghdasaryan",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 1.82,
+    "rolling_sapm": 2.24,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.19,
+    "rolling_damage_index": 0.84,
     "recent_form": "1W in last 4"
   },
   "josiah harrell": {
@@ -10159,6 +10169,16 @@
     "rolling_damage_index": 1.55,
     "recent_form": "1W in last 4"
   },
+  "todd duffee": {
+    "name": "Todd Duffee",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.33,
+    "rolling_sapm": 2.83,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.41,
+    "rolling_damage_index": 1.04,
+    "recent_form": "2W in last 4"
+  },
   "pedro nobre": {
     "name": "Pedro Nobre",
     "archetype": "Pressure Wrestler",
@@ -10188,16 +10208,6 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 2.58,
     "recent_form": "0W in last 4"
-  },
-  "ben askren": {
-    "name": "Ben Askren",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 4.76,
-    "rolling_sapm": 3.87,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.87,
-    "rolling_damage_index": 2.08,
-    "recent_form": "1W in last 4"
   },
   "jefferson nascimento": {
     "name": "Jefferson Nascimento",
@@ -10338,6 +10348,16 @@
     "rolling_td_avg": 0.48,
     "rolling_damage_index": 2.9,
     "recent_form": "2W in last 4"
+  },
+  "chris cariaso": {
+    "name": "Chris Cariaso",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.29,
+    "rolling_sapm": 3.09,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.23,
+    "rolling_damage_index": 2.03,
+    "recent_form": "1W in last 4"
   },
   "pedro rizzo": {
     "name": "Pedro Rizzo",
@@ -10499,6 +10519,16 @@
     "rolling_damage_index": 2.06,
     "recent_form": "0W in last 4"
   },
+  "bruno silva": {
+    "name": "Bruno Silva",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.35,
+    "rolling_sapm": 5.49,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.04,
+    "rolling_damage_index": 3.58,
+    "recent_form": "1W in last 4"
+  },
   "ozzy diaz": {
     "name": "Ozzy Diaz",
     "archetype": "Distance Out-Fighter",
@@ -10579,16 +10609,6 @@
     "rolling_damage_index": 1.17,
     "recent_form": "1W in last 4"
   },
-  "chris cariaso": {
-    "name": "Chris Cariaso",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.29,
-    "rolling_sapm": 3.09,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.23,
-    "rolling_damage_index": 2.03,
-    "recent_form": "1W in last 4"
-  },
   "rogerio nogueira": {
     "name": "Rogerio Nogueira",
     "archetype": "Distance Out-Fighter",
@@ -10617,16 +10637,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.26,
     "rolling_damage_index": 1.59,
-    "recent_form": "1W in last 4"
-  },
-  "bruno silva": {
-    "name": "Bruno Silva",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.35,
-    "rolling_sapm": 5.49,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.04,
-    "rolling_damage_index": 3.58,
     "recent_form": "1W in last 4"
   },
   "ivana petrovic": {
@@ -10909,6 +10919,16 @@
     "rolling_damage_index": 9.4,
     "recent_form": "1W in last 4"
   },
+  "armen petrosyan": {
+    "name": "Armen Petrosyan",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 5.69,
+    "rolling_sapm": 4.03,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.11,
+    "rolling_damage_index": 2.36,
+    "recent_form": "1W in last 4"
+  },
   "walt harris": {
     "name": "Walt Harris",
     "archetype": "Distance Out-Fighter",
@@ -11037,16 +11057,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 2.13,
     "rolling_damage_index": 1.19,
-    "recent_form": "1W in last 4"
-  },
-  "armen petrosyan": {
-    "name": "Armen Petrosyan",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 5.69,
-    "rolling_sapm": 4.03,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.11,
-    "rolling_damage_index": 2.36,
     "recent_form": "1W in last 4"
   },
   "leandro issa": {
@@ -11369,16 +11379,6 @@
     "rolling_damage_index": 1.7,
     "recent_form": "2W in last 4"
   },
-  "blagoy ivanov": {
-    "name": "Blagoy Ivanov",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.44,
-    "rolling_sapm": 5.11,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.3,
-    "rolling_damage_index": 3.88,
-    "recent_form": "1W in last 4"
-  },
   "jesse taylor": {
     "name": "Jesse Taylor",
     "archetype": "Pressure Wrestler",
@@ -11387,6 +11387,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 3.33,
     "rolling_damage_index": 0.1,
+    "recent_form": "1W in last 4"
+  },
+  "blagoy ivanov": {
+    "name": "Blagoy Ivanov",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.44,
+    "rolling_sapm": 5.11,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.3,
+    "rolling_damage_index": 3.88,
     "recent_form": "1W in last 4"
   },
   "robelis despaigne": {
@@ -11479,6 +11489,16 @@
     "rolling_damage_index": 3.91,
     "recent_form": "1W in last 4"
   },
+  "jimy hettes": {
+    "name": "Jimy Hettes",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 2.55,
+    "rolling_sapm": 3.45,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.58,
+    "rolling_damage_index": 1.82,
+    "recent_form": "1W in last 4"
+  },
   "darren stewart": {
     "name": "Darren Stewart",
     "archetype": "Pressure Wrestler",
@@ -11519,16 +11539,6 @@
     "rolling_damage_index": 1.46,
     "recent_form": "1W in last 4"
   },
-  "jimy hettes": {
-    "name": "Jimy Hettes",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 2.55,
-    "rolling_sapm": 3.45,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.58,
-    "rolling_damage_index": 1.82,
-    "recent_form": "1W in last 4"
-  },
   "hector sandoval": {
     "name": "Hector Sandoval",
     "archetype": "Pressure Wrestler",
@@ -11558,6 +11568,16 @@
     "rolling_td_avg": 3.93,
     "rolling_damage_index": 2.14,
     "recent_form": "1W in last 4"
+  },
+  "gerald meerschaert": {
+    "name": "Gerald Meerschaert",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 2.7,
+    "rolling_sapm": 2.91,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 1.55,
+    "recent_form": "0W in last 4"
   },
   "rodrigo sezinando": {
     "name": "Rodrigo Sezinando",
@@ -11638,16 +11658,6 @@
     "rolling_td_avg": 0.57,
     "rolling_damage_index": 2.2,
     "recent_form": "2W in last 4"
-  },
-  "gerald meerschaert": {
-    "name": "Gerald Meerschaert",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 2.7,
-    "rolling_sapm": 2.91,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 1.55,
-    "recent_form": "0W in last 4"
   },
   "nad narimani": {
     "name": "Nad Narimani",
@@ -11789,6 +11799,16 @@
     "rolling_damage_index": 1.86,
     "recent_form": "1W in last 4"
   },
+  "tarec saffiedine": {
+    "name": "Tarec Saffiedine",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.89,
+    "rolling_sapm": 4.41,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.23,
+    "rolling_damage_index": 3.21,
+    "recent_form": "1W in last 4"
+  },
   "gabriel miranda": {
     "name": "Gabriel Miranda",
     "archetype": "Pressure Wrestler",
@@ -11807,16 +11827,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.65,
     "rolling_damage_index": 4.28,
-    "recent_form": "1W in last 4"
-  },
-  "tarec saffiedine": {
-    "name": "Tarec Saffiedine",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.89,
-    "rolling_sapm": 4.41,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.23,
-    "rolling_damage_index": 3.21,
     "recent_form": "1W in last 4"
   },
   "jose quinonez": {
@@ -11989,6 +11999,16 @@
     "rolling_damage_index": 1.61,
     "recent_form": "2W in last 4"
   },
+  "marc-andre barriault": {
+    "name": "Marc-Andre Barriault",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.07,
+    "rolling_sapm": 7.14,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.17,
+    "rolling_damage_index": 4.74,
+    "recent_form": "1W in last 4"
+  },
   "rory singer": {
     "name": "Rory Singer",
     "archetype": "Submission Hunter",
@@ -12098,16 +12118,6 @@
     "rolling_td_avg": 1.11,
     "rolling_damage_index": 2.11,
     "recent_form": "0W in last 4"
-  },
-  "marc-andre barriault": {
-    "name": "Marc-Andre Barriault",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.07,
-    "rolling_sapm": 7.14,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.17,
-    "rolling_damage_index": 4.74,
-    "recent_form": "1W in last 4"
   },
   "marcel fortuna": {
     "name": "Marcel Fortuna",
@@ -12249,6 +12259,16 @@
     "rolling_damage_index": 1.83,
     "recent_form": "1W in last 4"
   },
+  "antonio rodrigo nogueira": {
+    "name": "Antonio Rodrigo Nogueira",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 3.21,
+    "rolling_sapm": 5.04,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.67,
+    "rolling_damage_index": 3.23,
+    "recent_form": "1W in last 4"
+  },
   "william knight": {
     "name": "William Knight",
     "archetype": "Distance Out-Fighter",
@@ -12267,16 +12287,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.51,
     "rolling_damage_index": 1.11,
-    "recent_form": "1W in last 4"
-  },
-  "antonio rodrigo nogueira": {
-    "name": "Antonio Rodrigo Nogueira",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 3.21,
-    "rolling_sapm": 5.04,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.67,
-    "rolling_damage_index": 3.23,
     "recent_form": "1W in last 4"
   },
   "klidson abreu": {
@@ -12309,16 +12319,6 @@
     "rolling_damage_index": 1.71,
     "recent_form": "0W in last 4"
   },
-  "jeff joslin": {
-    "name": "Jeff Joslin",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 1.33,
-    "rolling_sapm": 1.04,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 0.43,
-    "recent_form": "0W in last 4"
-  },
   "makwan amirkhani": {
     "name": "Makwan Amirkhani",
     "archetype": "Pressure Wrestler",
@@ -12328,6 +12328,16 @@
     "rolling_td_avg": 3.54,
     "rolling_damage_index": 2.91,
     "recent_form": "1W in last 4"
+  },
+  "jeff joslin": {
+    "name": "Jeff Joslin",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 1.33,
+    "rolling_sapm": 1.04,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 0.43,
+    "recent_form": "0W in last 4"
   },
   "jake rosholt": {
     "name": "Jake Rosholt",
@@ -12819,6 +12829,16 @@
     "rolling_damage_index": 2.24,
     "recent_form": "0W in last 4"
   },
+  "dustin kimura": {
+    "name": "Dustin Kimura",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 1.36,
+    "rolling_sapm": 4.45,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.48,
+    "rolling_damage_index": 2.97,
+    "recent_form": "1W in last 4"
+  },
   "yui chul nam": {
     "name": "Yui Chul Nam",
     "archetype": "Distance Out-Fighter",
@@ -13039,26 +13059,6 @@
     "rolling_damage_index": 1.53,
     "recent_form": "1W in last 4"
   },
-  "cindy dandois": {
-    "name": "Cindy Dandois",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 3.48,
-    "rolling_sapm": 3.78,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 5.56,
-    "rolling_damage_index": 2.71,
-    "recent_form": "0W in last 4"
-  },
-  "michael chandler": {
-    "name": "Michael Chandler",
-    "archetype": "Clinch Grinder",
-    "rolling_slpm": 1.48,
-    "rolling_sapm": 4.5,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.57,
-    "rolling_damage_index": 2.89,
-    "recent_form": "0W in last 4"
-  },
   "ismael bonfim": {
     "name": "Ismael Bonfim",
     "archetype": "Clinch Grinder",
@@ -13068,6 +13068,16 @@
     "rolling_td_avg": 2.09,
     "rolling_damage_index": 3.97,
     "recent_form": "1W in last 4"
+  },
+  "cindy dandois": {
+    "name": "Cindy Dandois",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 3.48,
+    "rolling_sapm": 3.78,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 5.56,
+    "rolling_damage_index": 2.71,
+    "recent_form": "0W in last 4"
   },
   "cameron smotherman": {
     "name": "Cameron Smotherman",
@@ -13438,16 +13448,6 @@
     "rolling_td_avg": 2.35,
     "rolling_damage_index": 3.31,
     "recent_form": "2W in last 4"
-  },
-  "dustin kimura": {
-    "name": "Dustin Kimura",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 1.36,
-    "rolling_sapm": 4.45,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.48,
-    "rolling_damage_index": 2.97,
-    "recent_form": "1W in last 4"
   },
   "luiz cane": {
     "name": "Luiz Cane",
@@ -14299,6 +14299,16 @@
     "rolling_damage_index": 1.22,
     "recent_form": "1W in last 4"
   },
+  "misha cirkunov": {
+    "name": "Misha Cirkunov",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 2.05,
+    "rolling_sapm": 2.14,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.39,
+    "rolling_damage_index": 0.87,
+    "recent_form": "0W in last 4"
+  },
   "sabina mazo": {
     "name": "Sabina Mazo",
     "archetype": "Distance Out-Fighter",
@@ -14339,16 +14349,6 @@
     "rolling_damage_index": 2.56,
     "recent_form": "1W in last 4"
   },
-  "misha cirkunov": {
-    "name": "Misha Cirkunov",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 2.05,
-    "rolling_sapm": 2.14,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.39,
-    "rolling_damage_index": 0.87,
-    "recent_form": "0W in last 4"
-  },
   "adam milstead": {
     "name": "Adam Milstead",
     "archetype": "Distance Out-Fighter",
@@ -14367,6 +14367,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.9,
     "rolling_damage_index": 0.53,
+    "recent_form": "1W in last 4"
+  },
+  "chico camus": {
+    "name": "Chico Camus",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.17,
+    "rolling_sapm": 4.75,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.19,
+    "rolling_damage_index": 3.56,
     "recent_form": "1W in last 4"
   },
   "rogerio bontorin": {
@@ -14658,16 +14668,6 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 1.89,
     "recent_form": "0W in last 4"
-  },
-  "chico camus": {
-    "name": "Chico Camus",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.17,
-    "rolling_sapm": 4.75,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.19,
-    "rolling_damage_index": 3.56,
-    "recent_form": "1W in last 4"
   },
   "hector urbina": {
     "name": "Hector Urbina",
@@ -15059,6 +15059,16 @@
     "rolling_damage_index": 1.46,
     "recent_form": "2W in last 4"
   },
+  "elisha ellison": {
+    "name": "Elisha Ellison",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.05,
+    "rolling_sapm": 8.1,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 5.2,
+    "recent_form": "0W in last 4"
+  },
   "callan potter": {
     "name": "Callan Potter",
     "archetype": "Pressure Wrestler",
@@ -15219,16 +15229,6 @@
     "rolling_damage_index": 2.47,
     "recent_form": "0W in last 4"
   },
-  "pannie kianzad": {
-    "name": "Pannie Kianzad",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.08,
-    "rolling_sapm": 4.67,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.03,
-    "rolling_damage_index": 2.56,
-    "recent_form": "1W in last 4"
-  },
   "russell doane": {
     "name": "Russell Doane",
     "archetype": "Distance Out-Fighter",
@@ -15237,6 +15237,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.43,
     "rolling_damage_index": 0.61,
+    "recent_form": "1W in last 4"
+  },
+  "pannie kianzad": {
+    "name": "Pannie Kianzad",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.08,
+    "rolling_sapm": 4.67,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.03,
+    "rolling_damage_index": 2.56,
     "recent_form": "1W in last 4"
   },
   "darrius flowers": {
@@ -15929,6 +15939,16 @@
     "rolling_damage_index": 0.62,
     "recent_form": "0W in last 4"
   },
+  "marcus brimage": {
+    "name": "Marcus Brimage",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.18,
+    "rolling_sapm": 2.92,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.78,
+    "rolling_damage_index": 1.42,
+    "recent_form": "1W in last 4"
+  },
   "luis pajuelo": {
     "name": "Luis Pajuelo",
     "archetype": "Distance Out-Fighter",
@@ -16029,6 +16049,16 @@
     "rolling_damage_index": 0.15,
     "recent_form": "0W in last 4"
   },
+  "akira corassani": {
+    "name": "Akira Corassani",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.15,
+    "rolling_sapm": 3.86,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.34,
+    "rolling_damage_index": 1.76,
+    "recent_form": "1W in last 4"
+  },
   "sherman pendergarst": {
     "name": "Sherman Pendergarst",
     "archetype": "Pressure Wrestler",
@@ -16048,16 +16078,6 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 2.06,
     "recent_form": "0W in last 4"
-  },
-  "akira corassani": {
-    "name": "Akira Corassani",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.15,
-    "rolling_sapm": 3.86,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.34,
-    "rolling_damage_index": 1.76,
-    "recent_form": "1W in last 4"
   },
   "jimmy quinlan": {
     "name": "Jimmy Quinlan",
@@ -16369,16 +16389,6 @@
     "rolling_damage_index": 3.09,
     "recent_form": "0W in last 4"
   },
-  "elisha ellison": {
-    "name": "Elisha Ellison",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.05,
-    "rolling_sapm": 8.1,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 5.2,
-    "recent_form": "0W in last 4"
-  },
   "mads burnell": {
     "name": "Mads Burnell",
     "archetype": "Pressure Wrestler",
@@ -16559,6 +16569,16 @@
     "rolling_damage_index": 0.95,
     "recent_form": "1W in last 4"
   },
+  "will chope": {
+    "name": "Will Chope",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.67,
+    "rolling_sapm": 8.22,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 6.47,
+    "recent_form": "0W in last 4"
+  },
   "frankie saenz": {
     "name": "Frankie Saenz",
     "archetype": "Distance Out-Fighter",
@@ -16628,16 +16648,6 @@
     "rolling_td_avg": 0.34,
     "rolling_damage_index": 1.23,
     "recent_form": "1W in last 4"
-  },
-  "will chope": {
-    "name": "Will Chope",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.67,
-    "rolling_sapm": 8.22,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 6.47,
-    "recent_form": "0W in last 4"
   },
   "ryo chonan": {
     "name": "Ryo Chonan",
@@ -16758,16 +16768,6 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 0.87,
     "recent_form": "0W in last 4"
-  },
-  "marcus brimage": {
-    "name": "Marcus Brimage",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.18,
-    "rolling_sapm": 2.92,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.78,
-    "rolling_damage_index": 1.42,
-    "recent_form": "1W in last 4"
   },
   "aleksandra albu": {
     "name": "Aleksandra Albu",
@@ -17339,6 +17339,16 @@
     "rolling_damage_index": 1.62,
     "recent_form": "1W in last 4"
   },
+  "niko price": {
+    "name": "Niko Price",
+    "archetype": "Clinch Grinder",
+    "rolling_slpm": 1.41,
+    "rolling_sapm": 5.06,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.52,
+    "rolling_damage_index": 2.95,
+    "recent_form": "0W in last 4"
+  },
   "keith jardine": {
     "name": "Keith Jardine",
     "archetype": "Distance Out-Fighter",
@@ -17379,16 +17389,6 @@
     "rolling_damage_index": 5.8,
     "recent_form": "0W in last 4"
   },
-  "niko price": {
-    "name": "Niko Price",
-    "archetype": "Clinch Grinder",
-    "rolling_slpm": 1.41,
-    "rolling_sapm": 5.06,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.52,
-    "rolling_damage_index": 2.95,
-    "recent_form": "0W in last 4"
-  },
   "priscila cachoeira": {
     "name": "Priscila Cachoeira",
     "archetype": "Distance Out-Fighter",
@@ -17408,6 +17408,16 @@
     "rolling_td_avg": 3.38,
     "rolling_damage_index": 1.62,
     "recent_form": "1W in last 4"
+  },
+  "julian marquez": {
+    "name": "Julian Marquez",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 5.62,
+    "rolling_sapm": 7.95,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 4.63,
+    "recent_form": "0W in last 4"
   },
   "mac danzig": {
     "name": "Mac Danzig",
@@ -17439,16 +17449,6 @@
     "rolling_damage_index": 3.44,
     "recent_form": "1W in last 4"
   },
-  "julian marquez": {
-    "name": "Julian Marquez",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 5.62,
-    "rolling_sapm": 7.95,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 4.63,
-    "recent_form": "0W in last 4"
-  },
   "derrick krantz": {
     "name": "Derrick Krantz",
     "archetype": "Pressure Wrestler",
@@ -17479,16 +17479,6 @@
     "rolling_damage_index": 5.12,
     "recent_form": "1W in last 4"
   },
-  "aaron rosa": {
-    "name": "Aaron Rosa",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 4.6,
-    "rolling_sapm": 4.12,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.34,
-    "rolling_damage_index": 2.33,
-    "recent_form": "1W in last 4"
-  },
   "katsunori kikuno": {
     "name": "Katsunori Kikuno",
     "archetype": "Submission Hunter",
@@ -17497,6 +17487,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.28,
     "rolling_damage_index": 1.35,
+    "recent_form": "1W in last 4"
+  },
+  "aaron rosa": {
+    "name": "Aaron Rosa",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 4.6,
+    "rolling_sapm": 4.12,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.34,
+    "rolling_damage_index": 2.33,
     "recent_form": "1W in last 4"
   },
   "danny mitchell": {
@@ -17517,6 +17517,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 1.88,
+    "recent_form": "0W in last 4"
+  },
+  "alan patrick": {
+    "name": "Alan Patrick",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 1.84,
+    "rolling_sapm": 4.23,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.19,
+    "rolling_damage_index": 2.84,
     "recent_form": "0W in last 4"
   },
   "hernani perpetuo": {
@@ -17557,16 +17567,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 1.79,
-    "recent_form": "0W in last 4"
-  },
-  "alan patrick": {
-    "name": "Alan Patrick",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 1.84,
-    "rolling_sapm": 4.23,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.19,
-    "rolling_damage_index": 2.84,
     "recent_form": "0W in last 4"
   },
   "luke zachrich": {
@@ -17659,6 +17659,16 @@
     "rolling_damage_index": 1.42,
     "recent_form": "1W in last 4"
   },
+  "daniel frunza": {
+    "name": "Daniel Frunza",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.88,
+    "rolling_sapm": 5.04,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 3.2,
+    "recent_form": "0W in last 4"
+  },
   "craig white": {
     "name": "Craig White",
     "archetype": "Distance Out-Fighter",
@@ -17678,16 +17688,6 @@
     "rolling_td_avg": 0.34,
     "rolling_damage_index": 2.36,
     "recent_form": "1W in last 4"
-  },
-  "daniel frunza": {
-    "name": "Daniel Frunza",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.88,
-    "rolling_sapm": 5.04,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 3.2,
-    "recent_form": "0W in last 4"
   },
   "terry martin": {
     "name": "Terry Martin",
@@ -17749,16 +17749,6 @@
     "rolling_damage_index": 1.19,
     "recent_form": "0W in last 4"
   },
-  "travis lutter": {
-    "name": "Travis Lutter",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 1.29,
-    "rolling_sapm": 2.84,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 2.7,
-    "rolling_damage_index": 1.45,
-    "recent_form": "1W in last 4"
-  },
   "clay collard": {
     "name": "Clay Collard",
     "archetype": "Pressure Wrestler",
@@ -17767,6 +17757,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 3.02,
     "rolling_damage_index": 3.43,
+    "recent_form": "1W in last 4"
+  },
+  "travis lutter": {
+    "name": "Travis Lutter",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 1.29,
+    "rolling_sapm": 2.84,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 2.7,
+    "rolling_damage_index": 1.45,
     "recent_form": "1W in last 4"
   },
   "matt schnell": {
@@ -17798,6 +17798,16 @@
     "rolling_td_avg": 1.8,
     "rolling_damage_index": 2.98,
     "recent_form": "0W in last 4"
+  },
+  "patrick cummins": {
+    "name": "Patrick Cummins",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.44,
+    "rolling_sapm": 3.12,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.63,
+    "rolling_damage_index": 1.46,
+    "recent_form": "1W in last 4"
   },
   "daniel sarafian": {
     "name": "Daniel Sarafian",
@@ -17869,6 +17879,16 @@
     "rolling_damage_index": 2.24,
     "recent_form": "0W in last 4"
   },
+  "roger narvaez": {
+    "name": "Roger Narvaez",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.05,
+    "rolling_sapm": 3.63,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.34,
+    "rolling_damage_index": 2.33,
+    "recent_form": "1W in last 4"
+  },
   "jay silva": {
     "name": "Jay Silva",
     "archetype": "Distance Out-Fighter",
@@ -17937,16 +17957,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.5,
     "rolling_damage_index": 2.76,
-    "recent_form": "1W in last 4"
-  },
-  "roger narvaez": {
-    "name": "Roger Narvaez",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.05,
-    "rolling_sapm": 3.63,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.34,
-    "rolling_damage_index": 2.33,
     "recent_form": "1W in last 4"
   },
   "brendan o'reilly": {
@@ -18129,16 +18139,6 @@
     "rolling_damage_index": 2.54,
     "recent_form": "0W in last 4"
   },
-  "patrick cummins": {
-    "name": "Patrick Cummins",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.44,
-    "rolling_sapm": 3.12,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.63,
-    "rolling_damage_index": 1.46,
-    "recent_form": "1W in last 4"
-  },
   "hans stringer": {
     "name": "Hans Stringer",
     "archetype": "Clinch Grinder",
@@ -18219,6 +18219,16 @@
     "rolling_damage_index": 2.53,
     "recent_form": "1W in last 4"
   },
+  "dan argueta": {
+    "name": "Dan Argueta",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 2.75,
+    "rolling_sapm": 5.86,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 6.87,
+    "rolling_damage_index": 3.62,
+    "recent_form": "0W in last 4"
+  },
   "tim gorman": {
     "name": "Tim Gorman",
     "archetype": "Distance Out-Fighter",
@@ -18238,16 +18248,6 @@
     "rolling_td_avg": 1.32,
     "rolling_damage_index": 4.53,
     "recent_form": "1W in last 4"
-  },
-  "dan argueta": {
-    "name": "Dan Argueta",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 2.75,
-    "rolling_sapm": 5.86,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 6.87,
-    "rolling_damage_index": 3.62,
-    "recent_form": "0W in last 4"
   },
   "dileno lopes": {
     "name": "Dileno Lopes",
@@ -18409,6 +18409,16 @@
     "rolling_damage_index": 1.19,
     "recent_form": "0W in last 4"
   },
+  "devin clark": {
+    "name": "Devin Clark",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.48,
+    "rolling_sapm": 6.12,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.02,
+    "rolling_damage_index": 4.49,
+    "recent_form": "1W in last 4"
+  },
   "zhang tiequan": {
     "name": "Zhang Tiequan",
     "archetype": "Submission Hunter",
@@ -18439,16 +18449,6 @@
     "rolling_damage_index": 2.78,
     "recent_form": "0W in last 4"
   },
-  "devin clark": {
-    "name": "Devin Clark",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.48,
-    "rolling_sapm": 6.12,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.02,
-    "rolling_damage_index": 4.49,
-    "recent_form": "1W in last 4"
-  },
   "chris fishgold": {
     "name": "Chris Fishgold",
     "archetype": "Submission Hunter",
@@ -18467,6 +18467,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.56,
     "rolling_damage_index": 1.14,
+    "recent_form": "1W in last 4"
+  },
+  "eddie gordon": {
+    "name": "Eddie Gordon",
+    "archetype": "Clinch Grinder",
+    "rolling_slpm": 1.81,
+    "rolling_sapm": 2.57,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.82,
+    "rolling_damage_index": 1.47,
     "recent_form": "1W in last 4"
   },
   "steve montgomery": {
@@ -18488,16 +18498,6 @@
     "rolling_td_avg": 0.84,
     "rolling_damage_index": 4.02,
     "recent_form": "0W in last 4"
-  },
-  "eddie gordon": {
-    "name": "Eddie Gordon",
-    "archetype": "Clinch Grinder",
-    "rolling_slpm": 1.81,
-    "rolling_sapm": 2.57,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.82,
-    "rolling_damage_index": 1.47,
-    "recent_form": "1W in last 4"
   },
   "rolando bedoya": {
     "name": "Rolando Bedoya",
@@ -18699,6 +18699,16 @@
     "rolling_damage_index": 2.49,
     "recent_form": "1W in last 4"
   },
+  "josh fremd": {
+    "name": "Josh Fremd",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 2.46,
+    "rolling_sapm": 2.31,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.52,
+    "rolling_damage_index": 1.12,
+    "recent_form": "2W in last 4"
+  },
   "don shainis": {
     "name": "Don Shainis",
     "archetype": "Distance Out-Fighter",
@@ -18728,16 +18738,6 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 2.31,
     "recent_form": "0W in last 4"
-  },
-  "josh fremd": {
-    "name": "Josh Fremd",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 2.46,
-    "rolling_sapm": 2.31,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.52,
-    "rolling_damage_index": 1.12,
-    "recent_form": "2W in last 4"
   },
   "marnic mann": {
     "name": "Marnic Mann",
@@ -18849,16 +18849,6 @@
     "rolling_damage_index": 1.38,
     "recent_form": "1W in last 4"
   },
-  "thomas almeida": {
-    "name": "Thomas Almeida",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.14,
-    "rolling_sapm": 5.68,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.51,
-    "rolling_damage_index": 4.39,
-    "recent_form": "0W in last 4"
-  },
   "rin nakai": {
     "name": "Rin Nakai",
     "archetype": "Pressure Wrestler",
@@ -18867,6 +18857,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 3.33,
     "rolling_damage_index": 3.29,
+    "recent_form": "0W in last 4"
+  },
+  "thomas almeida": {
+    "name": "Thomas Almeida",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.14,
+    "rolling_sapm": 5.68,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.51,
+    "rolling_damage_index": 4.39,
     "recent_form": "0W in last 4"
   },
   "josh quinlan": {
@@ -19199,6 +19199,16 @@
     "rolling_damage_index": 2.54,
     "recent_form": "1W in last 4"
   },
+  "val woodburn": {
+    "name": "Val Woodburn",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 1.23,
+    "rolling_sapm": 3.81,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.38,
+    "rolling_damage_index": 2.22,
+    "recent_form": "0W in last 4"
+  },
   "clay harvison": {
     "name": "Clay Harvison",
     "archetype": "Distance Out-Fighter",
@@ -19379,16 +19389,6 @@
     "rolling_damage_index": 3.18,
     "recent_form": "0W in last 4"
   },
-  "tj brown": {
-    "name": "TJ Brown",
-    "archetype": "Clinch Grinder",
-    "rolling_slpm": 2.53,
-    "rolling_sapm": 2.95,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.96,
-    "rolling_damage_index": 1.56,
-    "recent_form": "1W in last 4"
-  },
   "darrick minner": {
     "name": "Darrick Minner",
     "archetype": "Submission Hunter",
@@ -19397,6 +19397,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.32,
     "rolling_damage_index": 1.72,
+    "recent_form": "1W in last 4"
+  },
+  "tj brown": {
+    "name": "TJ Brown",
+    "archetype": "Clinch Grinder",
+    "rolling_slpm": 2.53,
+    "rolling_sapm": 2.95,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.96,
+    "rolling_damage_index": 1.56,
     "recent_form": "1W in last 4"
   },
   "peter barrett": {
@@ -19559,6 +19569,16 @@
     "rolling_damage_index": 3.36,
     "recent_form": "0W in last 4"
   },
+  "bj penn": {
+    "name": "BJ Penn",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 3.09,
+    "rolling_sapm": 4.96,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 3.16,
+    "recent_form": "0W in last 4"
+  },
   "jon delos reyes": {
     "name": "Jon Delos Reyes",
     "archetype": "Pressure Wrestler",
@@ -19579,16 +19599,6 @@
     "rolling_damage_index": 3.45,
     "recent_form": "1W in last 4"
   },
-  "bj penn": {
-    "name": "BJ Penn",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 3.09,
-    "rolling_sapm": 4.96,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 3.16,
-    "recent_form": "0W in last 4"
-  },
   "josh ferguson": {
     "name": "Josh Ferguson",
     "archetype": "Distance Out-Fighter",
@@ -19608,6 +19618,16 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 0.94,
     "recent_form": "0W in last 4"
+  },
+  "kron gracie": {
+    "name": "Kron Gracie",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 1.97,
+    "rolling_sapm": 4.28,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.34,
+    "rolling_damage_index": 2.69,
+    "recent_form": "1W in last 4"
   },
   "lucio linhares": {
     "name": "Lucio Linhares",
@@ -19638,16 +19658,6 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 6.75,
     "recent_form": "0W in last 4"
-  },
-  "kron gracie": {
-    "name": "Kron Gracie",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 1.97,
-    "rolling_sapm": 4.28,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.34,
-    "rolling_damage_index": 2.69,
-    "recent_form": "1W in last 4"
   },
   "anthony ivy": {
     "name": "Anthony Ivy",
@@ -19729,14 +19739,14 @@
     "rolling_damage_index": 3.92,
     "recent_form": "1W in last 4"
   },
-  "val woodburn": {
-    "name": "Val Woodburn",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 1.23,
-    "rolling_sapm": 3.81,
+  "nick diaz": {
+    "name": "Nick Diaz",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 6.78,
+    "rolling_sapm": 7.2,
     "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.38,
-    "rolling_damage_index": 2.22,
+    "rolling_td_avg": 0.25,
+    "rolling_damage_index": 5.76,
     "recent_form": "0W in last 4"
   },
   "yusuke kasuya": {
@@ -19767,16 +19777,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 2.07,
     "rolling_damage_index": 3.72,
-    "recent_form": "0W in last 4"
-  },
-  "nick diaz": {
-    "name": "Nick Diaz",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 6.78,
-    "rolling_sapm": 7.2,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.25,
-    "rolling_damage_index": 5.76,
     "recent_form": "0W in last 4"
   },
   "jason black": {
@@ -20529,6 +20529,16 @@
     "rolling_damage_index": 0.7,
     "recent_form": "0W in last 4"
   },
+  "zac pauga": {
+    "name": "Zac Pauga",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 4.18,
+    "rolling_sapm": 2.65,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.49,
+    "rolling_damage_index": 1.3,
+    "recent_form": "1W in last 4"
+  },
   "nick aguirre": {
     "name": "Nick Aguirre",
     "archetype": "Distance Out-Fighter",
@@ -20579,6 +20589,16 @@
     "rolling_damage_index": 0.36,
     "recent_form": "0W in last 4"
   },
+  "artem lobov": {
+    "name": "Artem Lobov",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 4.91,
+    "rolling_sapm": 6.38,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.34,
+    "rolling_damage_index": 4.92,
+    "recent_form": "1W in last 4"
+  },
   "leonardo guimaraes": {
     "name": "Leonardo Guimaraes",
     "archetype": "Distance Out-Fighter",
@@ -20607,16 +20627,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.48,
     "rolling_damage_index": 0.76,
-    "recent_form": "1W in last 4"
-  },
-  "zac pauga": {
-    "name": "Zac Pauga",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 4.18,
-    "rolling_sapm": 2.65,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.49,
-    "rolling_damage_index": 1.3,
     "recent_form": "1W in last 4"
   },
   "claudio ribeiro": {
@@ -20648,16 +20658,6 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 1.19,
     "recent_form": "0W in last 4"
-  },
-  "artem lobov": {
-    "name": "Artem Lobov",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 4.91,
-    "rolling_sapm": 6.38,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.34,
-    "rolling_damage_index": 4.92,
-    "recent_form": "1W in last 4"
   },
   "tiki ghosn": {
     "name": "Tiki Ghosn",
@@ -20949,6 +20949,16 @@
     "rolling_damage_index": 3.09,
     "recent_form": "1W in last 4"
   },
+  "rafael cavalcante": {
+    "name": "Rafael Cavalcante",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 1.29,
+    "rolling_sapm": 3.58,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.34,
+    "rolling_damage_index": 2.42,
+    "recent_form": "1W in last 4"
+  },
   "anthony lapsley": {
     "name": "Anthony Lapsley",
     "archetype": "Distance Out-Fighter",
@@ -20998,16 +21008,6 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 0.66,
     "recent_form": "0W in last 4"
-  },
-  "rafael cavalcante": {
-    "name": "Rafael Cavalcante",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 1.29,
-    "rolling_sapm": 3.58,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.34,
-    "rolling_damage_index": 2.42,
-    "recent_form": "1W in last 4"
   },
   "jack marshman": {
     "name": "Jack Marshman",
@@ -21338,6 +21338,16 @@
     "rolling_td_avg": 2.01,
     "rolling_damage_index": 2.26,
     "recent_form": "0W in last 4"
+  },
+  "andreas michailidis": {
+    "name": "Andreas Michailidis",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.12,
+    "rolling_sapm": 3.13,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.11,
+    "rolling_damage_index": 1.85,
+    "recent_form": "1W in last 4"
   },
   "willie gates": {
     "name": "Willie Gates",
@@ -21729,6 +21739,16 @@
     "rolling_damage_index": 1.34,
     "recent_form": "0W in last 4"
   },
+  "rob wilkinson": {
+    "name": "Rob Wilkinson",
+    "archetype": "Pressure Wrestler",
+    "rolling_slpm": 2.53,
+    "rolling_sapm": 5.4,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 4.37,
+    "rolling_damage_index": 3.82,
+    "recent_form": "0W in last 4"
+  },
   "terrence mitchell": {
     "name": "Terrence Mitchell",
     "archetype": "Distance Out-Fighter",
@@ -21819,16 +21839,6 @@
     "rolling_damage_index": 0.69,
     "recent_form": "0W in last 4"
   },
-  "andreas michailidis": {
-    "name": "Andreas Michailidis",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.12,
-    "rolling_sapm": 3.13,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.11,
-    "rolling_damage_index": 1.85,
-    "recent_form": "1W in last 4"
-  },
   "dan evensen": {
     "name": "Dan Evensen",
     "archetype": "Distance Out-Fighter",
@@ -21889,6 +21899,16 @@
     "rolling_damage_index": 1.93,
     "recent_form": "0W in last 4"
   },
+  "charles rosa": {
+    "name": "Charles Rosa",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 3.46,
+    "rolling_sapm": 5.29,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.61,
+    "rolling_damage_index": 3.98,
+    "recent_form": "1W in last 4"
+  },
   "jason gonzalez": {
     "name": "Jason Gonzalez",
     "archetype": "Submission Hunter",
@@ -21918,16 +21938,6 @@
     "rolling_td_avg": 2.07,
     "rolling_damage_index": 0.4,
     "recent_form": "0W in last 4"
-  },
-  "charles rosa": {
-    "name": "Charles Rosa",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 3.46,
-    "rolling_sapm": 5.29,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.61,
-    "rolling_damage_index": 3.98,
-    "recent_form": "1W in last 4"
   },
   "zarrukh adashev": {
     "name": "Zarrukh Adashev",
@@ -22149,16 +22159,6 @@
     "rolling_damage_index": 2.5,
     "recent_form": "1W in last 4"
   },
-  "rob wilkinson": {
-    "name": "Rob Wilkinson",
-    "archetype": "Pressure Wrestler",
-    "rolling_slpm": 2.53,
-    "rolling_sapm": 5.4,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 4.37,
-    "rolling_damage_index": 3.82,
-    "recent_form": "0W in last 4"
-  },
   "diana belbita": {
     "name": "Diana Belbita",
     "archetype": "Inside Pressure Boxer",
@@ -22219,16 +22219,6 @@
     "rolling_damage_index": 3.02,
     "recent_form": "1W in last 4"
   },
-  "julija stoliarenko": {
-    "name": "Julija Stoliarenko",
-    "archetype": "Submission Hunter",
-    "rolling_slpm": 2.99,
-    "rolling_sapm": 4.42,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 1.2,
-    "rolling_damage_index": 2.9,
-    "recent_form": "1W in last 4"
-  },
   "ottman azaitar": {
     "name": "Ottman Azaitar",
     "archetype": "Distance Out-Fighter",
@@ -22237,6 +22227,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.34,
     "rolling_damage_index": 1.74,
+    "recent_form": "1W in last 4"
+  },
+  "julija stoliarenko": {
+    "name": "Julija Stoliarenko",
+    "archetype": "Submission Hunter",
+    "rolling_slpm": 2.99,
+    "rolling_sapm": 4.42,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 1.2,
+    "rolling_damage_index": 2.9,
     "recent_form": "1W in last 4"
   },
   "connor matthews": {
@@ -22769,6 +22769,16 @@
     "rolling_damage_index": 4.08,
     "recent_form": "0W in last 4"
   },
+  "kyle kingsbury": {
+    "name": "Kyle Kingsbury",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.02,
+    "rolling_sapm": 4.91,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.92,
+    "rolling_damage_index": 3.41,
+    "recent_form": "0W in last 4"
+  },
   "damarques johnson": {
     "name": "DaMarques Johnson",
     "archetype": "Submission Hunter",
@@ -22788,16 +22798,6 @@
     "rolling_td_avg": 1.29,
     "rolling_damage_index": 1.41,
     "recent_form": "1W in last 4"
-  },
-  "kyle kingsbury": {
-    "name": "Kyle Kingsbury",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.02,
-    "rolling_sapm": 4.91,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.92,
-    "rolling_damage_index": 3.41,
-    "recent_form": "0W in last 4"
   },
   "nick penner": {
     "name": "Nick Penner",
@@ -22969,16 +22969,6 @@
     "rolling_damage_index": 1.34,
     "recent_form": "0W in last 4"
   },
-  "hayder hassan": {
-    "name": "Hayder Hassan",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.2,
-    "rolling_sapm": 2.29,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 0.9,
-    "recent_form": "0W in last 4"
-  },
   "gian villante": {
     "name": "Gian Villante",
     "archetype": "Distance Out-Fighter",
@@ -22987,6 +22977,16 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 3.81,
+    "recent_form": "0W in last 4"
+  },
+  "hayder hassan": {
+    "name": "Hayder Hassan",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.2,
+    "rolling_sapm": 2.29,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 0.9,
     "recent_form": "0W in last 4"
   },
   "andy enz": {
@@ -23209,6 +23209,16 @@
     "rolling_damage_index": 0.64,
     "recent_form": "1W in last 4"
   },
+  "rhys mckee": {
+    "name": "Rhys McKee",
+    "archetype": "Inside Pressure Boxer",
+    "rolling_slpm": 4.7,
+    "rolling_sapm": 5.68,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.92,
+    "rolling_damage_index": 4.05,
+    "recent_form": "1W in last 4"
+  },
   "roque martinez": {
     "name": "Roque Martinez",
     "archetype": "Distance Out-Fighter",
@@ -23269,6 +23279,16 @@
     "rolling_damage_index": 1.36,
     "recent_form": "1W in last 4"
   },
+  "antonio trocoli": {
+    "name": "Antonio Trocoli",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 0.95,
+    "rolling_sapm": 3.38,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.51,
+    "rolling_damage_index": 1.65,
+    "recent_form": "0W in last 4"
+  },
   "gilbert yvel": {
     "name": "Gilbert Yvel",
     "archetype": "Distance Out-Fighter",
@@ -23278,16 +23298,6 @@
     "rolling_td_avg": 0.0,
     "rolling_damage_index": 1.9,
     "recent_form": "0W in last 4"
-  },
-  "rhys mckee": {
-    "name": "Rhys McKee",
-    "archetype": "Inside Pressure Boxer",
-    "rolling_slpm": 4.7,
-    "rolling_sapm": 5.68,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.92,
-    "rolling_damage_index": 4.05,
-    "recent_form": "1W in last 4"
   },
   "garett whiteley": {
     "name": "Garett Whiteley",
@@ -23367,16 +23377,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 1.02,
     "rolling_damage_index": 1.83,
-    "recent_form": "0W in last 4"
-  },
-  "antonio trocoli": {
-    "name": "Antonio Trocoli",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 0.95,
-    "rolling_sapm": 3.38,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.51,
-    "rolling_damage_index": 1.65,
     "recent_form": "0W in last 4"
   },
   "dave herman": {
@@ -23639,16 +23639,6 @@
     "rolling_damage_index": 4.52,
     "recent_form": "1W in last 4"
   },
-  "mostapha al-turk": {
-    "name": "Mostapha Al-Turk",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 1.39,
-    "rolling_sapm": 3.7,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 2.09,
-    "recent_form": "0W in last 4"
-  },
   "austin hubbard": {
     "name": "Austin Hubbard",
     "archetype": "Inside Pressure Boxer",
@@ -23658,6 +23648,16 @@
     "rolling_td_avg": 1.96,
     "rolling_damage_index": 4.59,
     "recent_form": "1W in last 4"
+  },
+  "mostapha al-turk": {
+    "name": "Mostapha Al-Turk",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 1.39,
+    "rolling_sapm": 3.7,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 2.09,
+    "recent_form": "0W in last 4"
   },
   "kamal shalorus": {
     "name": "Kamal Shalorus",
@@ -23839,16 +23839,6 @@
     "rolling_damage_index": 4.18,
     "recent_form": "0W in last 4"
   },
-  "jens pulver": {
-    "name": "Jens Pulver",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 1.93,
-    "rolling_sapm": 2.15,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.18,
-    "rolling_damage_index": 1.06,
-    "recent_form": "2W in last 4"
-  },
   "jumabieke tuerxun": {
     "name": "Jumabieke Tuerxun",
     "archetype": "Distance Out-Fighter",
@@ -23858,6 +23848,16 @@
     "rolling_td_avg": 0.21,
     "rolling_damage_index": 1.0,
     "recent_form": "0W in last 4"
+  },
+  "jens pulver": {
+    "name": "Jens Pulver",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 1.93,
+    "rolling_sapm": 2.15,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.18,
+    "rolling_damage_index": 1.06,
+    "recent_form": "2W in last 4"
   },
   "mike santiago": {
     "name": "Mike Santiago",
@@ -23979,6 +23979,16 @@
     "rolling_damage_index": 1.0,
     "recent_form": "1W in last 4"
   },
+  "antonio silva": {
+    "name": "Antonio Silva",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 3.11,
+    "rolling_sapm": 3.28,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.17,
+    "rolling_damage_index": 1.68,
+    "recent_form": "1W in last 4"
+  },
   "damian grabowski": {
     "name": "Damian Grabowski",
     "archetype": "Distance Out-Fighter",
@@ -24018,16 +24028,6 @@
     "rolling_td_avg": 0.21,
     "rolling_damage_index": 3.05,
     "recent_form": "0W in last 4"
-  },
-  "antonio silva": {
-    "name": "Antonio Silva",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 3.11,
-    "rolling_sapm": 3.28,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.17,
-    "rolling_damage_index": 1.68,
-    "recent_form": "1W in last 4"
   },
   "jose daniel medina": {
     "name": "Jose Daniel Medina",
@@ -24349,6 +24349,16 @@
     "rolling_damage_index": 5.76,
     "recent_form": "0W in last 4"
   },
+  "john phillips": {
+    "name": "John Phillips",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 0.63,
+    "rolling_sapm": 1.96,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.56,
+    "rolling_damage_index": 0.82,
+    "recent_form": "1W in last 4"
+  },
   "harry hunsucker": {
     "name": "Harry Hunsucker",
     "archetype": "Distance Out-Fighter",
@@ -24407,16 +24417,6 @@
     "rolling_tdd": 65.0,
     "rolling_td_avg": 0.11,
     "rolling_damage_index": 1.06,
-    "recent_form": "1W in last 4"
-  },
-  "john phillips": {
-    "name": "John Phillips",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 0.63,
-    "rolling_sapm": 1.96,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.56,
-    "rolling_damage_index": 0.82,
     "recent_form": "1W in last 4"
   },
   "josh haynes": {
@@ -24529,6 +24529,16 @@
     "rolling_damage_index": 1.43,
     "recent_form": "1W in last 4"
   },
+  "gilbert melendez": {
+    "name": "Gilbert Melendez",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 2.13,
+    "rolling_sapm": 6.33,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.0,
+    "rolling_damage_index": 4.87,
+    "recent_form": "0W in last 4"
+  },
   "jinh yu frey": {
     "name": "Jinh Yu Frey",
     "archetype": "Distance Out-Fighter",
@@ -24558,16 +24568,6 @@
     "rolling_td_avg": 0.86,
     "rolling_damage_index": 2.23,
     "recent_form": "1W in last 4"
-  },
-  "gilbert melendez": {
-    "name": "Gilbert Melendez",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 2.13,
-    "rolling_sapm": 6.33,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.0,
-    "rolling_damage_index": 4.87,
-    "recent_form": "0W in last 4"
   },
   "malcolm gordon": {
     "name": "Malcolm Gordon",
@@ -25189,6 +25189,16 @@
     "rolling_damage_index": 2.85,
     "recent_form": "1W in last 4"
   },
+  "jamie pickett": {
+    "name": "Jamie Pickett",
+    "archetype": "Distance Out-Fighter",
+    "rolling_slpm": 1.67,
+    "rolling_sapm": 2.27,
+    "rolling_tdd": 65.0,
+    "rolling_td_avg": 0.61,
+    "rolling_damage_index": 1.13,
+    "recent_form": "0W in last 4"
+  },
   "jared vanderaa": {
     "name": "Jared Vanderaa",
     "archetype": "Inside Pressure Boxer",
@@ -25228,16 +25238,6 @@
     "rolling_td_avg": 0.48,
     "rolling_damage_index": 4.65,
     "recent_form": "1W in last 4"
-  },
-  "jamie pickett": {
-    "name": "Jamie Pickett",
-    "archetype": "Distance Out-Fighter",
-    "rolling_slpm": 1.67,
-    "rolling_sapm": 2.27,
-    "rolling_tdd": 65.0,
-    "rolling_td_avg": 0.61,
-    "rolling_damage_index": 1.13,
-    "recent_form": "0W in last 4"
   },
   "dmitrii smoliakov": {
     "name": "Dmitrii Smoliakov",

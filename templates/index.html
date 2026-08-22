@@ -2,8 +2,8 @@
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UFC Elo Rating System | Elo Decay & Glicko Uncertainty Engine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>UFC Elo Rating System | Mobile & Desktop Predictive Engine</title>
     <meta name="description" content="Dynamic K-Factor, In-Fight Dominance Metric, Elo Decay for Inactivity (>18mo), and Glicko Comeback Volatility for UFC Fighters.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,6 +44,7 @@
                 radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.05) 0px, transparent 50%),
                 radial-gradient(at 50% 100%, rgba(15, 23, 42, 0.5) 0px, transparent 50%);
             color: #f1f5f9;
+            -webkit-tap-highlight-color: transparent;
         }
         .glass-card {
             background: rgba(15, 20, 31, 0.75);
@@ -61,9 +62,12 @@
         .glow-gold {
             box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.25);
         }
+        .glow-green {
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.25);
+        }
         .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
             background: rgba(15, 20, 31, 0.5);
@@ -72,35 +76,50 @@
             background: rgba(255, 255, 255, 0.15);
             border-radius: 4px;
         }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+            .safe-area-pb {
+                padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen font-sans antialiased custom-scrollbar">
 
     <!-- Header Navigation -->
-    <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#07090e]/90 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 to-amber-500 p-0.5 shadow-lg flex items-center justify-center">
+    <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#07090e]/95 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer" onclick="switchMainTab('rankings')">
+                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-rose-600 to-amber-500 p-0.5 shadow-lg flex items-center justify-center">
                     <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                        <span class="font-display font-black text-rose-500 text-lg tracking-tighter">UFC</span>
+                        <span class="font-display font-black text-rose-500 text-sm sm:text-lg tracking-tighter">UFC</span>
                     </div>
                 </div>
                 <div>
-                    <div class="flex items-center space-x-2">
-                        <span class="font-display font-extrabold text-lg text-white tracking-wide">ELO RANKINGS</span>
-                        <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase">Live Engine</span>
+                    <div class="flex items-center space-x-1.5 sm:space-x-2">
+                        <span class="font-display font-extrabold text-base sm:text-lg text-white tracking-wide">ELO RANKINGS</span>
+                        <span class="text-[9px] sm:text-[10px] font-bold px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 uppercase">Live</span>
                     </div>
-                    <p class="text-xs text-slate-400 font-medium hidden sm:block">18-Month Inactivity Decay (-5/mo) & Glicko Comeback Volatility</p>
+                    <p class="text-[11px] text-slate-400 font-medium hidden sm:block">18-Month Inactivity Decay (-5/mo) & Glicko Comeback Volatility</p>
                 </div>
             </div>
 
-            <!-- Header Controls -->
-            <div class="flex items-center space-x-2.5">
-                <!-- Navigation Tabs -->
+            <!-- Desktop Navigation Tabs (Hidden on Mobile, handled by bottom bar) -->
+            <div class="hidden sm:flex items-center space-x-2.5">
                 <div class="flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800">
                     <button id="navRankingsBtn" onclick="switchMainTab('rankings')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-white shadow-sm">
                         <i data-lucide="trophy" class="w-3.5 h-3.5 text-amber-400"></i>
                         <span>Rankings</span>
+                    </button>
+                    <button id="navSimulatorBtn" onclick="switchMainTab('simulator')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative">
+                        <i data-lucide="swords" class="w-3.5 h-3.5 text-rose-400"></i>
+                        <span>Octagon Simulator</span>
                     </button>
                     <button id="navValueRadarBtn" onclick="switchMainTab('value-radar')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative">
                         <i data-lucide="sparkles" class="w-3.5 h-3.5 text-emerald-400"></i>
@@ -109,16 +128,24 @@
                     </button>
                 </div>
 
-                <button onclick="openSimulatorModal()" class="flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-rose-900/80 to-amber-900/80 hover:from-rose-800 hover:to-amber-800 text-amber-300 border border-amber-500/40 text-xs font-bold shadow-lg transition-all">
+                <button onclick="switchMainTab('simulator')" class="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-900/80 to-amber-900/80 hover:from-rose-800 hover:to-amber-800 text-amber-300 border border-amber-500/40 text-xs font-bold shadow-lg transition-all">
                     <i data-lucide="swords" class="w-4 h-4 text-amber-400"></i>
-                    <span class="hidden sm:inline">Octagon Simulator</span>
+                    <span>Launch Sim</span>
+                </button>
+            </div>
+
+            <!-- Mobile Quick Action Button -->
+            <div class="sm:hidden flex items-center space-x-2">
+                <button onclick="switchMainTab('simulator')" class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-rose-600 to-amber-600 text-white font-bold text-xs shadow-md flex items-center gap-1">
+                    <i data-lucide="swords" class="w-3.5 h-3.5"></i>
+                    <span>Simüle</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <!-- Main Container (With safe bottom padding for mobile bar) -->
+    <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-6 sm:space-y-8 pb-28 sm:pb-8">
 
         <!-- Hero & KPI Stats Grid -->
         <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -332,106 +359,523 @@
         </section>
 
         <!-- +EV Quantitative Value Radar Section (New Dedicated View) -->
-        <section id="valueRadarSection" class="hidden space-y-6">
+        <section id="valueRadarSection" class="hidden space-y-4">
             <!-- Value Radar Header & Metrics Banner -->
-            <div class="glass-card rounded-2xl p-6 border border-emerald-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/20 shadow-2xl relative overflow-hidden">
-                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+            <div class="glass-card rounded-2xl p-4 sm:p-5 border border-emerald-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/20 shadow-xl relative overflow-hidden">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
                     <div>
-                        <div class="flex items-center space-x-2">
-                            <span class="p-2 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                        <div class="flex items-center space-x-2.5">
+                            <span class="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i>
                             </span>
                             <div>
-                                <h2 class="font-display font-black text-2xl text-white tracking-wide flex items-center gap-2">
+                                <h2 class="font-display font-black text-lg sm:text-xl text-white tracking-wide flex items-center gap-2">
                                     QUANTITATIVE +EV VALUE RADAR
-                                    <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">Alpha Engine</span>
+                                    <span class="text-[10px] px-2 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">Alpha Engine</span>
                                 </h2>
-                                <p class="text-xs text-slate-400 mt-0.5">Vegas Piyasa Kapanış Oranları (%4.5 Vig) ile Biyometrik 3D Elo Motorumuz Arasındaki Fiyatlama Yanılgıları</p>
+                                <p class="text-[11px] text-slate-400 mt-0.5">Vegas Piyasa Kapanış Oranları (%4.5 Vig) ile Biyometrik 3D Elo Motorumuz Arasındaki Fiyatlama Yanılgıları</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Mini KPI Stats in Banner -->
-                    <div class="flex items-center gap-3">
-                        <div class="px-3.5 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-center">
-                            <span class="text-[10px] text-slate-400 block uppercase font-bold">Tarihsel ROI</span>
-                            <span class="font-display font-black text-emerald-400 text-base">+%18.10</span>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <div class="px-3 py-1.5 rounded-lg bg-slate-950/80 border border-slate-800 text-center">
+                            <span class="text-[9px] text-slate-400 block uppercase font-bold">Tarihsel ROI</span>
+                            <span class="font-display font-black text-emerald-400 text-sm">+%20.14</span>
                         </div>
-                        <div class="px-3.5 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-center">
-                            <span class="text-[10px] text-slate-400 block uppercase font-bold">Strateji</span>
-                            <span class="font-display font-bold text-amber-400 text-base">Quarter-Kelly</span>
+                        <div class="px-3 py-1.5 rounded-lg bg-slate-950/80 border border-slate-800 text-center">
+                            <span class="text-[9px] text-slate-400 block uppercase font-bold">Strateji</span>
+                            <span class="font-display font-bold text-amber-400 text-sm">Quarter-Kelly</span>
                         </div>
-                        <div class="px-3.5 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-center">
-                            <span class="text-[10px] text-slate-400 block uppercase font-bold">Piyasa Vig</span>
-                            <span class="font-display font-bold text-slate-300 text-base">%4.5</span>
+                        <div class="px-3 py-1.5 rounded-lg bg-slate-950/80 border border-slate-800 text-center">
+                            <span class="text-[9px] text-slate-400 block uppercase font-bold">Piyasa Vig</span>
+                            <span class="font-display font-bold text-slate-300 text-sm">%4.5</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Interactive Filters for Value Bets -->
-                <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="mt-3.5 pt-3 border-t border-slate-800/80 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
                     <!-- Source Mode Toggle (Real Upcoming Cards vs Simulated Contenders) -->
-                    <div class="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800">
-                        <button id="srcUpcomingBtn" onclick="switchValueSource('upcoming')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-600 text-white shadow-md flex items-center gap-1.5">
-                            <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-                            <span>📅 Yaklaşan Gerçek UFC Kartları</span>
+                    <div class="flex items-center bg-slate-950 p-0.5 rounded-lg border border-slate-800">
+                        <button id="srcUpcomingBtn" onclick="switchValueSource('upcoming')" class="px-2.5 py-1 rounded-md text-[11px] font-bold transition-all bg-emerald-600 text-white shadow-sm flex items-center gap-1.5">
+                            <i data-lucide="calendar" class="w-3 h-3"></i>
+                            <span>📅 Yaklaşan Gerçek Kartlar</span>
                         </button>
-                        <button id="srcDivisionalBtn" onclick="switchValueSource('divisional')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white flex items-center gap-1.5">
-                            <i data-lucide="shuffle" class="w-3.5 h-3.5"></i>
-                            <span>⚡ Tüm Sıkletler Simülasyonu</span>
+                        <button id="srcDivisionalBtn" onclick="switchValueSource('divisional')" class="px-2.5 py-1 rounded-md text-[11px] font-bold transition-all text-slate-400 hover:text-white flex items-center gap-1.5">
+                            <i data-lucide="shuffle" class="w-3 h-3"></i>
+                            <span>⚡ Sıklet Simülasyonları</span>
                         </button>
                     </div>
 
                     <!-- EV Minimum Filter Thresholds -->
-                    <div class="flex items-center space-x-2 flex-wrap gap-1.5" id="evFilterPills">
-                        <span class="text-xs font-bold text-slate-400 mr-1">Minimum +EV:</span>
-                        <button onclick="filterValueBets(3.0)" class="ev-filter-pill px-3 py-1 rounded-lg text-xs font-bold transition-all bg-emerald-600 text-white" data-ev="3.0">
+                    <div class="flex items-center space-x-1.5 flex-wrap gap-1" id="evFilterPills">
+                        <span class="text-[11px] font-bold text-slate-400 mr-0.5">Min +EV:</span>
+                        <button onclick="filterValueBets(3.0)" class="ev-filter-pill px-2.5 py-1 rounded-md text-[11px] font-bold transition-all bg-emerald-600 text-white" data-ev="3.0">
                             Tümü (≥ +%3)
                         </button>
-                        <button onclick="filterValueBets(5.0)" class="ev-filter-pill px-3 py-1 rounded-lg text-xs font-bold transition-all bg-slate-800 text-slate-300 hover:text-white" data-ev="5.0">
+                        <button onclick="filterValueBets(5.0)" class="ev-filter-pill px-2.5 py-1 rounded-md text-[11px] font-bold transition-all bg-slate-800 text-slate-300 hover:text-white" data-ev="5.0">
                             ⚡ Güçlü (≥ +%5)
                         </button>
-                        <button onclick="filterValueBets(10.0)" class="ev-filter-pill px-3 py-1 rounded-lg text-xs font-bold transition-all bg-slate-800 text-slate-300 hover:text-white" data-ev="10.0">
+                        <button onclick="filterValueBets(10.0)" class="ev-filter-pill px-2.5 py-1 rounded-md text-[11px] font-bold transition-all bg-slate-800 text-slate-300 hover:text-white" data-ev="10.0">
                             💎 Ultra (≥ +%10)
                         </button>
                     </div>
 
-                    <div class="flex items-center space-x-2">
-                        <span id="valueBetsCount" class="text-xs font-semibold text-emerald-400 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+                    <div class="flex items-center space-x-1.5">
+                        <span id="valueBetsCount" class="text-[11px] font-semibold text-emerald-400 bg-slate-950 px-2 py-1 rounded-md border border-slate-800">
                             Tarama Yapılıyor...
                         </span>
-                        <button onclick="refreshValueBets()" title="Yenile" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all">
-                            <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+                        <button onclick="refreshValueBets()" title="Yenile" class="p-1 rounded-md bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all">
+                            <i data-lucide="rotate-cw" class="w-3.5 h-3.5"></i>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Value Bets Cards Grid -->
-            <div id="valueBetsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Value Bets Cards Grid (Adaptive 1 / 2 / 3 / 4 Columns) -->
+            <div id="valueBetsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                 <!-- Dynamically loaded Value Cards -->
+            </div>
+        </section>
+
+        <!-- Octagon Matchup Simulator Section (Dedicated Native Dashboard Tab) -->
+        <section id="simulatorSection" class="hidden space-y-4">
+            <!-- Header Banner -->
+            <div class="glass-card rounded-2xl p-4 sm:p-5 border border-rose-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-rose-950/20 shadow-xl relative overflow-hidden">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
+                    <div class="flex items-center space-x-2.5">
+                        <div class="p-1.5 rounded-lg bg-rose-500/20 text-rose-400 border border-rose-500/30">
+                            <i data-lucide="swords" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-display font-black text-lg sm:text-xl text-white tracking-wide flex items-center gap-2">
+                                OCTAGON MATCHUP SIMULATOR & PREDICTIVE ML
+                                <span class="text-[10px] px-2 py-0.2 rounded-full bg-rose-500/20 text-rose-300 font-bold border border-rose-500/30">Multi-Model Engine</span>
+                            </h2>
+                            <p class="text-[11px] text-slate-400 mt-0.5">3D Elo (Vuruş/Güreş/Kardiyo), Taktiksel Stil Matrisi, Biyometrik Yaş/Menzil Dinamikleri ve Canlı Bahis Simülasyonu</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matchup Controls Toolbar -->
+                <div class="mt-3.5 pt-3 border-t border-slate-800/80 space-y-2.5">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-2.5 items-end">
+                        <!-- Fighter A (Red Corner) -->
+                        <div class="md:col-span-3">
+                            <label class="block text-[10px] font-bold uppercase text-rose-400 mb-1 flex items-center justify-between">
+                                <span>🔴 Fighter A (Red Corner)</span>
+                            </label>
+                            <select id="simFighter1" onchange="calculateSimulation()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-2 sm:py-1.5 text-xs text-white focus:border-rose-500 font-medium">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <!-- Swap Button & Simulated Weight Class -->
+                        <div class="md:col-span-3 flex items-end gap-1.5">
+                            <div class="flex-1">
+                                <label class="block text-[10px] font-bold uppercase text-slate-400 mb-1">⚖️ Simulated Weight Class</label>
+                                <select id="simWeightClass" onchange="calculateSimulation()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-2 sm:py-1.5 text-xs text-amber-300 font-semibold focus:border-amber-500">
+                                    <option value="auto">⚡ Auto-Detect (Heaviest Natural Tier)</option>
+                                    <option value="Flyweight">Flyweight (125 lbs)</option>
+                                    <option value="Bantamweight">Bantamweight (135 lbs)</option>
+                                    <option value="Featherweight">Featherweight (145 lbs)</option>
+                                    <option value="Lightweight">Lightweight (155 lbs)</option>
+                                    <option value="Welterweight">Welterweight (170 lbs)</option>
+                                    <option value="Middleweight">Middleweight (185 lbs)</option>
+                                    <option value="Light Heavyweight">Light Heavyweight (205 lbs)</option>
+                                    <option value="Heavyweight">Heavyweight (265 lbs)</option>
+                                    <option value="Women's Strawweight">Women's Strawweight (115 lbs)</option>
+                                    <option value="Women's Flyweight">Women's Flyweight (125 lbs)</option>
+                                    <option value="Women's Bantamweight">Women's Bantamweight (135 lbs)</option>
+                                </select>
+                            </div>
+                            <button type="button" onclick="swapSimulatorFighters()" title="Köşeleri Değiştir" class="p-2 sm:p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-all shrink-0">
+                                <i data-lucide="arrow-left-right" class="w-4 h-4 text-amber-400"></i>
+                            </button>
+                        </div>
+
+                        <!-- Fighter B (Blue Corner) -->
+                        <div class="md:col-span-3">
+                            <label class="block text-[10px] font-bold uppercase text-amber-400 mb-1">🔵 Fighter B (Blue Corner)</label>
+                            <select id="simFighter2" onchange="calculateSimulation()" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-2 sm:py-1.5 text-xs text-white focus:border-rose-500 font-medium">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
+
+                        <!-- Simulate Action Button -->
+                        <div class="md:col-span-3">
+                            <button onclick="calculateSimulation()" class="w-full py-2.5 sm:py-1.5 rounded-lg bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 font-display font-bold text-white text-xs shadow-md shadow-rose-600/30 transition-all flex items-center justify-center gap-1.5 active:scale-98">
+                                <i data-lucide="play" class="w-3.5 h-3.5"></i> Simüle Et
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Environmental and Bout Conditions Checkboxes -->
+                    <div class="flex items-center justify-between flex-wrap gap-2 pt-1 border-t border-slate-800/60 text-xs">
+                        <div class="flex items-center space-x-3 flex-wrap gap-y-1">
+                            <label class="flex items-center space-x-1.5 cursor-pointer text-amber-400 font-semibold text-[11px] sm:text-xs">
+                                <input type="checkbox" id="simIsTitle" onchange="calculateSimulation()" class="rounded bg-slate-950 border-slate-700 text-rose-600 focus:ring-0">
+                                <span>👑 5-Rounds Title (+20%)</span>
+                            </label>
+                            <label class="flex items-center space-x-1 cursor-pointer text-slate-300 font-medium text-[11px] sm:text-xs">
+                                <input type="checkbox" id="simIsApex" onchange="calculateSimulation()" class="rounded bg-slate-950 border-slate-700 text-rose-600 focus:ring-0">
+                                <span>🏟️ 25-ft Apex</span>
+                            </label>
+                            <label class="flex items-center space-x-1 cursor-pointer text-slate-300 font-medium text-[11px] sm:text-xs">
+                                <input type="checkbox" id="simIsAltitude" onchange="calculateSimulation()" class="rounded bg-slate-950 border-slate-700 text-rose-600 focus:ring-0">
+                                <span>🏔️ Altitude</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center space-x-2 text-[10px] sm:text-[11px] text-slate-400">
+                            <span id="simCtxDiv" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30">Division: Lightweight</span>
+                            <span id="simCtxStyle" class="text-slate-400">Styles Neutral</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Probability Tug-of-War Bar (Mobile & Desktop) -->
+            <div class="glass-card rounded-xl p-3 border border-slate-800 space-y-1.5">
+                <div class="flex justify-between items-center text-xs font-black">
+                    <span id="simBarName1" class="text-rose-400 truncate max-w-[130px] sm:max-w-[200px]">Fighter 1</span>
+                    <div class="flex items-center gap-1 font-mono">
+                        <span id="simBarProb1" class="text-rose-500 font-display font-black text-sm sm:text-base">50.0%</span>
+                        <span class="text-slate-500 text-[10px] font-sans">VS</span>
+                        <span id="simBarProb2" class="text-amber-500 font-display font-black text-sm sm:text-base">50.0%</span>
+                    </div>
+                    <span id="simBarName2" class="text-amber-400 truncate max-w-[130px] sm:max-w-[200px] text-right">Fighter 2</span>
+                </div>
+                <div class="w-full bg-slate-950 rounded-full h-2.5 flex overflow-hidden border border-slate-800 p-0.5">
+                    <div id="simProbBarFill1" class="bg-gradient-to-r from-rose-600 to-rose-400 h-full rounded-l-full transition-all duration-500" style="width: 50%;"></div>
+                    <div id="simProbBarFill2" class="bg-gradient-to-r from-amber-400 to-amber-600 h-full rounded-r-full transition-all duration-500" style="width: 50%;"></div>
+                </div>
+            </div>
+
+            <!-- Simulation Output Container (Widescreen 3-Column Command Center on 100% Zoom) -->
+            <div id="simResults" class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 items-stretch">
+                
+                <!-- Column 1: Fighter 1 Card & Biometrics (lg:col-span-4) -->
+                <div class="lg:col-span-4 space-y-3 flex flex-col">
+                    <!-- Fighter 1 Card -->
+                    <div class="glass-card rounded-2xl p-4 border border-rose-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-rose-950/20 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <div class="flex items-center gap-1.5 flex-wrap">
+                                        <span class="text-[9px] font-black px-1.5 py-0.2 rounded bg-rose-600 text-white uppercase">RED CORNER</span>
+                                        <span id="simArch1" class="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 uppercase">Archetype</span>
+                                    </div>
+                                    <h3 id="simName1" class="font-display font-black text-xl text-white mt-1">Fighter 1</h3>
+                                    <div class="text-[10px] text-slate-400 mt-0.5" id="simMeta1">Base Elo: -- | Eff: --</div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-[9px] text-slate-400 uppercase font-bold block">Win Prob</span>
+                                    <div id="simProb1" class="font-display font-black text-2xl text-rose-500">--%</div>
+                                </div>
+                            </div>
+
+                            <!-- Method of Victory Breakdown -->
+                            <div class="mt-3 pt-2.5 border-t border-slate-800/80">
+                                <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1">🎯 Kazanma Şekli İhtimalleri:</span>
+                                <div class="grid grid-cols-3 gap-1.5 text-center">
+                                    <div class="p-1.5 rounded-lg bg-slate-950/70 border border-rose-500/30">
+                                        <span class="text-slate-400 block text-[9px]">🥊 KO/TKO</span>
+                                        <span id="simKo1" class="font-black text-rose-400 text-xs">--%</span>
+                                    </div>
+                                    <div class="p-1.5 rounded-lg bg-slate-950/70 border border-sky-500/30">
+                                        <span class="text-slate-400 block text-[9px]">🥋 SUB</span>
+                                        <span id="simSub1" class="font-black text-sky-400 text-xs">--%</span>
+                                    </div>
+                                    <div class="p-1.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                                        <span class="text-slate-400 block text-[9px]">📋 DEC</span>
+                                        <span id="simDec1" class="font-bold text-slate-200 text-xs">--%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Biometrics List -->
+                            <div class="mt-3 pt-2.5 border-t border-slate-800/80 text-[11px] space-y-1.5">
+                                <div class="flex justify-between items-center bg-slate-950/60 p-1.5 rounded border border-slate-800/80">
+                                    <span class="text-slate-400">🎂 Yaş:</span>
+                                    <span id="simBioAge1" class="font-bold text-slate-200">-- yrs</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-950/60 p-1.5 rounded border border-slate-800/80">
+                                    <span class="text-slate-400">📏 Boy / Menzil:</span>
+                                    <span id="simBioReach1" class="font-bold text-slate-200">--</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-950/60 p-1.5 rounded border border-slate-800/80">
+                                    <span class="text-slate-400">🥊 Duruş:</span>
+                                    <span id="simBioStance1" class="font-bold text-amber-300">--</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-slate-950/60 p-1.5 rounded border border-slate-800/80">
+                                    <span class="text-slate-400">🛡️ TDD & Çıktı:</span>
+                                    <span id="simBioTact1" class="font-bold text-slate-200">--</span>
+                                </div>
+                            </div>
+
+                            <!-- 3D Component Elo -->
+                            <div class="mt-3 p-2 rounded-lg bg-slate-950/80 border border-rose-500/20 text-[11px] space-y-0.5" id="simCompElo1">
+                                <span class="text-rose-400 block font-semibold">🥊 Striking Elo: --</span>
+                                <span class="text-sky-400 block font-semibold">🥋 Grappling Elo: --</span>
+                                <span class="text-amber-400 block font-semibold">🫁 Cardio Elo: --</span>
+                            </div>
+                        </div>
+
+                        <!-- Elo Stakes Footer -->
+                        <div class="pt-2.5 border-t border-slate-800/80 text-[10px] space-y-1">
+                            <div class="flex justify-between text-slate-300">
+                                <span>Kararla Kazanırsa:</span>
+                                <span id="simDecDelta1" class="text-emerald-400 font-bold">+-- Elo</span>
+                            </div>
+                            <div class="flex justify-between text-slate-300">
+                                <span>Bitişle Kazanırsa:</span>
+                                <span id="simFinDelta1" class="text-emerald-400 font-bold">+-- Elo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2: Matchup Radar Center & +EV Value Signal (lg:col-span-4) -->
+                <div class="lg:col-span-4 space-y-3 flex flex-col">
+                    <!-- +EV Quantitative Value Signal Box -->
+                    <div id="simValueBetBox" class="glass-card rounded-2xl p-4 border transition-all bg-slate-900/90 border-slate-800 space-y-2.5">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-1.5">
+                                <span class="p-1 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                                </span>
+                                <h4 class="font-display font-black text-xs text-white tracking-wide uppercase flex items-center gap-1.5">
+                                    +EV VALUE BETTING SIGNAL
+                                </h4>
+                            </div>
+                            <span id="simValueBadge" class="text-[9px] font-bold px-2 py-0.2 rounded-full bg-slate-800 text-slate-400 border border-slate-700">Analiz</span>
+                        </div>
+
+                        <div id="simValueDescription" class="text-[11px] text-slate-300 bg-slate-950/80 p-2.5 rounded-lg border border-slate-800/80 flex justify-between items-center">
+                            <span>Simülasyon hesaplanıyor...</span>
+                        </div>
+
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="text-[10px] text-slate-400 uppercase font-bold">Önerilen Kasa:</span>
+                            <div id="simKellyBadge" class="font-bold text-amber-400 text-xs">
+                                Kelly: --%
+                            </div>
+                        </div>
+
+                        <div id="simValueDrivers" class="flex flex-wrap gap-1 text-[9px] pt-1 border-t border-slate-800/60"></div>
+                    </div>
+
+                    <!-- Round Props & Physical Advantage Matrix -->
+                    <div class="glass-card rounded-2xl p-4 border border-indigo-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 space-y-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center border-b border-slate-800 pb-1.5">
+                                <span class="text-xs font-bold uppercase text-white flex items-center gap-1">
+                                    <i data-lucide="scale" class="w-3 h-3 text-indigo-400"></i> Fiziksel & Taktiksel Çatışma
+                                </span>
+                                <span id="simBioAdvantageBadge" class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                                    Equilibrium
+                                </span>
+                            </div>
+
+                            <!-- Over / Under 2.5 Props Grid -->
+                            <div class="grid grid-cols-2 gap-2 mt-2.5 text-center">
+                                <div class="p-2 rounded-xl bg-slate-950/70 border border-emerald-500/30">
+                                    <span class="text-[9px] text-slate-400 block uppercase font-bold">Over 2.5 Raunt</span>
+                                    <span id="simOverRound" class="font-display font-black text-emerald-400 text-sm">--%</span>
+                                </div>
+                                <div class="p-2 rounded-xl bg-slate-950/70 border border-rose-500/30">
+                                    <span class="text-[9px] text-slate-400 block uppercase font-bold">Under 2.5 Raunt</span>
+                                    <span id="simUnderRound" class="font-display font-black text-rose-400 text-sm">--%</span>
+                                </div>
+                            </div>
+
+                            <!-- Real-time Adjustment Chips -->
+                            <div class="mt-3 space-y-1.5 text-[10px]">
+                                <div class="flex items-center flex-wrap gap-1" id="simBioChips1"></div>
+                                <div class="flex items-center flex-wrap gap-1" id="simBioChips2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 3: Fighter 2 Card & Broadcast Odds / Payout (lg:col-span-4) -->
+                <div class="lg:col-span-4 space-y-3 flex flex-col">
+                    <!-- Fighter 2 Card -->
+                    <div class="glass-card rounded-2xl p-4 border border-amber-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/20 space-y-3">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="flex items-center gap-1.5 flex-wrap">
+                                    <span class="text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-600 text-slate-950 uppercase">BLUE CORNER</span>
+                                    <span id="simArch2" class="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase">Archetype</span>
+                                </div>
+                                <h3 id="simName2" class="font-display font-black text-xl text-white mt-1">Fighter 2</h3>
+                                <div class="text-[10px] text-slate-400 mt-0.5" id="simMeta2">Base Elo: -- | Eff: --</div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[9px] text-slate-400 uppercase font-bold block">Win Prob</span>
+                                <div id="simProb2" class="font-display font-black text-2xl text-amber-500">--%</div>
+                            </div>
+                        </div>
+
+                        <!-- Method of Victory Breakdown -->
+                        <div class="pt-2 border-t border-slate-800/80">
+                            <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1">🎯 Kazanma Şekli İhtimalleri:</span>
+                            <div class="grid grid-cols-3 gap-1.5 text-center">
+                                <div class="p-1.5 rounded-lg bg-slate-950/70 border border-rose-500/30">
+                                    <span class="text-slate-400 block text-[9px]">🥊 KO/TKO</span>
+                                    <span id="simKo2" class="font-black text-rose-400 text-xs">--%</span>
+                                </div>
+                                <div class="p-1.5 rounded-lg bg-slate-950/70 border border-sky-500/30">
+                                    <span class="text-slate-400 block text-[9px]">🥋 SUB</span>
+                                    <span id="simSub2" class="font-black text-sky-400 text-xs">--%</span>
+                                </div>
+                                <div class="p-1.5 rounded-lg bg-slate-950/70 border border-slate-800">
+                                    <span class="text-slate-400 block text-[9px]">📋 DEC</span>
+                                    <span id="simDec2" class="font-bold text-slate-200 text-xs">--%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Biometrics List -->
+                        <div class="pt-2 border-t border-slate-800/80 text-[11px] space-y-1.5">
+                            <div class="flex justify-between items-center bg-slate-950/60 p-1.5 rounded border border-slate-800/80">
+                                <span class="text-slate-400">🎂 Yaş:</span>
+                                <span id="simBioAge2" class="font-bold text-slate-200">-- yrs</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-950/60 p-1.5 rounded border border-slate-800/80">
+                                <span class="text-slate-400">📏 Boy / Menzil:</span>
+                                <span id="simBioReach2" class="font-bold text-slate-200">--</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-950/60 p-1.5 rounded border border-slate-800/80">
+                                <span class="text-slate-400">🥊 Duruş:</span>
+                                <span id="simBioStance2" class="font-bold text-amber-300">--</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-slate-950/60 p-1.5 rounded border border-slate-800/80">
+                                <span class="text-slate-400">🛡️ TDD & Çıktı:</span>
+                                <span id="simBioTact2" class="font-bold text-slate-200">--</span>
+                            </div>
+                        </div>
+
+                        <!-- 3D Component Elo -->
+                        <div class="p-2 rounded-lg bg-slate-950/80 border border-amber-500/20 text-[11px] space-y-0.5" id="simCompElo2">
+                            <span class="text-rose-400 block font-semibold">🥊 Striking Elo: --</span>
+                            <span class="text-sky-400 block font-semibold">🥋 Grappling Elo: --</span>
+                            <span class="text-amber-400 block font-semibold">🫁 Cardio Elo: --</span>
+                        </div>
+
+                        <!-- Elo Stakes Footer -->
+                        <div class="pt-2 border-t border-slate-800/80 text-[10px] space-y-1">
+                            <div class="flex justify-between text-slate-300">
+                                <span>Kararla Kazanırsa:</span>
+                                <span id="simDecDelta2" class="text-emerald-400 font-bold">+-- Elo</span>
+                            </div>
+                            <div class="flex justify-between text-slate-300">
+                                <span>Bitişle Kazanırsa:</span>
+                                <span id="simFinDelta2" class="text-emerald-400 font-bold">+-- Elo</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UFC Broadcast Fight Odds & Bet Payout Calculator -->
+                    <div class="glass-card rounded-2xl p-4 border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 space-y-2.5">
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-1.5">
+                            <span class="text-xs font-bold uppercase text-amber-400 flex items-center gap-1">
+                                <i data-lucide="calculator" class="w-3 h-3"></i> Oranlar & Payout
+                            </span>
+                            <span class="text-[10px] text-slate-400">American / Decimal</span>
+                        </div>
+
+                        <!-- Odds Grid -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-center text-xs">
+                            <div class="p-1 rounded-lg bg-slate-950 border border-slate-800">
+                                <span class="text-[8px] text-slate-400 block truncate" id="simOddsName1">Fighter 1</span>
+                                <span class="font-display font-black text-xs text-amber-400" id="simMoneyline1">-320</span>
+                                <span class="text-[8px] text-slate-400 block" id="simDecOdds1">(1.31)</span>
+                            </div>
+                            <div class="p-1 rounded-lg bg-slate-950 border border-slate-800">
+                                <span class="text-[8px] text-slate-400 block truncate" id="simOddsName2">Fighter 2</span>
+                                <span class="font-display font-black text-xs text-amber-400" id="simMoneyline2">+320</span>
+                                <span class="text-[8px] text-slate-400 block" id="simDecOdds2">(4.20)</span>
+                            </div>
+                            <div class="p-1 rounded-lg bg-slate-950 border border-slate-800">
+                                <span class="text-[8px] text-slate-400 block">Over 2.5</span>
+                                <span class="font-display font-black text-xs text-emerald-400" id="simOddsOver">-160</span>
+                                <span class="text-[8px] text-slate-400 block" id="simDecOddsOver">(1.63)</span>
+                            </div>
+                            <div class="p-1 rounded-lg bg-slate-950 border border-slate-800">
+                                <span class="text-[8px] text-slate-400 block">Under 2.5</span>
+                                <span class="font-display font-black text-xs text-rose-400" id="simOddsUnder">+160</span>
+                                <span class="text-[8px] text-slate-400 block" id="simDecOddsUnder">(2.60)</span>
+                            </div>
+                        </div>
+
+                        <!-- Bet Calculator Form -->
+                        <div class="p-2 rounded-xl bg-slate-950/90 border border-slate-800/80 space-y-2">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-[8px] font-bold uppercase text-slate-400 mb-0.5">Market</label>
+                                    <select id="betMarketSelect" onchange="updateBetPayout()" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-[10px] text-white focus:border-amber-500">
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-[8px] font-bold uppercase text-slate-400 mb-0.5">Tutar ($)</label>
+                                    <div class="flex items-center space-x-1">
+                                        <div class="relative w-full">
+                                            <span class="absolute left-1.5 top-0.5 text-[10px] text-slate-400">$</span>
+                                            <input type="number" id="betStakeInput" value="100" min="1" oninput="updateBetPayout()" class="w-full bg-slate-900 border border-slate-700 rounded pl-4 pr-1 py-0.5 text-xs text-white font-bold focus:border-amber-500">
+                                        </div>
+                                        <button type="button" onclick="setQuickStake(50)" class="px-1 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-[9px] font-bold text-slate-300">$50</button>
+                                        <button type="button" onclick="setQuickStake(100)" class="px-1 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-[9px] font-bold text-slate-300">$100</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Payout Row -->
+                            <div class="grid grid-cols-3 gap-1 text-center pt-1 border-t border-slate-800/80 text-[10px]">
+                                <div>
+                                    <span class="text-[8px] text-slate-400 block">Model %</span>
+                                    <span class="font-display font-black text-sky-400 text-[11px]" id="betImpliedProb">--%</span>
+                                </div>
+                                <div>
+                                    <span class="text-[8px] text-slate-400 block">Net Kar</span>
+                                    <span class="font-display font-black text-emerald-400 text-[11px]" id="betNetProfit">+$0.00</span>
+                                </div>
+                                <div>
+                                    <span class="text-[8px] text-slate-400 block">Ödeme</span>
+                                    <span class="font-display font-black text-amber-400 text-[11px]" id="betTotalPayout">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
     </main>
 
-    <!-- Fighter Career & Fight History Modal -->
-    <div id="fighterModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="glass-card rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col border border-slate-700 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+    <!-- Fighter Career & Fight History Modal (Responsive Desktop Modal / Mobile Bottom Sheet) -->
+    <div id="fighterModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="glass-card rounded-t-3xl sm:rounded-2xl max-w-3xl w-full h-[92vh] sm:h-auto sm:max-h-[90vh] flex flex-col border-t sm:border border-slate-700 shadow-2xl overflow-hidden animate-in slide-in-from-bottom sm:fade-in duration-200">
             
+            <!-- Mobile Pull Indicator Handle -->
+            <div class="sm:hidden w-12 h-1.5 bg-slate-700/80 rounded-full mx-auto my-2 shrink-0"></div>
+
             <!-- Modal Header -->
-            <div class="p-6 border-b border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 flex justify-between items-start">
+            <div class="p-4 sm:p-6 border-b border-slate-800 bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 flex justify-between items-start shrink-0">
                 <div>
                     <div class="flex items-center space-x-2">
                         <span id="modalRank" class="px-2 py-0.5 rounded text-xs font-black bg-rose-600 text-white uppercase">#--</span>
                         <span id="modalDivision" class="text-xs text-slate-400 font-semibold">Division</span>
                     </div>
-                    <h2 id="modalName" class="font-display font-black text-2xl sm:text-3xl text-white mt-1">Fighter Name</h2>
+                    <h2 id="modalName" class="font-display font-black text-xl sm:text-3xl text-white mt-1">Fighter Name</h2>
                 </div>
                 <div class="flex items-center space-x-3">
                     <div class="text-right">
                         <span class="text-[10px] uppercase font-bold text-slate-400">Current Elo</span>
-                        <div id="modalElo" class="font-display font-black text-2xl text-amber-400">1500.0</div>
+                        <div id="modalElo" class="font-display font-black text-xl sm:text-2xl text-amber-400">1500.0</div>
                     </div>
                     <button onclick="closeFighterModal()" class="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-all">
                         <i data-lucide="x" class="w-5 h-5"></i>
@@ -440,450 +884,90 @@
             </div>
 
             <!-- Fighter Summary Stats Bar -->
-            <div class="grid grid-cols-4 gap-2 p-4 bg-slate-950/60 border-b border-slate-800 text-center">
+            <div class="grid grid-cols-4 gap-1 sm:gap-2 p-3 sm:p-4 bg-slate-950/60 border-b border-slate-800 text-center shrink-0">
                 <div>
-                    <span class="text-[10px] text-slate-400 uppercase font-bold">Peak Elo</span>
-                    <p id="modalPeakElo" class="font-display font-bold text-white text-sm">--</p>
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold">Peak Elo</span>
+                    <p id="modalPeakElo" class="font-display font-bold text-white text-xs sm:text-sm">--</p>
                 </div>
                 <div>
-                    <span class="text-[10px] text-slate-400 uppercase font-bold">Career Record</span>
-                    <p id="modalRecord" class="font-display font-bold text-white text-sm">--</p>
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold">Record</span>
+                    <p id="modalRecord" class="font-display font-bold text-white text-xs sm:text-sm">--</p>
                 </div>
                 <div>
-                    <span class="text-[10px] text-slate-400 uppercase font-bold">Total Decay</span>
-                    <p id="modalTotalDecay" class="font-display font-bold text-rose-400 text-sm">--</p>
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold">Decay</span>
+                    <p id="modalTotalDecay" class="font-display font-bold text-rose-400 text-xs sm:text-sm">--</p>
                 </div>
                 <div>
-                    <span class="text-[10px] text-slate-400 uppercase font-bold">Inactivity / Volatility</span>
-                    <p id="modalInactivityStatus" class="font-display font-bold text-amber-400 text-sm">--</p>
+                    <span class="text-[9px] sm:text-[10px] text-slate-400 uppercase font-bold">Status</span>
+                    <p id="modalInactivityStatus" class="font-display font-bold text-amber-400 text-xs sm:text-sm">--</p>
                 </div>
             </div>
 
             <!-- 3D Component Elo & Physical Matrix Bar -->
-            <div class="grid grid-cols-1 sm:grid-cols-4 gap-2 p-3.5 bg-slate-900/80 border-b border-slate-800 text-xs">
-                <div class="p-2 rounded-xl bg-slate-950/70 border border-rose-500/20 text-center">
-                    <span class="text-[10px] text-slate-400 block font-semibold">🥊 STRIKING ELO</span>
-                    <span id="modalStrElo" class="font-display font-black text-rose-400 text-base">1500.0</span>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 p-3 bg-slate-900/80 border-b border-slate-800 text-xs shrink-0">
+                <div class="p-1.5 sm:p-2 rounded-xl bg-slate-950/70 border border-rose-500/20 text-center">
+                    <span class="text-[9px] text-slate-400 block font-semibold">🥊 STRIKING ELO</span>
+                    <span id="modalStrElo" class="font-display font-black text-rose-400 text-xs sm:text-base">1500.0</span>
                 </div>
-                <div class="p-2 rounded-xl bg-slate-950/70 border border-sky-500/20 text-center">
-                    <span class="text-[10px] text-slate-400 block font-semibold">🥋 GRAPPLING ELO</span>
-                    <span id="modalGrpElo" class="font-display font-black text-sky-400 text-base">1500.0</span>
+                <div class="p-1.5 sm:p-2 rounded-xl bg-slate-950/70 border border-sky-500/20 text-center">
+                    <span class="text-[9px] text-slate-400 block font-semibold">🥋 GRAPPLING ELO</span>
+                    <span id="modalGrpElo" class="font-display font-black text-sky-400 text-xs sm:text-base">1500.0</span>
                 </div>
-                <div class="p-2 rounded-xl bg-slate-950/70 border border-amber-500/20 text-center">
-                    <span class="text-[10px] text-slate-400 block font-semibold">🫁 CARDIO ELO</span>
-                    <span id="modalCarElo" class="font-display font-black text-amber-400 text-base">1500.0</span>
+                <div class="p-1.5 sm:p-2 rounded-xl bg-slate-950/70 border border-amber-500/20 text-center">
+                    <span class="text-[9px] text-slate-400 block font-semibold">🫁 CARDIO ELO</span>
+                    <span id="modalCarElo" class="font-display font-black text-amber-400 text-xs sm:text-base">1500.0</span>
                 </div>
-                <div class="p-2 rounded-xl bg-slate-950/70 border border-indigo-500/20 text-center flex flex-col justify-center">
-                    <span class="text-[10px] text-slate-400 block font-semibold">📏 FRAME & STANCE</span>
-                    <span id="modalBioFrame" class="font-bold text-indigo-300 text-xs">-- / --</span>
+                <div class="p-1.5 sm:p-2 rounded-xl bg-slate-950/70 border border-indigo-500/20 text-center flex flex-col justify-center">
+                    <span class="text-[9px] text-slate-400 block font-semibold">📏 FRAME & STANCE</span>
+                    <span id="modalBioFrame" class="font-bold text-indigo-300 text-[10px] sm:text-xs truncate">-- / --</span>
                 </div>
             </div>
 
             <!-- Modal Fight History List -->
-            <div class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-3">
+            <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1 space-y-3">
                 <div class="flex items-center justify-between">
                     <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                        <i data-lucide="history" class="w-4 h-4 text-rose-500"></i> Career Timeline (Fights & Inactivity Decay Events)
+                        <i data-lucide="history" class="w-4 h-4 text-rose-500"></i> Career Timeline
                     </h4>
-                    <span class="text-[11px] text-slate-400">Dominance Metric & Glicko Uncertainty</span>
+                    <span class="text-[10px] text-slate-400">Dominance & Uncertainty</span>
                 </div>
-                <div id="modalFightsList" class="space-y-2.5">
+                <div id="modalFightsList" class="space-y-2">
                     <!-- Dynamic Fight & Decay Cards -->
                 </div>
             </div>
 
             <!-- Modal Footer -->
-            <div class="p-4 border-t border-slate-800 bg-slate-900/50 flex justify-between items-center text-xs text-slate-400">
-                <span class="flex items-center gap-1.5">
-                    <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i> Decay (&gt;18m: -5/mo) & Glicko Volatility (1.0x-1.6x K on Return)
+            <div class="p-3 sm:p-4 border-t border-slate-800 bg-slate-900/50 flex justify-between items-center text-xs text-slate-400 shrink-0">
+                <span class="flex items-center gap-1 text-[11px]">
+                    <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i> &gt;18m: -5/mo
                 </span>
-                <button onclick="closeFighterModal()" class="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-medium transition-all">
-                    Close
+                <button onclick="closeFighterModal()" class="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-medium transition-all text-xs">
+                    Kapat
                 </button>
             </div>
 
         </div>
     </div>
 
-    <!-- Matchup Simulator Modal -->
-    <div id="simulatorModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="glass-card rounded-2xl max-w-2xl w-full flex flex-col border border-slate-700 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
-            <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900">
-                <div class="flex items-center space-x-2">
-                    <div class="p-2 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30">
-                        <i data-lucide="swords" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <h3 class="font-display font-black text-xl text-white">Octagon Matchup Simulator</h3>
-                        <p class="text-xs text-slate-400">Predict outcome probability and Inactivity-weighted Elo stakes</p>
-                    </div>
-                </div>
-                <button onclick="closeSimulatorModal()" class="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white transition-all">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-
-            <div class="p-6 space-y-6">
-                <!-- Selectors & Weight Class Selection -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5">Fighter A</label>
-                        <select id="simFighter1" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-rose-500">
-                            <!-- Populated dynamically -->
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5">Fighter B</label>
-                        <select id="simFighter2" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-sm text-white focus:border-rose-500">
-                            <!-- Populated dynamically -->
-                        </select>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5">Simulated Weight Class (Size & Reach)</label>
-                        <select id="simWeightClass" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-amber-300 font-semibold focus:border-amber-500">
-                            <option value="auto">⚡ Auto-Detect (Heaviest Natural Tier)</option>
-                            <option value="Flyweight">Flyweight (125 lbs)</option>
-                            <option value="Bantamweight">Bantamweight (135 lbs)</option>
-                            <option value="Featherweight">Featherweight (145 lbs)</option>
-                            <option value="Lightweight">Lightweight (155 lbs)</option>
-                            <option value="Welterweight">Welterweight (170 lbs)</option>
-                            <option value="Middleweight">Middleweight (185 lbs)</option>
-                            <option value="Light Heavyweight">Light Heavyweight (205 lbs)</option>
-                            <option value="Heavyweight">Heavyweight (265 lbs)</option>
-                            <option value="Women's Strawweight">Women's Strawweight (115 lbs)</option>
-                            <option value="Women's Flyweight">Women's Flyweight (125 lbs)</option>
-                            <option value="Women's Bantamweight">Women's Bantamweight (135 lbs)</option>
-                        </select>
-                    </div>
-                    <div class="space-y-2 pt-1">
-                        <div class="flex items-center space-x-2">
-                            <input type="checkbox" id="simIsTitle" class="rounded bg-slate-900 border-slate-700 text-rose-600 focus:ring-0">
-                            <label for="simIsTitle" class="text-xs font-semibold text-amber-400 flex items-center gap-1 cursor-pointer">
-                                <i data-lucide="crown" class="w-3.5 h-3.5"></i> 5-Round Championship Title (+20% Weight)
-                            </label>
-                        </div>
-                        <div class="flex items-center space-x-4 pt-1">
-                            <label class="flex items-center space-x-1.5 cursor-pointer text-xs text-slate-300 font-medium">
-                                <input type="checkbox" id="simIsApex" onchange="calculateSimulation()" class="rounded bg-slate-900 border-slate-700 text-rose-600 focus:ring-0">
-                                <span>🏟️ 25-ft Apex Cage</span>
-                            </label>
-                            <label class="flex items-center space-x-1.5 cursor-pointer text-xs text-slate-300 font-medium">
-                                <input type="checkbox" id="simIsAltitude" onchange="calculateSimulation()" class="rounded bg-slate-900 border-slate-700 text-rose-600 focus:ring-0">
-                                <span>🏔️ High Altitude</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <button onclick="calculateSimulation()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 font-display font-bold text-white text-sm shadow-lg shadow-rose-600/30 transition-all flex items-center justify-center gap-2">
-                    <i data-lucide="play" class="w-4 h-4"></i> Simulate Fight Odds & Method Breakdown
-                </button>
-
-                <!-- Simulation Output -->
-                <div id="simResults" class="hidden space-y-4 pt-4 border-t border-slate-800">
-                    
-                    <!-- Bout Context Banner -->
-                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex flex-wrap justify-between items-center text-xs gap-2">
-                        <div class="flex items-center space-x-2">
-                            <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30" id="simCtxDiv">Division: Lightweight</span>
-                            <span class="text-slate-400" id="simCtxStyle">Stylistic Shift: 0.0 Elo</span>
-                        </div>
-                        <div class="flex items-center space-x-3 text-[11px] font-semibold text-slate-300">
-                            <span class="text-emerald-400" id="simOverRound">Over 2.5: --%</span>
-                            <span class="text-rose-400" id="simUnderRound">Under 2.5: --%</span>
-                        </div>
-                    </div>
-
-                    <!-- Tale of the Tape & Biometrics Radar Matrix -->
-                    <div class="p-4 rounded-xl bg-gradient-to-r from-slate-900 via-slate-900/90 to-slate-900 border border-indigo-500/30 space-y-3 shadow-inner">
-                        <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                            <div class="flex items-center space-x-2">
-                                <span class="p-1 rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
-                                    <i data-lucide="scale" class="w-3.5 h-3.5"></i>
-                                </span>
-                                <span class="font-display font-bold text-xs uppercase tracking-wider text-white">Tale of the Tape & Physical Biometrics</span>
-                            </div>
-                            <span id="simBioAdvantageBadge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                                Frame Matrix Analyzed
-                            </span>
-                        </div>
-
-                        <!-- 5-Row Comparison Grid -->
-                        <div class="space-y-1.5 text-xs">
-                            <!-- Age Row -->
-                            <div class="grid grid-cols-5 items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800/80">
-                                <div class="col-span-2 text-left font-bold text-slate-200" id="simBioAge1">-- yrs</div>
-                                <div class="text-center text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center justify-center gap-1">
-                                    🎂 Age
-                                </div>
-                                <div class="col-span-2 text-right font-bold text-slate-200" id="simBioAge2">-- yrs</div>
-                            </div>
-
-                            <!-- Height & Reach Row -->
-                            <div class="grid grid-cols-5 items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800/80">
-                                <div class="col-span-2 text-left font-bold text-slate-200" id="simBioReach1">-- (--)</div>
-                                <div class="text-center text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center justify-center gap-1">
-                                    📏 Height / Reach
-                                </div>
-                                <div class="col-span-2 text-right font-bold text-slate-200" id="simBioReach2">-- (--)</div>
-                            </div>
-
-                            <!-- Stance Row -->
-                            <div class="grid grid-cols-5 items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800/80">
-                                <div class="col-span-2 text-left font-semibold text-amber-300" id="simBioStance1">--</div>
-                                <div class="text-center text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center justify-center gap-1">
-                                    🥊 Stance
-                                </div>
-                                <div class="col-span-2 text-right font-semibold text-amber-300" id="simBioStance2">--</div>
-                            </div>
-
-                            <!-- TDD % & Strike Output Row -->
-                            <div class="grid grid-cols-5 items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800/80">
-                                <div class="col-span-2 text-left text-[11px] text-slate-300" id="simBioTact1">TDD: --% | -- SLpM</div>
-                                <div class="text-center text-[11px] text-slate-400 font-semibold uppercase tracking-wider flex items-center justify-center gap-1">
-                                    🛡️ TDD / Output
-                                </div>
-                                <div class="col-span-2 text-right text-[11px] text-slate-300" id="simBioTact2">TDD: --% | -- SLpM</div>
-                            </div>
-
-                            <!-- 3D Component Elo Row (Striking / Grappling / Cardio) -->
-                            <div class="grid grid-cols-5 items-center bg-slate-950/80 p-2.5 rounded-lg border border-indigo-500/20">
-                                <div class="col-span-2 text-left text-[11px] font-bold space-y-0.5" id="simCompElo1">
-                                    <span class="text-rose-400 block">🥊 Str: --</span>
-                                    <span class="text-sky-400 block">🥋 Grp: --</span>
-                                    <span class="text-amber-400 block">🫁 Car: --</span>
-                                </div>
-                                <div class="text-center text-[10px] text-indigo-300 font-black uppercase tracking-wider flex flex-col items-center justify-center">
-                                    <span>⚡ 3D SKILL</span>
-                                    <span class="text-[9px] text-slate-400">COMPONENT ELO</span>
-                                </div>
-                                <div class="col-span-2 text-right text-[11px] font-bold space-y-0.5" id="simCompElo2">
-                                    <span class="text-rose-400 block">🥊 Str: --</span>
-                                    <span class="text-sky-400 block">🥋 Grp: --</span>
-                                    <span class="text-amber-400 block">🫁 Car: --</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Real-time Elo Factor Impact Breakdown -->
-                        <div class="pt-2 border-t border-slate-800/80 flex flex-wrap justify-between items-center gap-2 text-[11px]">
-                            <div class="flex items-center space-x-1.5 flex-wrap gap-1" id="simBioChips1">
-                                <!-- Populated dynamically -->
-                            </div>
-                            <div class="flex items-center space-x-1.5 flex-wrap gap-1" id="simBioChips2">
-                                <!-- Populated dynamically -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
-                        <!-- Fighter 1 Card -->
-                        <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-left space-y-3">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <div class="flex items-center gap-2">
-                                        <h4 id="simName1" class="font-bold text-white text-base truncate">Fighter 1</h4>
-                                        <span id="simArch1" class="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 uppercase">Archetype</span>
-                                    </div>
-                                    <div class="text-[10px] text-slate-400 mt-0.5" id="simMeta1">Base Elo: -- | Effective: --</div>
-                                </div>
-                                <div id="simProb1" class="font-display font-black text-2xl text-rose-500">--%</div>
-                            </div>
-                            
-                            <!-- Phase 3 Method of Victory Breakdown -->
-                            <div>
-                                <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1">🎯 Kazanma Şekli İhtimali (Method of Victory):</span>
-                                <div class="grid grid-cols-3 gap-1.5 text-center text-[10px]">
-                                    <div class="p-1.5 rounded bg-slate-800/80 border border-rose-500/30 bg-rose-500/5">
-                                        <span class="text-slate-400 block text-[9px]">🥊 KO/TKO</span>
-                                        <span id="simKo1" class="font-black text-rose-400 text-xs">--%</span>
-                                    </div>
-                                    <div class="p-1.5 rounded bg-slate-800/80 border border-sky-500/30 bg-sky-500/5">
-                                        <span class="text-slate-400 block text-[9px]">🥋 Submission</span>
-                                        <span id="simSub1" class="font-black text-sky-400 text-xs">--%</span>
-                                    </div>
-                                    <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/50">
-                                        <span class="text-slate-400 block text-[9px]">📋 Decision</span>
-                                        <span id="simDec1" class="font-bold text-slate-200 text-xs">--%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Elo Stakes -->
-                            <div class="pt-2 border-t border-slate-800/80 text-[11px] space-y-1">
-                                <div class="flex justify-between text-slate-300">
-                                    <span>Decision Win:</span>
-                                    <span id="simDecDelta1" class="text-emerald-400 font-bold">+-- Elo</span>
-                                </div>
-                                <div class="flex justify-between text-slate-300">
-                                    <span>Dominant Finish:</span>
-                                    <span id="simFinDelta1" class="text-emerald-400 font-bold">+-- Elo</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Fighter 2 Card -->
-                        <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-left space-y-3">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <div class="flex items-center gap-2">
-                                        <h4 id="simName2" class="font-bold text-white text-base truncate">Fighter 2</h4>
-                                        <span id="simArch2" class="text-[9px] font-extrabold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 uppercase">Archetype</span>
-                                    </div>
-                                    <div class="text-[10px] text-slate-400 mt-0.5" id="simMeta2">Base Elo: -- | Effective: --</div>
-                                </div>
-                                <div id="simProb2" class="font-display font-black text-2xl text-amber-500">--%</div>
-                            </div>
-
-                            <!-- Phase 3 Method of Victory Breakdown -->
-                            <div>
-                                <span class="text-[9px] text-slate-400 font-bold uppercase block mb-1">🎯 Kazanma Şekli İhtimali (Method of Victory):</span>
-                                <div class="grid grid-cols-3 gap-1.5 text-center text-[10px]">
-                                    <div class="p-1.5 rounded bg-slate-800/80 border border-rose-500/30 bg-rose-500/5">
-                                        <span class="text-slate-400 block text-[9px]">🥊 KO/TKO</span>
-                                        <span id="simKo2" class="font-black text-rose-400 text-xs">--%</span>
-                                    </div>
-                                    <div class="p-1.5 rounded bg-slate-800/80 border border-sky-500/30 bg-sky-500/5">
-                                        <span class="text-slate-400 block text-[9px]">🥋 Submission</span>
-                                        <span id="simSub2" class="font-black text-sky-400 text-xs">--%</span>
-                                    </div>
-                                    <div class="p-1.5 rounded bg-slate-800/80 border border-slate-700/50">
-                                        <span class="text-slate-400 block text-[9px]">📋 Decision</span>
-                                        <span id="simDec2" class="font-bold text-slate-200 text-xs">--%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Elo Stakes -->
-                            <div class="pt-2 border-t border-slate-800/80 text-[11px] space-y-1">
-                                <div class="flex justify-between text-slate-300">
-                                    <span>Decision Win:</span>
-                                    <span id="simDecDelta2" class="text-emerald-400 font-bold">+-- Elo</span>
-                                </div>
-                                <div class="flex justify-between text-slate-300">
-                                    <span>Dominant Finish:</span>
-                                    <span id="simFinDelta2" class="text-emerald-400 font-bold">+-- Elo</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- +EV Quantitative Betting Edge & Kelly Signal Box -->
-                    <div id="simValueBetBox" class="p-4 rounded-xl border transition-all bg-slate-900/90 border-slate-800 space-y-2.5">
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center space-x-2">
-                                <span class="p-1 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                                    <i data-lucide="sparkles" class="w-4 h-4"></i>
-                                </span>
-                                <h4 class="font-display font-black text-xs sm:text-sm text-white tracking-wide uppercase flex items-center gap-2">
-                                    QUANTITATIVE VALUE BETTING SIGNAL (+EV)
-                                    <span id="simValueBadge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">Analiz Ediliyor</span>
-                                </h4>
-                            </div>
-                            <div id="simKellyBadge" class="text-xs font-bold text-amber-400">
-                                Kelly: --%
-                            </div>
-                        </div>
-
-                        <div id="simValueDescription" class="text-xs text-slate-300 bg-slate-950/80 p-2.5 rounded-lg border border-slate-800/80 flex justify-between items-center">
-                            <span>Simülasyon hesaplanıyor...</span>
-                        </div>
-
-                        <div id="simValueDrivers" class="flex flex-wrap gap-1.5 text-[10px]">
-                            <!-- Value edge drivers chips populated dynamically -->
-                        </div>
-                    </div>
-
-                    <!-- UFC Broadcast Fight Odds & Payout Calculator -->
-                    <div class="p-4 rounded-xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-amber-500/30 space-y-4">
-                        <div class="flex flex-wrap justify-between items-center border-b border-slate-800 pb-2.5 gap-2">
-                            <div class="flex items-center space-x-2">
-                                <span class="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30">
-                                    <i data-lucide="calculator" class="w-4 h-4"></i>
-                                </span>
-                                <div>
-                                    <h4 class="font-display font-black text-sm text-white tracking-wide">UFC FIGHT ODDS & PAYOUT CALCULATOR</h4>
-                                    <p class="text-[10px] text-slate-400">Vegas Moneyline & Prop Bets with Real-time Payout Estimation</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center space-x-1.5 text-xs">
-                                <span class="text-[11px] text-slate-400 font-medium">Odds:</span>
-                                <span class="px-2 py-0.5 rounded bg-rose-600/30 text-rose-300 font-bold border border-rose-500/30 text-[11px]" id="simOddsMode">American / Decimal</span>
-                            </div>
-                        </div>
-
-                        <!-- Vegas Odds Badges Strip -->
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
-                            <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
-                                <span class="text-[10px] text-slate-400 block truncate" id="simOddsName1">Fighter 1</span>
-                                <span class="font-display font-black text-base text-amber-400" id="simMoneyline1">-320</span>
-                                <span class="text-[10px] text-slate-400 block" id="simDecOdds1">(1.31)</span>
-                            </div>
-                            <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
-                                <span class="text-[10px] text-slate-400 block truncate" id="simOddsName2">Fighter 2</span>
-                                <span class="font-display font-black text-base text-amber-400" id="simMoneyline2">+320</span>
-                                <span class="text-[10px] text-slate-400 block" id="simDecOdds2">(4.20)</span>
-                            </div>
-                            <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
-                                <span class="text-[10px] text-slate-400 block">Over 2.5 Rds</span>
-                                <span class="font-display font-black text-base text-emerald-400" id="simOddsOver">-160</span>
-                                <span class="text-[10px] text-slate-400 block" id="simDecOddsOver">(1.63)</span>
-                            </div>
-                            <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
-                                <span class="text-[10px] text-slate-400 block">Under 2.5 Rds</span>
-                                <span class="font-display font-black text-base text-rose-400" id="simOddsUnder">+160</span>
-                                <span class="text-[10px] text-slate-400 block" id="simDecOddsUnder">(2.60)</span>
-                            </div>
-                        </div>
-
-                        <!-- Interactive Bet Simulator Form -->
-                        <div class="p-3 rounded-xl bg-slate-950/70 border border-slate-800/80 space-y-3">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <div>
-                                    <label class="block text-[10px] font-bold uppercase text-slate-400 mb-1">Select Bet Market</label>
-                                    <select id="betMarketSelect" onchange="updateBetPayout()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:border-amber-500">
-                                        <!-- Dynamically populated -->
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold uppercase text-slate-400 mb-1">Stake Amount ($ USD)</label>
-                                    <div class="flex items-center space-x-2">
-                                        <div class="relative w-full">
-                                            <span class="absolute left-2.5 top-1.5 text-xs text-slate-400">$</span>
-                                            <input type="number" id="betStakeInput" value="100" min="1" oninput="updateBetPayout()" class="w-full bg-slate-900 border border-slate-700 rounded-lg pl-6 pr-2 py-1.5 text-xs text-white font-bold focus:border-amber-500">
-                                        </div>
-                                        <button type="button" onclick="setQuickStake(50)" class="px-2 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-[10px] font-bold text-slate-300">$50</button>
-                                        <button type="button" onclick="setQuickStake(100)" class="px-2 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-[10px] font-bold text-slate-300">$100</button>
-                                        <button type="button" onclick="setQuickStake(250)" class="px-2 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-[10px] font-bold text-slate-300">$250</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Payout Output Cards -->
-                            <div class="grid grid-cols-3 gap-2 text-center pt-2 border-t border-slate-800/80">
-                                <div class="p-2 rounded-lg bg-slate-900/90 border border-slate-800">
-                                    <span class="text-[9px] text-slate-400 block uppercase font-medium">Implied Win Chance</span>
-                                    <span class="font-display font-black text-sm text-sky-400" id="betImpliedProb">--%</span>
-                                </div>
-                                <div class="p-2 rounded-lg bg-slate-900/90 border border-slate-800">
-                                    <span class="text-[9px] text-slate-400 block uppercase font-medium">Net Profit</span>
-                                    <span class="font-display font-black text-sm text-emerald-400" id="betNetProfit">+$0.00</span>
-                                </div>
-                                <div class="p-2 rounded-lg bg-slate-900/90 border border-slate-800">
-                                    <span class="text-[9px] text-slate-400 block uppercase font-medium">Total Payout</span>
-                                    <span class="font-display font-black text-sm text-amber-400" id="betTotalPayout">$0.00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Mobile Bottom Floating App Bar (Fixed on mobile screens) -->
+    <nav class="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#07090e]/95 backdrop-blur-xl border-t border-slate-800/90 px-3 py-1.5 flex justify-around items-center safe-area-pb shadow-2xl">
+        <button id="mobileNavRankingsBtn" onclick="switchMainTab('rankings')" class="flex flex-col items-center justify-center flex-1 py-1 text-rose-500 font-bold transition-all">
+            <i data-lucide="trophy" class="w-5 h-5 mb-0.5"></i>
+            <span class="text-[10px] tracking-tight font-display">Rankings</span>
+        </button>
+        <button id="mobileNavSimulatorBtn" onclick="switchMainTab('simulator')" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all">
+            <i data-lucide="swords" class="w-5 h-5 mb-0.5"></i>
+            <span class="text-[10px] tracking-tight font-display">Simülatör</span>
+        </button>
+        <button id="mobileNavValueRadarBtn" onclick="switchMainTab('value-radar')" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all relative">
+            <i data-lucide="sparkles" class="w-5 h-5 mb-0.5 text-emerald-400"></i>
+            <span class="text-[10px] tracking-tight font-display">+EV Radar</span>
+            <span class="absolute top-1 right-6 flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+        </button>
+    </nav>
 
     <!-- JavaScript Application Logic -->
     <script>
@@ -1388,9 +1472,14 @@
         }
 
         async function openSimulatorModal() {
-            const modal = document.getElementById('simulatorModal');
-            if (modal) modal.classList.remove('hidden');
+            switchMainTab('simulator');
+        }
 
+        function closeSimulatorModal() {
+            switchMainTab('rankings');
+        }
+
+        async function initSimulatorFighters() {
             const s1 = document.getElementById('simFighter1');
             const s2 = document.getElementById('simFighter2');
             
@@ -1413,11 +1502,6 @@
 
             calculateSimulation();
             try { if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons(); } catch (e) {}
-        }
-
-        function closeSimulatorModal() {
-            const modal = document.getElementById('simulatorModal');
-            if (modal) modal.classList.add('hidden');
         }
 
         function populateSimulatorSelects(fighters) {
@@ -1445,6 +1529,17 @@
             }
         }
 
+        function swapSimulatorFighters() {
+            const s1 = document.getElementById('simFighter1');
+            const s2 = document.getElementById('simFighter2');
+            if (s1 && s2) {
+                const temp = s1.value;
+                s1.value = s2.value;
+                s2.value = temp;
+                calculateSimulation();
+            }
+        }
+
         async function calculateSimulation() {
             const f1 = document.getElementById('simFighter1')?.value;
             const f2 = document.getElementById('simFighter2')?.value;
@@ -1464,6 +1559,21 @@
                     alert(data.error);
                     return;
                 }
+
+                // Update Mobile & Desktop Live Probability Tug-of-War Bar
+                const barN1 = document.getElementById('simBarName1');
+                const barN2 = document.getElementById('simBarName2');
+                const barP1 = document.getElementById('simBarProb1');
+                const barP2 = document.getElementById('simBarProb2');
+                const barFill1 = document.getElementById('simProbBarFill1');
+                const barFill2 = document.getElementById('simProbBarFill2');
+
+                if (barN1) barN1.textContent = data.fighter1.name;
+                if (barN2) barN2.textContent = data.fighter2.name;
+                if (barP1) barP1.textContent = `${data.fighter1.win_probability}%`;
+                if (barP2) barP2.textContent = `${data.fighter2.win_probability}%`;
+                if (barFill1) barFill1.style.width = `${data.fighter1.win_probability}%`;
+                if (barFill2) barFill2.style.width = `${data.fighter2.win_probability}%`;
 
                 // Bout Context
                 const ctxDiv = document.getElementById('simCtxDiv');
@@ -1758,32 +1868,68 @@
         function switchMainTab(tab) {
             currentMainTab = tab;
             const btnRankings = document.getElementById('navRankingsBtn');
+            const btnSimulator = document.getElementById('navSimulatorBtn');
             const btnRadar = document.getElementById('navValueRadarBtn');
+
+            const mBtnRankings = document.getElementById('mobileNavRankingsBtn');
+            const mBtnSimulator = document.getElementById('mobileNavSimulatorBtn');
+            const mBtnRadar = document.getElementById('mobileNavValueRadarBtn');
+            
             const tableCont = document.getElementById('tableContainer');
             const cardsCont = document.getElementById('cardsContainer');
             const filterBar = document.getElementById('filterBar');
             const radarSec = document.getElementById('valueRadarSection');
+            const simSec = document.getElementById('simulatorSection');
+
+            // Reset navigation button active states (Desktop)
+            if (btnRankings) btnRankings.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white';
+            if (btnSimulator) btnSimulator.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative';
+            if (btnRadar) btnRadar.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative';
+
+            // Reset navigation button active states (Mobile)
+            if (mBtnRankings) mBtnRankings.className = 'flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all';
+            if (mBtnSimulator) mBtnSimulator.className = 'flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all';
+            if (mBtnRadar) mBtnRadar.className = 'flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all relative';
 
             if (tab === 'rankings') {
                 if (btnRankings) btnRankings.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-slate-800 text-white shadow-sm';
-                if (btnRadar) btnRadar.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative';
+                if (mBtnRankings) mBtnRankings.className = 'flex flex-col items-center justify-center flex-1 py-1 text-rose-500 font-bold transition-all scale-105';
                 
                 if (filterBar) filterBar.classList.remove('hidden');
                 if (currentView === 'table' && tableCont) tableCont.classList.remove('hidden');
                 if (currentView === 'cards' && cardsCont) cardsCont.classList.remove('hidden');
                 if (radarSec) radarSec.classList.add('hidden');
-            } else {
-                if (btnRadar) btnRadar.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-600/90 text-white shadow-sm relative';
-                if (btnRankings) btnRankings.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white';
+                if (simSec) simSec.classList.add('hidden');
+            } else if (tab === 'simulator') {
+                if (btnSimulator) btnSimulator.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-rose-600 text-white shadow-sm relative';
+                if (mBtnSimulator) mBtnSimulator.className = 'flex flex-col items-center justify-center flex-1 py-1 text-rose-500 font-bold transition-all scale-105';
 
                 if (filterBar) filterBar.classList.add('hidden');
                 if (tableCont) tableCont.classList.add('hidden');
                 if (cardsCont) cardsCont.classList.add('hidden');
+                if (radarSec) radarSec.classList.add('hidden');
+                if (simSec) {
+                    simSec.classList.remove('hidden');
+                    initSimulatorFighters();
+                }
+            } else if (tab === 'value-radar') {
+                if (btnRadar) btnRadar.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-emerald-600/90 text-white shadow-sm relative';
+                if (mBtnRadar) mBtnRadar.className = 'flex flex-col items-center justify-center flex-1 py-1 text-emerald-400 font-bold transition-all scale-105 relative';
+
+                if (filterBar) filterBar.classList.add('hidden');
+                if (tableCont) tableCont.classList.add('hidden');
+                if (cardsCont) cardsCont.classList.add('hidden');
+                if (simSec) simSec.classList.add('hidden');
                 if (radarSec) {
                     radarSec.classList.remove('hidden');
                     fetchValueBets(currentMinEv);
                 }
             }
+            // Scroll to top smoothly on mobile tab switch
+            if (window.innerWidth < 640) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            if (window.lucide) lucide.createIcons();
         }
 
         function switchValueSource(source) {
@@ -1853,20 +1999,20 @@
                     grid.innerHTML = data.signals.map(s => {
                         const tierColor = s.ev_pct >= 10.0 ? 'from-emerald-950/40 via-slate-900 to-slate-950 border-emerald-500/50 glow-green' : 'from-slate-900 via-slate-900 to-slate-950 border-emerald-500/20';
                         
-                        // Render multi-sportsbook comparison chips
+                        // Render multi-sportsbook comparison chips (compact)
                         const sbEntries = Object.entries(s.sportsbooks || {});
                         let sbHtml = '';
                         if (sbEntries.length > 0) {
                             sbHtml = `
-                                <div class="mt-3 pt-2.5 border-t border-slate-800/80">
-                                    <span class="text-[10px] text-slate-400 uppercase font-bold block mb-1.5">📊 Bahis Siteleri Oran Karşılaştırması (Line Shopping):</span>
-                                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 text-[11px]">
+                                <div class="mt-2 pt-2 border-t border-slate-800/80">
+                                    <span class="text-[9px] text-slate-400 uppercase font-bold block mb-1">📊 Oranlar (Line Shopping):</span>
+                                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-1 text-[10px]">
                                         ${sbEntries.map(([bName, bData]) => {
                                             const isBest = (bData.decimal === s.best_book_odds);
                                             const borderCls = isBest ? 'border-amber-400/60 bg-amber-500/10 text-amber-300 font-bold' : 'border-slate-800 bg-slate-950/70 text-slate-300';
                                             return `
-                                                <div class="p-1.5 rounded-lg border ${borderCls} flex justify-between items-center px-2">
-                                                    <span class="truncate max-w-[80px]">${bName}:</span>
+                                                <div class="p-1 rounded border ${borderCls} flex justify-between items-center px-1.5">
+                                                    <span class="truncate max-w-[65px]">${bName}:</span>
                                                     <span class="font-mono ${isBest ? 'text-amber-400 font-black' : 'text-slate-200'}">
                                                         ${bData.american || bData.decimal} ${isBest ? '⭐' : ''}
                                                     </span>
@@ -1879,64 +2025,64 @@
                         }
 
                         const eventBadge = s.event ? `
-                            <div class="flex items-center gap-1.5 text-[10px] text-amber-400 font-semibold mb-1">
-                                <i data-lucide="calendar" class="w-3 h-3"></i>
-                                <span>${s.event} ${s.date ? `(${s.date})` : ''}</span>
+                            <div class="flex items-center gap-1 text-[9px] text-amber-400 font-semibold mb-1 truncate">
+                                <i data-lucide="calendar" class="w-2.5 h-2.5 shrink-0"></i>
+                                <span class="truncate">${s.event} ${s.date ? `(${s.date})` : ''}</span>
                             </div>
                         ` : '';
 
                         return `
-                            <div class="glass-card bg-gradient-to-br ${tierColor} rounded-2xl p-5 border flex flex-col justify-between space-y-4 hover:border-emerald-500/60 transition-all shadow-xl">
+                            <div class="glass-card bg-gradient-to-br ${tierColor} rounded-xl p-3.5 border flex flex-col justify-between space-y-2.5 hover:border-emerald-500/60 transition-all shadow-md">
                                 <div>
                                     ${eventBadge}
                                     <div class="flex justify-between items-start">
-                                        <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 uppercase">
+                                        <span class="text-[9px] font-bold px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 border border-slate-700 uppercase">
                                             ${s.division || s.tier || '+EV Alpha'}
                                         </span>
-                                        <span class="text-xs font-black px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1 shadow-sm">
+                                        <span class="text-[10px] font-black px-2 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-0.5 shadow-sm">
                                             <span>+${s.ev_pct}% EV</span>
                                         </span>
                                     </div>
 
-                                    <div class="mt-3">
-                                        <div class="flex items-baseline gap-1.5">
-                                            <span class="text-[10px] text-emerald-400 font-black uppercase">🎯 DEĞERLİ SEÇİM:</span>
-                                            <h3 class="font-display font-black text-xl text-white tracking-wide">${s.value_fighter || s.fighter}</h3>
+                                    <div class="mt-2">
+                                        <div class="flex items-baseline gap-1">
+                                            <span class="text-[9px] text-emerald-400 font-black uppercase">🎯 DEĞER:</span>
+                                            <h3 class="font-display font-black text-base text-white tracking-wide truncate">${s.value_fighter || s.fighter}</h3>
                                         </div>
-                                        <p class="text-xs text-slate-400 mt-0.5">vs <span class="font-semibold text-slate-200">${s.opponent}</span></p>
+                                        <p class="text-[11px] text-slate-400 mt-0.2 truncate">vs <span class="font-semibold text-slate-200">${s.opponent}</span></p>
                                     </div>
 
-                                    <!-- Odds & Probability Metric -->
-                                    <div class="grid grid-cols-3 gap-2 mt-4 pt-3 border-t border-slate-800/80 text-center">
-                                        <div class="p-2 rounded-xl bg-slate-950/70 border border-slate-800">
-                                            <span class="text-[10px] text-slate-400 block uppercase font-semibold">Model İhtimal</span>
-                                            <span class="font-display font-black text-emerald-400 text-sm">%${s.model_prob}</span>
+                                    <!-- Odds & Probability Metric Grid -->
+                                    <div class="grid grid-cols-3 gap-1.5 mt-2.5 pt-2 border-t border-slate-800/80 text-center">
+                                        <div class="p-1 rounded-lg bg-slate-950/70 border border-slate-800">
+                                            <span class="text-[8px] text-slate-400 block uppercase font-semibold">Model</span>
+                                            <span class="font-display font-black text-emerald-400 text-xs">%${s.model_prob}</span>
                                         </div>
-                                        <div class="p-2 rounded-xl bg-slate-950/70 border border-slate-800">
-                                            <span class="text-[10px] text-slate-400 block uppercase font-semibold">Adil Oran</span>
-                                            <span class="font-bold text-slate-200 text-sm">${s.fair_odds}</span>
+                                        <div class="p-1 rounded-lg bg-slate-950/70 border border-slate-800">
+                                            <span class="text-[8px] text-slate-400 block uppercase font-semibold">Adil</span>
+                                            <span class="font-bold text-slate-200 text-xs">${s.fair_odds}</span>
                                         </div>
-                                        <div class="p-2 rounded-xl bg-slate-950/70 border border-amber-500/40 bg-amber-500/5">
-                                            <span class="text-[10px] text-amber-400 block uppercase font-bold">En İyi Piyasa</span>
-                                            <span class="font-display font-black text-amber-400 text-sm">${s.best_book_odds || s.market_odds}</span>
+                                        <div class="p-1 rounded-lg bg-slate-950/70 border border-amber-500/40 bg-amber-500/5">
+                                            <span class="text-[8px] text-amber-400 block uppercase font-bold">Piyasa</span>
+                                            <span class="font-display font-black text-amber-400 text-xs">${s.best_book_odds || s.market_odds}</span>
                                         </div>
                                     </div>
 
                                     ${sbHtml}
 
                                     <!-- Edge Drivers Chips -->
-                                    <div class="mt-3 flex flex-wrap gap-1 text-[10px]">
-                                        ${(s.edge_drivers || []).map(d => `<span class="px-2 py-0.5 rounded bg-slate-800/90 text-emerald-300 border border-emerald-500/20 font-medium">${d}</span>`).join('')}
+                                    <div class="mt-2 flex flex-wrap gap-1 text-[9px]">
+                                        ${(s.edge_drivers || []).map(d => `<span class="px-1.5 py-0.2 rounded bg-slate-800/90 text-emerald-300 border border-emerald-500/20 font-medium">${d}</span>`).join('')}
                                     </div>
                                 </div>
 
-                                <div class="pt-3 border-t border-slate-800/80 flex justify-between items-center text-xs">
+                                <div class="pt-2 border-t border-slate-800/80 flex justify-between items-center text-[11px]">
                                     <div>
-                                        <span class="text-[10px] text-slate-400 block">Önerilen Bahis Payı</span>
-                                        <span class="font-bold text-amber-400">Quarter-Kelly: %${s.kelly_stake || s.kelly_stake_pct} Kasa</span>
+                                        <span class="text-[9px] text-slate-400 block">Önerilen Kasa</span>
+                                        <span class="font-bold text-amber-400">Quarter-Kelly: %${s.kelly_stake || s.kelly_stake_pct}</span>
                                     </div>
-                                    <button onclick="quickSimulate('${encodeURIComponent(s.value_fighter || s.fighter)}', '${encodeURIComponent(s.opponent)}', '${encodeURIComponent(s.division || 'Lightweight')}')" class="px-3 py-1.5 rounded-lg bg-emerald-600/80 hover:bg-emerald-600 text-white font-bold text-xs transition-all flex items-center gap-1 shadow-md">
-                                        <i data-lucide="swords" class="w-3.5 h-3.5"></i>
+                                    <button onclick="quickSimulate('${encodeURIComponent(s.value_fighter || s.fighter)}', '${encodeURIComponent(s.opponent)}', '${encodeURIComponent(s.division || 'Lightweight')}')" class="px-2.5 py-1 rounded-lg bg-emerald-600/80 hover:bg-emerald-600 text-white font-bold text-[11px] transition-all flex items-center gap-1 shadow-sm">
+                                        <i data-lucide="swords" class="w-3 h-3"></i>
                                         <span>Simüle Et</span>
                                     </button>
                                 </div>
@@ -1950,19 +2096,44 @@
             }
         }
 
-        function quickSimulate(f1Name, f2Name, divName) {
-            openSimulatorModal();
-            const s1 = document.getElementById('simFighter1');
-            const s2 = document.getElementById('simFighter2');
-            const sDiv = document.getElementById('simWeightClass');
-
+        async function quickSimulate(f1Name, f2Name, divName) {
             const name1 = decodeURIComponent(f1Name);
             const name2 = decodeURIComponent(f2Name);
             const division = decodeURIComponent(divName);
 
-            if (s1) s1.value = name1;
-            if (s2) s2.value = name2;
-            if (sDiv) sDiv.value = division;
+            switchMainTab('simulator');
+
+            const s1 = document.getElementById('simFighter1');
+            const s2 = document.getElementById('simFighter2');
+            const sDiv = document.getElementById('simWeightClass');
+
+            if (s1 && s2 && s1.options.length < 2) {
+                await initSimulatorFighters();
+            }
+
+            if (s1) {
+                let found1 = false;
+                for (let i = 0; i < s1.options.length; i++) {
+                    if (s1.options[i].value === name1) { s1.selectedIndex = i; found1 = true; break; }
+                }
+                if (!found1) {
+                    s1.add(new Option(name1, name1), 0);
+                    s1.selectedIndex = 0;
+                }
+            }
+            if (s2) {
+                let found2 = false;
+                for (let i = 0; i < s2.options.length; i++) {
+                    if (s2.options[i].value === name2) { s2.selectedIndex = i; found2 = true; break; }
+                }
+                if (!found2) {
+                    s2.add(new Option(name2, name2), 0);
+                    s2.selectedIndex = 0;
+                }
+            }
+            if (sDiv && division) {
+                sDiv.value = division;
+            }
 
             calculateSimulation();
         }
