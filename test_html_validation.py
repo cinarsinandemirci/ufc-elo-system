@@ -43,7 +43,17 @@ def test_html():
         'versionModal',
         'versionTimelineList',
         'openVersionModal',
-        'closeVersionModal'
+        'closeVersionModal',
+        'subTabValueBetsBtn',
+        'subTabCLVBtn',
+        'clvControls',
+        'clvTrackerContainer',
+        'clvBoutsGrid',
+        'clvHistoryModal',
+        'switchRadarSubView',
+        'fetchCLVTracker',
+        'openCLVHistoryModal',
+        'closeCLVHistoryModal'
     ]
 
     all_passed = True

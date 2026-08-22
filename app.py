@@ -980,8 +980,54 @@ def get_system_snapshots():
         'snapshots': snapshots
     })
 
+from clv_smart_money_engine import CLVSmartMoneyTracker
+clv_tracker = CLVSmartMoneyTracker()
+
+@app.route('/api/clv-tracker')
+def get_clv_tracker():
+    filter_type = request.args.get('filter', 'all')  # all, steam, rlm, high_clv
+    data = clv_tracker.get_summary()
+    bouts = data.get('bouts', [])
+    if filter_type == 'steam':
+        bouts = [b for b in bouts if b.get('has_steam_move')]
+    elif filter_type == 'rlm':
+        bouts = [b for b in bouts if b.get('has_rlm')]
+    elif filter_type == 'high_clv':
+        bouts = [b for b in bouts if max(b['fighter1']['clv_odds_pct'], b['fighter2']['clv_odds_pct']) >= 5.0]
+    
+    return jsonify({
+        'status': 'success',
+        'last_updated': data.get('last_updated'),
+        'total_tracked_bouts': data.get('total_tracked_bouts', len(data.get('bouts', []))),
+        'steam_moves_active': data.get('steam_moves_active', 0),
+        'reverse_line_moves_active': data.get('reverse_line_moves_active', 0),
+        'high_clv_opportunities': data.get('high_clv_opportunities', 0),
+        'filter': filter_type,
+        'bouts': bouts
+    })
+
+@app.route('/api/clv-feed')
+def get_clv_feed():
+    data = clv_tracker.get_summary()
+    bouts = data.get('bouts', [])[:8]
+    return jsonify({
+        'status': 'success',
+        'timestamp': datetime.now().isoformat(),
+        'steam_count': data.get('steam_moves_active', 0),
+        'high_clv_count': data.get('high_clv_opportunities', 0),
+        'live_ticks': bouts
+    })
+
+@app.route('/api/clv-history/<path:fighter_name>')
+def get_clv_fighter_history(fighter_name):
+    bout = clv_tracker.get_fighter_clv_history(fighter_name)
+    if bout:
+        return jsonify({'status': 'success', 'bout': bout})
+    return jsonify({'status': 'error', 'message': f'Fighter {fighter_name} not found in upcoming bouts'}), 404
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     print(f"[INFO] Starting UFC Elo Dashboard on http://127.0.0.1:{port}")
     app.run(host='0.0.0.0', port=port, debug=False)
+
 

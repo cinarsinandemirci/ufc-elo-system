@@ -282,8 +282,8 @@ except Exception as e:
 try:
     status, data, elapsed = get_api('/api/system/version')
     run_assertion("API /api/system/version returns 200 OK", status == 200)
-    run_assertion("Active model tag is v2.5.0", data.get('current_version_tag') == 'v2.5.0')
-    run_assertion(f"All versions count >= 6 (count: {len(data.get('all_versions', []))})", len(data.get('all_versions', [])) >= 6)
+    run_assertion("Active model tag is v2.6.0", data.get('current_version_tag') == 'v2.6.0')
+    run_assertion(f"All versions count >= 7 (count: {len(data.get('all_versions', []))})", len(data.get('all_versions', [])) >= 7)
 except Exception as e:
     run_assertion("API /api/system/version accessible", False, str(e))
 
@@ -294,6 +294,35 @@ try:
     run_assertion(f"Data snapshots found >= 1 (count: {data.get('total_snapshots')})", data.get('total_snapshots', 0) >= 1)
 except Exception as e:
     run_assertion("API /api/system/snapshots accessible", False, str(e))
+
+# 11. /api/clv-tracker (Phase 4.1 Closing Line Value & Smart Money)
+try:
+    status, data, elapsed = get_api('/api/clv-tracker')
+    run_assertion("API /api/clv-tracker returns 200 OK", status == 200)
+    run_assertion(f"Total tracked CLV bouts >= 50 (count: {data.get('total_tracked_bouts')})", data.get('total_tracked_bouts', 0) >= 50)
+    run_assertion(f"Steam moves active >= 10 (count: {data.get('steam_moves_active')})", data.get('steam_moves_active', 0) >= 10)
+    run_assertion(f"Reverse Line Moves (RLM) active >= 10 (count: {data.get('reverse_line_moves_active')})", data.get('reverse_line_moves_active', 0) >= 10)
+
+    # Test filters
+    status_steam, data_steam, _ = get_api('/api/clv-tracker?filter=steam')
+    run_assertion("API /api/clv-tracker?filter=steam returns 200 OK", status_steam == 200)
+    run_assertion("All returned bouts have steam move flag", all(b.get('has_steam_move') for b in data_steam.get('bouts', [])))
+
+    status_rlm, data_rlm, _ = get_api('/api/clv-tracker?filter=rlm')
+    run_assertion("API /api/clv-tracker?filter=rlm returns 200 OK", status_rlm == 200)
+    run_assertion("All returned bouts have RLM flag", all(b.get('has_rlm') for b in data_rlm.get('bouts', [])))
+
+    # Test feed endpoint
+    status_feed, data_feed, _ = get_api('/api/clv-feed')
+    run_assertion("API /api/clv-feed returns 200 OK", status_feed == 200)
+    run_assertion("Live ticks list non-empty", len(data_feed.get('live_ticks', [])) > 0)
+
+    # Test fighter history endpoint
+    status_hist, data_hist, _ = get_api('/api/clv-history/Andy%20Varela')
+    run_assertion("API /api/clv-history/Andy Varela returns 200 OK", status_hist == 200)
+    run_assertion("Fighter timeline contains 5 stages", len(data_hist.get('bout', {}).get('timeline', [])) == 5)
+except Exception as e:
+    run_assertion("API /api/clv-tracker accessible", False, str(e))
 
 # =========================================================================
 # TEST SUITE 5: EDGE CASES & EXTREME STRESS TESTING

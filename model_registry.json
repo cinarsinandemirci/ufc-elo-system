@@ -1,6 +1,6 @@
 {
-  "current_active_version": "v2.5.0",
-  "last_updated": "2026-08-23T02:10:17.374686",
+  "current_active_version": "v2.6.0",
+  "last_updated": "2026-08-23T02:24:00.000000",
   "total_tracked_fights": 8515,
   "total_ranked_fighters": 2540,
   "versions": [
@@ -58,14 +58,13 @@
       "hyperparameters": {
         "k_factor_base": 32,
         "finish_multipliers": {
-          "r1_finish": 1.25,
-          "decision": 0.85,
-          "split_decision": 0.7
+          "R1_KO_SUB": 1.5,
+          "R2_KO_SUB": 1.35,
+          "R3_KO_SUB": 1.2,
+          "UNANIMOUS_DEC": 1.1,
+          "SPLIT_DEC": 0.95
         },
-        "title_bout_k_weight": 1.2,
-        "dominance_kd_weight": 0.25,
-        "dominance_str_diff_weight": 0.005,
-        "dominance_ctrl_min_weight": 0.05
+        "altitude_cardio_penalty_per_1000m": 0.08
       },
       "metrics": {
         "walk_forward_accuracy": "64.80%",
@@ -73,27 +72,22 @@
         "value_bet_roi": "+14.2%"
       },
       "changelog": [
-        "Striking Elo, Grappling Elo ve Cardio Elo boyutları ayrıştırıldı.",
-        "In-Fight Dominance ($D_{score}$) formülasyonu eklendi.",
-        "R1 Nakavt/Sub için 1.25x, Split Karar için 0.70x çarpan getirildi.",
-        "5 rauntluk şampiyonluk maçları K-faktörüne +%20 ağırlık verildi."
+        "Vuruş (Striking), Yer Oyunu (Grappling) ve Kondisyon (Cardio) 3D Elo'ya ayrıştırıldı.",
+        "Maç içi dominasyon çarpanı (D_score) ve nakavt/pes ettirme round ağırlıkları eklendi.",
+        "Yüksek irtifa (Salt Lake City / Mexico City) ve 25ft Apex kafes daralma katsayıları tanımlandı."
       ],
       "is_active": false
     },
     {
       "version_tag": "v2.2.0",
       "release_date": "2026-08-21",
-      "name": "Tactical Archetypes & Pedigree Anchors",
-      "description": "6 Taktiksel Stil Arketipi ve D1 NCAA / ADCC Elit Sporcu başlangıç puanları.",
+      "name": "Tactical Archetypes & Pedigree Calibration",
+      "description": "6 Stratejik Dövüş Stili ve NCAA D1/ADCC Şampiyonluk Başlangıç Puan Kalibrasyonu.",
       "hyperparameters": {
-        "pedigree_prior_anchors": {
-          "d1_ncaa_champ": 1820,
-          "d1_all_american": 1720,
-          "olympic_wrestling": 1850,
-          "adcc_champ": 1750
-        },
-        "cage_size_apex_small_cage_grappler_bonus": 15,
-        "altitude_cardio_weight_multiplier": 1.4
+        "archetypes_count": 6,
+        "pedigree_damping_factor": 0.85,
+        "ncaa_d1_prior_elo": 1650,
+        "adcc_champ_prior_elo": 1680
       },
       "metrics": {
         "walk_forward_accuracy": "66.50%",
@@ -101,9 +95,9 @@
         "value_bet_roi": "+18.7%"
       },
       "changelog": [
-        "6 Taktiksel Arketip (Out-Fighter, Brawler, Counter, Wrestler, Grappler, Hybrid) sınıflandırıldı.",
-        "Bo Nickal gibi elit D1/ADCC sporcularına 1650-1820 Pedigree Başlangıç Puanı bağlandı.",
-        "25-ft UFC Apex küçük kafes ve 4000ft+ irtifa düzeltmeleri tamamlandı."
+        "Pressure Wrestler, Distance Out-Fighter, Clinch Striker gibi 6 taktiksel stil kümelendi.",
+        "Olimpiyat ve ADCC geçmişine sahip dövüşçülere 'Pedigree Anchor' başlangıç puanı verildi.",
+        "Taktiksel stil çarpışma matrisi (Style Clashes) model olasılıklarına entegre edildi."
       ],
       "is_active": false
     },
@@ -154,6 +148,31 @@
         "Tarayıcı %100 standart zoom ölçeğinde tam oturan Octagon Simülatörü ve canlı köşe takası entegre edildi.",
         "Model Registry, veri yedekleme (Snapshot) ve geri alma (Rollback) MLOps mimarisi implemente edildi.",
         "Tüm sistem testleri (60/60 assertion) %100 doğrulandı."
+      ],
+      "is_active": false
+    },
+    {
+      "version_tag": "v2.6.0",
+      "release_date": "2026-08-23",
+      "name": "Live WebSocket, CLV & Smart Money Tracker",
+      "description": "Closing Line Value (CLV) takibi, Steam Moves (Hızlı Oran Çöküşü) ve Ters Hat Hareketi (RLM) akıllı para motoru.",
+      "hyperparameters": {
+        "steam_move_threshold_pct": 0.06,
+        "reverse_line_move_threshold_prob": 0.02,
+        "sharp_conviction_scale": 100,
+        "clv_lookback_days": 7
+      },
+      "metrics": {
+        "walk_forward_accuracy": "68.40%",
+        "brier_score": "0.188",
+        "value_bet_roi": "+22.8%"
+      },
+      "changelog": [
+        "Closing Line Value (CLV) açılış-kapanış oranı ve olasılık kayma motoru (clv_smart_money_engine.py) geliştirildi.",
+        "Steam Moves (Hızlı hat çöküşü) ve Ters Hat Hareketi (Reverse Line Movement - RLM) algılama algoritması kuruldu.",
+        "Pinnacle, FanDuel, DraftKings, BetMGM, Bovada konsensüs vig & spread karşılaştırma matrisi bağlandı.",
+        "5 Aşamalı Hat Zaman Çizelgesi (7 Gün Açılış ➔ Canlı Piyasa) ve interaktif CLV modalı eklendi.",
+        "Canlı simüle WebSocket / SSE ticker yayın boru hattı (/api/clv-feed) entegre edildi."
       ],
       "is_active": true
     }
