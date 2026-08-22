@@ -71,7 +71,21 @@ def test_html():
         'mcFinishPct',
         'mcRoundBars',
         'rerunMonteCarlo',
-        'renderMonteCarloResults'
+        'renderMonteCarloResults',
+        'navCardPredictionsBtn',
+        'mobileNavCardPredictionsBtn',
+        'cardPredictionsSection',
+        'cardEventTitle',
+        'cardEventDateBadge',
+        'eventSelectorDropdown',
+        'kpiCardLock',
+        'kpiCardValue',
+        'kpiCardFinishes',
+        'kpiCardDecisions',
+        'cardBoutsGrid',
+        'fetchCardPredictions',
+        'renderCardPredictions',
+        'switchCardEvent'
     ]
 
     all_passed = True

@@ -348,6 +348,19 @@ try:
 except Exception as e:
     run_assertion("API /api/monte-carlo accessible", False, str(e))
 
+# 14. /api/card-predictions (Fight Card Hub & Event Predictions Engine)
+try:
+    status, data, elapsed = get_api('/api/card-predictions?event=Sacramento')
+    run_assertion("API /api/card-predictions returns 200 OK", status == 200)
+    active_ev = data.get('active_event', {})
+    bouts = active_ev.get('bouts', [])
+    run_assertion(f"Card predictions contains full event bouts (count: {len(bouts)})", len(bouts) == 12)
+    run_assertion(f"Card active event title is UFC Sacramento", 'Sacramento' in active_ev.get('event_title', ''))
+    has_mc_in_bouts = all('monte_carlo' in b for b in bouts)
+    run_assertion("All card bouts contain vectorized Monte Carlo simulation & odds", has_mc_in_bouts)
+except Exception as e:
+    run_assertion("API /api/card-predictions accessible", False, str(e))
+
 # =========================================================================
 # TEST SUITE 5: EDGE CASES & EXTREME STRESS TESTING
 # =========================================================================

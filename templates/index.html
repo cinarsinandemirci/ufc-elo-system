@@ -117,6 +117,11 @@
                         <i data-lucide="trophy" class="w-3.5 h-3.5 text-amber-400"></i>
                         <span>Rankings</span>
                     </button>
+                    <button id="navCardPredictionsBtn" onclick="switchMainTab('card-predictions')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative">
+                        <i data-lucide="flame" class="w-3.5 h-3.5 text-amber-400"></i>
+                        <span>Fight Card AI</span>
+                        <span class="inline-flex items-center px-1.5 py-0.2 rounded-full text-[8px] font-black bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse">22 AUG</span>
+                    </button>
                     <button id="navSimulatorBtn" onclick="switchMainTab('simulator')" class="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative">
                         <i data-lucide="swords" class="w-3.5 h-3.5 text-rose-400"></i>
                         <span>Octagon Simulator</span>
@@ -524,6 +529,72 @@
                 <div id="clvBoutsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
                     <!-- Dynamically loaded CLV Cards -->
                 </div>
+            </div>
+        </section>
+
+
+        <!-- Fight Card AI & Upcoming Event Predictions Section (Dedicated Native Tab) -->
+        <section id="cardPredictionsSection" class="hidden space-y-4">
+            <!-- Header Card with Event Selector & KPI Summary -->
+            <div class="glass-card rounded-2xl p-4 sm:p-5 border border-amber-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/20 shadow-xl relative overflow-hidden">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3.5">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-2.5 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/30 shadow-lg">
+                            <i data-lucide="flame" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2 flex-wrap gap-y-1">
+                                <h2 id="cardEventTitle" class="font-display font-black text-lg sm:text-2xl text-white tracking-wide">
+                                    UFC SACRAMENTO
+                                </h2>
+                                <span id="cardEventDateBadge" class="text-[10px] sm:text-xs px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-extrabold border border-amber-500/40">
+                                    22 AĞUSTOS 2026
+                                </span>
+                                <span class="text-[9px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30 animate-pulse">
+                                    CANLI TAHMİNLER
+                                </span>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-1">Yapay Zekâ Elo Motoru, 100.000 İterasyonlu Monte Carlo Simülasyonu ve +EV Bahis Arbitrajı ile Kart Analizi</p>
+                        </div>
+                    </div>
+
+                    <!-- Event Dropdown Switcher -->
+                    <div class="flex items-center space-x-2 w-full lg:w-auto">
+                        <span class="text-xs text-slate-400 font-bold uppercase shrink-0">Etkinlik:</span>
+                        <select id="eventSelectorDropdown" onchange="switchCardEvent(this.value)" class="w-full lg:w-64 bg-slate-950 border border-slate-700 text-white rounded-xl px-3 py-2 text-xs font-bold focus:outline-none focus:border-amber-500 shadow-inner">
+                            <!-- Populated dynamically -->
+                        </select>
+                        <button onclick="fetchCardPredictions()" title="Yenile" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all shrink-0">
+                            <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4 Quick Insight Stat Cards -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 mt-4 pt-3.5 border-t border-slate-800/80">
+                    <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase block">🥇 En Güçlü Favori (Lock)</span>
+                        <div id="kpiCardLock" class="font-display font-black text-emerald-400 text-sm mt-0.5">Yükleniyor...</div>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase block">💎 En Yüksek Değer (+EV)</span>
+                        <div id="kpiCardValue" class="font-display font-black text-amber-400 text-sm mt-0.5">Yükleniyor...</div>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase block">💥 Erken Bitiş (KO/SUB)</span>
+                        <div id="kpiCardFinishes" class="font-display font-black text-rose-400 text-sm mt-0.5">Yükleniyor...</div>
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-slate-950/70 border border-slate-800">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase block">⏱️ Karara Gitme Beklentisi</span>
+                        <div id="kpiCardDecisions" class="font-display font-black text-sky-400 text-sm mt-0.5">Yükleniyor...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bouts Grid Container -->
+            <div id="cardBoutsGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <!-- Dynamically populated fight cards -->
+                <div class="p-8 text-center text-slate-400 col-span-full">Kart tahminleri yükleniyor...</div>
             </div>
         </section>
 
@@ -1263,22 +1334,26 @@
 
 
     <!-- Mobile Bottom Floating App Bar (Fixed on mobile screens) -->
-    <nav class="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#07090e]/95 backdrop-blur-xl border-t border-slate-800/90 px-3 py-1.5 flex justify-around items-center safe-area-pb shadow-2xl">
+    <nav class="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#07090e]/95 backdrop-blur-xl border-t border-slate-800/90 px-2 py-1.5 flex justify-around items-center safe-area-pb shadow-2xl">
         <button id="mobileNavRankingsBtn" onclick="switchMainTab('rankings')" class="flex flex-col items-center justify-center flex-1 py-1 text-rose-500 font-bold transition-all">
-            <i data-lucide="trophy" class="w-5 h-5 mb-0.5"></i>
-            <span class="text-[10px] tracking-tight font-display">Rankings</span>
+            <i data-lucide="trophy" class="w-4 h-4 mb-0.5"></i>
+            <span class="text-[9px] tracking-tight font-display">Rankings</span>
+        </button>
+        <button id="mobileNavCardPredictionsBtn" onclick="switchMainTab('card-predictions')" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all relative">
+            <i data-lucide="flame" class="w-4 h-4 mb-0.5 text-amber-400"></i>
+            <span class="text-[9px] tracking-tight font-display">Kart</span>
+            <span class="absolute top-0.5 right-4 flex h-1.5 w-1.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-amber-500"></span>
+            </span>
         </button>
         <button id="mobileNavSimulatorBtn" onclick="switchMainTab('simulator')" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all">
-            <i data-lucide="swords" class="w-5 h-5 mb-0.5"></i>
-            <span class="text-[10px] tracking-tight font-display">Simülatör</span>
+            <i data-lucide="swords" class="w-4 h-4 mb-0.5"></i>
+            <span class="text-[9px] tracking-tight font-display">Simülatör</span>
         </button>
         <button id="mobileNavValueRadarBtn" onclick="switchMainTab('value-radar')" class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all relative">
-            <i data-lucide="sparkles" class="w-5 h-5 mb-0.5 text-emerald-400"></i>
-            <span class="text-[10px] tracking-tight font-display">+EV Radar</span>
-            <span class="absolute top-1 right-6 flex h-2 w-2">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
+            <i data-lucide="sparkles" class="w-4 h-4 mb-0.5 text-emerald-400"></i>
+            <span class="text-[9px] tracking-tight font-display">+EV Radar</span>
         </button>
     </nav>
 
@@ -1299,6 +1374,7 @@
             loadWeightClasses();
             fetchRankings();
             loadSystemVersion();
+            fetchCardPredictions();
         }
 
         if (document.readyState === 'loading') {
@@ -2445,10 +2521,12 @@
         function switchMainTab(tab) {
             currentMainTab = tab;
             const btnRankings = document.getElementById('navRankingsBtn');
+            const btnCardPredictions = document.getElementById('navCardPredictionsBtn');
             const btnSimulator = document.getElementById('navSimulatorBtn');
             const btnRadar = document.getElementById('navValueRadarBtn');
 
             const mBtnRankings = document.getElementById('mobileNavRankingsBtn');
+            const mBtnCardPredictions = document.getElementById('mobileNavCardPredictionsBtn');
             const mBtnSimulator = document.getElementById('mobileNavSimulatorBtn');
             const mBtnRadar = document.getElementById('mobileNavValueRadarBtn');
             
@@ -2457,14 +2535,17 @@
             const filterBar = document.getElementById('filterBar');
             const radarSec = document.getElementById('valueRadarSection');
             const simSec = document.getElementById('simulatorSection');
+            const cardPredSec = document.getElementById('cardPredictionsSection');
 
             // Reset navigation button active states (Desktop)
             if (btnRankings) btnRankings.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white';
+            if (btnCardPredictions) btnCardPredictions.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative';
             if (btnSimulator) btnSimulator.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative';
             if (btnRadar) btnRadar.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white relative';
 
             // Reset navigation button active states (Mobile)
             if (mBtnRankings) mBtnRankings.className = 'flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all';
+            if (mBtnCardPredictions) mBtnCardPredictions.className = 'flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all relative';
             if (mBtnSimulator) mBtnSimulator.className = 'flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all';
             if (mBtnRadar) mBtnRadar.className = 'flex flex-col items-center justify-center flex-1 py-1 text-slate-400 font-medium hover:text-white transition-all relative';
 
@@ -2477,6 +2558,20 @@
                 if (currentView === 'cards' && cardsCont) cardsCont.classList.remove('hidden');
                 if (radarSec) radarSec.classList.add('hidden');
                 if (simSec) simSec.classList.add('hidden');
+                if (cardPredSec) cardPredSec.classList.add('hidden');
+            } else if (tab === 'card-predictions') {
+                if (btnCardPredictions) btnCardPredictions.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-gradient-to-r from-amber-600 to-rose-600 text-white shadow-md relative';
+                if (mBtnCardPredictions) mBtnCardPredictions.className = 'flex flex-col items-center justify-center flex-1 py-1 text-amber-400 font-bold transition-all scale-105 relative';
+
+                if (filterBar) filterBar.classList.add('hidden');
+                if (tableCont) tableCont.classList.add('hidden');
+                if (cardsCont) cardsCont.classList.add('hidden');
+                if (radarSec) radarSec.classList.add('hidden');
+                if (simSec) simSec.classList.add('hidden');
+                if (cardPredSec) {
+                    cardPredSec.classList.remove('hidden');
+                    fetchCardPredictions();
+                }
             } else if (tab === 'simulator') {
                 if (btnSimulator) btnSimulator.className = 'flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all bg-rose-600 text-white shadow-sm relative';
                 if (mBtnSimulator) mBtnSimulator.className = 'flex flex-col items-center justify-center flex-1 py-1 text-rose-500 font-bold transition-all scale-105';
@@ -2485,6 +2580,7 @@
                 if (tableCont) tableCont.classList.add('hidden');
                 if (cardsCont) cardsCont.classList.add('hidden');
                 if (radarSec) radarSec.classList.add('hidden');
+                if (cardPredSec) cardPredSec.classList.add('hidden');
                 if (simSec) {
                     simSec.classList.remove('hidden');
                     initSimulatorFighters();
@@ -2497,6 +2593,7 @@
                 if (tableCont) tableCont.classList.add('hidden');
                 if (cardsCont) cardsCont.classList.add('hidden');
                 if (simSec) simSec.classList.add('hidden');
+                if (cardPredSec) cardPredSec.classList.add('hidden');
                 if (radarSec) {
                     radarSec.classList.remove('hidden');
                     fetchValueBets(currentMinEv);
@@ -2507,6 +2604,247 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
             if (window.lucide) lucide.createIcons();
+        }
+
+        let currentCardEventData = null;
+
+        async function fetchCardPredictions(eventName = '') {
+            const grid = document.getElementById('cardBoutsGrid');
+            if (grid && !currentCardEventData) {
+                grid.innerHTML = `<div class="p-12 text-center text-amber-300 animate-pulse col-span-full font-bold">⚡ Yapay Zekâ Elo & Monte Carlo Kart Tahminleri Yükleniyor...</div>`;
+            }
+
+            try {
+                let url = '/api/card-predictions';
+                if (eventName) url += `?event=${encodeURIComponent(eventName)}`;
+                const res = await fetch(url);
+                const json = await res.json();
+                if (json.status === 'success' && json.active_event) {
+                    currentCardEventData = json;
+                    renderCardPredictions(json);
+                }
+            } catch (err) {
+                console.error("Failed to fetch card predictions:", err);
+                if (grid) grid.innerHTML = `<div class="p-8 text-center text-rose-400 col-span-full">Kart tahminleri yüklenirken hata oluştu.</div>`;
+            }
+        }
+
+        function switchCardEvent(eventName) {
+            fetchCardPredictions(eventName);
+        }
+
+        function renderCardPredictions(data) {
+            const active = data.active_event;
+            const allEvents = data.all_events || [];
+
+            // Header info
+            const titleEl = document.getElementById('cardEventTitle');
+            const dateEl = document.getElementById('cardEventDateBadge');
+            if (titleEl) titleEl.textContent = active.event_title || 'UFC FIGHT NIGHT';
+            if (dateEl) dateEl.textContent = active.event_date || 'CANLI';
+
+            // Populate dropdown
+            const select = document.getElementById('eventSelectorDropdown');
+            if (select && allEvents.length > 0) {
+                select.innerHTML = allEvents.map(ev => `
+                    <option value="${ev.event_title}" ${ev.event_title === active.event_title ? 'selected' : ''}>
+                        ${ev.event_title} (${ev.event_date} - ${ev.total_fights} Maç)
+                    </option>
+                `).join('');
+            }
+
+            // Top KPI Highlights
+            const kpiLock = document.getElementById('kpiCardLock');
+            const kpiValue = document.getElementById('kpiCardValue');
+            const kpiFinishes = document.getElementById('kpiCardFinishes');
+            const kpiDecisions = document.getElementById('kpiCardDecisions');
+
+            const bouts = active.bouts || [];
+            if (bouts.length > 0) {
+                // Find top lock
+                let topLockBout = bouts.slice().sort((a, b) => {
+                    const maxA = Math.max(a.fighter1.win_probability, a.fighter2.win_probability);
+                    const maxB = Math.max(b.fighter1.win_probability, b.fighter2.win_probability);
+                    return maxB - maxA;
+                })[0];
+                if (topLockBout && kpiLock) {
+                    const lockFighter = topLockBout.fighter1.win_probability >= topLockBout.fighter2.win_probability ? topLockBout.fighter1 : topLockBout.fighter2;
+                    kpiLock.textContent = `${lockFighter.name} (%${lockFighter.win_probability})`;
+                }
+
+                // Find top value bet
+                let maxEv = 0;
+                let valName = '';
+                bouts.forEach(b => {
+                    const v1 = b.fighter1.value_betting || {};
+                    const v2 = b.fighter2.value_betting || {};
+                    if (v1.has_value && (v1.ev_pct || 0) > maxEv) {
+                        maxEv = v1.ev_pct;
+                        valName = `${b.fighter1.name} (+%${maxEv.toFixed(1)} EV)`;
+                    }
+                    if (v2.has_value && (v2.ev_pct || 0) > maxEv) {
+                        maxEv = v2.ev_pct;
+                        valName = `${b.fighter2.name} (+%${maxEv.toFixed(1)} EV)`;
+                    }
+                });
+                if (kpiValue) kpiValue.textContent = valName || 'Dengeli Fiyatlar';
+
+                // Count finishes vs decisions
+                let finishFavCount = 0;
+                let decFavCount = 0;
+                bouts.forEach(b => {
+                    const dp = b.monte_carlo?.distance_props?.goes_to_decision;
+                    if (dp && dp.no_pct > 50) finishFavCount++;
+                    else decFavCount++;
+                });
+                if (kpiFinishes) kpiFinishes.textContent = `${finishFavCount} Maçta Erken Bitiş`;
+                if (kpiDecisions) kpiDecisions.textContent = `${decFavCount} Maçta Karar`;
+            }
+
+            // Render Bouts Grid
+            const grid = document.getElementById('cardBoutsGrid');
+            if (!grid) return;
+
+            grid.innerHTML = bouts.map((b, i) => {
+                const f1 = b.fighter1;
+                const f2 = b.fighter2;
+                const ctx = b.bout_context || {};
+                const mc = b.monte_carlo || {};
+                const dp = mc.distance_props || {};
+
+                const isMain = b.is_main_event || (i === 0);
+                const f1_win = f1.win_probability >= f2.win_probability;
+
+                const val1 = f1.value_betting || {};
+                const val2 = f2.value_betting || {};
+                const hasVal = val1.has_value || val2.has_value;
+                const valFighter = val1.has_value ? f1 : (val2.has_value ? f2 : null);
+                const valObj = val1.has_value ? val1 : val2;
+
+                const f1_odds = f1.odds?.fair?.decimal || '2.00';
+                const f2_odds = f2.odds?.fair?.decimal || '2.00';
+                const f1_book = f1.odds?.market_decimal || (val1.bookmaker_odds_decimal || f1_odds);
+                const f2_book = f2.odds?.market_decimal || (val2.bookmaker_odds_decimal || f2_odds);
+
+                const decPct = dp.goes_to_decision?.yes_pct || 50;
+                const finPct = dp.goes_to_decision?.no_pct || 50;
+
+                return `
+                    <div class="glass-card rounded-2xl p-4 border ${isMain ? 'border-amber-500/50 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 glow-amber' : 'border-slate-800 bg-slate-900/80'} space-y-3 transition-all hover:border-slate-700">
+                        <!-- Card Header: Sıklet & Raunt Etiketi -->
+                        <div class="flex justify-between items-center text-xs pb-2 border-b border-slate-800">
+                            <div class="flex items-center space-x-2">
+                                <span class="px-2 py-0.5 rounded text-[9px] font-black ${isMain ? 'bg-amber-500 text-slate-950' : 'bg-slate-800 text-slate-300'} uppercase tracking-wider">
+                                    ${isMain ? '👑 MAIN EVENT' : `BOUT #${b.bout_order || (i+1)}`}
+                                </span>
+                                <span class="text-slate-400 font-semibold text-[11px]">${ctx.weight_class || 'UFC Sıklet'} • ${ctx.total_rounds || 3} Raunt</span>
+                            </div>
+                            ${hasVal ? `
+                                <span class="px-2 py-0.5 rounded-full text-[9px] font-black bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1 animate-pulse">
+                                    🔥 +EV VALUE BET
+                                </span>
+                            ` : `
+                                <span class="text-[10px] text-slate-500 font-medium">Model Projeksiyonu</span>
+                            `}
+                        </div>
+
+                        <!-- Fighters Head-to-Head Section -->
+                        <div class="grid grid-cols-12 gap-2 items-center">
+                            <!-- Red Corner Fighter -->
+                            <div class="col-span-5 text-left space-y-1">
+                                <div class="flex items-center space-x-1.5">
+                                    <span class="w-2 h-2 rounded-full ${f1_win ? 'bg-emerald-400 animate-pulse' : 'bg-rose-500'}"></span>
+                                    <h4 class="font-display font-black text-white text-sm sm:text-base leading-tight truncate" title="${f1.name}">${f1.name}</h4>
+                                </div>
+                                <div class="text-[10px] text-slate-400 flex flex-wrap gap-1">
+                                    <span class="font-bold text-rose-300">${f1.effective_elo || f1.elo} Elo</span>
+                                    <span>•</span>
+                                    <span class="text-slate-400 truncate max-w-[100px]">${f1.archetype || 'Fighter'}</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-[10px] pt-0.5">
+                                    <span class="px-1.5 py-0.2 rounded bg-slate-950 text-slate-300 border border-slate-800 font-mono font-bold" title="Model Adil Oranı">Adil: ${f1_odds}</span>
+                                    <span class="px-1.5 py-0.2 rounded ${val1.has_value ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 font-black' : 'bg-slate-950 text-slate-400 border-slate-800 font-mono'}" title="Piyasa Oranı">Piyasa: ${f1_book}</span>
+                                </div>
+                            </div>
+
+                            <!-- Middle VS & Probability Split -->
+                            <div class="col-span-2 text-center flex flex-col items-center justify-center">
+                                <span class="font-display font-black text-slate-600 text-xs uppercase">VS</span>
+                                <div class="text-[9px] font-extrabold text-amber-400 mt-0.5">
+                                    %${f1.win_probability} - %${f2.win_probability}
+                                </div>
+                            </div>
+
+                            <!-- Blue Corner Fighter -->
+                            <div class="col-span-5 text-right space-y-1">
+                                <div class="flex items-center justify-end space-x-1.5">
+                                    <h4 class="font-display font-black text-white text-sm sm:text-base leading-tight truncate" title="${f2.name}">${f2.name}</h4>
+                                    <span class="w-2 h-2 rounded-full ${!f1_win ? 'bg-emerald-400 animate-pulse' : 'bg-amber-500'}"></span>
+                                </div>
+                                <div class="text-[10px] text-slate-400 flex justify-end flex-wrap gap-1">
+                                    <span class="text-slate-400 truncate max-w-[100px]">${f2.archetype || 'Fighter'}</span>
+                                    <span>•</span>
+                                    <span class="font-bold text-amber-300">${f2.effective_elo || f2.elo} Elo</span>
+                                </div>
+                                <div class="flex items-center justify-end gap-1 text-[10px] pt-0.5">
+                                    <span class="px-1.5 py-0.2 rounded ${val2.has_value ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 font-black' : 'bg-slate-950 text-slate-400 border-slate-800 font-mono'}" title="Piyasa Oranı">Piyasa: ${f2_book}</span>
+                                    <span class="px-1.5 py-0.2 rounded bg-slate-950 text-slate-300 border border-slate-800 font-mono font-bold" title="Model Adil Oranı">Adil: ${f2_odds}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Probability Bar Fill -->
+                        <div class="w-full bg-slate-950 rounded-full h-2 border border-slate-800 overflow-hidden flex">
+                            <div class="bg-gradient-to-r from-rose-600 to-rose-400 h-full transition-all duration-500" style="width: ${f1.win_probability}%;"></div>
+                            <div class="bg-gradient-to-r from-amber-400 to-amber-600 h-full transition-all duration-500" style="width: ${f2.win_probability}%;"></div>
+                        </div>
+
+                        <!-- Tactical Insights & Value Banner -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[10.5px] pt-1">
+                            <!-- Method of Victory Breakdown -->
+                            <div class="bg-slate-950/70 p-2 rounded-xl border border-slate-800/80 space-y-1">
+                                <span class="text-[9px] font-bold text-slate-400 uppercase block">🎯 Bitiş Yolu Tahmini:</span>
+                                <div class="flex justify-between text-slate-300 text-[10px]">
+                                    <span>${f1.name.split(' ')[1] || f1.name}:</span>
+                                    <span class="font-mono">KO %${f1.methods?.ko_tko_pct || 0} • SUB %${f1.methods?.submission_pct || 0} • DEC %${f1.methods?.decision_pct || 0}</span>
+                                </div>
+                                <div class="flex justify-between text-slate-300 text-[10px]">
+                                    <span>${f2.name.split(' ')[1] || f2.name}:</span>
+                                    <span class="font-mono">KO %${f2.methods?.ko_tko_pct || 0} • SUB %${f2.methods?.submission_pct || 0} • DEC %${f2.methods?.decision_pct || 0}</span>
+                                </div>
+                            </div>
+
+                            <!-- Monte Carlo & Value Signal Box -->
+                            <div class="bg-slate-950/70 p-2 rounded-xl border border-slate-800/80 flex flex-col justify-between space-y-1">
+                                <div class="flex justify-between items-center text-[10px]">
+                                    <span class="text-slate-400">🎲 100k Monte Carlo:</span>
+                                    <span class="font-bold text-slate-200">Karar: %${decPct} | Bitiş: %${finPct}</span>
+                                </div>
+                                ${hasVal && valFighter ? `
+                                    <div class="text-[9.5px] text-emerald-400 font-bold bg-emerald-950/40 px-1.5 py-0.5 rounded border border-emerald-500/30 flex items-center justify-between">
+                                        <span>🔥 ${valFighter.name} ML</span>
+                                        <span>+EV: +%${valObj.ev_pct?.toFixed(1) || 0} (Kelly: %${valObj.fractional_kelly_stake_pct || '3.0'})</span>
+                                    </div>
+                                ` : `
+                                    <div class="text-[9.5px] text-slate-400 italic">
+                                        Oranlar model projeksiyonuyla dengeli.
+                                    </div>
+                                `}
+                            </div>
+                        </div>
+
+                        <!-- Footer Quick Simulate Action Button -->
+                        <div class="pt-1 flex justify-end">
+                            <button onclick="quickSimulate('${f1.name.replace(/'/g, "\\'")}', '${f2.name.replace(/'/g, "\\'")}')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-rose-600 text-slate-300 hover:text-white font-bold text-[11px] transition-all flex items-center gap-1.5 shadow-sm group">
+                                <i data-lucide="swords" class="w-3.5 h-3.5 text-rose-400 group-hover:text-white transition-all"></i>
+                                <span>Octagon Simülatöründe Aç</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            try { if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons(); } catch (e) {}
         }
 
         function switchValueSource(source) {
