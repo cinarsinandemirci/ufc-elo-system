@@ -278,6 +278,23 @@ try:
 except Exception as e:
     run_assertion("API /api/ml-benchmarks accessible", False, str(e))
 
+# 9. /api/system/version (MLOps Model Registry)
+try:
+    status, data, elapsed = get_api('/api/system/version')
+    run_assertion("API /api/system/version returns 200 OK", status == 200)
+    run_assertion("Active model tag is v2.5.0", data.get('current_version_tag') == 'v2.5.0')
+    run_assertion(f"All versions count >= 6 (count: {len(data.get('all_versions', []))})", len(data.get('all_versions', [])) >= 6)
+except Exception as e:
+    run_assertion("API /api/system/version accessible", False, str(e))
+
+# 10. /api/system/snapshots (Data Backup Manager)
+try:
+    status, data, elapsed = get_api('/api/system/snapshots')
+    run_assertion("API /api/system/snapshots returns 200 OK", status == 200)
+    run_assertion(f"Data snapshots found >= 1 (count: {data.get('total_snapshots')})", data.get('total_snapshots', 0) >= 1)
+except Exception as e:
+    run_assertion("API /api/system/snapshots accessible", False, str(e))
+
 # =========================================================================
 # TEST SUITE 5: EDGE CASES & EXTREME STRESS TESTING
 # =========================================================================

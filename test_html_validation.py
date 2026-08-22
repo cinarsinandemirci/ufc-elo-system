@@ -37,7 +37,13 @@ def test_html():
         'switchMainTab',
         'quickSimulate',
         'safe-area-pb',
-        'viewport-fit=cover'
+        'viewport-fit=cover',
+        'headerVersionTag',
+        'mobileHeaderVersionTag',
+        'versionModal',
+        'versionTimelineList',
+        'openVersionModal',
+        'closeVersionModal'
     ]
 
     all_passed = True

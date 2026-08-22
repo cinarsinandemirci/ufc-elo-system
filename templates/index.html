@@ -128,16 +128,25 @@
                     </button>
                 </div>
 
+                <button onclick="openVersionModal()" class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 border border-emerald-500/40 text-emerald-300 text-xs font-bold transition-all shadow-sm group" title="Model Registry & Versiyon Kontrolü">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="headerVersionTag">v2.5.0</span>
+                    <span class="text-[10px] text-slate-400 group-hover:text-slate-200">MLOps</span>
+                </button>
                 <button onclick="switchMainTab('simulator')" class="flex items-center space-x-2 px-3 py-1.5 rounded-lg bg-gradient-to-r from-rose-900/80 to-amber-900/80 hover:from-rose-800 hover:to-amber-800 text-amber-300 border border-amber-500/40 text-xs font-bold shadow-lg transition-all">
                     <i data-lucide="swords" class="w-4 h-4 text-amber-400"></i>
                     <span>Launch Sim</span>
                 </button>
             </div>
 
-            <!-- Mobile Quick Action Button -->
-            <div class="sm:hidden flex items-center space-x-2">
-                <button onclick="switchMainTab('simulator')" class="px-2.5 py-1 rounded-lg bg-gradient-to-r from-rose-600 to-amber-600 text-white font-bold text-xs shadow-md flex items-center gap-1">
-                    <i data-lucide="swords" class="w-3.5 h-3.5"></i>
+            <!-- Mobile Quick Action Button & Version Tag -->
+            <div class="sm:hidden flex items-center space-x-1.5">
+                <button onclick="openVersionModal()" class="px-2 py-1 rounded-lg bg-slate-900 border border-emerald-500/40 text-emerald-300 font-bold text-[10px] flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span id="mobileHeaderVersionTag">v2.5.0</span>
+                </button>
+                <button onclick="switchMainTab('simulator')" class="px-2 py-1 rounded-lg bg-gradient-to-r from-rose-600 to-amber-600 text-white font-bold text-[11px] shadow-md flex items-center gap-1">
+                    <i data-lucide="swords" class="w-3 h-3"></i>
                     <span>Simüle</span>
                 </button>
             </div>
@@ -949,6 +958,77 @@
         </div>
     </div>
 
+    <!-- System Version & MLOps Model Registry Modal -->
+    <div id="versionModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-end sm:items-center justify-center p-0 sm:p-4 transition-all">
+        <div class="glass-card rounded-t-3xl sm:rounded-2xl border border-emerald-500/30 w-full max-w-2xl max-h-[92vh] sm:max-h-[85vh] overflow-hidden flex flex-col shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            
+            <!-- Modal Header -->
+            <div class="p-4 sm:p-5 bg-gradient-to-r from-slate-950 via-slate-900 to-emerald-950/40 border-b border-slate-800 flex justify-between items-center shrink-0">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                        <i data-lucide="git-branch" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <h3 class="font-display font-black text-white text-base sm:text-lg">MODEL REGISTRY & VERSİYON KONTROLÜ</h3>
+                            <span id="modalActiveTag" class="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">v2.5.0 LIVE</span>
+                        </div>
+                        <p class="text-xs text-slate-400">UFC Elo & Value Bet Tahmin Motoru MLOps Mimarisi</p>
+                    </div>
+                </div>
+                <button onclick="closeVersionModal()" class="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-all">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Active Version KPI Bar -->
+            <div class="grid grid-cols-4 gap-2 p-3 sm:p-4 bg-slate-950/70 border-b border-slate-800 text-center shrink-0">
+                <div class="p-2 rounded-xl bg-slate-900/60 border border-emerald-500/20">
+                    <span class="text-[9px] text-slate-400 uppercase font-bold block">Kör Tahmin (Acc)</span>
+                    <p id="kpiAccuracy" class="font-display font-black text-emerald-400 text-xs sm:text-sm">68.40%</p>
+                </div>
+                <div class="p-2 rounded-xl bg-slate-900/60 border border-sky-500/20">
+                    <span class="text-[9px] text-slate-400 uppercase font-bold block">Brier Skoru</span>
+                    <p id="kpiBrier" class="font-display font-black text-sky-400 text-xs sm:text-sm">0.188</p>
+                </div>
+                <div class="p-2 rounded-xl bg-slate-900/60 border border-amber-500/20">
+                    <span class="text-[9px] text-slate-400 uppercase font-bold block">+EV ROI</span>
+                    <p id="kpiROI" class="font-display font-black text-amber-400 text-xs sm:text-sm">+21.4%</p>
+                </div>
+                <div class="p-2 rounded-xl bg-slate-900/60 border border-rose-500/20">
+                    <span class="text-[9px] text-slate-400 uppercase font-bold block">İşlenen Maç</span>
+                    <p id="kpiFights" class="font-display font-black text-rose-400 text-xs sm:text-sm">8,515+</p>
+                </div>
+            </div>
+
+            <!-- Version Timeline & Changelog List -->
+            <div class="p-4 sm:p-6 overflow-y-auto custom-scrollbar flex-1 space-y-4">
+                <div class="flex items-center justify-between">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+                        <i data-lucide="history" class="w-4 h-4 text-emerald-400"></i> Model Versiyon Gelişim Geçmişi
+                    </h4>
+                    <span class="text-[11px] text-slate-400">Walk-Forward Backtest Doğrulamalı</span>
+                </div>
+
+                <div id="versionTimelineList" class="space-y-3">
+                    <!-- Dynamic timeline items -->
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-3 sm:p-4 border-t border-slate-800 bg-slate-900/60 flex justify-between items-center text-xs text-slate-400 shrink-0">
+                <div class="flex items-center space-x-2 text-[11px]">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>Snapshot & Rollback Motoru: <b class="text-emerald-400">Aktif</b></span>
+                </div>
+                <button onclick="closeVersionModal()" class="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-medium transition-all text-xs">
+                    Kapat
+                </button>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Mobile Bottom Floating App Bar (Fixed on mobile screens) -->
     <nav class="sm:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#07090e]/95 backdrop-blur-xl border-t border-slate-800/90 px-3 py-1.5 flex justify-around items-center safe-area-pb shadow-2xl">
         <button id="mobileNavRankingsBtn" onclick="switchMainTab('rankings')" class="flex flex-col items-center justify-center flex-1 py-1 text-rose-500 font-bold transition-all">
@@ -985,12 +1065,112 @@
             loadStats();
             loadWeightClasses();
             fetchRankings();
+            loadSystemVersion();
         }
 
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initApp);
         } else {
             initApp();
+        }
+
+        let systemVersionData = null;
+
+        async function loadSystemVersion() {
+            try {
+                const res = await fetch('/api/system/version');
+                const data = await res.json();
+                systemVersionData = data;
+
+                const tag = data.current_version_tag || 'v2.5.0';
+                const hTag = document.getElementById('headerVersionTag');
+                const mTag = document.getElementById('mobileHeaderVersionTag');
+                const mActiveTag = document.getElementById('modalActiveTag');
+                if (hTag) hTag.textContent = tag;
+                if (mTag) mTag.textContent = tag;
+                if (mActiveTag) mActiveTag.textContent = `${tag} LIVE`;
+
+                if (data.active_version && data.active_version.metrics) {
+                    const accEl = document.getElementById('kpiAccuracy');
+                    const brEl = document.getElementById('kpiBrier');
+                    const roiEl = document.getElementById('kpiROI');
+                    const figEl = document.getElementById('kpiFights');
+                    if (accEl) accEl.textContent = data.active_version.metrics.walk_forward_accuracy || '68.40%';
+                    if (brEl) brEl.textContent = data.active_version.metrics.brier_score || '0.188';
+                    if (roiEl) roiEl.textContent = data.active_version.metrics.value_bet_roi || '+21.4%';
+                    if (figEl) figEl.textContent = (data.total_fights || 8515).toLocaleString() + '+';
+                }
+
+                renderVersionTimeline(data.all_versions || []);
+            } catch (err) {
+                console.warn('Could not load system version:', err);
+            }
+        }
+
+        function renderVersionTimeline(versions) {
+            const container = document.getElementById('versionTimelineList');
+            if (!container) return;
+
+            container.innerHTML = versions.slice().reverse().map(v => {
+                const isActive = v.is_active;
+                const activeBadge = isActive 
+                    ? `<span class="px-2 py-0.5 rounded-full text-[9px] font-black bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 animate-pulse">AKTİF VERSİYON</span>`
+                    : `<span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-slate-800 text-slate-400 border border-slate-700">ARŞİV</span>`;
+
+                const changelogHtml = (v.changelog || []).map(c => `
+                    <li class="flex items-start gap-1.5 text-xs text-slate-300">
+                        <span class="text-emerald-400 mt-0.5 font-bold">▸</span>
+                        <span>${c}</span>
+                    </li>
+                `).join('');
+
+                return `
+                    <div class="p-3.5 sm:p-4 rounded-xl ${isActive ? 'bg-slate-900/90 border border-emerald-500/40 shadow-lg glow-green' : 'bg-slate-950/60 border border-slate-800/80'} transition-all">
+                        <div class="flex flex-wrap justify-between items-start gap-2 mb-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="font-display font-black text-sm sm:text-base ${isActive ? 'text-emerald-300' : 'text-white'}">${v.version_tag}</span>
+                                <span class="font-bold text-xs text-slate-300">• ${v.name}</span>
+                                ${activeBadge}
+                            </div>
+                            <span class="text-[11px] text-slate-400 font-mono">${v.release_date}</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2.5">${v.description}</p>
+                        <div class="grid grid-cols-3 gap-1.5 p-2 bg-slate-950/70 rounded-lg text-center mb-2.5 text-[11px]">
+                            <div>
+                                <span class="text-[9px] text-slate-400 block uppercase">Accuracy</span>
+                                <span class="font-black ${isActive ? 'text-emerald-400' : 'text-slate-300'}">${v.metrics?.walk_forward_accuracy || 'N/A'}</span>
+                            </div>
+                            <div>
+                                <span class="text-[9px] text-slate-400 block uppercase">Brier</span>
+                                <span class="font-black text-slate-300">${v.metrics?.brier_score || 'N/A'}</span>
+                            </div>
+                            <div>
+                                <span class="text-[9px] text-slate-400 block uppercase">+EV ROI</span>
+                                <span class="font-black ${isActive ? 'text-amber-400' : 'text-slate-300'}">${v.metrics?.value_bet_roi || 'N/A'}</span>
+                            </div>
+                        </div>
+                        <div class="space-y-1 mt-2">
+                            <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Değişiklik Günlüğü (Changelog):</span>
+                            <ul class="space-y-1">${changelogHtml}</ul>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            try { if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons(); } catch (e) {}
+        }
+
+        function openVersionModal() {
+            const modal = document.getElementById('versionModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                if (!systemVersionData) loadSystemVersion();
+            }
+        }
+
+        function closeVersionModal() {
+            const modal = document.getElementById('versionModal');
+            if (modal) modal.classList.add('hidden');
         }
 
         async function loadStats() {

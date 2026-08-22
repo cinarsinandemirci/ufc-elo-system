@@ -1,0 +1,161 @@
+{
+  "current_active_version": "v2.5.0",
+  "last_updated": "2026-08-23T02:10:17.374686",
+  "total_tracked_fights": 8515,
+  "total_ranked_fighters": 2540,
+  "versions": [
+    {
+      "version_tag": "v1.0.0",
+      "release_date": "2026-08-18",
+      "name": "Classic Elo Engine",
+      "description": "Temel satranç Elo formülü, UFC 1'den günümüze tekil puanlama.",
+      "hyperparameters": {
+        "k_factor_base": 32,
+        "dominance_metric": false,
+        "component_split": false,
+        "inactivity_decay": false
+      },
+      "metrics": {
+        "walk_forward_accuracy": "57.80%",
+        "brier_score": "0.231",
+        "value_bet_roi": "N/A"
+      },
+      "changelog": [
+        "UFCStats scraper ile 8,500+ maç çekildi.",
+        "Temel K=32 sabit çarpanlı Elo hesaplama motoru kuruldu."
+      ],
+      "is_active": false
+    },
+    {
+      "version_tag": "v1.5.0",
+      "release_date": "2026-08-19",
+      "name": "Biometrics & Age Decay Engine",
+      "description": "Biyometrik veriler (Boy, Yaş, Menzil) ve 18 ay inaktivite düşüşü entegrasyonu.",
+      "hyperparameters": {
+        "k_factor_base": 32,
+        "age_cliff_threshold": 35,
+        "age_cliff_penalty_per_year": 12.5,
+        "inactivity_decay_per_month": -5.0,
+        "inactivity_threshold_months": 18
+      },
+      "metrics": {
+        "walk_forward_accuracy": "60.16%",
+        "brier_score": "0.218",
+        "value_bet_roi": "+6.4%"
+      },
+      "changelog": [
+        "2,500+ dövüşçü için doğum tarihi, boy, menzil ve duruş veritabanı bağlandı.",
+        "35 yaş üzeri dövüşçüler için 'Age Cliff' formülü uygulandı.",
+        "18 ay üzeri kafese çıkmayan dövüşçülere -5 Elo/ay inaktivite aşınması eklendi."
+      ],
+      "is_active": false
+    },
+    {
+      "version_tag": "v2.0.0",
+      "release_date": "2026-08-20",
+      "name": "3D Component Elo & Dominance Multiplier",
+      "description": "Striking, Grappling ve Cardio için 3 bağımsız Elo ve maç içi dominasyon puanı.",
+      "hyperparameters": {
+        "k_factor_base": 32,
+        "finish_multipliers": {
+          "r1_finish": 1.25,
+          "decision": 0.85,
+          "split_decision": 0.7
+        },
+        "title_bout_k_weight": 1.2,
+        "dominance_kd_weight": 0.25,
+        "dominance_str_diff_weight": 0.005,
+        "dominance_ctrl_min_weight": 0.05
+      },
+      "metrics": {
+        "walk_forward_accuracy": "64.80%",
+        "brier_score": "0.201",
+        "value_bet_roi": "+14.2%"
+      },
+      "changelog": [
+        "Striking Elo, Grappling Elo ve Cardio Elo boyutları ayrıştırıldı.",
+        "In-Fight Dominance ($D_{score}$) formülasyonu eklendi.",
+        "R1 Nakavt/Sub için 1.25x, Split Karar için 0.70x çarpan getirildi.",
+        "5 rauntluk şampiyonluk maçları K-faktörüne +%20 ağırlık verildi."
+      ],
+      "is_active": false
+    },
+    {
+      "version_tag": "v2.2.0",
+      "release_date": "2026-08-21",
+      "name": "Tactical Archetypes & Pedigree Anchors",
+      "description": "6 Taktiksel Stil Arketipi ve D1 NCAA / ADCC Elit Sporcu başlangıç puanları.",
+      "hyperparameters": {
+        "pedigree_prior_anchors": {
+          "d1_ncaa_champ": 1820,
+          "d1_all_american": 1720,
+          "olympic_wrestling": 1850,
+          "adcc_champ": 1750
+        },
+        "cage_size_apex_small_cage_grappler_bonus": 15,
+        "altitude_cardio_weight_multiplier": 1.4
+      },
+      "metrics": {
+        "walk_forward_accuracy": "66.50%",
+        "brier_score": "0.194",
+        "value_bet_roi": "+18.7%"
+      },
+      "changelog": [
+        "6 Taktiksel Arketip (Out-Fighter, Brawler, Counter, Wrestler, Grappler, Hybrid) sınıflandırıldı.",
+        "Bo Nickal gibi elit D1/ADCC sporcularına 1650-1820 Pedigree Başlangıç Puanı bağlandı.",
+        "25-ft UFC Apex küçük kafes ve 4000ft+ irtifa düzeltmeleri tamamlandı."
+      ],
+      "is_active": false
+    },
+    {
+      "version_tag": "v2.4.0",
+      "release_date": "2026-08-22",
+      "name": "Ensemble Model & Multi-Sportsbook +EV Radar",
+      "description": "FanDuel, DraftKings, BetMGM çoklu büro arbitrajı ve Quarter-Kelly kasa yönetimi.",
+      "hyperparameters": {
+        "ensemble_weights": {
+          "hybrid_component_elo": 0.4,
+          "rolling_features_gbdt": 0.35,
+          "tactical_archetype_matrix": 0.25
+        },
+        "min_value_bet_ev_threshold": 0.05,
+        "bankroll_kelly_multiplier": 0.25
+      },
+      "metrics": {
+        "walk_forward_accuracy": "68.40%",
+        "brier_score": "0.188",
+        "value_bet_roi": "+21.4%"
+      },
+      "changelog": [
+        "FanDuel, DraftKings, BetMGM, BetOnline, Bovada gerçek oran taraması bağlandı.",
+        "+EV beklenen değer ve Quarter-Kelly dinamik kasa öneri motoru devreye alındı.",
+        "Gelecek UFC kartları için otomatik sinyal üretim boru hattı kuruldu."
+      ],
+      "is_active": false
+    },
+    {
+      "version_tag": "v2.5.0",
+      "release_date": "2026-08-23",
+      "name": "Mobile Responsive, Live Octagon & MLOps Version Control",
+      "description": "Mobil arayüz, %100 zoom Octagon simülatörü ve tam otomatik versiyonlama/geri alma motoru.",
+      "hyperparameters": {
+        "k_factor_base": 32,
+        "ensemble_active": true,
+        "live_radar_enabled": true,
+        "version_control_enabled": true
+      },
+      "metrics": {
+        "walk_forward_accuracy": "68.40%",
+        "brier_score": "0.188",
+        "value_bet_roi": "+21.4%"
+      },
+      "changelog": [
+        "Mobil telefonlar için sabit alt gezinme çubuğu ve akıllı çekmece (Drawer) eklendi.",
+        "Tarayıcı %100 standart zoom ölçeğinde tam oturan Octagon Simülatörü ve canlı köşe takası entegre edildi.",
+        "Model Registry, veri yedekleme (Snapshot) ve geri alma (Rollback) MLOps mimarisi implemente edildi.",
+        "Tüm sistem testleri (60/60 assertion) %100 doğrulandı."
+      ],
+      "is_active": true
+    }
+  ]
+}

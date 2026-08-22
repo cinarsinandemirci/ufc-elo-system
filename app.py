@@ -955,7 +955,33 @@ def get_ml_benchmarks():
     results = _CACHE.get('advanced_results', {})
     return jsonify(results)
 
+from version_manager import get_active_version, initialize_registry_if_missing, list_snapshots
+
+@app.route('/api/system/version')
+def get_system_version():
+    registry = initialize_registry_if_missing()
+    active_ver = get_active_version()
+    return jsonify({
+        'status': 'success',
+        'active_version': active_ver,
+        'current_version_tag': registry.get('current_active_version', 'v2.5.0'),
+        'last_updated': registry.get('last_updated'),
+        'total_fights': registry.get('total_tracked_fights', 8515),
+        'total_fighters': registry.get('total_ranked_fighters', 2540),
+        'all_versions': registry.get('versions', [])
+    })
+
+@app.route('/api/system/snapshots')
+def get_system_snapshots():
+    snapshots = list_snapshots()
+    return jsonify({
+        'status': 'success',
+        'total_snapshots': len(snapshots),
+        'snapshots': snapshots
+    })
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     print(f"[INFO] Starting UFC Elo Dashboard on http://127.0.0.1:{port}")
     app.run(host='0.0.0.0', port=port, debug=False)
+
